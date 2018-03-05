@@ -6,6 +6,7 @@ echo $page['doctype'];
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $site['lang'];?>" lang="<?php echo $page['lang'];?>">
 	<head>
 		<title><?php echo $page['title'];?></title>
+        <?php echo $page['gacode'];?>
 		<meta http-equiv="content-type" content="text/html; charset=<?php echo $page['charset'];?>" />
 		<meta name="description" content="<?php echo $page['description'];?>" />
 		<meta name="keywords" content="<?php echo $page['keywords'];?>" />
@@ -23,6 +24,7 @@ echo $page['doctype'];
 		<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleMenus.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleGallery.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/jquery.lightbox-0.5.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="default.css" />
 		
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/cms/scripts/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/jquery.lightbox-0.5.js.php"></script>
