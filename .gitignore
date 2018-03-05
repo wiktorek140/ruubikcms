@@ -1,4 +1,7 @@
 ruubikcms/useruploads/files/*
 ruubikcms/useruploads/images/*
 ruubikcms/useruploads/media/*
-#ruubikcms/sqlite/ruubikcms.sqlite
+ruubikcms/sqlite/ruubikcms.sqlite
+ruubikcms/sqlite/ruubikcms-last-login.sqlite
+inne/*
+inne

@@ -29,6 +29,7 @@ echo $page['doctype'];
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/cms/scripts/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/jquery.lightbox-0.5.js.php"></script>
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/lightbox.select.js"></script>
+        <script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/datescripts.js"></script>
 		
 	</head>
 	<body>
@@ -82,16 +83,7 @@ echo $page['doctype'];
 
 					<div id="ColRight">
 
-						<div id="decorationPic"><img src="<?php echo $page['image1'];?>" alt="img" />
-						</div>
-
-						<div id="news">
-
-                            <div id="newsHeading">News
-                            </div>
-							<?php echo $page['news'];?>
-
-						</div>	
+						<?php snippet_php('right-column');?>
 
 					</div>
 

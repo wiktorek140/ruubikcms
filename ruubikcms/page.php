@@ -154,7 +154,7 @@ foreach ($dbh->query($sql) as $row) {
 	
 	$counter++;
 }
-$page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><div><a href="#">Dzisiaj jest '.date('D, d M Y H:i:s').'</a></div></li>';
+$page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><div><a href="#">Dzisiaj jest '.ucwords(strftime('%A, %d %B %G')).' <span class="clock"></span></a></div></li>';
 if ($counter != 0) $page['mainmenu'] .= '</ul>';
 
 // ------------------------------------------------------------------------------------------------------------------------------------------
