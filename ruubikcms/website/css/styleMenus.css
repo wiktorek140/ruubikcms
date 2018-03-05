@@ -4,7 +4,7 @@ HTML:	<ul><li><div><a href="#">Link</a></div></li></ul>
 
 #mainMenu ul {
 	padding: 0 0 0 0;
-	width: 980px;
+	width: 1130px;
 	height: 38px;
 	background: url(images/split.gif) no-repeat top left;
 }
@@ -52,20 +52,24 @@ HTML:	<ul><li><a href="#">Link</a></li></ul>
 }
 
 #subMenu ul {
-	margin: 0 0 0 0;
+	margin: 0 0 0 0;	
 }
 
 #subMenu ul li {
-	padding: 0 0 0 0;
+	
+	padding-left:25px;
+	min-height: 26px;
+	background: url(images/bullet.gif) no-repeat top left;
 }
 
 #subMenu ul li a:link, #subMenu ul li a:visited {
-	padding: 5px 15px 11px 25px;
+	
+	padding: 0px 0px 0px 0px;
 	color: #333333;
-	font-size: 12px;
+	font-size: 14px;
 	font-family: arial, verdana;
 	text-decoration: underline;
-	background: url(images/bullet.gif) no-repeat top left; 	
+	
 }
 
 #subMenu ul li a:hover {
@@ -74,4 +78,8 @@ HTML:	<ul><li><a href="#">Link</a></li></ul>
 
 #subMenu ul li a:focus {
 	color: #777777;
+}
+
+#subMenu ul li a div {
+	padding: 5px 0 0 0;
 }

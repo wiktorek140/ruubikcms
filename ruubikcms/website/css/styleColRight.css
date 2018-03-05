@@ -34,7 +34,10 @@
 	font-size: 24px;	
 	line-height: 1.2em;	
 	text-decoration: none;
-    background: url(images/news_h1.jpg) no-repeat top left;   	
+	text-align: center;
+    /*background: url(images/news_h1.jpg) no-repeat top left;*/
+	background: #996633;
+	border-radius:20px 20px 0px 0px;
     border-bottom: 5px solid #ffffff;    
 }
 
