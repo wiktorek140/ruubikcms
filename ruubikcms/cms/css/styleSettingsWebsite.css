@@ -1,0 +1,414 @@
+#webSiteLeft {
+	float: left;
+	display: inline;	
+	width: 450px;	 	
+}
+
+/* PageAdmin Settings
+---------------------------------------------------------- */
+
+#webSiteSettings {
+	padding: 0 0 5px 0;	  
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651; 
+}
+
+#webSiteSettings h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+
+#webSiteSettings  table{
+   width: 445px;
+   margin: 5px 0 5px 0;
+}
+
+#webSiteSettings table td.tdWebSetupLeft {
+   padding: 0 6px 0 0;
+   width: 164px;
+   min-height: 20px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+#webSiteSettings table td.tdWebSetupCenter{
+   padding: 2px 0 0 0;
+   width: 250px;
+   min-height: 18px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#webSiteSettings table td.tdWebSetupCenter input{
+   padding: 1px;
+   height: 14px;
+   width: 240px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#webSiteSettings table td.tdWebSetupCenter select{
+   padding: 1px;
+   width: 244px;
+   height: 18px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#webSiteSettings table td.tdWebSetupCenter textarea{
+	padding: 1px;
+	font-family: arial;
+	width: 240px;
+	height: 50px;
+	font-size: 11px;
+	border: 1px solid #384637;	
+}
+
+#webSiteSettings table td.tdWebSetupRight{
+   padding: 3px 0 0 0;
+   width: 20px;
+   min-height: 18px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: top;
+}
+
+#webSiteSettings table td.tdWebSetupRight img{
+   border: none;
+} 
+
+
+
+/* webSiteRest Settings
+---------------------------------------------------------- */
+
+#webSiteRest {
+	margin: 10px 0 0 0;    
+	padding: 0 0 5px 0;	  
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651; 
+}
+
+#webSiteRest h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#webSiteRest  table{
+   width: 445px;
+   margin: 5px 0 5px 0;
+}
+
+#webSiteRest table td.tdRestSetupLeft {
+   padding: 0 6px 0 0;
+   width: 164px;
+   min-height: 20px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+#webSiteRest table td.tdRestSetupCenter{
+   padding: 2px 0 0 0;
+   width: 250px;
+   min-height: 18px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#webSiteRest table td.tdRestSetupCenter input{
+   padding: 1px;
+   height: 14px;
+   width: 240px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#webSiteRest table td.tdRestSetupCenter select{
+   padding: 1px;
+   width: 244px;
+   height: 18px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#webSiteRest table td.tdRestSetupRight{
+   padding: 3px 0 0 0;
+   width: 20px;
+   min-height: 18px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: top;
+}
+
+#webSiteRest table td.tdRestSetupRight img{
+   border: none;
+} 
+
+/* indexRight Settings
+---------------------------------------------------------- */
+
+#webSiteRight {
+	float: right;
+	width: 255px;		
+	min-height: 400px;
+}
+
+
+#searchEngine {
+    position: relative;
+	padding: 0 0 10px 0;	    
+    width: 255px;
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651;  	
+}
+
+#searchEngine h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#innerEngine {
+	padding: 0 5px 0 5px;		
+}
+
+#innerEngine table {
+    margin: 0 0 1px 0;
+    padding: 1px;
+    width: 246px;
+    height: 80px;
+    color: #333333;
+    border-collapse: collapse; 
+    border: none;  
+}
+
+
+#decorationPix table thead {
+    color: #413f48;   
+}
+
+#innerEngine table thead th.thLeft {
+    padding: 1px 5px 1px 5px;
+    width: 200px;
+    text-align: left;       
+}
+
+#innerEngine table thead th.thRight {
+    padding: 1px 5px 1px 5px;
+    width: 40px;
+    text-align: right;     
+    vertical-align: bottom;
+}
+
+#innerEngine table tbody {
+    padding: 0;  
+}
+
+#innerEngine table tbody td {
+    padding: 0;    
+}
+
+#innerEngine table tbody td textarea{
+	padding: 1px;
+	font-family: arial;
+	width: 240px;
+	height: 100px;
+	font-size: 11px;
+	border: 1px solid #384637;	  
+}
+
+#innerEngine table tfoot {
+    color: red;   
+}
+
+#innerEngine table tfoot td {
+    padding: 5px 0 0 0;
+    height: 20px;    
+    text-align: left; 
+}
+
+#innerEngine table tfoot td ul {
+    padding: 10px 0 10px 0;    
+}
+
+#innerEngine table tfoot td ul li {
+    padding: 0 0 0 0; 
+	font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.7em;	
+	color: #0A59A8;
+}
+
+#innerEngine table tfoot td ul li a.google:link, #innerEngine table tfoot td ul li a.google:visited {
+	padding: 2px 0 2px 25px;
+	color: #0041a3;
+	font-size: 11px;	
+	font-weight: bold;
+	text-decoration: underline;
+	background: url(images/google_icon.gif) no-repeat top left;
+}
+
+#innerEngine table tfoot td ul li a.google:hover {
+	color: #206216;
+}
+
+#innerEngine table tfoot td ul li a.yahoo:link, #innerEngine table tfoot td ul li a.yahoo:visited {
+	padding: 2px 0 2px 25px;
+	color: #0041a3;
+	font-size: 11px;	
+	font-weight: bold;
+	text-decoration: underline;
+    background: url(images/yahoo.gif) no-repeat top left;                 
+}
+
+#innerEngine table tfoot td ul li a.yahoo:hover {
+	color: #206216;
+}
+
+#innerEngine table tfoot td ul li a.msn:link, #innerEngine table tfoot td ul li a.msn:visited {
+	padding: 2px 0 2px 25px;
+	color: #0041a3;
+	font-size: 11px;	
+	font-weight: bold;
+	text-decoration: underline;
+    background: url(images/msn.gif) no-repeat top left;                 
+}
+
+#innerEngine table tfoot td ul li a.msn:hover {
+	color: #206216;
+}
+
+#innerEngine table tfoot td ul li a.dmoz:link, #innerEngine table tfoot td ul li a.dmoz:visited {
+	padding: 2px 0 2px 25px;
+	color: #0041a3;
+	font-size: 11px;	
+	font-weight: bold;
+	text-decoration: underline;
+    background: url(images/dmoz.gif) no-repeat top left;                 
+}
+
+#innerEngine table tfoot td ul li a.dmoz:hover {
+	color: #206216;
+}
+
+
+
+
+#newsWebSettings {
+    margin: 10px 0 0 0;
+    padding: 0 0 5px 0;
+    width: 255px;    
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651;  	
+}
+
+#newsWebSettings h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		   
+	border-bottom:1px solid #384651;  	
+}
+
+#newsWebSettings  table{
+   width: 245px;
+   margin: 5px 0 5px 0;
+}
+
+#newsWebSettings table td.tdNewsSetupLeft {
+   padding: 0 6px 0 0;
+   width: 69px;
+   min-height: 20px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+#newsWebSettings table td.tdNewsSetupLeft input{
+   padding: 1px;
+   height: 14px;
+   width: 55px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#newsWebSettings table td.tdNewsSetupLeft input.checkbox{
+   padding: 1px;
+   height: 14px;
+   width: 14px;
+   font-size: 12px;
+   border: none;   
+}
+
+#newsWebSettings table td.tdNewsSetupLeft select{
+   padding: 1px;
+   width: 59px;
+   height: 18px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#newsWebSettings table td.tdNewsSetupCenter{
+   padding: 0 0 2px 3px;
+   width: 155px;
+   min-height: 20px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#newsWebSettings table td.tdNewsSetupRight{
+   padding: 3px 0 0 0;
+   width: 20px;
+   min-height: 18px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: top;
+}
+
+#newsWebSettings table td.tdNewsSetupRight img{
+   border: none;
+}

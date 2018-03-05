@@ -1,0 +1,19 @@
+.gallery {
+	margin: 0 10px 10px 0;
+	float: left;
+	width: 120px;
+	height: auto;
+	padding: 3px;
+	border: 1px solid #ccc;
+	background-color:#fff;
+}
+
+a:hover .gallery {
+	padding: 3px;
+	border: 1px solid #ccc;
+	background-color: #777;
+}
+
+.clearfloat {
+	clear: both;
+}

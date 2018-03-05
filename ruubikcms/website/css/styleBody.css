@@ -1,0 +1,105 @@
+body {
+	font-family: verdana, arial, Helvetica, sans-serif;
+	font-size: small;
+	font-weight: normal;
+	line-height: 1.2em;
+	color: #333333;
+	background: #ffffff url(images/bg.jpg) repeat-x top left;
+} 
+
+#wrapper {
+	position: relative;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	width: 950px;
+	border: 0px solid #cccccc;
+}
+
+#innerWrapper {
+	position: relative;
+}
+
+/*---------- HEADER
+--------------------------------------------------------------------------*/
+
+
+#header {
+	position: relative;
+}
+
+#design {
+	position: relative;
+	height: 131px;
+	background: url(images/design.jpg) no-repeat top left; /*blue*/      	       
+}
+
+#mainMenu {
+	position: relative;
+	height: 38px;
+    background: url(images/split.gif) no-repeat top right;    	
+}
+
+/*---------- MAINBODY
+--------------------------------------------------------------------------*/
+
+#mainBody {
+	position: relative;
+	padding: 20px 0 10px 0;
+	width: 950px;
+}
+
+#ColLeft {
+	position: relative;
+	float: left;
+	width: 170px;
+	min-height: 400px;
+	height: auto !important;
+	height: 400px;
+}
+
+#ColCenter {
+	position: relative;
+	float: left;
+	width: 570px;
+	min-height: 500px;
+	height: auto !important;
+	height: 500px;
+}
+
+#ColRight{
+	position: relative;
+	float: right;
+	width: 200px;
+	min-height: 400px;
+	height: auto !important;
+	height: 400px;
+}
+
+div.clear {
+	clear: both;
+	position: relative;
+	line-height: 0px;
+	height: 0px;
+	font-size: 0px;
+}
+
+/*---------- FOOTER
+--------------------------------------------------------------------------*/
+
+#footer {
+	position: relative;
+}
+
+#footer div{
+	padding: 0 10px 0 0;
+	text-align: right;
+	font-family: trebuchet ms, verdana, arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #3e464e;
+	height: 25px;
+	line-height: 25px;
+	border-top: 2px solid #4b633b;
+}

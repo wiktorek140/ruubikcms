@@ -1,0 +1,137 @@
+#mainNavigation ul {
+	list-style:none;
+}
+
+#mainNavigation li {
+    display:inline;  
+}
+
+
+#mainNavigation li a:link, #mainNavigation li a:visited {
+    float:left; 
+    background:url("images/navi_left.gif") no-repeat left top;
+    padding:0 0 0 15px;
+    text-decoration:none;  	 
+} 
+
+#mainNavigation li a span {
+    float:left;
+    display:block;
+    background:url("images/navi_right.gif") no-repeat right top;
+    padding:12px 15px 15px 0px;
+    font-weight: bold;
+    font-size: 13px;
+	font-family: Trebuchet MS, arial, verdana;       
+    color:#ffffff;  
+} 
+
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+#mainNavigation li a span {float:none;}
+    /* End IE5-Mac hack */
+
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+#mainNavigation li a span {float:none;}
+    /* End IE5-Mac hack */
+   
+#mainNavigation li a:hover span {
+    color:#ffffff;
+}
+
+#mainNavigation li a:hover {
+    background-position:0% -50px;
+}
+
+#mainNavigation li a:hover span {
+    background-position:100% -50px;
+}
+
+/*#mainNavigation li a:focus, */#mainNavigation li a.selectedMenu {
+    background-position:0% -100px;
+}
+
+/*#mainNavigation li a:focus span, */#mainNavigation li a span.selectedMenu {
+    background-position:100% -100px;
+    color: #42464c;
+}
+
+/* SIGN OUT
+---------------------------------------------------*/
+#signout {
+    position: absolute;
+	top: 0;
+	right: 0;
+    height: 35px;    
+}	  
+#signout ul {
+	list-style:none;
+}
+
+#signout li {
+    display:inline;  
+}
+
+
+#signout li a:link, #signout li a:visited {
+    float:left;
+    background:url("images/signout_left.gif") no-repeat left top;
+    padding:0 0 0 15px;
+    text-decoration:none;  	 
+} 
+
+#signout li a span {
+    float:left;
+    display:block;
+    background:url("images/signout_right.gif") no-repeat right top;
+    padding:12px 15px 15px 0px;
+    font-weight: bold;
+    font-size: 13px;    
+	font-family: Trebuchet MS, arial, verdana;    
+    color:#ffffff;  
+} 
+
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+#signout li a span {float:none;}
+    /* End IE5-Mac hack */
+
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+#signout li a span {float:none;}
+    /* End IE5-Mac hack */
+   
+#signout li a:hover span {
+    color:#ffffff;
+}
+
+#signout li a:hover {
+    background-position:0% -50px;
+}
+
+#signout li a:hover span {
+    background-position:100% -50px;
+}
+
+
+
+
+/* INFOMESSAGE 
+----------------------------------------------------------------------*/
+
+#infoMessage{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+	padding: 0 0 0 0;
+	line-height: 1em;
+    width: 400px;  	
+	height: 22px;	
+}
+
+#infoMessage #messageText {
+	float: right;
+	padding: 2px 9px 2px 10px;
+	/*width: 250px;*/
+	font-size: 11px;
+	color: #454545;
+	border: 1px inset #b5b5b5;
+	background: #f5f5f5;
+	text-align: right;
+}

@@ -1,0 +1,101 @@
+/* ------ DecorationPic DIV
+----------------------------------------------------*/
+
+#decorationPic{
+	padding: 0 0 0p 0;
+	height: 150px;
+}
+
+/* News DIV
+	<div id="decorationPic">
+	</div>	
+					
+	<div id="news">
+		<div id="newsHeading">Ajankohtaista
+		</div>
+		<div class="newNews">
+			<h2><a href="index.php?news=38">Testiä vaan</a></h2>
+			<p class="newsDate">18.04.2009</p>
+			<p>Testi&auml; vaan......</p>
+			<p class="newsMore"><a href="index.php?news=38">Lue lis&auml;&auml;</a></p>
+		</div>
+	</div>	
+----------------------------------------------------*/
+
+#news{
+	padding: 20px 0 10px 0;
+}
+
+#newsHeading{
+	padding: 10px 0 10px 15px;
+	color: #ffffff;
+	font-family: Georgia, Trebuchet MS, verdana;
+	font-weight: normal;
+	font-size: 24px;	
+	line-height: 1.2em;	
+	text-decoration: none;
+    background: url(images/news_h1.jpg) no-repeat top left;   	
+    border-bottom: 5px solid #ffffff;    
+}
+
+div.newsItem {
+	margin: 0 5px 10px 0;
+	padding: 0 0 0 7px;
+}
+
+div.newsItem h2, div.newsItem h2 a:link, div.newsItem h2 a:visited{
+	padding: 0 0 0 0;
+	color: #7d4f18;
+	font-family: Trebuchet MS, verdana;
+	font-weight: bold;
+	font-size: 16px;	
+	line-height: 1.2em;	
+	text-decoration: none;
+}
+
+div.newsItem h2 a:hover{
+	text-decoration: underline;
+}
+
+div.newsItem p.newsDate{
+	padding: 0 0 10px 0;
+	color: #aaaaaa;
+	font-family: arial;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 1.2em;
+	text-decoration: none;
+}
+div.newsItem p, div.newsItem p a:link, div.newsItem p a:visited{
+	padding: 0 0 5px 0;
+	color: #676767;
+	font-family: arial;
+	font-weight: normal;
+	font-size: 11px;
+	line-height: 1.1em;
+	text-decoration: none;
+}
+
+div.newsItem p a:hover{
+	text-decoration: underline;
+}
+
+div.newsItem p.newsMore {
+	padding: 4px 15px 15px 0;
+	text-align: right;
+}
+
+div.newsItem p.newsMore a:link, div.newsItem p.newsMore a:visited{
+	padding: 4px 0 0 0;
+	color: #b36500;
+	text-align: right;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 11px;	
+	line-height: 1.1em;
+	text-decoration: underline;
+}
+
+div.newsItem p.newsMore a:hover{
+	color: #333333;
+}

@@ -1,0 +1,60 @@
+<?php
+/*
+RuubikCMS help language file
+Language: 'en'
+Author: Iisakki Pirilä
+Email: info[at]ruubikcms[dot]com
+*/
+		define("H_TITLE", "<h5>Page name</h5><p>Page name is shown in the <b>web site's navigation menu</b> and also in the Pages menu on the CMS-side.</p><p>If creating a new page and URL-field is left empty, unique URL-name will be based on this field.</p>");
+		define("H_HEADER1", "<h5>H1-header</h5><p>H1-element (main header) of this web page. <b>Page name</b> will be used if left empty on a new page.<p><b>SEO</b>: H1-text is also important for search engines.</p>");
+		define("H_PAGEURL", "<h5>Page URL</h5><p><b>The end part of the URL address.</b></p><p>Defines the filename part of the URL address, i.e., what comes after the last slash sign (/)</p><p>URL will be shown in the address bar of the web browser and nice URL is also important for search engines.</p><p><b>SEO:</b> Keyword match in URL address will give a boost in Google rankings.</p><p>Also check the page wide URL settings in the <b>Site Setup</b>.</p>");
+		define("H_PAGELINK", "<h5>Inner link</h5><p>URL of this page can be copied from this field to be used in hyperlinks inside this site.</p>");
+		define("H_LEVEL", "<h5>Page menu level</h5><p>Pages can have three menu levels: <b>main level</b>, <b>1. submenu</b> or <b>2. submenu</b>.</p><p>Use <b>Main level</b> if you want to place the page in the main menu. If you would like the page to appear in a submenu, select the page <b>under</b> which the page will placed.</p><p>If you don't want to place the page in any menu, select <b>Free page</b>.</p>");
+		define("H_PAGESTATUS", "<h5>Page status</h5><p><b>Published:</b> will be shown in the web site.</p><p><b>Draft:</b> not shown publicly, but the page can still be edited.</p>");
+		define("H_PAGETYPE", "<h5>Page type</h5><p>Besides normal page the page can be defined as one of the special types.</p>");
+		define("H_PAGETITLE", "<h5>Page title</h5><p>Web page title element which is shown in the title bar of the web browser. <b>Title element is very important for search engines.</b></p>");
+		define("H_DESCRIPTION", "<h5>Page description</h5><p>Short description for this page. Can be added in the HTML source code as <b>description meta value</b>.</p><p>Can be shown in text extracts of Google's search results.</p>");
+		define("H_KEYWORDS", "<h5>Keywords</h5><p>Can be added in the HTML source code as <b>keywords meta value</b>.</p><p>Some of the search engines use these although at the moment Google ignores these.</p>");
+		define("H_IMAGE", "<h5>Decorative images & Flash</h5><p>Image that is a part of the page template or layout.</p><p>The template usually defines the proper size of the image.</p><p><b>Site Setup</b> can be used to select same image for every page.</p>");
+		define("H_SITENAME", "<h5>Site/company name</h5><p>This can be used to automatically add the site/company name in the web page template (for example in the copyright footer).</p>");
+		define("H_DOCTYPE", "<h5>Site document type</h5><p>DOCTYPE is defined in the beginning of the HTML source code.</p><p>Do not change default value if unsure!</p><p>Read more from <a href='http://en.wikipedia.org/wiki/Document_Type_Declaration' target='_blank'>Wikipedia</a>.</p>");
+		define("H_CHARSET", '<h5>Character set</h5><p>What characted set is used to save the site</p><p>Do not change default value if unsure!</p>');
+		define("H_ROBOTS", '<h5>Robots</h5><p>Robots meta value is used by the search engine spiders to decide if this page should be included in the search engine\'s database.</p><p>It\'s also possible to define whether the robot follows links on the page to index also these pages.</p><p>Note that rogue search engine robots will not necessarily obey this request.</p>');
+		define("H_SETUPDEFAULT", '<p>This is a site wide default value. If left empty on specific page, value from this field will be used.</p>');
+		define("H_DEFAULTIFEMPTY", '<p>If left empty, default value from <b>Site Setup</b> will be automatically used.</p>');
+		define("H_COPYRIGHT", '<h5>Copyright</h5><p>Can be placed in the HTML source code as a meta value or in the web site\'s footer.</p>');
+		define("H_AUTHOR", '<h5>Author</h5><p>Can be placed in the HTML source code as a meta value.</p>');
+		define("H_LANGUAGE", '<h5>Web site content language</h5><p>Defined in the HTML-element of the source code.</p><p>Search engines might use this to target results for correct language groups.</p>');
+		define("H_IMGMISSING", '<h5>Missing decorations image</h5><p>What to do if some page is missing a decoration image.</p><p>Default action is to use decorations image from frontpage, i.e., first page the Pages menu.</p><p>Another option is to leave missing image blank.</p>');
+		define("H_CLEANURL", '<h5>Clean URL</h5><p>Clean URL can be selected to use search engine friendly URL addresses (without querstion etc.). Some of the search engines won\'t index dynamic sites with questions marks in URLs properly. Clean URL also indicats the menu level and subpage.</p><p>Format of the Clean URL: </p><p>http://www.domain.com/index.php/products/pipes.html</p><p>Without Clean URL this would be:</p><p>http://www.domain.com/index.php?p=pipes</p><p>Note that when using Clean URL all links in the page template must be absolute links (beginning with /-symbol and the whole path from www-root). E.g. when linking CSS-files:</p><p>/ruubikcms/website/css/stylesheet.css</p>');
+		define("H_URLSUFFIX", '<h5>URL suffix</h5><p>When using Clean URL, you can select the last part of the URL separately.</p><p>The most used would be .html, but also other values are allowed and work just fine. This is used to mimic static sites, which are thought to be appreciated by Google bot.</p><p>This has no impact if Clean URL is off.</p>');
+		define("H_GACODE", '<h5>Google Analytics tracking code</h5><p>Copy and paste <b>Google Analytics tracking code</b> here. This will be automatically added to every page and you\'ll be able to track visitors in Analytics.</p>');
+		define("H_READMORELINK", '<h5>Read more -link</h5><p>Selects if <b>Read more</b> -link is added after every news.<p><b>Read more</b> -link repeats the same link and is not relevant to search engines, but it can be user friendly and attract more readers.</p>');
+		define("H_SHOWDATE", '<h5>Show date</h5><p>Selects if the news date is shown on the web site. If not selected, the date will be only shown on the CMS side.</p>');
+		define("H_NEWSTEXTASLINK", '<h5>News text as link</h5><p>Selects if the short text in news list works as a link to this news.</p><p><b>SEO:</b> Keywords in a hyperlink text can improve the search engine ranking.</p>');
+		define("H_SHORTCHARNUM", '<h5>Number of characters in news extract</h5><p>How many characters are shown in the short news extract.</p>');
+		define("H_NEWSSHOWNUM", '<h5>Amount to show</h5><p>How many news items are shown in the news list.</p>');
+		define("H_READMORETEXT", '<h5>Text for Read more -link</h5><p>You can edit the text for the optional <b>Read more -link.</b></p>');
+		define("H_NEWSTITLE", '<h5>News title</h5><p>News title is shown on the web site and in the CMS menu.</p><p>URL will not be generated from the news, but regular news will get an id number, which is shown in the hyperlink.</p>');
+		define("H_NEWSSTATUS", '<h5>News status</h5><p><b>Active:</b> News will be shown on the web site.</p><p><b>Archived, not public:</b> Archived news will be normally available in the CMS News menu, but not shown on the web site.</p><p>In <b>Site Setup</b> it is possible to select how many active news will be shown on the web site\'s news list.</p>');
+		define("H_NEWSDATE", '<h5>Publish date of the news</h5><p>Current date will be automatically selected for new news.</p><p>News are ordered by this date in the CMS News menu, grouped by year.</p><p>In <b>Site Setup</b> you can define if the news date is shown on the web site.</p>');
+		define("H_NEWSEXTRACT", '<h5>News extract</h5><p>It is possible to enter a separate news extract. If this text is given, it will be shown on the news list instead of the beginning of actual news text.</p><p><b>This field is optional.</b> If left empty, the beginning of the actual news text will be used.</p><p>(In <b>Site Setup</b> it is possible to define how many characters to use from the beginning of the news.)</p>');
+		define("H_NEWSLINKTOPAGE", '<h5>Link to page</h5><p>It is possible to link news extract directly to a regular web page in the <b>Pages</b>.</p><p>In this case write the short text (shown in the web site\'s news list) to <b>News extract.</b></p>');
+		define("H_SNIPPETNAME", '<h5>Snippet name</h5><p>You\'ll need this name to insert the snippet into the page template - required code is on the bottom the of this page.</p>');
+		define("H_SNIPPETTYPE", '<h5>Snippet type</h5><p><b>TinyMCE:</b> HTML content can be edited with an easy to use TinyMCE-editor.</p><p><b>Code:</b> You can insert snippet source code (HTML/JavaScript/PHP) directly.</p>');
+		define("H_SNIPPETCODE", '<h5>Snippet code</h5><p>You can copy this code and insert it into the page template.</p>');
+		define("H_SNIPPETCODEPHP", '<h5>Code (PHP)</h5><p>Use this code when the snippet includes <b>PHP code.</b></p>');
+		define("H_CMSLANG", '<h5>CMS language</h5><p>Select the <b>language of this CMS tool</b>.</p><p>This has no impact on web site content or web site settings.</p>');
+		define("H_SITEROOT", '<h5>Site root folder</h5><p>Enter the subfolder if the web site updated by this CMS tool is not located directly in the www root.</p><p><b>Important:</b> If this field is entered incorrectly, the CMS tool and the web site may not work properly when working with hyperlinks and adding images.</p>');
+		define("H_LOGOUTTIME", '<h5>Logout time</h5><p>How long the login session is valid if the CMS tool is not used.</p>');
+		define("H_AUTOWIDTH", '<h5>Auto-resize width</h5><p>Define the width in pixels to which you want to automatically downscale uploaded images.</p><p>0 = no change.</p><p>If Auto-resize height is defined, 0 maintains the aspect ratio.</p><p><b>Example: </b>If this field has value <b>800</b> and Auto-resize height = <b>0</b>, all images that are wider than 800 pixels will be resized to 800 pixels maintaining the correct aspect ratio.</p>');
+		define("H_AUTOHEIGHT", '<h5>Auto-resize height</h5><p>Define the height in pixels to which you want to automatically downscale uploaded images..</p><p>0 = no change.</p><p>If Auto-resize width is defined, 0 maintains the aspect ratio.</p>');
+		define("H_PAGINATIONROWS", '<h5>Logrows per page</h5><p>How many rows to display per page in logs and user names.</p>');
+		define("H_USEHELPTEXTS", '<h5>Load help texts</h5><p>Disabling help text questions marks in CMS can speed up loading times (slow connection).</p>');
+		define("H_EXTRACODE", "<h5>Extra code</h5><p>You can use this field to insert <b>HTML/JavaScript-</b> or <b>PHP-code</b> directly into the page. More information about how to enable this in the site template can be found in the <a href='http://www.ruubikcms.com/index.php/documentation' target='_blank'>Online Documentation</a></p>");
+		define("H_NEWPASSWORD", '<h5>New password</h5><p>Here you can change the password for username above.</p><p>Confirm the password in the field below.</p>');
+		define("H_ROLE", "<h5>Role</h5><p>For more information on roles see the <a href='http://www.ruubikcms.com/index.php/documentation/roles' target='_blank'>Online Documentation</a>.</p>");
+		define("H_BACKUP", "<h5>Save backup</h5><p>Click <b>Backup</b> to save the database to your local hard-drive.</p><p>This SQLite database file will contain the entire web site HTML content, Site Setup and also the CMS Options.</p>");
+		define("H_UNDOLASTLOGIN", "<h5>Undo this login</h5><p>Click <b>Undo</b> to reset all changes that are made during this login session.<p><b>Use carefully!</b></p>");
+		define("H_RESTORE", "<h5>Restore backup</h5><p>Browse a locally saved <b>valid SQLite database backup file</b> from your computer and click <b>Restore</b> to replace your current database with this backup.<p><b>Use carefully!</b></p>");
+?>

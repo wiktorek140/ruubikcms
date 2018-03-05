@@ -1,0 +1,4 @@
+ruubikcms/useruploads/files/*
+ruubikcms/useruploads/images/*
+ruubikcms/useruploads/media/*
+#ruubikcms/sqlite/ruubikcms.sqlite

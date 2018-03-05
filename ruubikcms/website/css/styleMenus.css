@@ -1,0 +1,77 @@
+/* BASIC mainMenu 2
+HTML:	<ul><li><div><a href="#">Link</a></div></li></ul>
+------------------------------------------------------ */
+
+#mainMenu ul {
+	padding: 0 0 0 0;
+	width: 980px;
+	height: 38px;
+	background: url(images/split.gif) no-repeat top left;
+}
+
+#mainMenu ul li {
+	margin: 0 0 0 0;
+	display: inline;
+}
+
+#mainMenu ul li div {
+	float: left;
+	padding: 0 2px 0 0;
+	height: 38px;
+	background: url(images/split.gif) no-repeat top right;
+}
+
+#mainMenu ul li div a:link, #mainMenu ul li div a:visited {
+	padding: 8px 20px 8px 20px;
+	font-family: trebuchet ms, verdana, arial;
+	color: #3b454c;
+	font-size: 16px;
+	height: 38px;
+	line-height: 38px;
+	text-decoration: none;
+}
+
+#mainMenu ul li div a:hover {
+	background: url(images/menu_over.jpg) repeat-x top right;  
+}
+
+#mainMenu ul li div a:hover {
+	background: url(images/menu_over.jpg) repeat-x top right;
+}
+
+#mainMenu ul li.selected div a{
+	color: #A81018;
+}
+
+/* BASIC subMenu 1
+HTML:	<ul><li><a href="#">Link</a></li></ul>
+------------------------------------------------------ */
+
+#subMenu  {
+	padding: 5px;
+}
+
+#subMenu ul {
+	margin: 0 0 0 0;
+}
+
+#subMenu ul li {
+	padding: 0 0 0 0;
+}
+
+#subMenu ul li a:link, #subMenu ul li a:visited {
+	padding: 5px 15px 11px 25px;
+	color: #333333;
+	font-size: 12px;
+	font-family: arial, verdana;
+	text-decoration: underline;
+	background: url(images/bullet.gif) no-repeat top left; 	
+}
+
+#subMenu ul li a:hover {
+	color: #ac6821;
+}
+
+#subMenu ul li a:focus {
+	color: #777777;
+}

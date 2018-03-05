@@ -1,0 +1,89 @@
+Changelog for RuubikCMS
+
+1.1.2 Beta (released 2014-07-10)
+
+Bug fixes
+
+* Fixed PHP 5.4 htmlentities() charset, was causing blank page names when using special characters
+* Fixed page.php to allow extra parameters in URL when using Clean URL (e.g. Google AdWords auto-tagging ?gclid=xxx)
+* Taking care of strict error_log messages ("Only variables should be passed by reference")
+* Quick fix for path traversal vulnerability in TinyBrowser (folder parameter), admin access was needed anyway
+
+1.1.1 (released 2012-02-16)
+-----
+New features:
+
+* Breadcrump navigation, $page['breadcrump']
+* Check if page has sub-pages, $page['has_sub_pages']
+
+Bug fixes:
+
+* Fixed: Local file inclusion vulnerability in /extra/image.php
+* Fixed: XSS vulnerability in CMS admin (admin access was needed to inject code)
+* Fixed: CMS Options log out time "4 h" was same as "2 h"
+
+1.1.0 (released 2011-03-27, same as beta2)
+-----
+New features:
+
+* Experimental: Extranet/protected pages, please read beta instructions before usage: http://www.ruubikcms.com/index.php/extranet-documentation
+* File download statistics & download log
+
+Small changes:
+
+* Log styles and pagination
+* Small speed improvements by optimizing queries
+* Language files and help text files are now separated + option to disable help text loading
+* Added .f4v to media file types
+* Email addresses as admin & extranet usernames allowed, "." and "@" added to preserved characters
+* Thorough source code scan for added security
+
+Bug fixes:
+
+* Fixed: CSRF vulnerabilities in RuubikCMS 
+* Fixed: XSS vulnerabilities in CMS admin (admin access was needed to inject code)
+* Fixed: Page link info is not displayed correctly when Clean URL is disabled
+* Fixed: News can not be linked to free pages
+* Fixed: Mainmenu3 extra closing div removed
+* Fixed: Infinite loop if "News settings - Characters in extract" left empty
+* Fixed: Many PHP Notice errors (not shown but filling Apache logs)
+
+
+1.0.3 (released 2009-12-29)
+-----
+Small changes:
+
+* Added style selector in TinyMCE + styles 'Gallery Image' and 'Lightbox Link'
+* Removed font-family selector from TinyMCE
+* Bigger default font size in editor (12px)
+* File 'ruubikcms/website/css/editor_content.css' now styles the web content for the editor
+
+
+1.0.2 (released 2009-10-30)
+-----
+Bug fixes:
+
+* Fixed: Creating new page/news/user occasionaly fails (side menu issues)
+* Fixed: Publisher can not publish own pages
+* Fixed: Linked news can not be changed back to regular news
+
+Small changes:
+
+* UI changes: Images, extra code (Show/hide -toggle)
+* More width for content editing area (TinyMCE) and bigger default font
+* CMS header and footer enhancements
+* Added .flv to media file types
+* Use Flash as decorative images (for Flowplayer, experimental)
+* Added class 'Lightbox' in TinyMCE (for Lightbox image links)
+
+
+1.0.1 (released 2009-08-12)
+-----
+Bug fixes:
+
+* Fixed: Occasional login failures on slow connections
+* Fixed: Empty image browsing pop-up with large images (memory limit set higher for Tinybrowser)
+
+1.0.0 (released 2009-08-04)
+-----
+Initial public release

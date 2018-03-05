@@ -1,0 +1,23 @@
+body {
+	font-size: 12px;
+}
+
+a:link .gallery, a:visited .gallery {
+	padding: 3px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+
+.gallery {
+	margin: 0 10px 10px 0;
+	float: left;
+	width: 120px;
+	height: auto;
+	padding: 3px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+
+.clearfloat {
+	clear: both;
+}

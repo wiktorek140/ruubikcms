@@ -1,0 +1,201 @@
+/* IE6 Hacks BODY
+---------------------------------------------------------- */
+
+
+
+
+
+/* website menu hacks
+---------------------------------------------------------- */
+/****** RootMenu
+ **************************************************/ 
+div#rootMenu {
+	width: 255px;
+	background: #ffffff;		
+} 
+ 
+div#rootMenu div.arrowdiv1 {
+    position: relative;
+	width: 20px;
+    margin-bottom: 1px;
+    float: left;
+}
+
+div#rootMenu div.arrowdiv1 img{	
+    position: relative;
+	width: 20px;
+    border: none;
+}
+ 
+div#rootMenu div.rootPage {
+    position: relative;	
+	left: -2px;
+    margin: 0 0 1px 0;
+	width: 229px;
+}
+
+div#rootMenu div.rootPage a:link, div#rootMenu div.rootPage a:visited{	
+    position: relative;
+    padding: 0 0 0 4px;
+	width: 225px;  
+}
+
+div#rootMenu div.rootPage a:hover{	
+	background: url("images/rootpage_over.gif") no-repeat bottom left;   
+}
+
+
+/****** SubMenu1
+ **************************************************/ 
+	
+div.subMenu1 {
+	display: none;
+    margin: 0 0 1px 21px;
+    padding: 0 0 0 0;
+	width: 229px;
+	height: 0px;
+	line-height: 0px;
+	font-size: 0px;	
+	background: #c7d1df;	
+}
+
+div.subMenu1 div.subPage1 {	
+	width: 229px;
+	padding: 1px 0 2px 0;
+	border-top: 1px dashed #9ca4ae;	
+}
+	
+div.subMenu1 div.arrowdiv2 {	
+    float: left;
+}	
+
+	
+div.subMenu1 div.arrowdiv2 img{	
+    border: none;
+}	
+
+div.subMenu1 div.subButton1 a:link, div.subMenu1 div.subButton1 a:visited{	
+    display: block;
+    margin: 0 0 0 17px;    
+    padding: 0 0 0 4px;
+	width: 205px;
+	height: 16px;
+	line-height: 16px;
+	color: #47525b;	
+	font-size: 12px;
+	font-family:  arial;
+    font-weight: bold;	
+	text-decoration: none;	
+
+}
+
+div.subMenu1 div.subButton1 a:hover{	
+	background: #a4aebc;
+}
+	
+
+/****** SubMenu2
+ **************************************************/ 
+ 
+
+div.subMenu1 div.subPage2 {	
+	margin: 0 0 0 17px;
+	width: 209px;
+}
+	
+div.subPage2  div.arrowdiv2 {	
+    float: left;
+}	
+	
+div.subPage2  div.arrowdiv2 img{	
+    border: none;
+}	
+
+div.subPage2  div.subButton2 a:link, div.subPage2  div.subButton2 a:visited{	
+    display: block;
+    margin: 0 0 0 20px;    
+    padding: 0 0 0 4px;
+	width: 182px;
+	height: 16px;
+	line-height: 16px;
+	color: #525e6a;	
+	font-size: 11px;
+	font-family:  arial;
+    font-weight: normal;	
+	text-decoration: none;	
+}
+
+div.subPage2  div.subButton2 a:hover{	
+	background: #a4aebc;
+}
+	
+ 
+ 
+
+
+   
+/* buttonBar hacks
+---------------------------------------------------------- */
+#buttonBar {
+	padding: 0 0 0 15px;
+	height: 30px;		
+}
+
+
+
+/* pageAdmin hacks
+---------------------------------------------------------- */
+#pageAdmin {
+   margin: -3px 0 0 0;
+   height: 170px;
+}
+
+#pageAdmin  table td.tdPageAdminLeft{
+   padding: 0 0 0 0;
+   height: 20px;
+}
+
+#pageAdmin  table td.tdPageAdminCenter{
+   padding: 0 0 0 0;
+   height: 20px;
+}
+
+#pageAdmin  table td.tdPageAdminRight{
+   padding: 1px 0 0 0;
+   height: 19px;      
+} 
+
+
+/* SEO hacks
+---------------------------------------------------------- */
+
+#SEO {
+	margin: -3px 0 0 0;
+	height: 170px;
+}
+
+
+
+#settingsCMS {
+	height: 300px; 	
+}
+
+
+#settingsPassword {
+	height: 150px; 	
+}
+
+#settingsBackup {
+	height: 200px;  	
+}
+
+
+#newsAdmin {
+	height: 460px; 	
+}
+
+
+#decorationPix {
+	height: 328px;  	
+}
+

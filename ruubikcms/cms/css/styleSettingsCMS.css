@@ -1,0 +1,245 @@
+#cmsOptionsLeft {
+    position: relative;
+	float: left;
+	display: inline;	
+	width: 370px;	   	
+}
+
+#settingsCMS {
+    /*position: relative;*/
+	padding: 0 0 10px 0;
+	width: 370px;	 
+	min-height: 300px;
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651;  	
+}
+
+#settingsCMS h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#settingsCMS  table{
+   width: 365px;
+   margin: 5px 0 5px 0;
+}
+
+#settingsCMS table td.tdCMSSetupLeft{
+   padding: 0 6px 0 0;
+   width: 154px;
+   min-height: 20px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+#settingsCMS table td.tdCMSSetupCenter{
+   padding: 2px 0 0 0;
+   width: 184px;
+   min-height: 18px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#settingsCMS table td.tdCMSSetupCenter input{
+   padding: 1px;
+   height: 14px;
+   width: 180px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#settingsCMS table td.tdCMSSetupCenter select{
+   padding: 1px;
+   width: 184px;
+   height: 18px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#settingsCMS table td.tdCMSSetupRight{
+   padding: 2px 0 0 0;
+   width: 20px;
+   min-height: 18px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: middle;
+}
+
+#settingsCMS table td.tdCMSSetupRight img{
+   border: none;
+} 
+
+#cmsOptionsRight {
+    position: relative;
+	float: right;
+	display: inline;	
+	width: 330px;	     	
+}
+
+#settingsPassword {
+    /*position: relative;*/
+	float: right;    
+	margin: 0 0 10px 0;	
+	padding: 0 0 10px 0;
+	width: 330px;
+	min-height: 150px;
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight: normal;
+    background: #aab4be;		
+	border:1px solid #384651;  	
+}
+
+#settingsPassword h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#settingsPassword  table{
+   width: 325px;
+   margin: 5px 0 5px 0;
+}
+
+#settingsPassword table td.tdUsernameLeft{
+   padding: 0 6px 0 0;
+   width: 154px;
+   min-height: 20px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+#settingsPassword table td.tdUsernameCenter{
+   padding: 2px 0 0 0;
+   width: 144px;
+   min-height: 18px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#settingsPassword table td.tdUsernameCenter input{
+   padding: 1px;
+   height: 14px;
+   width: 140px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#settingsPassword table td.tdUsernameCenter select{
+   padding: 1px;
+   width: 144px;
+   height: 18px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#settingsPassword table td.tdUsernameRight{
+   padding: 2px 0 0 0;
+   width: 20px;
+   min-height: 18px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: middle;
+}
+
+#settingsPassword table td.tdUsernameRight img{
+   border: none;
+} 
+
+#settingsBackup {
+    /*position: relative;*/
+	float: right;    
+	margin: 0 0 10px 0;	
+	padding: 0 0 10px 0;
+	width: 330px;
+	min-height: 200px;
+	line-height: 1 em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651;  	
+}
+
+#settingsBackup h2{
+	margin: 0 0 10px 0;
+	padding: 0 5px 0 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#settingsBackup  table{
+   width: 325px;
+   margin: 5px 0 5px 0;
+}
+
+#settingsBackup table td.tdBackupLeft{
+   padding: 2px 6px 0 0;
+   width: 180px;
+   height: 28px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+
+#settingsBackup table td.tdBackupLeft input{
+    margin: 2px 0 0 0;
+   padding: 1px 2px;
+   font-size: 10px;
+   border:1px solid #384637;
+}
+
+#settingsBackup table td.tdBackupCenter{
+   padding: 4px 0 0 0;
+   width: 120px;
+   height: 20px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#settingsBackup table td.tdBackupCenter input{
+   padding: 1px 5px;
+   font-size: 11px;
+    background: url(images/browse.gif) repeat-x bottom left;  		
+	border: 1px solid #303842;  
+	color: #ffffff;
+}
+
+#settingsBackup table td.tdBackupRight{
+   padding: 0 0 2px 0;
+   width: 20px;
+   height: 26px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: middle;
+}
+
+#settingsBackup table td.tdBackupRight img{
+   border: none;
+}

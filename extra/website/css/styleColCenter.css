@@ -1,0 +1,85 @@
+#content {
+	padding: 20px 20px 20px 30px;
+	font-family: verdana, arial, Helvetica, sans-serif;
+	font-size: small;
+	font-weight: normal;
+	line-height: 1.4em;	
+	color: #555555;    
+} 
+
+#content h1 {
+	padding: 5px 0 8px 0;
+	font-family: Georgia, Trebuchet MS, verdana, arial, Helvetica, sans-serif;
+	font-size: 22px;
+	font-weight: normal;
+	line-height: 1.2em;
+	color: #A81018;
+} 
+
+#content h2 {
+	padding: 10px 0 8px 0;
+	font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1.2em;
+	color: #0B0BA8;
+} 
+
+#content h3 {
+	padding: 10px 0 8px 0;
+	font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 1.2em;	
+	color: #0B0BA8;
+} 
+
+#content p {
+	padding: 5px 0 5px 0;   
+}
+
+/* LISTS
+------------------------------------------------------ */
+
+#content ul {
+	padding: 0px 0px 10px 0px;
+}
+
+#content ul li {
+	padding: 0 0 0 25px;
+	font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.7em;
+	color: #0A59A8;
+	background: url(images/ul_bullet.gif) no-repeat top left;
+}
+
+#content ol {
+	padding: 0 0 5px 30px;
+	line-height: 1.7em;
+	font-weight: bold;
+}
+
+/* TABLES
+------------------------------------------------------ */
+
+#content table {
+    color: #333333;
+    background: #cccccc;
+    border-collapse: collapse; 
+    border: 1px solid #333333;
+}
+
+#content table caption {
+	padding: 0px 5px 10px 5px;
+	font-size: 20px;
+	font-weight: bold;
+    margin: 20px 0 2px 0;
+    color: #333333;
+}
+
+#content td {
+	padding: 4px;
+	border: 1px solid #333333;
+}

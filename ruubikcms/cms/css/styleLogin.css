@@ -1,0 +1,95 @@
+
+
+/* Login Settings
+---------------------------------------------------------- */
+
+#login {
+    position: relative;
+	margin: 100px auto 0 auto;
+	padding: 0 0 0 0;
+	width: 400px;
+	height: 300px;
+	line-height: 1 em;
+	color: #1f3946;
+	font-family: arial, Trebuchet MS, verdana;
+	text-align: left;
+	font-size: 14px;
+	font-weight:bold;
+    background: url(images/login_bg.jpg) no-repeat top left;
+}
+
+#login h2{
+    position: relative;
+	padding: 0 0 8px 0;
+	line-height: 1 em;
+	color: #1f3946;
+	font-family: arial, Trebuchet MS, verdana;
+	text-align: left;
+	font-size: 13px;
+	font-weight:bold;			
+}
+
+
+#innerLogin {
+    position: relative;
+	padding: 100px 80px 0 80px;		
+}
+
+#loginFooter, #loginFooter a {
+	padding-top: 5px;
+	text-align: center;
+	color: #888;
+}
+
+#loginFooter a:hover{
+	color: #444;
+}
+
+div.loginText{
+	margin: 2px 0;
+	padding: 5px 0 0 0;
+	height: 15px;				
+}
+
+div.loginInput{
+	margin: 2px 0;
+	padding: 0 0 0 0;
+	height: 35px;
+}
+
+div.loginInput input{
+	margin: 0 0;
+	padding: 3px 2px;
+	width: 220px;
+	border-top: 1px solid #333333;
+	border-left: 1px solid #333333;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	height: 25px;
+	font-size: 20px;
+}
+
+div.loginbtn{
+	text-align: right;
+	margin: 2px 0;
+	padding: 20px 15px 0 0;
+	height: 25px;
+}
+
+div.loginbtn input {
+	font-size: 16px;
+}
+
+div.loginbtn input.inputbtn{
+	text-align: left;
+	padding: 0 0 0 5px;
+	height: 25px;
+	line-height: 25px;
+	width: 100px;
+	font-family: Trebuchet MS, verdana;	
+	font-size: 13px;
+	font-weight:bold;	
+	color: #555555;	
+    background: url(images/btn.gif) no-repeat top left;	
+	border: none;
+}

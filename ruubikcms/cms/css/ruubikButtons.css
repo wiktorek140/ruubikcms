@@ -1,0 +1,113 @@
+#buttonBar {
+	position: relative;  
+	padding: 0 0 0 15px;
+	height: 35px;
+	/*line-height: 1em;*/
+	border-right: 1px solid #222b35;
+	border-left: 1px solid #222b35;
+	background: url(images/h1_bg.jpg) repeat-x top left;
+}
+
+#buttonBar ul {
+	padding: 5px 0 0 0;
+	list-style:none;
+}
+
+#buttonBar li {
+	display:inline;
+}
+
+
+#buttonBar li a.save:link, #buttonBar li a.save:visited,
+#buttonBar li a.new:link, #buttonBar li a.new:visited,
+#buttonBar li a.delete:link, #buttonBar li a.delete:visited {
+	float:left;
+	padding:0 6px 2px 21px;
+	text-decoration:none;
+} 
+
+#buttonBar li a.save span, 
+#buttonBar li a.new span,
+#buttonBar li a.delete span {
+	float:left;
+	display:block;
+	font-family: Trebuchet MS, arial, verdana;
+	font-weight: bold;
+	margin:0 0 0 5px;
+	padding: 4px 12px 10px 4px;
+} 
+
+
+#buttonBar li a.save:link, #buttonBar li a.save:visited {
+	background:url("images/save_bg.gif") no-repeat left top;
+	color: #2f3a51;
+} 
+
+#buttonBar li a.save span {
+	background:url("images/save_right.gif") no-repeat right top;
+}
+
+#buttonBar li a.new:link, #buttonBar li a.new:visited {
+	background:url("images/new_bg.gif") no-repeat left top;
+	color: #2f4a22;
+} 
+
+#buttonBar li a.new span {
+	background:url("images/new_right.gif") no-repeat right top;
+} 
+
+#buttonBar li a.delete:link, #buttonBar li a.delete:visited {
+	background:url("images/delete_bg.gif") no-repeat left top;
+	color: #512726;
+} 
+
+#buttonBar li a.delete span {
+	background:url("images/delete_right.gif") no-repeat right top;
+} 
+
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+#buttonBar li a.save span, 
+#buttonBar li a.new span,
+#buttonBar li a.delete span {float:none;}
+    /* End IE5-Mac hack */
+
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+#buttonBar li a.save span, 
+#buttonBar li a.new span,
+#buttonBar li a.delete span {float:none;}
+    /* End IE5-Mac hack */
+   
+#buttonBar li a.save:hover span, 
+#buttonBar li a.new:hover span,
+#buttonBar li a.delete:hover span {
+}
+
+#buttonBar li a.save:hover, 
+#buttonBar li a.new:hover, 
+#buttonBar li a.delete:hover {
+	background-position:0% -50px;
+}
+
+#buttonBar li a.save:hover span, 
+#buttonBar li a.new:hover span,
+#buttonBar li a.delete:hover span {
+	background-position:100% -50px;
+}
+
+	  
+
+/* currentPage 
+----------------------------------------------------------------------*/
+
+#currentPage{
+	position: absolute;
+	top: 6px;
+	right: 5px;
+	padding: 6px 5px 5px 10px;
+	line-height: 1em;
+	width: 440px;
+	font-size: 11px;
+	font-weight: normal;
+	color: #ffffff;
+	text-align: right;
+}

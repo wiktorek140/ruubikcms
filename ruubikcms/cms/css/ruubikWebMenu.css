@@ -1,0 +1,205 @@
+
+div#pageManagement {
+	padding: 10px 0 0 0;
+	text-align: left;           
+	color: #ffffff;       
+	line-height: 1;     	
+}
+
+/****** RootMenu
+ **************************************************/ 
+
+div#rootMenu, div#rootMenuNews {
+	width: 250px;
+	background: #e5e5e5;	
+}
+
+div.arrowdiv1 {	
+    margin-bottom: 1px;
+    float: left;
+}
+
+div.arrowdiv1 img{	
+    border: none;
+}
+
+div.rootPage {	
+    margin: 0 0 1px 21px;
+	width: 229px;
+    position: relative;
+}
+
+div.rootPage a:link, div.rootPage a:visited{	
+    display: block;
+    padding: 0 0 0 4px;
+	width: 225px;
+	min-height: 20px;
+	line-height: 20px;
+	color: #ffffff;
+	font-size: 12px;
+	font-family: trebuchet ms, arial;
+    font-weight: bold;	
+	text-decoration: none;
+	background: url("images/rootpage.gif") no-repeat bottom left;   
+}
+
+div.rootPage a:hover{	
+	background: url("images/rootpage_over.gif") no-repeat bottom left;   
+}
+
+div.rootPage a.selected {	
+	background: url("images/rootpage_selected.gif") no-repeat bottom left;   
+}
+
+
+
+/****** SubMenu1
+ **************************************************/ 
+	
+div.subMenu1 {
+	/*display: none;*/
+    margin: 0 0 1px 21px;
+    padding: 0 0 0 0;
+	min-height: 0px;
+	line-height: 0px;
+	font-size: 0px;	
+	background: #c7d1df;	
+}
+
+div.subMenu1 div.subPage1 {	
+	width: 229px;
+	padding: 2px 0 3px 0;
+	border-top: 1px dashed #9ca4ae;	
+}
+	
+div.subMenu1 div.arrowdiv2 {	
+    float: left;
+}	
+
+	
+div.subMenu1 div.arrowdiv2 img{	
+    border: none;
+}	
+
+div.subMenu1 div.subButton1 a:link, div.subMenu1 div.subButton1 a:visited{	
+    display: block;
+    margin: 0 0 0 17px;    
+    padding: 1px 0 1px 4px;
+	width: 208px;
+	min-height: 16px;
+	line-height: 16px;
+	color: #47525b;	
+	font-size: 12px;
+	font-family:  arial;
+    font-weight: bold;	
+	text-decoration: none;	
+}
+
+div.subMenu1 div.subButton1 a:hover{	
+	background: #a4aebc;
+}
+
+div.subMenu1 a.selected {	
+	background: #a4aebc;
+}
+
+
+/****** SubMenu1 News
+ **************************************************/ 
+
+div#rootMenuNews div.subMenu1 {
+    margin: 0 0 1px 0px;
+}
+
+div#rootMenuNews div.subPage1 {	
+	width: 250px;
+}
+
+div#rootMenuNews div.subButton1 a:link, div#rootMenuNews div.subButton1 a:visited{	
+    display: block;
+    margin: 0 0 0 4px;    
+    padding: 0 0 0 2px;
+	width: 241px;
+	min-height: 16px;
+	line-height: 16px;
+	color: #47525b;	
+	font-size: 12px;
+	font-family:  arial;
+    font-weight: bold;	
+	text-decoration: none;	
+}
+
+
+/****** SubMenu2
+ **************************************************/ 
+ 
+
+div.subMenu1 div.subPage2 {	
+	margin: 0 0 0 17px;
+	padding: 0 0 1px 0;	
+	width: 209px;
+}
+	
+div.subPage2  div.arrowdiv2 {	
+    float: left;
+}	
+	
+div.subPage2  div.arrowdiv2 img{	
+    border: none;
+}	
+
+div.subPage2  div.subButton2 a:link, div.subPage2  div.subButton2 a:visited{	
+    display: block;
+    margin: 0 0 0 17px;    
+    padding: 0 0 0 4px;
+	width: 191px;
+	min-height: 16px;
+	line-height: 16px;
+	color: #525e6a;	
+	font-size: 11px;
+	font-family:  arial;
+    font-weight: normal;	
+	text-decoration: none;	
+}
+
+div.subPage2  div.subButton2 a:hover{	
+	background: #a4aebc;
+}
+	
+ 
+div.rootPageFree a:link, div.rootPageFree a:visited{	
+    display: block;
+    padding: 0 0 0 4px;
+	width: 246px;
+	min-height: 20px;
+	line-height: 20px;
+	color: #ffffff;
+	font-size: 12px;
+	font-family: trebuchet ms, arial;
+    font-weight: bold;	
+	text-decoration: none;
+	background: url("images/rootpage_free.gif") no-repeat bottom left;   
+}
+
+div.rootPageFree a:hover{	
+	background: url("images/rootpage_free_over.gif") no-repeat bottom left;   
+}
+
+div.newsButton a:link, div.newsButton a:visited{	
+    display: block;
+    padding: 0 0 0 4px;
+	width: 246px;
+	min-height: 20px;
+	line-height: 20px;
+	color: #ffffff;
+	font-size: 12px;
+	font-family: trebuchet ms, arial;
+    font-weight: bold;	
+	text-decoration: none;
+	background: url("images/newsbutton.gif") no-repeat bottom left;   
+}
+
+div.newsButton a:hover{	
+	background: url("images/newsbutton_over.gif") no-repeat bottom left;   
+}
+

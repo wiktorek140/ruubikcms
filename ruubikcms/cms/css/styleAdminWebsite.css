@@ -1,0 +1,373 @@
+
+/* PageAdmin Settings
+---------------------------------------------------------- */
+
+#pageAdmin {
+    position: relative;
+	float: left;
+	display: inline;	
+	width: 320px;
+	min-height: 170px;
+	/*line-height: 1em;*/
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651;
+}
+
+#pageAdmin h2{
+	margin: 0 0 5px 0;
+	padding: 0 5px 0 5px;
+	font-size: 13px;
+	font-family: Trebuchet MS, arial;
+	color: #ffffff;
+    background: #3c454c;
+	border-bottom:1px solid #384651;
+}
+
+#pageAdmin  table{
+   width: 320px;
+   margin: 5px 0 5px 0;
+}
+
+#pageAdmin table td.tdPageAdminLeft{
+   padding: 0 6px 0 0;
+   width: 110px;
+   min-height: 20px;
+   line-height: 20px;
+   text-align: right;
+   vertical-align: top;
+}
+
+#pageAdmin table td.tdPageAdminCenter{
+   padding: 2px 0 0 0;
+   width: 184px;
+   min-height: 18px;
+   line-height: 20px;
+   vertical-align: top;
+}
+
+#pageAdmin table td.tdPageAdminCenter input{
+   padding: 1px;
+   height: 14px;
+   width: 180px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#pageAdmin table td.tdPageAdminCenter select{
+   padding: 1px;
+   width: 184px;
+   height: 18px;
+   font-size: 11px;
+   border:1px solid #384637;
+}
+
+#pageAdmin table td.tdPageAdminRight{
+   padding: 2px 0 0 0;
+   width: 20px;
+   min-height: 18px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: middle;
+}
+
+#pageAdmin table td.tdPageAdminRight img{
+   border: none;
+} 
+
+/* SEO Settings
+---------------------------------------------------------- */
+
+#SEO {
+	float: right;
+	width: 385px;
+	min-height: 170px;
+	line-height: 1em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #3a4c37;  	
+}
+
+#SEO h2{
+	margin: 0 0 5px 0;
+	padding: 3px 5px 3px 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#SEO table{
+    width: 385px;
+    margin: 5px 0 5px 0; 
+}
+
+#SEO table td.tdSEOAdminLeft{
+    padding: 0 6px 0 0;
+    width: 129px;
+    min-height: 20px;
+    line-height: 20px;
+    text-align: right;
+    vertical-align: top;
+}
+
+#SEO table td.tdSEOAdminCenter{
+    padding: 2px 0 0 0;
+    width: 230px;
+    min-height: 18px;
+    line-height: 20px;
+    vertical-align: top; 
+}
+
+#SEO table td.tdSEOAdminCenter input{
+    padding: 1px;
+    height: 14px;
+    width: 226px;
+    font-size: 11px;
+    border:1px solid #384637;
+}
+
+#SEO table td.tdSEOAdminCenter textarea{
+	padding: 1px;
+	font-family: arial;
+	width: 226px;
+	height: 50px;
+	font-size: 11px;
+	border: 1px solid #384637;	
+}
+
+#SEO table td.tdSEOAdminRight{
+   padding: 4px 0 0 0;
+   width: 20px;
+   min-height: 16px;
+   line-height: 20px;
+   text-align: center;
+   vertical-align: top;  
+}
+
+#SEO table td.tdSEOAdminRight img{
+   border: none;
+} 
+
+
+
+/* contentManagement Settings
+---------------------------------------------------------- */
+
+#contentManagement {
+    width: 720px;
+    padding: 0 0 9px 0;
+}
+
+#tinyMCE {
+	display: inline;    
+	float: left;
+	width: 550px;
+	height: 380px;
+}
+
+#tinyMCE textarea, #tinyMCEarea {
+	width: 714px; /* old: 544px; */
+	height: 364px;
+}
+
+#decorationPix {
+	margin: 8px 0 0 0;
+	width: 720px;
+	min-height: 200px;
+	height: auto !important;
+	height: 200px;
+	line-height: 1em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+    background: #aab4be;		
+	border:1px solid #384651;  	
+}
+
+#decorationPix h2{
+	margin: 0 0 2px 0;
+	padding: 3px 5px 3px 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;   	
+}
+
+#decorationPix #picsDiv {
+    padding: 8px 0 8px 5px;
+    text-align: left;   
+}
+
+#decorationPix table.decorationTable {	
+    margin: 0 0 0 0;
+    padding: 1px;
+    width: 710px;
+    height: 80px;
+    color: #333333;
+    border-collapse: collapse; 
+    border: none;
+}
+
+#decorationPix table.decorationTable tbody {
+    color: blue; 
+}
+
+#decorationPix table.decorationTable tbody td {
+    padding: 5px 1px;
+	width: 230px;
+    text-align: center;  
+	border-right: #413f48 solid 1px;	
+}
+
+#decorationPix table.decorationTable tbody td h3{
+	margin: 0 0 0 0;
+	padding: 3px 10px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #413f48;  
+}
+
+#decorationPix input{
+	width: 180px;
+	font-size: 10px;
+}
+
+#decorationPix table.decorationTable tbody td img{ 
+    padding: 3px;
+	background: #ffffff;
+	border: 1px solid #413f48;	
+}
+
+#decorationPix table.decorationTable tbody td.DecoPicToolTip {
+	padding: 5px 1px;
+    text-align: right;
+	border-right: none;			 
+}
+
+#decorationPix table.decorationTable tbody td.DecoPicToolTip img{
+    padding: 0;
+	background: none;
+	border: none;		 
+}
+
+#decorationPix table.decorationTable td div {
+	padding: 5px 0;
+}
+
+#decorationPix table.decorationTable td a.addPic:link, #decorationPix table.decorationTable td a.addPic:visited {
+    padding: 1px 10px;
+	color: #ffffff;
+    background: url(images/browse.gif) repeat-x bottom left;  		
+	border: 1px solid #303842;  
+	text-decoration: none;	
+}
+
+#decorationPix table.decorationTable td a.addPic:hover{
+    background: url(images/browse_over.gif) repeat-x bottom left;  	
+	border: 1px solid #44535e;    			
+}
+
+
+#decorationPix table.decorationTable td a.flash:link, #decorationPix table.decorationTable td a.flash:visited {
+    padding: 1px 10px;
+	color: #ffffff;
+    background: url(images/flash.gif) repeat-x bottom left;  		
+	border: 1px solid #374c32;  
+	text-decoration: none;	
+}
+
+#decorationPix table.decorationTable td a.flash:hover{
+    background: url(images/flash_over.gif) repeat-x bottom left;  	
+	border: 1px solid #496543;    			
+}
+
+
+#decorationPix table.decorationTable td a.delete:link, #decorationPix table.decorationTable td a.delete:visited {	
+    padding: 1px 10px;   
+	color: #ffffff;	
+    background: url(images/delete.gif) repeat-x bottom left;  		
+	border: 1px solid #6b3c33; 
+	text-decoration: none;		
+}
+
+#decorationPix table.decorationTable td a.delete:hover{
+    background: url(images/delete_over.gif) repeat-x bottom left;  			
+}
+
+
+#xtrArea {
+	margin: 8px 0 0 0;
+	padding: 0;
+	min-height: 350px;
+	height: auto !important;
+	height: 350px;
+	line-height: 1em;
+	color: #413f48;
+	font-family: arial, Trebuchet MS, arial;
+	text-align: left;
+	font-size: 11px;
+	font-weight:bold;
+	background: #aab4be;	
+	border:1px solid #384651;
+}
+
+#xtrArea h2{
+	padding: 3px 5px 3px 5px;	
+	font-size: 13px;	
+	font-family: Trebuchet MS, arial;	
+	color: #ffffff;
+    background: #3c454c;		
+	border-bottom:1px solid #384651;  	
+}
+
+#xtrArea #xtrAreaBlue{
+	margin: 0 0 0 0;
+	padding: 5px;		
+}
+
+#xtrArea textarea{
+	padding: 2px;
+	width: 700px;
+	height: 300px;
+	border:1px solid #384651;
+}
+
+#toggleButtons {
+	padding: 5px 0px 0px 0px;
+}
+
+#toggleButtons a {
+	color: #eee;
+}
+
+.toggleSpan {
+	padding: 0px 5px 0px 0px;
+}
+
+a#toggleExtracode:link, a#toggleExtracode:visited, a.toggleImages:link, a.toggleImages:visited, a.toggleExtrausers:link, a.toggleExtrausers:visited {
+    padding: 1px 20px 1px 10px;
+	color: #eeeeee;
+	font-family: 'trebuchet ms', verdana;
+    background: url(images/toggle.jpg) repeat-x center right;
+	border: 1px solid #444444;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a#toggleExtracode:hover, a.toggleImages:hover, a.toggleExtrausers:hover {
+	background: url(images/toggle_over.jpg) repeat-x center right;
+	border: 1px solid #656565;
+}

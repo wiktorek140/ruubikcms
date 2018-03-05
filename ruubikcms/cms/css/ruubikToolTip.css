@@ -1,0 +1,15 @@
+.tooltipBox {
+	color: #47525b;
+	font-size: 12px;
+	font-weight: normal;
+}
+.tooltipBox h5 {
+	color: #fff;
+	font-size: 13px;
+	background: #52647e;
+	padding: 5px;
+}
+.tooltipBox a{
+	color: #52647e;
+	font-weight: 600;
+}
