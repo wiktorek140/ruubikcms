@@ -13,6 +13,7 @@ $page = array();
 $site = array();
 $site = get_site_data();
 $siteroot = '/'.($site['siteroot'] != "" ? trim($site['siteroot'],'/').'/' : '');
+$gdzie = $siteroot.'ruubikcms/useruploads/images/';
 
 if ($site['clean_url'] >= 1) {
 	$array = explode('/',$_SERVER['REQUEST_URI']);
@@ -153,6 +154,7 @@ foreach ($dbh->query($sql) as $row) {
 	
 	$counter++;
 }
+$page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><div><a href="#">Dzisiaj jest '.date('D, d M Y H:i:s').'</a></div></li>';
 if ($counter != 0) $page['mainmenu'] .= '</ul>';
 
 // ------------------------------------------------------------------------------------------------------------------------------------------
@@ -171,7 +173,7 @@ if ($stmt->execute(array($p))) {
 		else $url = 'index.php?p='.$row['pageurl'];
 		
 		// EDIT SUBMENU1 HTML HERE:
-		$page['submenu1'] .= '<li'.($submenu_selected == $row['pageurl']  ? ' class="selected"' : '').'><a href="'.$url.'">'.$row['name'].'</a></li>';
+		$page['submenu1'] .= '<li'.($submenu_selected == $row['pageurl']  ? ' class="selected"' : '').'><a href="'.$url.'"><div>'.$row['name'].'</div></a></li>';
 		//$page['submenu1'] .= '</div>'; // close <div id="submenu">
 		
 		$counter++;
@@ -303,8 +305,8 @@ foreach ($dbh->query($sql) as $row) {
 	$page['news'] .= '<div class="newsItem">';
 	
 	// NEWS TITLE HTML:
-	$page['news'] .= '<h2><a href="'.$link.'">'.ec($row['title']).'</a></h2>';
-	
+	//$page['news'] .= '<h2><a href="'.$link.'">'.ec($row['title']).'</a></h2>';
+	$page['news'] .= '<h2><a href="'.$link.'">'.($row['title']).'</a></h2>';
 	// NEWS DATE HTML:
 	if ($site['news_showdate'] == 1) $page['news'] .= '<p class="newsDate">'.$row['date'].'</p>';
 	
