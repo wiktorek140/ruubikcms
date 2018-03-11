@@ -60,7 +60,10 @@ if (isset($_POST['save'])) {
 
  	// convert index.php?p=pageurl links to clean url links
 	if ($site['clean_url'] >= 1) {
-		$content = preg_replace('/index.php\?p\=(.+)"/eUs', "clean_url('$1').'\"'", $content);
+		$content = preg_replace_callback('/index.php\?p\=(.+)"/Us', 
+                    function () { 
+                        return "clean_url('$1').'\"'"; 
+                    } , $content);
 	}
 	
 	// convert userupload/files/ filelink tags to logged downloads via download.php script
