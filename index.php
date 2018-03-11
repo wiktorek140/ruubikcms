@@ -24,7 +24,7 @@ echo $page['doctype'];
 		<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleMenus.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleGallery.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/jquery.lightbox-0.5.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="default.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>default.css" />
 		
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/cms/scripts/jquery.js"></script>
 		<script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/jquery.lightbox-0.5.js.php"></script>
@@ -75,7 +75,7 @@ echo $page['doctype'];
     						<?php echo $page['content'];?>
 
 							<!-- for security reasons, remove extracode if not needed: -->
-							<?php eval("?>".$page['extracode']);?>
+							
 							
 						</div>
 
@@ -98,7 +98,7 @@ echo $page['doctype'];
 						<!-- Please leave "Powered by RuubikCMS" notice here! -->
 						Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
 
-						| Copyright &copy; <?php echo date("Y");?> <?php echo $page['sitename'];?>					
+						| Copyright &copy; <?php echo date("Y"); echo " ".$page['sitename'];?>					
 					</div>
 				</div>                
 
