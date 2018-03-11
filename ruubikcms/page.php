@@ -2,6 +2,8 @@
 
 // -------- SCROLL DOWN TO EDIT HTML FOR DIFFERENT PAGE PARTS (MENUS, NEWS, ETC...) -----------------------------------------------------------
 // -------- THESE PARTS ARE SEPARATED BY LINES ------------------------------------------------------------------------------------------------
+mb_internal_encoding("UTF-8");
+
 
 if (basename($_SERVER['REQUEST_URI']) == 'page.php') die ('Access denied');
 require('includes/dbconfig.php');
@@ -13,7 +15,6 @@ $page = array();
 $site = array();
 $site = get_site_data();
 $siteroot = '/'.($site['siteroot'] != "" ? trim($site['siteroot'],'/').'/' : '');
-$gdzie = $siteroot.'ruubikcms/useruploads/images/';
 
 if ($site['clean_url'] >= 1) {
 	$array = explode('/',$_SERVER['REQUEST_URI']);
@@ -27,16 +28,20 @@ if ($site['clean_url'] >= 1) {
 } else {
 	$clean_url = FALSE;
 }
+$submenu_selected = $_GET['p'];
 
 if ($site['url_suffix'] != '') $url_suffix = '.'.trim($site['url_suffix'], '.');
 else $url_suffix = '';
 
 // if no page defined -> get the first page
-if (!$_GET['p'] AND !$_GET['news']) {
+//if (!$_GET['p'] AND !$_GET['news']) {
+//Removed because unusable
+
+if (!$_GET['p']) {
 	$_GET['p'] = frontpage_value();
 }
 
-if ($_GET['news']) {
+/*if ($_GET['news']) {
 	// get pagedata for news
 	$stmt = $dbh->prepare("SELECT id, title, text, STRFTIME('%d.%m.%Y',time) as date FROM news WHERE status = 1 AND id = ?");
 	if ($stmt->execute(array($_GET['news']))) {
@@ -48,7 +53,11 @@ if ($_GET['news']) {
 	$page['subheader'] = frontpage_value('name'); // todo: only needed when using subheader
 	$page['content'] = $page['text'];
 	
-} elseif ($_GET['p']) {
+} else*/
+//Removed because unusable
+
+
+if ($_GET['p']) {
 	// get published pagedata for normal page content)
 	$page = get_page_data($_GET['p'], TRUE);
 	// subheader, todo: only needed when using subheader
@@ -104,7 +113,7 @@ if ($page['levelnum'] == 2) {
 
 // has page sub pages?
 if ($page['levelnum'] < 3) {
-	if (query_single("SELECT name FROM page WHERE mother = '".$page['pageurl']."'") == null OR $_GET['news']) $page['has_sub_pages'] = FALSE;
+	if (query_single("SELECT name FROM page WHERE mother = '".$page['pageurl']."'") == null) $page['has_sub_pages'] = FALSE;
 	else $page['has_sub_pages'] = TRUE;
 }
 
@@ -154,17 +163,22 @@ foreach ($dbh->query($sql) as $row) {
 	
 	$counter++;
 }
-$page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><div><a href="#">Dzisiaj jest '.ucwords(strftime('%A, %d %B %G')).' <span class="clock"></span></a></div></li>';
+$page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'></li>
+                      <li><div><a href="#">Dzisiaj jest '.ucwords(strftime('%A, %d %B %G')).' <span class="clock"></span></a></div></li>';
 if ($counter != 0) $page['mainmenu'] .= '</ul>';
 
 // ------------------------------------------------------------------------------------------------------------------------------------------
 
 // front page submenu when reading news
-if ($_GET['news']) $p = frontpage_value();
+//if ($_GET['news']) $p = frontpage_value();
+//Removed because in my implement is unusable
+
+
 
 // -------- SUBMENU1 FROM LEVEL 2 PAGES ------------------------------------------------------------------------------------------------
 $stmt = $dbh->prepare("SELECT pageurl, name FROM page WHERE levelnum = 2 AND mother = ? AND status = 1 ORDER BY ordernum");
 $counter = 0;
+
 if ($stmt->execute(array($p))) {
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		//if ($counter == 0) $page['submenu1'] = '<div id="subMenu"><h2>'.$page['subheader'].'</h2>'; // <div id="submenu"><h2>Name of the main level page</h2>
@@ -280,6 +294,7 @@ HTML:	<div class="newsItem">
 		</div>            
 */
 
+/*
 $sql = "SELECT id, title, text, shorttext, linktopage, STRFTIME('%d.%m.%Y',time) as date FROM news WHERE status = 1 ORDER BY time DESC LIMIT ".$site['news_num'];
 foreach ($dbh->query($sql) as $row) {
 	// link to regular page if defined, otherwise link to news by id
@@ -300,7 +315,7 @@ foreach ($dbh->query($sql) as $row) {
 	$newstext = ($site['news_textlink'] == 1 ? '<a href="'.$link.'">' : '').$text.($site['news_textlink'] == 1 ? '</a>' : '');
 
 	// --- EDIT NEWS HTML BELOW ---
-
+    
 	// BEGINNING TAG FOR ONE NEWS ITEM:
 	$page['news'] .= '<div class="newsItem">';
 	
@@ -320,12 +335,12 @@ foreach ($dbh->query($sql) as $row) {
 	
 	// CLOSING TAG FOR ONE NEWS ITEM:
 	$page['news'] .= '</div>';
-}
+} */
 // ------------------------------------------------------------------------------------------------------------------------------------------
 
 // encode htmlentities in free user input data to prevent XSS injections (exceptions: gacode and extracode)
 $page['name'] = ec($page['name']);
-if (!$_GET['news']) $page['header1'] = ec($page['header1']);
+//if (!$_GET['news']) $page['header1'] = ec($page['header1']);
 $page['title'] = ec($page['title']);
 $page['description'] = ec($page['description']);
 $page['keywords'] = ec($page['keywords']);
