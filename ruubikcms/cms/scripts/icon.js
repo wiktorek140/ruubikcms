@@ -1,4 +1,4 @@
-        <!--
+        //<!--
         
          if ((navigator.appVersion.indexOf("MSIE") > 0)
         

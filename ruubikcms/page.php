@@ -2,7 +2,6 @@
 
 // -------- SCROLL DOWN TO EDIT HTML FOR DIFFERENT PAGE PARTS (MENUS, NEWS, ETC...) -----------------------------------------------------------
 // -------- THESE PARTS ARE SEPARATED BY LINES ------------------------------------------------------------------------------------------------
-mb_internal_encoding("UTF-8");
 
 
 if (basename($_SERVER['REQUEST_URI']) == 'page.php') die ('Access denied');

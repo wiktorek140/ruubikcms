@@ -6,7 +6,7 @@ var time = new Date(),
   
   function harold(standIn) {
     if (standIn < 10) {
-      standIn = '0' + standIn
+      standIn = '0' + standIn;
     }
     return standIn;
   }

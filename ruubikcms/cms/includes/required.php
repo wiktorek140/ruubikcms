@@ -1,6 +1,7 @@
 <?php
 $start = microtime(true);
 $filename = basename($_SERVER['PHP_SELF']);
+require('../includes/encodingconf.php');
 require('../includes/dbconfig.php');
 require('includes/dbconnection.php');
 require('../includes/commonfunc.php');

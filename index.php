@@ -1,4 +1,5 @@
 <?php
+require('ruubikcms/includes/encodingconf.php');
 require('ruubikcms/page.php');
 echo $page['doctype'];
 ?>

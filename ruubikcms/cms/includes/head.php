@@ -7,8 +7,8 @@
         <meta name="description" content="RuubikCMS - The easy & fast way to build Google optimized websites." />
         <meta name="keywords" content="CMS, SEO, RuubikCMS" />
         <meta name="robots" content="none" />
-        <meta name="author" content="Iisakki Pirilä, Henrik Valros" />
-        <meta name="copyright" content="Iisakki Pirilä, Henrik Valros" />
+        <meta name="author" content="Iisakki PirilÃ¤, Henrik Valros" />
+        <meta name="copyright" content="Iisakki PirilÃ¤, Henrik Valros" />
 
         <link rel="shortcut icon" href="images/logo.ico" />
         <link rel="stylesheet" type="text/css" href="css/default.css" />
