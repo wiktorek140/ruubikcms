@@ -39,16 +39,17 @@ body {
 #mainMenu {
 	position: relative;
 	height: 39px;
-    background: url(images/split.gif) no-repeat top right;    	
+        background: url(images/split.gif) no-repeat top right;    	
 }
 
 /*---------- MAINBODY
 --------------------------------------------------------------------------*/
 
 #mainBody {
-	position: relative;
+	
 	padding: 20px 0px 10px 0px;
 	width: 1100px;
+        z-index: -100;
 }
 
 #ColLeft {
@@ -70,7 +71,7 @@ body {
 	height: auto !important;
 	height: 500px;
 	border-left: 3px solid rgb(168, 16, 24);
-    border-right: 3px solid rgb(168, 16, 24);
+        border-right: 3px solid rgb(168, 16, 24);
 }
 
 #ColRight{

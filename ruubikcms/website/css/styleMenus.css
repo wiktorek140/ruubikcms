@@ -83,3 +83,81 @@ HTML:	<ul><li><a href="#">Link</a></li></ul>
 #subMenu ul li a div {
 	padding: 5px 0 0 0;
 }
+
+/*  Part for dropdown menu
+    Submenu also colored
+    Part for mobile devices
+*/
+
+#mainMenu {
+    z-index: 100;
+}
+
+#nav {
+    text-align: left;
+    overflow: hidden;
+    height: 38px;
+}
+ul#nav li {
+    list-style-type: none;
+    float: left;   
+}
+
+ul#nav li:hover {
+    list-style-type: none;
+    float: left; 
+}
+
+ul#nav li a {
+    display : block;
+    margin:10px;
+    text-decoration : none;
+    font-size: 18px;
+    font-family: arial, verdana;
+    color: #3b454c;
+}
+
+ul#nav>li.selected>a {
+    color: #A81018;
+}
+
+ul#lvl2 {
+    overflow: visible;
+    display: none;
+}
+
+ul#nav li:hover ul#lvl2 {
+    position: absolute; 
+    display: block;
+    width: 200px;
+}
+
+ul#lvl2 li {  
+    list-style-type: none;
+    float: left;
+    background:#acacac; /*#9cc757;*/
+}
+
+ul#lvl2 li:hover {
+    list-style-type: none;
+    float: left;
+    background: #f0f0f0;    
+}
+
+ul#lvl2 li a {
+    display : block;
+    text-decoration : none;
+    font-size: 16px;
+    margin:8px;
+    width: 180px; 
+    font-family: arial, verdana;
+    color: #3b454c;
+}
+
+ul#lvl2 li.selected a {
+    color: #A81018;
+}
+
+ul#lvl3 li.selected a {
+    color: #A81018;
+}
