@@ -25,12 +25,12 @@ function initRollovers() {
 			aImages[i].onmouseover = function() {
 				sTempSrc = this.getAttribute('src');
 				this.setAttribute('src', this.getAttribute('hsrc'));
-			}	
+			};	
 			
 			aImages[i].onmouseout = function() {
 				if (!sTempSrc) sTempSrc = this.getAttribute('src').replace('_o'+ftype, ftype);
 				this.setAttribute('src', sTempSrc);
-			}
+			};
 		}
 	}
 }
