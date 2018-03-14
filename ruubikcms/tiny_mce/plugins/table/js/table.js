@@ -8,11 +8,12 @@ function insertTable() {
 	var cols = 2, rows = 2, border = 0, cellpadding = -1, cellspacing = -1, align, width, height, className, caption, frame, rules;
 	var html = '', capEl, elm;
 	var cellLimit, rowLimit, colLimit;
+	var cellStyles, newCellStyles, parsedStyles;
 
 	tinyMCEPopup.restoreSelection();
 
 	if (!AutoValidator.validate(formObj)) {
-		tinyMCEPopup.alert(inst.getLang('invalid_data'));
+		tinyMCEPopup.alert(AutoValidator.getErrorMessages(formObj).join('. ') + '.');
 		return false;
 	}
 
@@ -21,17 +22,17 @@ function insertTable() {
 	// Get form data
 	cols = formObj.elements['cols'].value;
 	rows = formObj.elements['rows'].value;
-	border = formObj.elements['border'].value != "" ? formObj.elements['border'].value  : 0;
-	cellpadding = formObj.elements['cellpadding'].value != "" ? formObj.elements['cellpadding'].value : "";
-	cellspacing = formObj.elements['cellspacing'].value != "" ? formObj.elements['cellspacing'].value : "";
-	align = formObj.elements['align'].options[formObj.elements['align'].selectedIndex].value;
-	frame = formObj.elements['tframe'].options[formObj.elements['tframe'].selectedIndex].value;
-	rules = formObj.elements['rules'].options[formObj.elements['rules'].selectedIndex].value;
+	border = formObj.elements['border'].value !== "" ? formObj.elements['border'].value : "";
+	cellpadding = formObj.elements['cellpadding'].value !== "" ? formObj.elements['cellpadding'].value : "";
+	cellspacing = formObj.elements['cellspacing'].value !== "" ? formObj.elements['cellspacing'].value : "";
+	align = getSelectValue(formObj, "align");
+	frame = getSelectValue(formObj, "tframe");
+	rules = getSelectValue(formObj, "rules");
 	width = formObj.elements['width'].value;
 	height = formObj.elements['height'].value;
 	bordercolor = formObj.elements['bordercolor'].value;
 	bgcolor = formObj.elements['bgcolor'].value;
-	className = formObj.elements['class'].options[formObj.elements['class'].selectedIndex].value;
+	className = getSelectValue(formObj, "class");
 	id = formObj.elements['id'].value;
 	summary = formObj.elements['summary'].value;
 	style = formObj.elements['style'].value;
@@ -58,11 +59,7 @@ function insertTable() {
 
 	// Update table
 	if (action == "update") {
-		inst.execCommand('mceBeginUndoLevel');
 
-		dom.setAttrib(elm, 'cellPadding', cellpadding, true);
-		dom.setAttrib(elm, 'cellSpacing', cellspacing, true);
-		dom.setAttrib(elm, 'border', border);
 		dom.setAttrib(elm, 'align', align);
 		dom.setAttrib(elm, 'frame', frame);
 		dom.setAttrib(elm, 'rules', rules);
@@ -81,8 +78,8 @@ function insertTable() {
 		if (!capEl && caption) {
 			capEl = elm.ownerDocument.createElement('caption');
 
-			if (!tinymce.isIE)
-				capEl.innerHTML = '<br mce_bogus="1"/>';
+			if (!tinymce.isIE || tinymce.isIE11)
+				capEl.innerHTML = '<br data-mce-bogus="1"/>';
 
 			elm.insertBefore(capEl, elm.firstChild);
 		}
@@ -118,12 +115,54 @@ function insertTable() {
 				elm.style.width = getCSSSize(width);
 		}*/
 
-		if (bordercolor != "") {
-			elm.style.borderColor = bordercolor;
-			elm.style.borderStyle = elm.style.borderStyle == "" ? "solid" : elm.style.borderStyle;
-			elm.style.borderWidth = border == "" ? "1px" : border;
-		} else
-			elm.style.borderColor = '';
+		if (!inst.settings.table_style_by_css) {
+			dom.setAttrib(elm, 'cellPadding', nonCssSize(cellpadding), true);
+		} else {
+			dom.setAttrib(elm, 'cellPadding', '');
+		}
+
+		if (cellspacing !== "") {
+			elm.style.borderSpacing = cssSize(cellspacing);
+		} else {
+			elm.style.borderSpacing = "";
+		}
+
+		if (!inst.settings.table_style_by_css && !isCssSize(border)) {
+			dom.setAttrib(elm, 'border', border);
+		} else if (inst.settings.table_style_by_css || (border !== '' && isCssSize(border))) {
+			dom.setAttrib(elm, 'border', '');
+		}
+
+		if (border === "") {
+			dom.setStyle(elm, 'border-width', '');
+			dom.setStyle(elm, 'border', '');
+			dom.setAttrib(elm, 'border', '');
+		}
+
+		elm.style.borderColor = bordercolor;
+
+		if (inst.settings.table_style_by_css) {
+
+			parsedStyles = dom.parseStyle(style);
+
+			if (parsedStyles.border) {
+				styleTDTH(elm, "border", parsedStyles.border);
+			}
+			if (border !== "") {
+				styleTDTH(elm, "border-width", cssSize(border));
+			} else {
+				styleTDTH(elm, "border-width", '');
+			}
+			if (cellpadding !== "") {
+				styleTDTH(elm, "padding", cssSize(cellpadding));
+			} else {
+				styleTDTH(elm, "padding", '');
+			}
+
+			styleTDTH(elm, "border-color", bordercolor);
+
+			styleTDTH(elm, "border-style", elm.style.borderStyle);
+		}
 
 		elm.style.backgroundColor = bgcolor;
 		elm.style.height = getCSSSize(height);
@@ -134,7 +173,7 @@ function insertTable() {
 		//elm.outerHTML = elm.outerHTML;
 
 		inst.nodeChanged();
-		inst.execCommand('mceEndUndoLevel');
+		inst.execCommand('mceEndUndoLevel', false, {}, {skip_undo: true});
 
 		// Repaint if dimensions changed
 		if (formObj.width.value != orgTableWidth || formObj.height.value != orgTableHeight)
@@ -148,9 +187,15 @@ function insertTable() {
 	html += '<table';
 
 	html += makeAttrib('id', id);
-	html += makeAttrib('border', border);
-	html += makeAttrib('cellpadding', cellpadding);
-	html += makeAttrib('cellspacing', cellspacing);
+	if (!inst.settings.table_style_by_css && !isCssSize(border)) {
+		html += makeAttrib('border', border);
+	}
+
+	if (!inst.settings.table_style_by_css) {
+		html += makeAttrib('cellpadding', nonCssSize(cellpadding));
+	}
+
+	html += makeAttrib('data-mce-new', '1');
 
 	if (width && inst.settings.inline_styles) {
 		if (style)
@@ -185,20 +230,51 @@ function insertTable() {
 	html += '>';
 
 	if (caption) {
-		if (!tinymce.isIE)
-			html += '<caption><br mce_bogus="1"/></caption>';
+		if (!tinymce.isIE || tinymce.isIE11)
+			html += '<caption><br data-mce-bogus="1"/></caption>';
 		else
 			html += '<caption></caption>';
+	}
+
+	if (inst.settings.table_style_by_css) {
+
+		parsedStyles = dom.parseStyle(style);
+
+		newCellStyles = {};
+		if (parsedStyles.border) {
+			newCellStyles.border = parsedStyles.border;
+		}
+		if (border !== "") {
+			newCellStyles["border-width"] = cssSize(border);
+		}
+		if (cellpadding !== "") {
+			newCellStyles.padding = cssSize(cellpadding);
+		}
+		if (bordercolor !== "") {
+			newCellStyles["border-color"] = bordercolor;
+		}
+		if (parsedStyles["border-style"]) {
+			newCellStyles["border-style"] = parsedStyles["border-style"];
+		}
+
+		if (dom.serializeStyle(newCellStyles) !== "") {
+			cellStyles = " style='" + dom.serializeStyle(newCellStyles) +"'";
+		} else {
+			cellStyles = "";
+		}
+
+	} else {
+		cellStyles = "";
 	}
 
 	for (var y=0; y<rows; y++) {
 		html += "<tr>";
 
 		for (var x=0; x<cols; x++) {
-			if (!tinymce.isIE)
-				html += '<td><br mce_bogus="1"/></td>';
+			if (!tinymce.isIE || tinymce.isIE11)
+				html += '<td' + cellStyles + '><br data-mce-bogus="1"/></td>';
 			else
-				html += '<td></td>';
+				html += '<td' + cellStyles + '></td>';
 		}
 
 		html += "</tr>";
@@ -206,13 +282,12 @@ function insertTable() {
 
 	html += "</table>";
 
-	inst.execCommand('mceBeginUndoLevel');
-
 	// Move table
 	if (inst.settings.fix_table_elements) {
-		var bm = inst.selection.getBookmark(), patt = '';
+		var patt = '';
 
-		inst.execCommand('mceInsertContent', false, '<br class="_mce_marker" />');
+		inst.focus();
+		inst.selection.setContent('<br class="_mce_marker" />');
 
 		tinymce.each('h1,h2,h3,h4,h5,h6,p'.split(','), function(n) {
 			if (patt)
@@ -225,16 +300,71 @@ function insertTable() {
 			inst.dom.split(inst.dom.getParent(n, 'h1,h2,h3,h4,h5,h6,p'), n);
 		});
 
-		dom.setOuterHTML(dom.select('._mce_marker')[0], html);
-
-		inst.selection.moveToBookmark(bm);
+		dom.setOuterHTML(dom.select('br._mce_marker')[0], html);
 	} else
 		inst.execCommand('mceInsertContent', false, html);
 
+	tinymce.each(dom.select('table[data-mce-new]'), function(node) {
+		var tdorth = dom.select('td,th', node);
+
+		// Fixes a bug in IE where the caret cannot be placed after the table if the table is at the end of the document
+		if (tinymce.isIE && !tinymce.isIE11 && node.nextSibling == null) {
+			if (inst.settings.forced_root_block)
+				dom.insertAfter(dom.create(inst.settings.forced_root_block), node);
+			else
+				dom.insertAfter(dom.create('br', {'data-mce-bogus': '1'}), node);
+		}
+
+		try {
+			// IE9 might fail to do this selection
+			inst.selection.setCursorLocation(tdorth[0], 0);
+		} catch (ex) {
+			// Ignore
+		}
+
+		dom.setAttrib(node, 'data-mce-new', '');
+	});
+
 	inst.addVisual();
-	inst.execCommand('mceEndUndoLevel');
+	inst.execCommand('mceEndUndoLevel', false, {}, {skip_undo: true});
 
 	tinyMCEPopup.close();
+}
+
+function styleTDTH (elm, name, value) {
+	if (elm.tagName === "TD" || elm.tagName === "TH") {
+		dom.setStyle(elm, name, value);
+	} else {
+		if (elm.children) {
+			for (var i = 0; i < elm.children.length; i++) {
+				styleTDTH(elm.children[i], name, value);
+			}
+		}
+	}
+}
+
+function getTDTHOverallStyle (elm, name) {
+	var cells = dom.select("td,th", elm), firstChildStyle;
+
+	function checkChildren(firstChildStyle, elms) {
+
+		for (var i = 0; i < elms.length; i++) {
+			var currentStyle = dom.getStyle(elms[i], name);
+			if (typeof firstChildStyle === "undefined") {
+				firstChildStyle = currentStyle;
+			}
+			if (firstChildStyle != currentStyle) {
+				return "";
+			}
+		}
+
+		return firstChildStyle;
+
+	}
+
+	firstChildStyle = checkChildren(firstChildStyle, cells);
+
+	return firstChildStyle;
 }
 
 function makeAttrib(attrib, value) {
@@ -268,12 +398,21 @@ function init() {
 	document.getElementById('bordercolor_pickcontainer').innerHTML = getColorPickerHTML('bordercolor_pick','bordercolor');
 	document.getElementById('bgcolor_pickcontainer').innerHTML = getColorPickerHTML('bgcolor_pick','bgcolor');
 
-	var cols = 2, rows = 2, border = tinyMCEPopup.getParam('table_default_border', '0'), cellpadding = tinyMCEPopup.getParam('table_default_cellpadding', ''), cellspacing = tinyMCEPopup.getParam('table_default_cellspacing', '');
+	var cols = 2, rows = 2, border = tinyMCEPopup.getParam('table_default_border', ''), cellpadding = tinyMCEPopup.getParam('table_default_cellpadding', ''), cellspacing = tinyMCEPopup.getParam('table_default_cellspacing', '');
 	var align = "", width = "", height = "", bordercolor = "", bgcolor = "", className = "";
-	var id = "", summary = "", style = "", dir = "", lang = "", background = "", bgcolor = "", bordercolor = "", rules, frame;
+	var id = "", summary = "", style = "", dir = "", lang = "", background = "", rules = "", frame = "";
 	var inst = tinyMCEPopup.editor, dom = inst.dom;
 	var formObj = document.forms[0];
 	var elm = dom.getParent(inst.selection.getNode(), "table");
+
+	// Hide advanced fields that isn't available in the schema
+	tinymce.each("summary id rules dir style frame".split(" "), function(name) {
+		var tr = tinyMCEPopup.dom.getParent(name, "tr") || tinyMCEPopup.dom.getParent("t" + name, "tr");
+
+		if (tr && !tinyMCEPopup.editor.schema.isValid("table", name)) {
+			tr.style.display = 'none';
+		}
+	});
 
 	action = tinyMCEPopup.getWindowArg('action');
 
@@ -282,7 +421,7 @@ function init() {
 
 	if (elm && action != "insert") {
 		var rowsAr = elm.rows;
-		var cols = 0;
+		cols = 0;
 		for (var i=0; i<rowsAr.length; i++)
 			if (rowsAr[i].cells.length > cols)
 				cols = rowsAr[i].cells.length;
@@ -292,8 +431,8 @@ function init() {
 
 		st = dom.parseStyle(dom.getAttrib(elm, "style"));
 		border = trimSize(getStyle(elm, 'border', 'borderWidth'));
-		cellpadding = dom.getAttrib(elm, 'cellpadding', "");
-		cellspacing = dom.getAttrib(elm, 'cellspacing', "");
+		cellpadding = dom.getAttrib(elm, 'cellpadding', '') || getTDTHOverallStyle(elm, 'padding');
+		cellspacing = dom.getAttrib(elm, 'cellspacing', '') || trimSize(getStyle(elm, 'border-spacing'));
 		width = trimSize(getStyle(elm, 'width', 'width'));
 		height = trimSize(getStyle(elm, 'height', 'height'));
 		bordercolor = convertRGBToHex(getStyle(elm, 'bordercolor', 'borderLeftColor'));
@@ -307,7 +446,7 @@ function init() {
 		style = dom.serializeStyle(st);
 		dir = dom.getAttrib(elm, 'dir');
 		lang = dom.getAttrib(elm, 'lang');
-		background = getStyle(elm, 'background', 'backgroundImage').replace(new RegExp("url\\('?([^']*)'?\\)", 'gi'), "$1");
+		background = getStyle(elm, 'background', 'backgroundImage').replace(new RegExp("url\\(['\"]?([^'\"]*)['\"]?\\)", 'gi'), "$1");
 		formObj.caption.checked = elm.getElementsByTagName('caption').length > 0;
 
 		orgTableWidth = width;
@@ -374,6 +513,25 @@ function changedSize() {
 	formObj.style.value = dom.serializeStyle(st);
 }
 
+function isCssSize(value) {
+	return /^[0-9.]+(%|in|cm|mm|em|ex|pt|pc|px)$/.test(value);
+}
+
+function cssSize(value, def) {
+	value = tinymce.trim(value || def);
+
+	if (!isCssSize(value)) {
+		return parseInt(value, 10) + 'px';
+	}
+
+	return value;
+}
+
+function nonCssSize(value) {
+	var parsedInt = parseInt(value, 10) || "";
+	return parsedInt.toString();
+}
+
 function changedBackgroundImage() {
 	var formObj = document.forms[0];
 	var st = dom.parseStyle(formObj.style.value);
@@ -388,8 +546,27 @@ function changedBorder() {
 	var st = dom.parseStyle(formObj.style.value);
 
 	// Update border width if the element has a color
-	if (formObj.border.value != "" && formObj.bordercolor.value != "")
-		st['border-width'] = formObj.border.value + "px";
+	if (formObj.border.value !== "" && (tinyMCEPopup.editor.settings.table_style_by_css || isCssSize(formObj.border.value)))
+		st['border-width'] = cssSize(formObj.border.value);
+	else {
+		if (!formObj.border.value) {
+			st['border'] = '';
+			st['border-width'] = '';
+		}
+	}
+
+	formObj.style.value = dom.serializeStyle(st);
+}
+
+function changedCellSpacing() {
+	var formObj = document.forms[0];
+	var st = dom.parseStyle(formObj.style.value);
+
+	if (formObj.cellspacing.value !== "")
+		st['border-spacing'] = cssSize(formObj.cellspacing.value);
+	else {
+		st['border-spacing'] = '';
+	}
 
 	formObj.style.value = dom.serializeStyle(st);
 }
@@ -400,13 +577,7 @@ function changedColor() {
 
 	st['background-color'] = formObj.bgcolor.value;
 
-	if (formObj.bordercolor.value != "") {
-		st['border-color'] = formObj.bordercolor.value;
-
-		// Add border-width if it's missing
-		if (!st['border-width'])
-			st['border-width'] = formObj.border.value == "" ? "1px" : formObj.border.value + "px";
-	}
+	st['border-color'] = formObj.bordercolor.value;
 
 	formObj.style.value = dom.serializeStyle(st);
 }
@@ -416,7 +587,7 @@ function changedStyle() {
 	var st = dom.parseStyle(formObj.style.value);
 
 	if (st['background-image'])
-		formObj.backgroundimage.value = st['background-image'].replace(new RegExp("url\\('?([^']*)'?\\)", 'gi'), "$1");
+		formObj.backgroundimage.value = st['background-image'].replace(new RegExp("url\\(['\"]?([^'\"]*)['\"]?\\)", 'gi'), "$1");
 	else
 		formObj.backgroundimage.value = '';
 
