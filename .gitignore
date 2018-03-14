@@ -8,6 +8,8 @@ ruubikcms/sqlite/ruubikcms.sqlite
 ruubikcms/sqlite/ruubikcms-last-login.sqlite
 inne/
 inne
+nbproject/private/
+nbproject/private/*
 edu_glob.png
 herb_gminy.jpg
 herb_gminy.png
