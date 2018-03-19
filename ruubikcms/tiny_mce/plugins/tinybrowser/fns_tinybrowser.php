@@ -342,33 +342,47 @@ function returnMIMEType($filename)
     }
 
 //************************Return Array of Directory Structure***************************
+function _sql_regcase($str){
+    $res = "";
+
+    $chars = str_split($str);
+    foreach($chars as $char){
+        if (preg_match("/[A-Za-z]/", $char)) {
+            $res .= '[' . strtoupper($char) . strtoupper($char) . ']';
+        } else {
+            $res .= $char;
+        }
+    }
+    return $res;
+}
+    
 function dirtree(&$alldirs,$types='*.*',$root='',$tree='',$branch='',$level=0) {
 
 // filter file types according to type
-$filetypes = explode(',',preg_replace('{[ \t]+}', '',$types));
+    $filetypes = explode(',',preg_replace('{[ \t]+}', '',$types));
 
-if($level==0 && is_dir($root.$tree.$branch))
-	{
+    if($level==0 && is_dir($root.$tree.$branch))
+    {
 	$filenum=0;
 	foreach($filetypes as $filetype)
-	   {
-   	$filenum = $filenum + count(glob($root.$tree.$branch.sql_regcase($filetype),GLOB_NOSORT));
+	{
+            $filenum = $filenum + count(glob($root.$tree.$branch._sql_regcase($filetype),GLOB_NOSORT));
    	}
-   $treeparts = explode('/',rtrim($tree,'/'));
+        $treeparts = explode('/',rtrim($tree,'/'));
 	$topname = end($treeparts);
 	$alldirs[] = array($branch,rtrim($topname,'/').' ('.$filenum.')',rtrim($topname,'/'),rtrim($topname,'/'),$filenum,filemtime($root.$tree.$branch));
-	}
-$level++;
+    }
+    $level++;
 
-$dh = opendir($root.$tree.$branch);
-while (($dirname = readdir($dh)) !== false)
-	{
+    $dh = opendir($root.$tree.$branch);
+    while (($dirname = readdir($dh)) !== false)
+    {
 	if($dirname != '.' && $dirname != '..' && is_dir($root.$tree.$branch.$dirname) && $dirname != '_thumbs')
 		{
 		$filenum=0;
 		foreach($filetypes as $filetype)
 		   {
-			$filenum = $filenum + count(glob($root.$tree.$branch.$dirname.'/'.sql_regcase($filetype),GLOB_NOSORT));
+			$filenum = $filenum + count(glob($root.$tree.$branch.$dirname.'/'._sql_regcase($filetype),GLOB_NOSORT));
 			}
 		$indent = '';
 		for($i=0;$i<$level;$i++) { $indent .= ' &nbsp; '; }
@@ -376,9 +390,9 @@ while (($dirname = readdir($dh)) !== false)
 		$alldirs[] = array(urlencode($branch.$dirname.'/'),$indent.$dirname.' ('.$filenum.')',$indent.$dirname,$dirname,$filenum,filemtime($root.$tree.$branch.$dirname));
 		dirtree($alldirs,$types,$root,$tree,$branch.$dirname.'/',$level);
 		}
-	}
-closedir($dh);
-$level--;
+    }
+    closedir($dh);
+    $level--;
 }
 
 /* user defined error handling function. */
