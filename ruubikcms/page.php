@@ -241,8 +241,13 @@ if ($counter != 0) $page['submenu2'] .= '</ul>';
 $page['dropdownmenu'] = '<ul id="nav">'; // Edit id for navigation div here (id="dropdownMenu" etc.)
 $sql = "SELECT pageurl, name FROM page WHERE levelnum = 1 AND status = 1 ORDER BY ordernum";
 foreach ($dbh->query($sql) as $row) {
-	$page['dropdownmenu'] .= '<li'.($_GET['p'] == $row['pageurl']  ? ' class="selected"' : '').'><a href="'.($clean_url ? clean_url($row['pageurl']) : 'index.php?p='.$row['pageurl']).'">'.$row['name'].'</a>';
-	$sql2 = "SELECT pageurl, name FROM page WHERE levelnum = 2 AND mother = '".$row['pageurl']."' AND status = 1 ORDER BY ordernum";
+	$page['dropdownmenu'] .= '<li'.
+                                ($_GET['p'] == $row['pageurl']  ? ' class="selected"' : '').
+                                '><span><a href="'.($clean_url ? clean_url($row['pageurl']) : 'index.php?p='.$row['pageurl']).'">'.
+                                $row['name'].'</a></span>';
+	
+        
+        $sql2 = "SELECT pageurl, name FROM page WHERE levelnum = 2 AND mother = '".$row['pageurl']."' AND status = 1 ORDER BY ordernum";
 	$level2count = 0;
 	foreach ($dbh->query($sql2) as $row2) {
 		if ($level2count == 0) $page['dropdownmenu'] .= '<ul id=lvl2>';
@@ -346,6 +351,8 @@ $page['keywords'] = ec($page['keywords']);
 $page['image1'] = ec($page['image1']);
 $page['image2'] = ec($page['image2']);
 $page['subheader'] = ec($page['subheader']);
+
+
 
 function isMobile() {
     $useragent=$_SERVER['HTTP_USER_AGENT'];

@@ -4,7 +4,8 @@ body {
 	font-weight: normal;
 	line-height: 1.2em;
 	color: #333333;
-	background: #ffffff url(images/bg.jpg) repeat-x top left;
+	background: #afafaf;
+        
 } 
 
 #wrapper {
@@ -27,6 +28,7 @@ body {
 
 #header {
 	position: relative;
+        background: #afafaf url(images/bg.jpg) repeat-x top left;
 }
 
 #design {
@@ -39,7 +41,8 @@ body {
 #mainMenu {
 	position: relative;
 	height: 39px;
-        background: url(images/split.gif) no-repeat top right;    	
+        background: url(images/split.gif) no-repeat top right;
+        width: 1100px;
 }
 
 /*---------- MAINBODY

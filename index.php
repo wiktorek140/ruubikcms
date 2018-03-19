@@ -8,7 +8,8 @@ echo $page['doctype'];
     <head>
         <title><?php echo $page['title'];?></title>
         <?php echo $page['gacode'];?>
-	<meta http-equiv="content-type" content="text/html; charset=<?php echo $page['charset'];?>" />
+	<meta charset="<?php echo $page['charset'];?>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php echo $page['description'];?>" />
 	<meta name="keywords" content="<?php echo $page['keywords'];?>" />
 	<meta name="robots" content="<?php echo $page['robots'];?>" />
@@ -55,46 +56,37 @@ echo $page['doctype'];
 				<div id="mainBody">
                                     <?php
                                         if(!isMobile()){
-                                            echo '<div id="ColLeft">'.
-                                                    '<div id="subMenu">'.
-                                                        $page['submenu1'].
-                                                    '</div>'.
-                                                 '</div>';
+                                            echo '<div id="ColLeft"><div id="subMenu">'.
+                                                 $page['submenu1'].
+                                                 '</div></div>';
                                         } else {
                                             echo '<style> #ColCenter{width: 74%; border-left: none;} </style>';
                                         }
                                         
                                     ?>
-					<div id="ColCenter">
-                                            <div id="content">
-                                                <h1><?php echo $page['header1'];?></h1>
-                                                <?php echo $page['content'];?>
-                                            </div>
-					</div>
+                                    <div id="ColCenter">
+                                        <div id="content">
+                                            <h1><?php echo $page['header1'];?></h1>
+                                            <?php echo $page['content'];?>
+                                        </div>
+                                    </div>
 
-					<div id="ColRight">
-
-						<?php snippet_php('right-column');?>
-
-					</div>
-
-					<div class="clear"></div>
-
+                                    <div id="ColRight">
+                                            <?php snippet_php('right-column');?>
+                                    </div>
+                                    <div class="clear"></div>
 				</div>
 
 				<!-- **************** FOOTER ******************** -->
 
 				<div id="footer">
-					<div>
-						<!-- Please leave "Powered by RuubikCMS" notice here! -->
-						Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
-
-						| Copyright &copy; <?php echo date("Y"); echo " ".$page['sitename'];?>					
-					</div>
+                                    <div>
+                                        <!-- Please leave "Powered by RuubikCMS" notice here! -->
+                                        Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
+                                        | Copyright &copy; <?php echo date("Y"); echo " ".$page['sitename'];?>
+                                    </div>
 				</div>                
-
 			</div>
-		</div>
-		
+		</div>	
 	</body>
 </html>
