@@ -421,14 +421,14 @@ function insertAction() {
 		inst.getDoc().execCommand("unlink", false, null);
 		tinyMCEPopup.execCommand("mceInsertLink", false, "#mce_temp_url#", {skip_undo : 1});
 
-		elementArray = tinymce.grep(inst.dom.select("a"), function(n) {return inst.dom.getAttrib(n, 'href') == '#mce_temp_url#';});
+		elementArray = tinymce.grep(inst.dom.select("a"), function(n) {return inst.dom.getAttrib(n, 'href') === '#mce_temp_url#';});
 		for (i=0; i<elementArray.length; i++)
 			setAllAttribs(elm = elementArray[i]);
 	} else
 		setAllAttribs(elm);
 
 	// Don't move caret if selection was image
-	if (elm.childNodes.length != 1 || elm.firstChild.nodeName != 'IMG') {
+	if (elm.childNodes.length !== 1 || elm.firstChild.nodeName !== 'IMG') {
 		inst.focus();
 		inst.selection.select(elm);
 		inst.selection.collapse(0);
@@ -446,7 +446,8 @@ function setAllAttribs(elm) {
 
 	setAttrib(elm, 'href', href);
 	setAttrib(elm, 'title');
-	setAttrib(elm, 'target', target == '_self' ? '' : target);
+        setAttrib(elm, 'data-lightbox');
+	setAttrib(elm, 'target', target === '_self' ? '' : target);
 	setAttrib(elm, 'id');
 	setAttrib(elm, 'style');
 	setAttrib(elm, 'class', getSelectValue(formObj, 'classlist'));
