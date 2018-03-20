@@ -76,6 +76,7 @@ function init() {
 		// Setup form data
 		setFormValue('href', href);
 		setFormValue('title', inst.dom.getAttrib(elm, 'title'));
+                setFormValue('data-lightbox', inst.dom.getAttrib(elm, 'data-lightbox'));
 		setFormValue('id', inst.dom.getAttrib(elm, 'id'));
 		setFormValue('style', inst.dom.getAttrib(elm, "style"));
 		setFormValue('rel', inst.dom.getAttrib(elm, 'rel'));
@@ -479,7 +480,7 @@ function setAllAttribs(elm) {
 function getSelectValue(form_obj, field_name) {
 	var elm = form_obj.elements[field_name];
 
-	if (!elm || elm.options == null || elm.selectedIndex == -1)
+	if (!elm || elm.options === null || elm.selectedIndex === -1)
 		return "";
 
 	return elm.options[elm.selectedIndex].value;

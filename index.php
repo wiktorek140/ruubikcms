@@ -24,14 +24,15 @@ echo $page['doctype'];
 	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColCenter.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColRight.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleMenus.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleGallery.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/jquery.lightbox-0.5.css" media="screen" />
-        <link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>default.css" />
-		
-        <script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/cms/scripts/jquery.js"></script>
-        <script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/jquery.lightbox-0.5.js.php"></script>
-        <script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/lightbox.select.js"></script>
-        <script type="text/javascript" src="<?php echo $siteroot;?>ruubikcms/website/scripts/datescripts.js"></script>	
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleGallery.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/lightbox/css/lightbox.min.css"/>
+        <link rel="stylesheet" href="<?php echo $siteroot;?>default.css" />
+	
+        
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="<?php echo $siteroot;?>ruubikcms/website/lightbox/js/lightbox.min.js"></script>
+        <script src="<?php echo $siteroot;?>ruubikcms/website/scripts/datescripts.js"></script>	
     </head>
 	<body>
 		<div id="wrapper">

@@ -18,7 +18,7 @@ tinyMCE.init({
 	theme_advanced_toolbar_align : "left",
 	theme_advanced_statusbar_location : "bottom",
 	theme_advanced_blockformats : "p,pre,div,h1,h2,h3,h4,h5,h6",
-	theme_advanced_styles : "Lightbox Link=lightbox;Gallery Image=gallery; Clear Gallery Float=clearfloat",
+	theme_advanced_styles : 'Lightbox Link=lightbox;Gallery Image=gallery; Clear Gallery Float=clearfloat',
 	extended_valid_elements : "a[class|name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|style],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style],form[name|method|action|id],input[name|type|value|id|disabled|size|maxlength|class],textarea[name|cols|rows|id],select[name|id],option[selected|value],iframe[src|width|height|name|align|frameborder|scrolling|marginheight|marginwidth]",
 	template_external_list_url : "js/template_list.js",
 	external_link_list_url : "js/link_list.js",

@@ -80,7 +80,7 @@ function selectByValue(form_obj, field_name, value, add_custom, ignore_case) {
 	for (var i=0; i<sel.options.length; i++) {
 		var option = sel.options[i];
 
-		if (option.value == value || (ignore_case && option.value.toLowerCase() == value.toLowerCase())) {
+		if (option.value === value || (ignore_case && option.value.toLowerCase() === value.toLowerCase())) {
 			option.selected = true;
 			found = true;
 		} else
