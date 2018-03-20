@@ -40,7 +40,7 @@
 			imageBtnPrev:			'<?php echo $siteroot;?>ruubikcms/website/css/images/lightbox-btn-prev.gif',			// (string) Path and the name of the prev button image
 			imageBtnNext:			'<?php echo $siteroot;?>ruubikcms/website/css/images/lightbox-btn-next.gif',			// (string) Path and the name of the next button image
 			imageBtnClose:			'<?php echo $siteroot;?>ruubikcms/website/css/images/lightbox-btn-close.gif',		// (string) Path and the name of the close btn
-			imageBlank:				'<?php echo $siteroot;?>ruubikcms/website/css/images/lightbox-blank.gif',			// (string) Path and the name of a blank image (one pixel)
+			imageBlank:			'<?php echo $siteroot;?>ruubikcms/website/css/images/lightbox-blank.gif',			// (string) Path and the name of a blank image (one pixel)
 			// Configuration related to container image box
 			containerBorderSize:	10,			// (integer) If you adjust the padding in the CSS for the container, #lightbox-container-image-box, you will need to update this value
 			containerResizeSpeed:	400,		// (integer) Specify the resize duration of container image. These number are miliseconds. 400 is default.
