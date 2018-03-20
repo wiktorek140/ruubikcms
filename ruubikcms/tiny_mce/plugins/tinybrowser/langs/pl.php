@@ -56,4 +56,9 @@ define("TB_TTLMAXSIZE", "Błąd Rozmaru Pliku");
 define("TB_DENIED", "Wymagane jest zezwolenie na przegląd tej strony.");
 define("TB_UPDENIED", "Wymagane jest załadownie zezwolenia na przeglad tej strony.");
 define("TB_EDDENIED", "Wymagana jest edycja lub skasowanie zezwolenia na przegląd ten strony.");
+define("TB_FOLDERS", "Katalogi");
+define("TB_CREATE", "Stwórz");
+define("TB_FOLDERCURR", "Katalog: ");
+define("TB_MOVE", "Przenieś");
+define("TB_FOLDERNAME", "Nazwa Katalogu");
 ?>

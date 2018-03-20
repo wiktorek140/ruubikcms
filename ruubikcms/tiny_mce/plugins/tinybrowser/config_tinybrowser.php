@@ -34,7 +34,7 @@ $tinybrowser['sessioncheck'] = 'uid'; //name of session variable to check
 $tinybrowser['obfuscate'] = 'sasd0merdsjfhnsadfbc1';
 
 // Set default language (ISO 639-1 code)
-$tinybrowser['language'] = 'en';
+$tinybrowser['language'] = 'pl';
 
 // Set the integration type (TinyMCE is default)
 $tinybrowser['integration'] = 'tinymce'; // Possible values: 'tinymce', 'fckeditor'
