@@ -34,9 +34,7 @@
 		
         <!--<script src="scripts/icon.js" type="text/javascript"></script>-->
         <script type="text/javascript" src="scripts/rollover.js"></script>
-		<script type="text/javascript" src="../tiny_mce/tiny_mce.js"></script>
-		<script type="text/javascript" src="../tiny_mce/plugins/tinybrowser/tb_tinymce.js.php"></script>
-		<script type="text/javascript" src="../tiny_mce/plugins/tinybrowser/tb_standalone.js.php"></script>
+		<script type="text/javascript" src="../tinymce/tinymce.min.js"></script>
 		<script type="text/javascript" src="scripts/tinyinit.js"></script>
 		<script type="text/javascript" src="scripts/jquery.js"></script>
 		<script type="text/javascript" src="scripts/date.js"></script>

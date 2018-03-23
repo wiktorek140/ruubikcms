@@ -1,4 +1,4 @@
-tinyMCE.init({
+/*tinyMCE.init({
 	language : "pl",
 	mode : "textareas",
 	editor_selector : "tinyMCE",
@@ -25,19 +25,18 @@ tinyMCE.init({
 	external_image_list_url : "js/image_list.js",
 	media_external_list_url : "js/media_list.js",
 	file_browser_callback : "tinyBrowser"
-});
+});*/
 
-/*tinymce.init({
+tinymce.init({
 	
         selector: "textarea.tinyMCE",
         init_instance_callback : function(editor) {
             console.log("Editor: " + editor.id + " is now initialized.");
         },
-        plugins: "spellchecker pagebreak table save hr image link emoticons insertdatetime preview media searchreplace print contextmenu paste directionality fullscreen noneditable visualchars nonbreaking template",
+        plugins: "spellchecker pagebreak table save hr image link emoticons insertdatetime preview media searchreplace print contextmenu paste directionality fullscreen noneditable visualchars nonbreaking template code",
 		branding: false,
         resize: 'both',
         skin:"lightgray",
-        theme : "modern",
         
         toolbar1 : "save newdocument | bold italic underline strikethrough | justifyleft justifycenter justifyright justifyfull | styleselect formatselect fontselect fontsizeselect",
 		toolbar2 : "cut copy paste pastetext pasteword | search replace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor",
@@ -49,17 +48,24 @@ tinyMCE.init({
 	styles : "Lightbox Link=lightbox;Gallery Image=gallery; Clear Gallery Float=clearfloat",
 	block_formats : "p,pre,div,h1,h2,h3,h4,h5,h6",
         
-	editor_selector : "tinyMCE",
 	convert_urls : false,
 	relative_urls : false,
 	
-	theme_advanced_toolbar_location : "top",
-	theme_advanced_toolbar_align : "left",
-	theme_advanced_statusbar_location : "bottom",
+	target_list: [
+    {title: 'None', value: ''},
+    {title: 'Same page', value: '_self'},
+    {title: 'New page', value: '_blank'},
+    {title: 'Lightbox', value: '_lightbox'}
+  ],
 	
-	template_external_list_url : "js/template_list.js",
-	external_link_list_url : "js/link_list.js",
-	external_image_list_url : "js/image_list.js",
-	media_external_list_url : "js/media_list.js",
-	file_browser_callback : "tinyBrowser"
-});*/
+	rel_list: [
+    {title: 'Lightbox', value: 'lightbox'},
+    {title: 'Table of contents', value: 'toc'}
+  ],
+	
+	file_browser_callback: RoxyFileBrowser
+});
+
+//function responsible for loading roxyfilebrowser
+function RoxyFileBrowser(field_name, url, type, win) {
+    var roxyFileman = '/fileman/index.html'; if (roxyFileman.indexOf("?") < 0) {     roxyFileman += "?type=" + type;   } else {    roxyFileman += "&type=" + type; } roxyFileman += '&input=' + field_name + '&value=' + win.document.getElementById(field_name).value; if(tinyMCE.activeEditor.settings.language){ roxyFileman += '&langCode=' + tinyMCE.activeEditor.settings.language; } tinyMCE.activeEditor.windowManager.open({     file: roxyFileman,     title: 'Roxy Fileman',     width: 850,     height: 650,     resizable: "yes",     plugins: "media",     inline: "yes",     close_previous: "no"   }, {     window: win,     input: field_name    }); return false; }
