@@ -18,12 +18,12 @@ echo $page['doctype'];
 	<meta name="copyright" content="<?php echo $page['copyright'];?>" />
 
 	<link rel="shortcut icon" href="<?php echo $siteroot;?>ruubikcms/website/images/logo.ico" />   		
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/default.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleBody.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColLeft.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColCenter.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColRight.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo $siteroot;?>ruubikcms/website/css/styleMenus.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/default.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleBody.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColLeft.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColCenter.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleColRight.css" />
+	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleMenus.css" />
 	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/css/styleGallery.css" />
 	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/lightbox/css/lightbox.min.css"/>
         <link rel="stylesheet" href="<?php echo $siteroot;?>default.css" />

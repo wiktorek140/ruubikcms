@@ -33,25 +33,27 @@
 		<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="css/styleIE7hacks.css" /><![endif]--> 
 		
         <!--<script src="scripts/icon.js" type="text/javascript"></script>-->
-        <script type="text/javascript" src="scripts/rollover.js"></script>
-		<script type="text/javascript" src="../tiny_mce/tiny_mce.js"></script>
-		<script type="text/javascript" src="../tiny_mce/plugins/tinybrowser/tb_tinymce.js.php"></script>
-		<script type="text/javascript" src="../tiny_mce/plugins/tinybrowser/tb_standalone.js.php"></script>
-		<script type="text/javascript" src="scripts/tinyinit.js"></script>
-		<script type="text/javascript" src="scripts/jquery.js"></script>
-		<script type="text/javascript" src="scripts/date.js"></script>
-		<?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';?>
+        <script src="scripts/rollover.js"></script>
+        <script src="../tiny_mce/tiny_mce.js"></script>
+        <script src="../tiny_mce/plugins/tinybrowser/tb_tinymce.js.php"></script>
+        <script src="../tiny_mce/plugins/tinybrowser/tb_standalone.js.php"></script>
+        <script src="scripts/tinyinit.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="scripts/date.js"></script>
+        <?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script src="scripts/pagemenu.js"></script>';?>
 
-		<!-- beautytips stuff -->
-		<script src="scripts/jquery.bgiframe.min.js" type="text/javascript" charset="utf-8"></script>
-		<!--[if IE]><script src="scripts/excanvas.js" type="text/javascript" charset="utf-8"></script><![endif]-->
-		<script src="scripts/jquery.bt.min.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript" src="scripts/tooltip.js"></script>
-		<script type="text/javascript" src="scripts/jquery.datePicker.js"></script>
-	
-		<?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) echo '<script type="text/javascript" src="scripts/pageadmin.js"></script>';?>
-		<?php if ($cmspage == NEWS OR $cmspage == EXTRAUSERS) echo '<script type="text/javascript" src="scripts/newsadmin.js"></script>';?>
-		
+        <!-- beautytips stuff -->
+        <script src="scripts/jquery-bt/jquery.bgiframe.min.js" charset="utf-8"></script>
+        <script src="scripts/jquery-bt/jquery.hoverIntent.minified.js" charset="utf-8"></script>
+        <!--[if IE]><script src="scripts/excanvas.js" charset="utf-8"></script><![endif]-->
+        <script src="scripts/jquery-bt/jquery.bt.min.js" charset="utf-8"></script>
+        
+        <script src="scripts/tooltip.js"></script>
+        <script src="scripts/jquery.datePicker.js"></script>
+
+        <?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) echo '<script src="scripts/pageadmin.js"></script>';?>
+        <?php if ($cmspage == NEWS OR $cmspage == EXTRAUSERS) echo '<script src="scripts/newsadmin.js"></script>';?>
+
     </head>
     <body>
         
