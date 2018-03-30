@@ -33,15 +33,13 @@
 	<!--[if IE 7]><link rel="stylesheet" media="screen" href="css/styleIE7hacks.css" /><![endif]--> 
 	
         <!--<script src="scripts/icon.js" type="text/javascript"></script>-->
-        <script src="scripts/rollover.js"></script>
-        <script src="../tiny_mce/tiny_mce.js"></script>
-        <script src="../tiny_mce/plugins/tinybrowser/tb_tinymce.js.php"></script>
-        <script src="../tiny_mce/plugins/tinybrowser/tb_standalone.js.php"></script>
-        <script src="scripts/tinyinit.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="scripts/date.js"></script>
-        <?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script src="scripts/pagemenu.js"></script>';?>
-
+        <script type="text/javascript" src="scripts/rollover.js"></script>
+		<script type="text/javascript" src="../tinymce/tinymce.min.js"></script>
+		<script type="text/javascript" src="scripts/tinyinit.js"></script>
+		<script type="text/javascript" src="scripts/jquery.js"></script>
+		<script type="text/javascript" src="scripts/date.js"></script>
+		<?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <!-- beautytips stuff -->
         <!--[if lt IE 9]>
 	<script src="scripts/jquery-bt/jquery.bgiframe.min.js" type="text/javascript" charset="utf-8"></script>
