@@ -1,4 +1,5 @@
-$('.tooltip').bt({
+/*$('.tooltip').bt(
+    {
     trigger: 'click',
     positions: ['bottom','top'],
     cssClass: 'tooltipBox',
@@ -9,6 +10,22 @@ $('.tooltip').bt({
     spikeGirth: 20, 
     spikeLength: 8,
     overlap: -2,
-    centerPointX: .5,
-    centerPointY: .5
+    centerPointX: 0.5,
+    centerPointY: 0.5
+    }
+);*/
+
+$('.tooltip').bt("Example content to test out",{
+  trigger: 'hover',
+  //contentSelector: "$(this).attr('title')",
+  fill: 'red',
+  positions: ['left', 'right', 'bottom']
 });
+
+$('.imgover').bt("Example content to test out",{
+  trigger: 'hover',
+  //contentSelector: "$(this).attr('title')",
+  fill: 'red',
+  positions: ['left', 'right', 'bottom']
+});
+

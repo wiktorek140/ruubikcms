@@ -1,10 +1,9 @@
 <?php
-require('ruubikcms/includes/encodingconf.php');
 require('ruubikcms/page.php');
 echo $page['doctype'];
 ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $site['lang'];?>" lang="<?php echo $page['lang'];?>">
+<html lang="<?php echo $page['lang'];?>">
     <head>
         <title><?php echo $page['title'];?></title>
         <?php echo $page['gacode'];?>
@@ -28,66 +27,63 @@ echo $page['doctype'];
 	<link rel="stylesheet" href="<?php echo $siteroot;?>ruubikcms/website/lightbox/css/lightbox.min.css"/>
         <link rel="stylesheet" href="<?php echo $siteroot;?>default.css" />
 	
-        
-        
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="<?php echo $siteroot;?>ruubikcms/website/lightbox/js/lightbox.min.js"></script>
         <script src="<?php echo $siteroot;?>ruubikcms/website/scripts/datescripts.js"></script>	
     </head>
-	<body>
-		<div id="wrapper">
-			<div id="innerWrapper">
-			<!-- **************** HEADER ******************** -->
-				<div id="header">
-					<div id="design"></div>
-					<div id="mainMenu">
-                                            <?php
-                                            if(isMobile()) {
-                                                echo $page['dropdownmenu'];
-                                            } else {
-                                                echo $page['mainmenu'];
-                                            }
-                                            ?>
-					</div>
-					<div class="clear"></div>
-				</div>
+    <body>
+        <div id="wrapper">
+            <div id="innerWrapper">
+                <!-- **************** HEADER ******************** -->
+                <div id="header">
+                    <div id="design"></div>
+                    <div id="mainMenu">
+                        <?php
+                        if(isMobile()) {
+                            //echo $page['dropdownmenu']; <- uncoment if want dropdown menu
+                            echo $page['mainmenu']; //<- coment to replace form mainmenu on mobile
+                        } else {
+                            echo $page['mainmenu'];
+                        }
+                        ?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
 
-				<!-- **************** MAINBODY ******************** -->
+                <!-- **************** MAINBODY ******************** -->
+                <div id="mainBody">
+                    <?php
+                        //Uncoment if u want to enable menu in mobile
+                        //if(!isMobile()){
+                            echo '<div id="ColLeft"><div id="subMenu">'.
+                                 $page['submenu1'].
+                                 '</div></div>';
+                        //} else {
+                        //   echo '<style> #ColCenter{width: 74%; border-left: none;} </style>';
+                        //}
+                        //End block for menu
+                    ?>
+                    <div id="ColCenter">
+                        <div id="content">
+                            <h1><?php echo $page['header1'];?></h1>
+                            <?php echo $page['content'];?>
+                        </div>
+                    </div>
+                    <div id="ColRight">
+                            <?php snippet_php('right-column');?>
+                    </div>
+                    <div class="clear"></div>
+                </div>
 
-				<div id="mainBody">
-                                    <?php
-                                        if(!isMobile()){
-                                            echo '<div id="ColLeft"><div id="subMenu">'.
-                                                 $page['submenu1'].
-                                                 '</div></div>';
-                                        } else {
-                                            echo '<style> #ColCenter{width: 74%; border-left: none;} </style>';
-                                        }
-                                        
-                                    ?>
-                                    <div id="ColCenter">
-                                        <div id="content">
-                                            <h1><?php echo $page['header1'];?></h1>
-                                            <?php echo $page['content'];?>
-                                        </div>
-                                    </div>
-
-                                    <div id="ColRight">
-                                            <?php snippet_php('right-column');?>
-                                    </div>
-                                    <div class="clear"></div>
-				</div>
-
-				<!-- **************** FOOTER ******************** -->
-
-				<div id="footer">
-                                    <div>
-                                        <!-- Please leave "Powered by RuubikCMS" notice here! -->
-                                        Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
-                                        | Copyright &copy; <?php echo date("Y"); echo " ".$page['sitename'];?>
-                                    </div>
-				</div>                
-			</div>
-		</div>	
-	</body>
+                <!-- **************** FOOTER ******************** -->
+                <div id="footer">
+                    <div>
+                        <!-- Please leave "Powered by RuubikCMS" notice here! -->
+                        Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
+                        | Copyright &copy; <?php echo date("Y"); echo " ".$page['sitename'];?>
+                    </div>
+                </div>
+            </div>
+        </div>	
+    </body>
 </html>

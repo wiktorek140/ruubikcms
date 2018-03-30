@@ -10,6 +10,10 @@ ruubikcms/sqlite/ruubikcms.sqlite
 ruubikcms/sqlite/ruubikcms-last-login.sqlite
 inne/
 inne
+doc
+doc/
+extra/
+extra
 edu_glob.png
 herb_gminy.jpg
 herb_gminy.png
