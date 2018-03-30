@@ -1,5 +1,5 @@
 <?php
-require('../ruubikcms/extrapage.php');
+require('extrapage.php');
 echo $page['doctype'];
 ?>
 
