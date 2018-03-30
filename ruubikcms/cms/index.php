@@ -1,6 +1,6 @@
 <?php
 /*   RuubikCMS - The easy & fast way to manage Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Pirilä, Henrik Valros
+ *   Copyright (C) 2008-2010 Iisakki Pirilï¿½, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -294,7 +294,7 @@ $token = csrf_token();
 								<tr>
 									<td class="tdPageAdminLeft"><?php echo PAGENAME;?></td>
 									<td class="tdPageAdminCenter"><input type="text" name="name" id="name" value="<?php if (isset($page['name'])) echo ec($page['name']);?>" /></td>
-									<td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_TITLE;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+									<td class="tdPageAdminRight"><a href="#"  class="tooltip" title="<?php echo H_TITLE;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
 									<input name="token" type="hidden" value="<?php echo $token;?>" />
 								</tr>
 								<tr>

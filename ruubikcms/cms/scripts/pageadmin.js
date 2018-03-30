@@ -30,12 +30,12 @@ $(document).ready(function(){
 	
 	//$("dt").append(":");
 
-	if ($("#pic1img").attr("src") != "") {
+	if ($("#pic1img").attr("src") !== "") {
 		var t = $("#pic1img").attr("src").match( /.*\// ) + "_thumbs/_" + $("#pic1img").attr("src").replace( /.*\//, "" );
 		$("#pic1img").attr("src", t)
 	}
 	
-	if ($("#pic2img").attr("src") != "") {
+	if ($("#pic2img").attr("src") !== "") {
 		var t = $("#pic2img").attr("src").match( /.*\// ) + "_thumbs/_" + $("#pic2img").attr("src").replace( /.*\//, "" );
 		$("#pic2img").attr("src", t)
 	}
@@ -43,9 +43,9 @@ $(document).ready(function(){
 });
 
 function validate(f) {
-	if(f.name.value=="") {
-		alert('Page name is missing. Sivun nimi puuttuu.');
-		return false;
-	}
-	return true;
+    if(f.name.value=="") {
+        alert('Page name is missing. Sivun nimi puuttuu.');
+        return false;
+    }
+    return true;
 }

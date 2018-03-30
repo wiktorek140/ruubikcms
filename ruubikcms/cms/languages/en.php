@@ -2,7 +2,7 @@
 /*
 RuubikCMS language file
 Language: 'en'
-Author: Iisakki Piril‰
+Author: Iisakki Piril√§
 Email: info[at]ruubikcms[dot]com
 */
 		define("SAVE", "Save");

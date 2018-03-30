@@ -12,7 +12,7 @@ define("PDO_DB_DRIVER", "sqlite");
 define("PDO_DB_NAME", "ruubikcms.sqlite");
 
 // general settings
-define("VERNUM", "1.1.2 Beta");
+define("VERNUM", "1.1.3 Stable");
 
 // which cms main menu tabs are visible for administrator (TRUE/FALSE)
 define("SHOW_SITESETUP", TRUE);

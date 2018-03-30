@@ -4,9 +4,9 @@
 // -------- THESE PARTS ARE SEPARATED BY LINES ------------------------------------------------------------------------------------------------
 
 if (basename($_SERVER['REQUEST_URI']) == 'extrapage.php') die ('Access denied');
-require('includes/dbconfig.php');
-require('includes/doctypes.php');
-require('includes/commonfunc.php');
+require('../ruubikcms/includes/dbconfig.php');
+require('../ruubikcms/includes/doctypes.php');
+require('../ruubikcms/includes/commonfunc.php');
 $dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME); // database connection object
 
 $page = array();
@@ -15,8 +15,8 @@ $site = get_site_data();
 $siteroot = '/'.($site['siteroot'] != "" ? trim($site['siteroot'],'/').'/' : '');
 
 define('LOGOUT_TIME', query_single("SELECT logout_time FROM options WHERE id = 1"));
-require('../extra/login/session.php');
-require('../extra/login/accesscontrol.php');
+require('login/session.php');
+require('login/accesscontrol.php');
 
 if ($site['clean_url'] >= 1) {
 	$array = explode('/',$_SERVER['REQUEST_URI']);
