@@ -1,4 +1,3 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'index.php') die ('Access denied');?>
 <?php
 session_name('cmslogin'); // set session name
 session_start(); // start session for login system
