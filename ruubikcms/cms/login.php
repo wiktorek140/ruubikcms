@@ -36,7 +36,7 @@ $company = query_single("SELECT name FROM site WHERE id = 1");
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo RLANG;?>" lang="<?php echo RLANG;?>">
 	<head>
 		<title>RuubikCMS - <?php echo $cmspage;?></title>
-		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="RuubikCMS - Easy and fast way to build Google optimized websites." />
 		<meta name="keywords" content="RuubikCMS" />
 		<meta name="robots" content="NONE" />
@@ -92,7 +92,7 @@ $company = query_single("SELECT name FROM site WHERE id = 1");
 							
 						<?php 
 							require('login/form.php');
-							if (@$_SESSION['notfound']) echo '<p>'.INCORRECTUSER.'</p>';	
+							if (@$_SESSION['notfound']) echo '<p>'.INCORRECTUSER.'</p>';
 						?>
 							
 					</div>

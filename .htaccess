@@ -1,1 +1,11 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
 
+<FilesMatch "(\.(engine|inc|info|install|module|profile|po|sh|.*sql|theme|tpl(\.php)? |xtmpl)|code-style\.pl|Entries.*|Repository|Root|Tag|Template)$"> 
+Order allow,deny 
+</FilesMatch>
+# Don’t show directory listings 
+Options -Indexes 
+# Basic rewrite rules, stop unneeded PERL bot, block subversion directories

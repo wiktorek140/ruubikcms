@@ -1,3 +1,4 @@
+<?php if (basename($_SERVER['REQUEST_URI']) == 'settings.php') die ('Access denied');?>
 <?php
 // Available website content languages and language codes.
 // Used in HTML-element in the beginning of a XHTML-document.
@@ -43,9 +44,9 @@ $robots = array(
 );
 
 $charset = array(
-	'iso-8859-1' => 'iso-8859-1',
+//	'iso-8859-1' => 'iso-8859-1',
 	'utf-8' => 'utf-8',
-	'utf-16' => 'utf-16',
+//	'utf-16' => 'utf-16',
 	'iso-8859-2' => 'iso-8859-2',
 	'iso-8859-3' => 'iso-8859-3',
 	'iso-8859-4' => 'iso-8859-4',

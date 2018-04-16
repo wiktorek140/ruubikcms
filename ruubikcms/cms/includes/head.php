@@ -1,3 +1,4 @@
+<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php') die ('Access denied');?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo RLANG;?>" lang="<?php echo RLANG;?>">
@@ -34,12 +35,12 @@
 	
         <!--<script src="scripts/icon.js" type="text/javascript"></script>-->
         <script type="text/javascript" src="scripts/rollover.js"></script>
-		<script type="text/javascript" src="../tinymce/tinymce.min.js"></script>
-		<script type="text/javascript" src="scripts/tinyinit.js"></script>
-		<script type="text/javascript" src="scripts/jquery.js"></script>
-		<script type="text/javascript" src="scripts/date.js"></script>
-		<?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../tiny_mce/tiny_mce.js"></script>
+        <script type="text/javascript" src="scripts/tinyinit.js"></script>
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="scripts/date.js"></script>
+        <?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <!-- beautytips stuff -->
         <!--[if lt IE 9]>
 	<script src="scripts/jquery-bt/jquery.bgiframe.min.js" type="text/javascript" charset="utf-8"></script>

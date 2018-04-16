@@ -68,7 +68,7 @@ header("Content-Transfer-Encoding: binary");
 header("Content-Length: " . $fsize);
 
 // download
-$file = @fopen($fpath,"rb");
+$file = @fopen($fpath,"r");
 if ($file) {
 	while(!feof($file)) {
 		print(fread($file, 1024*8));

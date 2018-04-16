@@ -124,10 +124,10 @@ require('../includes/encodingconf.php');
             //print(ini_set('iconv.internal_encoding','UTF-8'));
 
             echo '<tr><td>';
-            //$data = ini_get_all(); 
-            //print "<pre>";
-            //print_r($data);
-            //print "</pre>";
+            $data = ini_get_all(); 
+            print "<pre>";
+            print_r($data);
+            print "</pre>";
 
             phpinfo();
             echo '</td></tr>';

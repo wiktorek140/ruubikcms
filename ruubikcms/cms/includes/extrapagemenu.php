@@ -1,4 +1,5 @@
-		<!-- **************** leftDiv (rootMenu) ******************** -->
+<?php if (basename($_SERVER['REQUEST_URI']) == 'extrapagemenu.php') die ('Access denied'); ?>
+<!-- **************** leftDiv (rootMenu) ******************** -->
                 <div id="leftDiv">
                     <div class="blueHeader">
                         <?php echo EXTRAPAGES;?>

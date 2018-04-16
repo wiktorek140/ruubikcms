@@ -1,3 +1,4 @@
+<?php if (basename($_SERVER['REQUEST_URI']) == 'function.php') die ('Access denied'); ?>
 <?php
 // FUNCTIONS
 

@@ -1,4 +1,5 @@
-			<!-- **************** leftDiv (rootMenu) ******************** -->    
+<?php if (basename($_SERVER['REQUEST_URI']) == 'usermenu.php') die ('Access denied'); ?>
+<!-- **************** leftDiv (rootMenu) ******************** -->    
 			   
                 <div id="leftDiv">
                     <div class="blueHeader"><?php echo USERS;?></div>

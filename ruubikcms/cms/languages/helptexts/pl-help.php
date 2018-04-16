@@ -1,8 +1,9 @@
+<?php if (basename($_SERVER['REQUEST_URI']) == 'pl-help.php') die ('Access denied'); ?>
 <?php
 /*
 RuubikCMS help language file
 Language: 'pl'
-Author: Iisakki Pirilä
+Author: Iisakki Pirilï¿½
 Email: info[at]ruubikcms[dot]com
 */
 		define("H_TITLE", "<h5>Page name</h5><p>Page name is shown in the <b>web site's navigation menu</b> and also in the Pages menu on the CMS-side.</p><p>If creating a new page and URL-field is left empty, unique URL-name will be based on this field.</p>");

@@ -1,3 +1,4 @@
+<?php if (basename($_SERVER['REQUEST_URI']) == 'jquery.lightbox-0.5.js.php') die ('Access denied');?>
 <?php 
 	require('../../includes/dbconfig.php');
 	require('../../includes/commonfunc.php');

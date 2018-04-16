@@ -1,6 +1,6 @@
 <?php
 /*   RuubikCMS - The easy & fast way to manage Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Pirilä, Henrik Valros
+ *   Copyright (C) 2008-2010 Iisakki Pirilï¿½, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -17,6 +17,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 require('includes/required.php');
+if ($_SESSION['level'] != 5) die(NOTALLOWED);
 $cmspage = NEWS;
 $news = array();
 $self = ec($_SERVER['PHP_SELF']);

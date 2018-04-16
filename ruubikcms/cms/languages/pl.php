@@ -1,3 +1,4 @@
+<?php if (basename($_SERVER['REQUEST_URI']) == 'pl.php') die ('Access denied'); ?>
 <?php	
 /*
 RuubikCMS language file
@@ -7,7 +8,7 @@ Email: wiktorek140[at]tlen[dot]com
 */
 		define("SAVE", "Zapisz");
 		define("RNEW", "Nowy");
-		define("DELETE", "Usuń;");
+		define("DELETE", "Usuń");
 		define("EDIT", "Edytuj");
 		define("DELETEPAGECONFIRM", "Jesteś pewny że chcesz usunąć tę stronę?");
 		define("NODELETECHILDREN", "Prosze usunąć wszystkie podstrony zanim usuniesz tę stronę!");

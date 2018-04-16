@@ -1,4 +1,4 @@
-			 
+<?php if (basename($_SERVER['REQUEST_URI']) == 'footer.php') die ('Access denied'); ?>			 
         <!-- **************** FOOTER ******************** -->      
         <div id="footer">
             <div>
