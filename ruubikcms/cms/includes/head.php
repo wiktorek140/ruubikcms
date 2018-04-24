@@ -1,4 +1,6 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php') die ('Access denied');?>
+<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php') die ('Access denied');
+if (strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) die("Access Denied");
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo RLANG;?>" lang="<?php echo RLANG;?>">

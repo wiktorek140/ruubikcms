@@ -1,4 +1,6 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'settings.php') die ('Access denied');?>
+<?php if (basename($_SERVER['REQUEST_URI']) == 'settings.php') die ('Access denied');
+if (strpos($_SERVER['REQUEST_URI'], 'settings.php') !== false) die("Access Denied");
+?>
 <?php
 // Available website content languages and language codes.
 // Used in HTML-element in the beginning of a XHTML-document.

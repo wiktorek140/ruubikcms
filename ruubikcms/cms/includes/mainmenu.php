@@ -1,4 +1,6 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'mainmenu.php') die ('Access denied'); ?>
+<?php if (basename($_SERVER['REQUEST_URI']) == 'mainmenu.php') die ('Access denied'); 
+if (strpos($_SERVER['REQUEST_URI'], 'mainmenu.php') !== false) die("Access Denied");
+?>
 <?php 
                         if (SHOW_SITESETUP AND $_SESSION['level'] == 5) echo '
                         <li><a href="sitesetup.php"'.($filename == 'sitesetup.php' ? ' class="selectedMenu"' : '').'><span'.($filename == 'sitesetup.php' ? ' class="selectedMenu"' : '').'>'.SITESETUP.'</span></a></li>';

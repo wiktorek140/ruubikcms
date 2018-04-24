@@ -1,5 +1,5 @@
 <?php if (basename($_SERVER['REQUEST_URI']) == 'commonfunc.php') die ('Access denied');
-
+if (strpos($_SERVER['REQUEST_URI'], 'commonfunc.php') !== false) die("Access Denied");
 // Strip slashes and convert all applicable characters to HTML entities for XSS prevention
 function ec($input) {
 	$site = get_site_data();

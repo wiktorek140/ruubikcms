@@ -2,7 +2,9 @@
 // --- File download with authentication and logging
 // --- Sample call with optional new name: download.php?f=phptutorial.zip&fc=newname.zip
 
-//if (basename($_SERVER['REQUEST_URI']) == 'page.php') die ('Access denied');
+
+if (strpos($_SERVER['REQUEST_URI'], 'download.php') !== false) die("Access Denied");
+
 require('includes/dbconfig.php');
 require('includes/commonfunc.php');
 $dbh = new PDO(PDO_DB_DRIVER.':'.PDO_DB_FOLDER.'/'.PDO_DB_NAME); // database connection object
@@ -23,6 +25,7 @@ if (!isset($_GET['f']) OR empty($_GET['f'])) {
 
 // get real file name, remove any path info to avoid hacking by adding relative path etc
 $fname = basename($_GET['f']);
+$fname = rtrim($fname);
 $fpath = BASE_DIR.$fname;
 
 if (!is_file($fpath)) {

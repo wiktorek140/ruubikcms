@@ -1,8 +1,7 @@
 <?php 
 if (basename($_SERVER['REQUEST_URI']) == 'dbconfig.php') die ('Access denied');
 // error reporting, exclude notices
-error_reporting(E_NOTICE);
-//error_reporting(E_ALL);
+error_reporting(E_ALL ^ E_NOTICE);
 
 // ruubikcms base folder
 define("RUUBIKCMS_FOLDER", "ruubikcms");

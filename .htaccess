@@ -9,3 +9,5 @@ Order allow,deny
 # Don’t show directory listings 
 Options -Indexes 
 # Basic rewrite rules, stop unneeded PERL bot, block subversion directories
+
+FallbackResource /index.php

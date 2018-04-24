@@ -60,19 +60,19 @@ if (isset($_POST['save'])) {
 
  	// convert index.php?p=pageurl links to clean url links
 	if ($site['clean_url'] >= 1) {
-		$content = preg_replace_callback('/index.php\?p\=(.+)"/Us', 
-                    function () { 
-                        return "clean_url('$1').'\"'"; 
-                    } , $content);
+                        $content = preg_replace_callback('/index.php\?p\=(.+)"/Us',                
+                        function () { 
+                            return "clean_url('$1').'\"'"; 
+                        } , $content);
 	}
 	
 	// convert userupload/files/ filelink tags to logged downloads via download.php script
-    //fixed for php7 where option e is removed
-	$content = preg_replace_callback('#a href\="([^"]*/useruploads/files/[^\?]+)"#Us', 
-        function ($siteroot) { 
-            return "a.' href=\"/".($siteroot != "" ? $siteroot.'/' : '')."ruubikcms/download.php?f='.basename('$1').'\"'";
-        }
-        , $content); 
+                //fixed for php7 where option e is removed
+	//$content = preg_replace_callback('#a href\="([^"]*/useruploads/files/[^\?]+)"#Us', 
+        //function ($siteroot) { 
+           // return "a.' href=\"/".($siteroot != "" ? $siteroot.'/' : '')."ruubikcms/download.php?f='.basename('$1').'\"'";
+        //}
+       // , $content);
 
 	// at least some name must be defined
 	if (!$_POST['name']) $_POST['name'] = NONAME;

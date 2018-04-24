@@ -1,4 +1,6 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'required.php') die ('Access denied'); ?>
+<?php if (basename($_SERVER['REQUEST_URI']) == 'required.php') die ('Access denied'); 
+if (strpos($_SERVER['REQUEST_URI'], 'required.php') !== false) die("Access Denied");
+?>
 <?php
 $start = microtime(true);
 $filename = basename($_SERVER['PHP_SELF']);

@@ -14,15 +14,20 @@ $page = array();
 $site = array();
 $site = get_site_data();
 $siteroot = '/'.($site['siteroot'] != "" ? trim($site['siteroot'],'/').'/' : '');
-
 if ($site['clean_url'] >= 1) {
+    
 	$array = explode('/',$_SERVER['REQUEST_URI']);
+                   //print_r($array);
 	$pagearr = explode('.', end($array));
 	$pagearr2 = explode('?', $pagearr[0]);
 	$_GET['p'] = $pagearr2[0];
-	if ($_GET['p'] == 'index') $_GET['p'] = ""; // uri index.php without trailing slash
+	if (strpos($_GET['p'], 'index') !== false )  $_GET['p'] = ""; // uri index.php without trailing slash
 	if (count($array) >= 3) $mainmenu = $array[1];
 	if (count($array) == 4) $submenu = $array[2];
+        
+                //print_r($array);
+                //print_r($pagearr);
+                //print_r($pagearr2);
 	$clean_url = TRUE;
 } else {
 	$clean_url = FALSE;

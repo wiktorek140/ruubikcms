@@ -1,4 +1,6 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'snippetmenu.php') die ('Access denied'); ?>
+<?php if (basename($_SERVER['REQUEST_URI']) == 'snippetmenu.php') die ('Access denied'); 
+if (strpos($_SERVER['REQUEST_URI'], 'snippetmenu.php') !== false) die("Access Denied");
+?>
 <!-- **************** leftDiv (rootMenu) ******************** -->    
 			   
                 <div id="leftDiv">
