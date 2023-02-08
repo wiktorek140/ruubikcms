@@ -1,13 +1,20 @@
 #mainBody {
-	background-color: #dadada;
+    background-color: #dadada;
 }
 
 #decorationPic {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 #kontakt {
-	text-align: center;
-	font: bold;
+    text-align: center;
+    font: bold;
+}
 
+#subMenu ul li.selected div {
+    color: #A81018;
+}
+
+table.currentYear > tbody > tr > td {
+    vertical-align: middle;
 }

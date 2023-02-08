@@ -8,6 +8,7 @@ Order allow,deny
 </FilesMatch>
 # Don’t show directory listings 
 Options -Indexes 
+RewriteEngine  on
 # Basic rewrite rules, stop unneeded PERL bot, block subversion directories
 
 FallbackResource /index.php

@@ -76,7 +76,8 @@ function init() {
 		// Setup form data
 		setFormValue('href', href);
 		setFormValue('title', inst.dom.getAttrib(elm, 'title'));
-                setFormValue('data-lightbox', inst.dom.getAttrib(elm, 'data-lightbox'));
+		if(inst.dom.getAttrib(elm, 'data-lightbox') !== "")
+			setFormValue('data-lightbox', inst.dom.getAttrib(elm, 'data-lightbox'));
 		setFormValue('id', inst.dom.getAttrib(elm, 'id'));
 		setFormValue('style', inst.dom.getAttrib(elm, "style"));
 		setFormValue('rel', inst.dom.getAttrib(elm, 'rel'));
@@ -446,7 +447,7 @@ function setAllAttribs(elm) {
 
 	setAttrib(elm, 'href', href);
 	setAttrib(elm, 'title');
-        setAttrib(elm, 'data-lightbox');
+    setAttrib(elm, 'data-lightbox');
 	setAttrib(elm, 'target', target === '_self' ? '' : target);
 	setAttrib(elm, 'id');
 	setAttrib(elm, 'style');
