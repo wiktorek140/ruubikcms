@@ -27,6 +27,34 @@ tinyMCE.init({
 	file_browser_callback : RoxyFileBrowser
 });
 
+/*tinymce.init({
+	
+    selector: "textarea.tinyMCE",
+    init_instance_callback : function(editor) {
+        console.log("Editor: " + editor.id + " is now initialized.");
+    },
+    plugins: "spellchecker pagebreak table save hr image link emoticons insertdatetime preview media searchreplace print contextmenu paste directionality fullscreen noneditable visualchars nonbreaking template code",
+    branding: false,
+    resize: 'both',
+    skin:"lightgray",
+    width: 580,
+    height: 300,
+
+    toolbar1 : "save newdocument | bold italic underline strikethrough | justifyleft justifycenter justifyright justifyfull | styleselect formatselect fontselect fontsizeselect",
+    toolbar2 : "cut copy paste pastetext pasteword | search replace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor",
+    toolbar3 : "tablecontrols | hr removeformat visualaid | sub sup | charmap emotions iespell media advhr | print | ltr rtl | fullscreen",
+    toolbar4 : "insertlayer moveforward movebackward absolute | styleprops spellchecker | cite abbr acronym del ins attribs | visualchars nonbreaking template blockquote pagebreak | insertfile insertimage",
+
+    content_css : "../website/css/editor_content.css",
+    valid_elements : "a[class|name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|style],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style],form[name|method|action|id],input[name|type|value|id|disabled|size|maxlength|class],textarea[name|cols|rows|id],select[name|id],option[selected|value],iframe[src|width|height|name|align|frameborder|scrolling|marginheight|marginwidth]",
+    block_formats : "p,pre,div,h1,h2,h3,h4,h5,h6",
+
+    convert_urls : false,
+    relative_urls : false,
+
+    file_browser_callback: RoxyFileBrowser
+});*/
+
 //function responsible for loading roxyfilebrowser
 function RoxyFileBrowser(field_name, url, type, win) {
     var roxyFileman = '/ruubikcms/fileman/index.html'; 
