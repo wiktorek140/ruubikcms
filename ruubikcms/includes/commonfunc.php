@@ -45,7 +45,7 @@ function get_site_data()
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result[0];
     }
-    return null;
+    return [];
 }
 
 // --- Returns all the data for page as an array. Takes 1) pageurl 2) onlypublished TRUE/FALSE 3) table name (defaults to page).

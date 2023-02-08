@@ -2,44 +2,43 @@
 
 // -------- SCROLL DOWN TO EDIT HTML FOR DIFFERENT PAGE PARTS (MENUS, NEWS, ETC...) -----------------------------------------------------------
 // -------- THESE PARTS ARE SEPARATED BY LINES ------------------------------------------------------------------------------------------------
-
-
-if (basename($_SERVER['REQUEST_URI']) == 'page.php') die ('Access denied');
+if (basename($_SERVER['REQUEST_URI']) == 'page.php') {
+	die ('Access denied');
+}
 require('includes/dbconfig.php');
 require('includes/doctypes.php');
 require('includes/commonfunc.php');
+
 $dbh = new PDO(PDO_DB_DRIVER.':'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME); // database connection object
 
 $page = array();
-$site = array();
 $site = get_site_data();
 $siteroot = '/'.($site['siteroot'] != "" ? trim($site['siteroot'],'/').'/' : '');
+
 if ($site['clean_url'] >= 1) {
-    
 	$array = explode('/',$_SERVER['REQUEST_URI']);
-                   //print_r($array);
 	$pagearr = explode('.', end($array));
 	$pagearr2 = explode('?', $pagearr[0]);
 	$_GET['p'] = $pagearr2[0];
-	if (strpos($_GET['p'], 'index') !== false )  $_GET['p'] = ""; // uri index.php without trailing slash
-	if (count($array) >= 3) $mainmenu = $array[1];
-	if (count($array) == 4) $submenu = $array[2];
-        
-                //print_r($array);
-                //print_r($pagearr);
-                //print_r($pagearr2);
+	if ($_GET['p'] == 'index') {
+		$_GET['p'] = "";
+	} // uri index.php without trailing slash
+	if (count($array) >= 3) {
+		$mainmenu = $array[1];
+	}
+	if (count($array) == 4) {
+		$submenu = $array[2];
+	}
 	$clean_url = TRUE;
 } else {
 	$clean_url = FALSE;
 }
 $submenu_selected = $_GET['p'];
 
-if ($site['url_suffix'] != '') $url_suffix = '.'.trim($site['url_suffix'], '.');
-else $url_suffix = '';
-
-// if no page defined -> get the first page
-//if (!$_GET['p'] AND !$_GET['news']) {
-//Removed because unusable
+$url_suffix = '';
+if ($site['url_suffix'] != '') {
+	$url_suffix = '.' . trim($site['url_suffix'], '.');
+}
 
 if (!$_GET['p']) {
 	$_GET['p'] = frontpage_value();
@@ -65,9 +64,13 @@ if ($_GET['p']) {
 	// get published pagedata for normal page content)
 	$page = get_page_data($_GET['p'], TRUE);
 	// subheader, todo: only needed when using subheader
-	if ($page['levelnum'] == 1) $page['subheader'] = $page['name'];
-	elseif ($page['levelnum'] == 2) $page['subheader'] = query_single("SELECT name FROM page WHERE pageurl = '".$page['mother']."'");
-	elseif ($page['levelnum'] == 3) $page['subheader'] = query_single("SELECT name FROM page WHERE pageurl = '".query_single("SELECT mother FROM page WHERE pageurl ='".$page['mother']."'")."'");
+	if ($page['levelnum'] == 1) {
+		$page['subheader'] = $page['name'];
+	} elseif ($page['levelnum'] == 2) {
+		$page['subheader'] = query_single("SELECT name FROM page WHERE pageurl = '" . $page['mother'] . "'");
+	} elseif ($page['levelnum'] == 3) {
+		$page['subheader'] = query_single("SELECT name FROM page WHERE pageurl = '" . query_single("SELECT mother FROM page WHERE pageurl ='" . $page['mother'] . "'") . "'");
+	}
 	// extracode without slashes:
 	$page['extracode'] = stripslashes($page['extracode']);
 }
@@ -368,4 +371,5 @@ function isMobile() {
         return false;
     }
 }
+
 ?>
