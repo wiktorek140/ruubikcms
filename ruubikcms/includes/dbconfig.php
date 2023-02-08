@@ -1,34 +1,36 @@
-<?php 
-if (basename($_SERVER['REQUEST_URI']) == 'dbconfig.php') die ('Access denied');
+<?php
+
+if (basename($_SERVER['REQUEST_URI']) == 'dbconfig.php') {
+    die ('Access denied');
+}
 // error reporting, exclude notices
 error_reporting(E_ALL ^ E_NOTICE);
 
 // ruubikcms base folder
-define("RUUBIKCMS_FOLDER", "ruubikcms");
+const RUUBIKCMS_FOLDER = "ruubikcms";
 
 // database settings
-define("PDO_DB_FOLDER", "sqlite");
-define("PDO_DB_DRIVER", "sqlite");
-define("PDO_DB_NAME", "ruubikcms.sqlite");
+const PDO_DB_FOLDER = "sqlite";
+const PDO_DB_DRIVER = "sqlite";
+const PDO_DB_NAME = "ruubikcms.sqlite";
 
 // general settings
-define("VERNUM", "1.1.3 Stable");
+const VERNUM = "1.1.3 Stable";
 
 // which cms main menu tabs are visible for administrator (TRUE/FALSE)
-define("SHOW_SITESETUP", TRUE);
-define("SHOW_NEWS", TRUE);
-define("SHOW_SNIPPETS", TRUE);
-define("SHOW_USERS", TRUE);
-define("SHOW_EXTRANET", FALSE);
-define("SHOW_EXTRAUSERS", FALSE);
-define("SHOW_CMSOPTIONS", TRUE);
+const SHOW_SITESETUP = true;
+const SHOW_NEWS = true;
+const SHOW_SNIPPETS = true;
+const SHOW_USERS = true;
+const SHOW_EXTRANET = false;
+const SHOW_EXTRAUSERS = false;
+const SHOW_CMSOPTIONS = true;
 
 // set default timezone (requires >= 5.1.0)
 @date_default_timezone_set(@date_default_timezone_get());
 
 
 // multiple installations for different languages
-define("SHOW_MULTILANG", FALSE);
-$multilang_links = array('en' => 'English', 'fi' => 'Finnish', 'sv' => 'Swedish','pl' => 'Polish');
+const SHOW_MULTILANG = false;
+$multilang_links = ['en' => 'English', 'fi' => 'Finnish', 'sv' => 'Swedish', 'pl' => 'Polish'];
 
-?>
