@@ -39,10 +39,9 @@ if (strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) die("Access Denied");
         <script type="text/javascript" src="scripts/rollover.js"></script>
         <script type="text/javascript" src="../tiny_mce/tiny_mce.js"></script>
         <script type="text/javascript" src="scripts/tinyinit.js"></script>
-        <script type="text/javascript" src="scripts/jquery.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="scripts/date.js"></script>
         <?php if ($cmspage != SNIPPETS AND $cmspage != USERS) echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <!-- beautytips stuff -->
         <!--[if lt IE 9]>
 	<script src="scripts/jquery-bt/jquery.bgiframe.min.js" type="text/javascript" charset="utf-8"></script>
