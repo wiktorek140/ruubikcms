@@ -7,7 +7,7 @@ require('../../ruubikcms/includes/commonfunc.php');
 
 
 try {
-	$dbh = new PDO(PDO_DB_DRIVER.':../../ruubikcms/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+	$dbh = new PDO(PDO_DB_DRIVER.':../../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
 } catch (Exception $exception){
 	die($exception->getMessage());
 }
