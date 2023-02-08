@@ -101,7 +101,7 @@ function getFilesPath(){
   return $ret;
 }
 function listDirectory($path){
-  $ret = @scandir($path);
+  $ret = scandir($path);
   if($ret === false){
     $ret = array();
     $d = opendir($path);
