@@ -1,6 +1,6 @@
 <?php
 /*   RuubikCMS - The easy & fast way to manage Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Pirilä, Henrik Valros
+ *   Copyright (C) 2008-2010 Iisakki Pirilï¿½, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -35,7 +35,7 @@ if (isset($_POST['import'])) {
 		$lines = $counterrors = $inserts = 0;
 		$linearray = array();
 
-		foreach(split("\n", $csvcontent) as $line) {
+		foreach(explode("\n", $csvcontent) as $line) {
 
 			$line = trim($line," \t");
 			$line = str_replace("\r","",$line);

@@ -29,8 +29,6 @@ const SHOW_CMSOPTIONS = true;
 // set default timezone (requires >= 5.1.0)
 @date_default_timezone_set(@date_default_timezone_get());
 
-
 // multiple installations for different languages
 const SHOW_MULTILANG = false;
 $multilang_links = ['en' => 'English', 'fi' => 'Finnish', 'sv' => 'Swedish', 'pl' => 'Polish'];
-

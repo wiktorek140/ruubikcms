@@ -1,5 +1,4 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php') die ('Access denied');
-if (strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) die("Access Denied");
+<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php' || strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) die("Access Denied");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -64,7 +63,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) die("Access Denied");
                 <div id="top">
                     <div id="topLinks">
                         <span id="linksBox">
-                            <?php if(SHOW_MULTILANG) { include('includes/multilang.php'); echo '| '; } ?><a href="../../" target="_blank"><?php echo VIEWSITE;?></a> | <a href="login/logout.php"><?php echo LOGOUT;?></a>
+                            <?php if(SHOW_MULTILANG) { include('multilang.php'); echo '| '; } ?><a href="../../" target="_blank"><?php echo VIEWSITE;?></a> | <a href="login/logout.php"><?php echo LOGOUT;?></a>
                         </span>
                     </div>
                     <div id="topUser">
