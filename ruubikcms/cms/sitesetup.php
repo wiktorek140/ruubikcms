@@ -1,6 +1,6 @@
 <?php
 /*   RuubikCMS - The easy & fast way to build Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Pirilä, Henrik Valros
+ *   Copyright (C) 2008-2010 Iisakki Pirilï¿½, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -44,8 +44,10 @@ if (isset($_POST['save'])) {
 	// some silly boolean conversion
 	if (isset($_POST['news_readmore'])) $readmore = 1;
 	else $readmore = 0;
+	
 	if (isset($_POST['news_showdate'])) $showdate = 1;
 	else $showdate = 0;
+	
 	if (isset($_POST['news_textlink'])) $textlink = 1;
 	else $textlink = 0;
 	
