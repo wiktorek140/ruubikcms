@@ -1,5 +1,6 @@
 <?php
-/*   RuubikCMS - The easy & fast way to build Google optimized websites
+/*
+    RuubikCMS - The easy & fast way to build Google optimized websites
  *   Copyright (C) 2008-2010 Iisakki Piril�, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
@@ -24,10 +25,11 @@ if (@$_SESSION['uid']) {
     header('Location: index.php');
     exit();
 }
+
 require '../includes/commonfunc.php';
 require 'includes/functions.php';
 define('RLANG', query_single('SELECT cmslang FROM options WHERE id = 1'));
-require 'languages/' . RLANG . '.php';
+require 'languages/'.RLANG.'.php';
 $cmspage = LOGIN;
 $company = query_single('SELECT name FROM site WHERE id = 1');
 ?>
@@ -71,7 +73,7 @@ $company = query_single('SELECT name FROM site WHERE id = 1');
                         <?php
                         require 'login/form.php';
                         if (@$_SESSION['notfound']) {
-                            echo '<p>' . INCORRECTUSER . '</p>';
+                            echo '<p>'.INCORRECTUSER.'</p>';
                         }
                         ?>
                     </div>

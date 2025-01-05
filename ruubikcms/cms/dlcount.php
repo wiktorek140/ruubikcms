@@ -1,5 +1,6 @@
 <?php
-/*   RuubikCMS - The easy & fast way to manage Google optimized websites
+/*
+    RuubikCMS - The easy & fast way to manage Google optimized websites
  *   Copyright (C) 2008-2010 Iisakki Pirilä, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
@@ -12,21 +13,24 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *   GNU General Public License for more details.
- * 
+ *
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 require 'includes/required.php';
 $cmspage = LOG;
-if ($_SESSION['level'] != 5) { die(NOTALLOWED);
+if ($_SESSION['level'] != 5) {
+    die(NOTALLOWED);
 }
 
 if (query_single("SELECT COUNT(*) FROM dl_count") != 0) {
     if (isset($_GET['p'])) {
         if (isset($_GET['d'])) {
             // some CSRF protection
-            if (!valid_csrf_token($_GET['token'])) { die(NOTALLOWED);
+            if (!valid_csrf_token($_GET['token'])) {
+                die(NOTALLOWED);
             }
+
             // delete selected count
             $stmt = $dbh->prepare("DELETE FROM dl_count WHERE filename = ?");
             $stmt->bindParam(1, $_GET['p']);
@@ -62,63 +66,89 @@ $token = csrf_token();
 
                             <h2><?php echo DOWNLOADSTATS;?></h2>
                             
-                                <?php 
-                                
+                                <?php
+
                                 // pagination
                                 $rowsperpage = ROWSPERPAGE;
-                                if (isset($_GET['page'])) { $page = intval($_GET['page']);
-                                } else { $page = 1;
+                                if (isset($_GET['page'])) {
+                                    $page = intval($_GET['page']);
+                                } else {
+                                    $page = 1;
                                 }
-                                $start = $rowsperpage * ($page-1);
+
+                                $start = ($rowsperpage * ($page - 1));
                                 $total = query_single("SELECT COUNT(*) FROM dl_count");
-                                $lastpage = ceil($total/$rowsperpage);
+                                $lastpage = ceil($total / $rowsperpage);
 
                                 // correct self also considering the ordering
                                 $self = ec($_SERVER['PHP_SELF']).'?';
-                                if (isset($_GET['order'])) { $self .= 'order='.$_GET['order'];
-                                } else { $self .= 'order=1';
+                                if (isset($_GET['order'])) {
+                                    $self .= 'order='.$_GET['order'];
+                                } else {
+                                    $self .= 'order=1';
                                 }
-                                if (isset($_GET['desc']) OR !isset($_GET['order'])) { $self .= '&amp;desc=1';
+
+                                if (isset($_GET['desc']) or !isset($_GET['order'])) {
+                                    $self .= '&amp;desc=1';
                                 }
-                                
+
                                 // page links for navigations
                                 $nav  = '';
-                                for($i = 1; $i <= $lastpage; $i++) {
-                                    if ($i == $page) { $nav .= " $i "; // no need to create a link to current page
-                                    } else { $nav .= " <a href=\"$self&amp;page=$i\">$i</a> ";
+                                for ($i = 1; $i <= $lastpage; $i++) {
+                                    if ($i == $page) {
+                                        $nav .= " $i ";
+                                        // no need to create a link to current page
+                                    } else {
+                                        $nav .= " <a href=\"$self&amp;page=$i\">$i</a> ";
                                     }
                                 }
+
                                 // first, next, previous & last links
                                 if ($page > 1) {
-                                    $i  = $page - 1;
+                                    $i  = ($page - 1);
                                     $prev  = ' <a href="'.$self.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
                                     $first  = ' <a href="'.$self.'&amp;page=1">'.FIRSTPAGE.'</a> ';
                                 } else {
-                                    $prev  = '&nbsp;'; // we're on page one, don't print previous link
-                                    $first = '&nbsp;'; // nor the first page link
+                                    $prev  = '&nbsp;';
+                                    // we're on page one, don't print previous link
+                                    $first = '&nbsp;';
+                                    // nor the first page link
                                 }
 
                                 if ($page < $lastpage) {
-                                    $i = $page + 1;
+                                    $i = ($page + 1);
                                     $next  = ' <a href="'.$self.'&amp;page='.$i.'">'.NEXT.'</a> ';
                                     $last  = ' <a href="'.$self.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
                                 } else {
-                                    $next = '&nbsp;'; // we're on the last page, don't print next link
-                                    $last = '&nbsp;'; // nor the last page link
-                                }                        
+                                    $next = '&nbsp;';
+                                    // we're on the last page, don't print next link
+                                    $last = '&nbsp;';
+                                    // nor the last page link
+                                }
 
                                 // ordering the data
-                                if ($_GET['order'] == 1) { $order = 'filename';
-                                } elseif ($_GET['order'] == 2) { $order = 'downloads';
-                                } elseif ($_GET['order'] == 3) { $order = 'count_started';
-                                } elseif ($_GET['order'] == 4) { $order = 'last_dl';
-                                } else { $order = 'downloads'; // default ordering
+                                if ($_GET['order'] == 1) {
+                                    $order = 'filename';
+                                } else if ($_GET['order'] == 2) {
+                                    $order = 'downloads';
+                                } else if ($_GET['order'] == 3) {
+                                    $order = 'count_started';
+                                } else if ($_GET['order'] == 4) {
+                                    $order = 'last_dl';
+                                } else {
+                                    $order = 'downloads';
+                                    // default ordering
                                 }
-                                if ($_GET['desc'] == 1 OR !isset($_GET['order'])) { $desc = ' DESC'; // default to ORDER BY downloads DESC!
-                                } else { $desc = '';
+
+                                if ($_GET['desc'] == 1 or !isset($_GET['order'])) {
+                                    $desc = ' DESC';
+                                    // default to ORDER BY downloads DESC!
+                                } else {
+                                    $desc = '';
                                 }
-                                
-                                if ($lastpage > 1) { echo '<p>'.SHOWING.' '.($start+1).' - '.($start+$rowsperpage > $total ? $total : $start+$rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+
+                                if ($lastpage > 1) {
+                                    echo '<p>'.SHOWING.' '.($start + 1).' - '.($start + $rowsperpage > $total ? $total : $start + $rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
                                 }
 
                                 echo '<table class="logtable">';
@@ -131,8 +161,10 @@ $token = csrf_token();
 
                                 echo '</table>';
                                 // print the navigation links for pagination
-                                if ($lastpage > 1) { echo '<p>'.$prev.$nav.$next.'</p>';
+                                if ($lastpage > 1) {
+                                    echo '<p>'.$prev.$nav.$next.'</p>';
                                 }
+
                                 echo '<p><a href="dllog.php">'.DOWNLOADLOG.'</a></p>';
                                 ?>
 
@@ -148,4 +180,4 @@ $token = csrf_token();
 
             </div>
 
-<?php require 'includes/footer.php';?>
+<?php require 'includes/footer.php';

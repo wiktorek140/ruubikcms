@@ -3,6 +3,7 @@
 if (basename($_SERVER['REQUEST_URI']) == 'dbconfig.php') {
     die('Access denied');
 }
+
 // error reporting, exclude notices
 error_reporting(E_ALL ^ E_NOTICE);
 
@@ -31,4 +32,9 @@ const SHOW_CMSOPTIONS = true;
 
 // multiple installations for different languages
 const SHOW_MULTILANG = false;
-$multilang_links = ['en' => 'English', 'fi' => 'Finnish', 'sv' => 'Swedish', 'pl' => 'Polish'];
+$multilang_links = [
+    'en' => 'English',
+    'fi' => 'Finnish',
+    'sv' => 'Swedish',
+    'pl' => 'Polish',
+];

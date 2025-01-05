@@ -1,6 +1,7 @@
 <?php
 
-if (strpos($_SERVER['REQUEST_URI'], 'download.php') !== false) { die("Access Denied");
+if (strpos($_SERVER['REQUEST_URI'], 'download.php') !== false) {
+    die("Access Denied");
 }
 
 require 'includes/dbconfig.php';
@@ -8,17 +9,22 @@ require 'includes/commonfunc.php';
 
 class FileDownloader
 {
+
     private $dbh;
+
     private $baseDir;
+
 
     public function __construct($dbh)
     {
         $this->dbh = $dbh;
         $this->baseDir = 'useruploads/files/';
         @set_time_limit(0);
-    }
 
-    public function download($fileName, $newFileName = null)
+    }//end __construct()
+
+
+    public function download($fileName, $newFileName=null)
     {
         if (empty($fileName)) {
             die("Please specify file name for download.");
@@ -26,7 +32,7 @@ class FileDownloader
 
         $fname = basename($fileName);
         $fname = rtrim($fname);
-        $fpath = $this->baseDir . $fname;
+        $fpath = $this->baseDir.$fname;
 
         if (!is_file($fpath)) {
             die("File does not exist. Make sure you specified correct file name.");
@@ -38,8 +44,9 @@ class FileDownloader
         if ($newFileName === null) {
             $asfname = $fname;
         } else {
-            $asfname = str_replace(array('"', "'", '\\', '/'), '', $newFileName);
-            if ($asfname === '') { $asfname = 'NoName';
+            $asfname = str_replace(['"', "'", '\\', '/'], '', $newFileName);
+            if ($asfname === '') {
+                $asfname = 'NoName';
             }
         }
 
@@ -48,7 +55,9 @@ class FileDownloader
 
         $this->logDownload($fname);
         $this->updateDownloadCounter($fname);
-    }
+
+    }//end download()
+
 
     private function getMimeType($fpath)
     {
@@ -56,7 +65,7 @@ class FileDownloader
 
         if (function_exists('mime_content_type')) {
             $mtype = mime_content_type($fpath);
-        } elseif (function_exists('finfo_file')) {
+        } else if (function_exists('finfo_file')) {
             $finfo = finfo_open(FILEINFO_MIME);
             $mtype = finfo_file($finfo, $fpath);
             finfo_close($finfo);
@@ -67,7 +76,9 @@ class FileDownloader
         }
 
         return $mtype;
-    }
+
+    }//end getMimeType()
+
 
     private function setHeaders($mtype, $asfname, $fsize)
     {
@@ -79,24 +90,29 @@ class FileDownloader
         header("Content-Type: $mtype");
         header("Content-Disposition: attachment; filename=\"$asfname\"");
         header("Content-Transfer-Encoding: binary");
-        header("Content-Length: " . $fsize);
-    }
+        header("Content-Length: ".$fsize);
+
+    }//end setHeaders()
+
 
     private function outputFile($fpath)
     {
         $file = @fopen($fpath, "r");
         if ($file) {
             while (!feof($file)) {
-                print(fread($file, 1024 * 8));
+                print(fread($file, (1024 * 8)));
                 flush();
                 if (connection_status() != 0) {
                     @fclose($file);
                     die();
                 }
             }
+
             @fclose($file);
         }
-    }
+
+    }//end outputFile()
+
 
     private function logDownload($fname)
     {
@@ -105,7 +121,9 @@ class FileDownloader
         $stmt->bindParam(2, $_SERVER['REMOTE_ADDR']);
         $stmt->bindParam(3, date("Y-m-d H:i:s"));
         $stmt->execute();
-    }
+
+    }//end logDownload()
+
 
     private function updateDownloadCounter($fname)
     {
@@ -126,9 +144,12 @@ class FileDownloader
             $stmt->bindParam(3, $fname);
             $stmt->execute();
         }
-    }
-}
 
-$dbh = new PDO(PDO_DB_DRIVER . ':' . PDO_DB_FOLDER . '/' . PDO_DB_NAME);
+    }//end updateDownloadCounter()
+
+
+}//end class
+
+$dbh = new PDO(PDO_DB_DRIVER.':'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
 $downloader = new FileDownloader($dbh);
 $downloader->download($_GET['f'], $_GET['fc'] ?? null);

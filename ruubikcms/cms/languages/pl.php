@@ -2,12 +2,13 @@
 if (basename($_SERVER['REQUEST_URI']) == 'pl.php') {
     die('Access denied');
 }
- /**
-RuubikCMS language file
-Language: 'pl'
-Author: wiktorek140
-Email: wiktorek140[at]tlen[dot]com
-*/
+
+ /*
+     RuubikCMS language file
+     Language: 'pl'
+     Author: wiktorek140
+     Email: wiktorek140[at]tlen[dot]com
+ */
 define('SAVE', 'Zapisz');
 define('RNEW', 'Nowy');
 define('DELETE', 'Usuń');

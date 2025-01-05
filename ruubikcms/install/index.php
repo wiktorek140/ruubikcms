@@ -40,8 +40,8 @@
         <h2>PHP version and required extensions</h2>
         <table>
             <?php
-            $error = array();
-            
+            $error = [];
+
             echo '<tr><td class="first">PHP version 5.1.0+ <i>('.PHP_VERSION.')</i></td>';
             if (version_compare(PHP_VERSION, '5.1.0') === 1) {
                 echo '<td class="ok">OK';
@@ -49,8 +49,9 @@
                 echo '<td class="failed">FAILED';
                 $error[] = 'PHP version must be at least 5.1.0. Your version: '.PHP_VERSION;
             }
+
             echo '</td></tr>';
-            
+
             echo '<tr><td class="first">PHP extension <b>PDO</b> loaded</td>';
             if (extension_loaded('PDO')) {
                 echo '<td class="ok">OK';
@@ -58,8 +59,9 @@
                 echo '<td class="failed">FAILED';
                 $error[] = 'PHP extension PDO must be enabled';
             }
+
             echo '</td></tr>';
-            
+
             echo '<tr><td class="first">PHP extension <b>pdo_sqlite</b> loaded</td>';
             if (extension_loaded('pdo_sqlite')) {
                 echo '<td class="ok">OK';
@@ -67,6 +69,7 @@
                 echo '<td class="failed">FAILED';
                 $error[] = 'PHP extension pdo_sqlite must be enabled';
             }
+
             echo '</td></tr>';
             ?>
             
@@ -74,21 +77,21 @@
         <h2>Writable directories and files</h2>
         <table>
             <?php
-            $writable = array(
-                'ruubikcms/sqlite' => '../sqlite',
-                'ruubikcms/sqlite/ruubikcms.sqlite' => '../sqlite/ruubikcms.sqlite',
-                'ruubikcms/useruploads' => '../useruploads',
-                'ruubikcms/useruploads/images' => '../useruploads/images',
+            $writable = [
+                'ruubikcms/sqlite'                     => '../sqlite',
+                'ruubikcms/sqlite/ruubikcms.sqlite'    => '../sqlite/ruubikcms.sqlite',
+                'ruubikcms/useruploads'                => '../useruploads',
+                'ruubikcms/useruploads/images'         => '../useruploads/images',
                 'ruubikcms/useruploads/images/_thumbs' => '../useruploads/images/_thumbs',
-                'ruubikcms/useruploads/files' => '../useruploads/files',
-                'ruubikcms/useruploads/media' => '../useruploads/media',
-                'extra/useruploads' => '../../extra/useruploads',
-                'extra/useruploads/images' => '../../extra/useruploads/images',
-                'extra/useruploads/images/_thumbs' => '../../extra/useruploads/images/_thumbs',
-                'extra/useruploads/files' => '../../extra/useruploads/files',
-                'extra/useruploads/media' => '../../extra/useruploads/media',
-            );
-            foreach ($writable as $key => $value) {    
+                'ruubikcms/useruploads/files'          => '../useruploads/files',
+                'ruubikcms/useruploads/media'          => '../useruploads/media',
+                'extra/useruploads'                    => '../../extra/useruploads',
+                'extra/useruploads/images'             => '../../extra/useruploads/images',
+                'extra/useruploads/images/_thumbs'     => '../../extra/useruploads/images/_thumbs',
+                'extra/useruploads/files'              => '../../extra/useruploads/files',
+                'extra/useruploads/media'              => '../../extra/useruploads/media',
+            ];
+            foreach ($writable as $key => $value) {
                 echo '<tr><td class="first">'.$key.'</td><td>';
                 if (!is_writable($value)) {
                     $error[] = $key.' must be writable';
@@ -96,15 +99,16 @@
                 } else {
                     echo '<span class="ok">OK</span>';
                 }
+
                 echo '</td></tr>';
             }
-            
+
             // optional old files, check permissions if exists
-            $writable_opt = array(
+            $writable_opt = [
                 'ruubikcms/sqlite/ruubikcms-last-login.sqlite' => '../sqlite/ruubikcms-last-login.sqlite',
-                'ruubikcms/sqlite/ruubikcms-backup.sqlite' => '../sqlite/ruubikcms-backup.sqlite',
-            );
-            foreach ($writable_opt as $key => $value) {    
+                'ruubikcms/sqlite/ruubikcms-backup.sqlite'     => '../sqlite/ruubikcms-backup.sqlite',
+            ];
+            foreach ($writable_opt as $key => $value) {
                 if (file_exists($value)) {
                     echo '<tr><td class="first">'.$key.'</td><td>';
                     if (!is_writable($value)) {
@@ -113,23 +117,26 @@
                     } else {
                         echo '<span class="ok">OK</span>';
                     }
+
                     echo '</td></tr>';
                 }
             }
             ?>
             
         </table>
-        <?php 
-        if(empty($error)) {
+        <?php
+        if (empty($error)) {
             echo '<h3 class="ok">Installation successful!</h3>';
         } else {
             echo '<h3 class="failed">Installation failed!</h3><p>You must correct following issues in order to finish the installation:</p><ul>';
             foreach ($error as $value) {
                 echo '<li>'.$value.'</li>';
             }
+
             echo '</ul><p><input type="button" name="refresh" onclick="location.reload(true)" value="Test again" /></p>';
             echo 'You can try to use RuubikCMS but it is likely to fail:';
         }
+
         echo '<p><a href="../">Login to RuubikCMS</a> (default username: <b>admin</b>, password: <b>ruubik</b>)</p>';
         echo '<p>Remember to change the default administrator password from <b>Users</b> tab immediately!</p>';
         echo '<p>Check that direct access to the CMS database is <b>denied/forbidden</b>: <a href="../sqlite/ruubikcms.sqlite">CHECK ACCESS</a></p>';

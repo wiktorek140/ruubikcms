@@ -1,146 +1,185 @@
 <?php
 /*
-  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE. 
-  Can be easily integrated with any other WYSIWYG editor or CMS.
+    RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
+    Can be easily integrated with any other WYSIWYG editor or CMS.
 
-  Copyright (C) 2013, RoxyFileman.com - Lyubomir Arsov. All rights reserved.
-  For licensing, see LICENSE.txt or http://RoxyFileman.com/license
+    Copyright (C) 2013, RoxyFileman.com - Lyubomir Arsov. All rights reserved.
+    For licensing, see LICENSE.txt or http://RoxyFileman.com/license
 
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-  You should have received a copy of the GNU General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-  Contact: Lyubomir Arsov, liubo (at) web-lobby.com
+    Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
 require 'security.inc.php';
+
+
 function t($key)
 {
     global $LANG;
-    if(empty($LANG)) {
+    if (empty($LANG)) {
         $file = 'en.json';
         $langPath = '../lang/';
-        if(defined('LANG')) {
-            if(LANG == 'auto') {
+        if (defined('LANG')) {
+            if (LANG == 'auto') {
                 $lang = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
-                if(is_file($langPath.$lang.'.json')) {
+                if (is_file($langPath.$lang.'.json')) {
                     $file = $lang.'.json';
                 }
-            }
-            elseif(is_file($langPath.LANG.'.json')) {
+            } else if (is_file($langPath.LANG.'.json')) {
                 $file = LANG.'.json';
             }
         }
+
         $file = $langPath.$file;
         $LANG = json_decode(file_get_contents($file), true);
     }
-    if(!$LANG[$key]) {
+
+    if (!$LANG[$key]) {
         $LANG[$key] = $key;
     }
 
     return $LANG[$key];
-}
+
+}//end t()
+
+
 function checkPath($path)
 {
     $ret = false;
-    if(mb_strpos($path.'/', getFilesPath()) === 0) {
+    if (mb_strpos($path.'/', getFilesPath()) === 0) {
         $ret = true;
     }
 
     return $ret;
-}
+
+}//end checkPath()
+
+
 function verifyAction($action)
 {
-    if(!defined($action) || !constant($action)) {
+    if (!defined($action) || !constant($action)) {
         exit;
-    } else{
+    } else {
         $confUrl = constant($action);
         $qStr = mb_strpos($confUrl, '?');
-        if($qStr !== false) {
+        if ($qStr !== false) {
             $confUrl = mb_substr($confUrl, 0, $qStr);
         }
+
         $confUrl = BASE_PATH.'/'.$confUrl;
         $confUrl = RoxyFile::FixPath($confUrl);
         $thisUrl = dirname(__FILE__).'/'.basename($_SERVER['PHP_SELF']);
         $thisUrl = RoxyFile::FixPath($thisUrl);
-        if($thisUrl != $confUrl) {
+        if ($thisUrl != $confUrl) {
             echo "$confUrl $thisUrl";
             exit;
         }
     }
-}
+
+}//end verifyAction()
+
+
 function verifyPath($path)
 {
-    if(!checkPath($path)) {
+    if (!checkPath($path)) {
         echo getErrorRes("Access to $path is denied").' '.$path;
         exit;
     }
-}
+
+}//end verifyPath()
+
+
 function fixPath($path)
 {
     $path = $_SERVER['DOCUMENT_ROOT'].'/'.$path;
     $path = str_replace('\\', '/', $path);
     $path = RoxyFile::FixPath($path);
     return $path;
-}
-function gerResultStr($type, $str = '')
+
+}//end fixPath()
+
+
+function gerResultStr($type, $str='')
 {
-    return '{"res":"'.  addslashes($type).'","msg":"'.  addslashes($str).'"}';
-}
-function getSuccessRes($str = '')
+    return '{"res":"'.addslashes($type).'","msg":"'.addslashes($str).'"}';
+
+}//end gerResultStr()
+
+
+function getSuccessRes($str='')
 {
     return gerResultStr('ok', $str);
-}
-function getErrorRes($str = '')
+
+}//end getSuccessRes()
+
+
+function getErrorRes($str='')
 {
     return gerResultStr('error', $str);
-}
+
+}//end getErrorRes()
+
+
 function getFilesPath()
 {
-    $ret = (isset($_SESSION[SESSION_PATH_KEY]) && $_SESSION[SESSION_PATH_KEY] != ''?$_SESSION[SESSION_PATH_KEY]:FILES_ROOT);
-    if(!$ret) {
+    $ret = (isset($_SESSION[SESSION_PATH_KEY]) && $_SESSION[SESSION_PATH_KEY] != '' ? $_SESSION[SESSION_PATH_KEY] : FILES_ROOT);
+    if (!$ret) {
         $ret = RoxyFile::FixPath(BASE_PATH.'/Uploads');
         $tmp = $_SERVER['DOCUMENT_ROOT'];
-        if(mb_substr($tmp, -1) == '/' || mb_substr($tmp, -1) == '\\') {
+        if (mb_substr($tmp, -1) == '/' || mb_substr($tmp, -1) == '\\') {
             $tmp = mb_substr($tmp, 0, -1);
         }
+
         $ret = str_replace(RoxyFile::FixPath($tmp), '', $ret);
     }
+
     return $ret;
-}
+
+}//end getFilesPath()
+
+
 function listDirectory($path)
 {
     $ret = scandir($path);
-    if($ret === false) {
-        $ret = array();
+    if ($ret === false) {
+        $ret = [];
         $d = opendir($path);
-        if($d) {
-            while(($f = readdir($d)) !== false){
+        if ($d) {
+            while (($f = readdir($d)) !== false) {
                 $ret[] = $f;
             }
+
             closedir($d);
         }
     }
-  
+
     return $ret;
-}
+
+}//end listDirectory()
+
+
 class RoxyFile
 {
-    static public function CheckWritable($dir)
+
+
+    public static function CheckWritable($dir)
     {
         $ret = false;
-        if(self::CreatePath($dir)) {
+        if (self::CreatePath($dir)) {
             $dir = self::FixPath($dir.'/');
             $testFile = 'writetest.txt';
             $f = @fopen($dir.$testFile, 'w', false);
-            if($f) {
+            if ($f) {
                 fclose($f);
                 $ret = true;
                 @unlink($dir.$testFile);
@@ -148,7 +187,10 @@ class RoxyFile
         }
 
         return $ret;
-    }
+
+    }//end CheckWritable()
+
+
     static function CanUploadFile($filename)
     {
         $ret = false;
@@ -156,58 +198,77 @@ class RoxyFile
         $allowed = array_filter(preg_split('/[^\d\w]+/', strtolower(ALLOWED_UPLOADS)));
         $ext = RoxyFile::GetExtension($filename);
 
-        if((empty($forbidden) || !in_array($ext, $forbidden)) && (empty($allowed) || in_array($ext, $allowed))) {
+        if ((empty($forbidden) || !in_array($ext, $forbidden)) && (empty($allowed) || in_array($ext, $allowed))) {
             $ret = true;
         }
 
         return $ret;
-    }
+
+    }//end CanUploadFile()
+
+
     static function ZipAddDir($path, $zip, $zipPath)
     {
         $d = opendir($path);
         $zipPath = str_replace('//', '/', $zipPath);
-        if($zipPath && $zipPath != '/') {
+        if ($zipPath && $zipPath != '/') {
             $zip->addEmptyDir($zipPath);
         }
-        while(($f = readdir($d)) !== false){
-            if($f == '.' || $f == '..') {
+
+        while (($f = readdir($d)) !== false) {
+            if ($f == '.' || $f == '..') {
                 continue;
             }
+
             $filePath = $path.'/'.$f;
-            if(is_file($filePath)) {
-                $zip->addFile($filePath, ($zipPath?$zipPath.'/':'').$f);
-            }
-            elseif(is_dir($filePath)) {
-                self::ZipAddDir($filePath, $zip, ($zipPath?$zipPath.'/':'').$f);
+            if (is_file($filePath)) {
+                $zip->addFile($filePath, ($zipPath ? $zipPath.'/' : '').$f);
+            } else if (is_dir($filePath)) {
+                self::ZipAddDir($filePath, $zip, ($zipPath ? $zipPath.'/' : '').$f);
             }
         }
+
         closedir($d);
-    }
-    static function ZipDir($path, $zipFile, $zipPath = '')
+
+    }//end ZipAddDir()
+
+
+    static function ZipDir($path, $zipFile, $zipPath='')
     {
         $zip = new ZipArchive();
         $zip->open($zipFile, ZIPARCHIVE::CREATE);
         self::ZipAddDir($path, $zip, $zipPath);
         $zip->close();
-    }
+
+    }//end ZipDir()
+
+
     static function IsImage($fileName)
     {
         $ret = false;
         $ext = strtolower(self::GetExtension($fileName));
-        if($ext == 'jpg' || $ext == 'jpeg' || $ext == 'jpe' || $ext == 'png' || $ext == 'gif' || $ext == 'ico') {
+        if ($ext == 'jpg' || $ext == 'jpeg' || $ext == 'jpe' || $ext == 'png' || $ext == 'gif' || $ext == 'ico') {
             $ret = true;
         }
+
         return $ret;
-    }
+
+    }//end IsImage()
+
+
     static function IsFlash($fileName)
     {
         $ret = false;
         $ext = strtolower(self::GetExtension($fileName));
-        if($ext == 'swf' || $ext == 'flv' || $ext == 'swc' || $ext == 'swt') {
+        if ($ext == 'swf' || $ext == 'flv' || $ext == 'swc' || $ext == 'swt') {
             $ret = true;
         }
+
         return $ret;
-    }
+
+    }//end IsFlash()
+
+
     /**
      * Returns human formated file size
      *
@@ -218,22 +279,27 @@ class RoxyFile
     {
         $ret = '';
         $unit = 'B';
-        if($filesize > 1024) {
+        if ($filesize > 1024) {
             $unit = 'KB';
-            $filesize = $filesize / 1024;
+            $filesize = ($filesize / 1024);
         }
-        if($filesize > 1024) {
+
+        if ($filesize > 1024) {
             $unit = 'MB';
-            $filesize = $filesize / 1024;
+            $filesize = ($filesize / 1024);
         }
-        if($filesize > 1024) {
+
+        if ($filesize > 1024) {
             $unit = 'GB';
-            $filesize = $filesize / 1024;
+            $filesize = ($filesize / 1024);
         }
 
         $ret = round($filesize, 2).' '.$unit;
         return $ret;
-    }
+
+    }//end FormatFileSize()
+
+
     /**
      * Returns MIME type of $filename
      *
@@ -245,7 +311,7 @@ class RoxyFile
         $type = 'application/octet-stream';
         $ext = self::GetExtension($filename);
 
-        switch(strtolower($ext)){
+        switch (strtolower($ext)) {
         case 'jpg':  $type = 'image/jpeg';
             break;
         case 'jpeg': $type = 'image/jpeg';
@@ -266,17 +332,19 @@ class RoxyFile
             break;
         case 'doc':  $type = 'application/msword';
             break;
-        case 'xls':  $type = 'application/vnd.ms-excel'; 
+        case 'xls':  $type = 'application/vnd.ms-excel';
             break;
-        case 'zip':  $type = 'application/zip'; 
+        case 'zip':  $type = 'application/zip';
             break;
-        case 'swf':  $type = 'application/x-shockwave-flash'; 
+        case 'swf':  $type = 'application/x-shockwave-flash';
             break;
         default: $type = 'application/octet-stream';
-        }
+        }//end switch
 
         return $type;
-    }
+
+    }//end GetMIMEType()
+
 
     /**
      * Replaces any character that is not letter, digit or underscore from $filename with $sep
@@ -285,27 +353,30 @@ class RoxyFile
      * @param  string $sep
      * @return string
      */
-    static function CleanupFilename($filename, $sep = '_')
+    static function CleanupFilename($filename, $sep='_')
     {
         $str = '';
-        if(strpos($filename, '.')) {
+        if (strpos($filename, '.')) {
             $ext = self::GetExtension($filename);
             $name = self::GetName($filename);
-        }
-        else{
+        } else {
             $ext = '';
             $name = $filename;
         }
-        if(mb_strlen($name) > 32) {
+
+        if (mb_strlen($name) > 32) {
             $name = mb_substr($name, 0, 32);
         }
+
         $str = str_replace('.php', '', $str);
         $str = mb_ereg_replace("[^\\w]", $sep, $name);
-    
-        $str = mb_ereg_replace("$sep+", $sep, $str).($ext?'.'.$ext:'');
+
+        $str = mb_ereg_replace("$sep+", $sep, $str).($ext ? '.'.$ext : '');
 
         return $str;
-    }
+
+    }//end CleanupFilename()
+
 
     /**
      * Returns file extension without dot
@@ -317,12 +388,14 @@ class RoxyFile
     {
         $ext = '';
 
-        if(mb_strrpos($filename, '.') !== false) {
-            $ext = mb_substr($filename, mb_strrpos($filename, '.') + 1);
+        if (mb_strrpos($filename, '.') !== false) {
+            $ext = mb_substr($filename, (mb_strrpos($filename, '.') + 1));
         }
 
         return strtolower($ext);
-    }
+
+    }//end GetExtension()
+
 
     /**
      * Returns file name without extension
@@ -334,33 +407,44 @@ class RoxyFile
     {
         $name = '';
         $tmp = mb_strpos($filename, '?');
-        if($tmp !== false) {
+        if ($tmp !== false) {
             $filename = mb_substr($filename, 0, $tmp);
         }
+
         $dotPos = mb_strrpos($filename, '.');
-        if($dotPos !== false) {
+        if ($dotPos !== false) {
             $name = mb_substr($filename, 0, $dotPos);
         } else {
             $name = $filename;
         }
 
         return $name;
-    }
+
+    }//end GetName()
+
+
     static function GetFullName($filename)
     {
         $tmp = mb_strpos($filename, '?');
-        if($tmp !== false) {
+        if ($tmp !== false) {
             $filename = mb_substr($filename, 0, $tmp);
         }
+
         $filename = basename($filename);
 
         return $filename;
-    }
-    static public function FixPath($path)
+
+    }//end GetFullName()
+
+
+    public static function FixPath($path)
     {
         $path = mb_ereg_replace('[\\\/]+', '/', $path);
         return $path;
-    }
+
+    }//end FixPath()
+
+
     /**
      * creates unique file name using $filename( " - Copy " and number is added if file already exists) in directory $dir
      *
@@ -377,21 +461,25 @@ class RoxyFile
         $name = self::GetName($filename);
         $name = self::CleanupFilename($name);
         $name = mb_ereg_replace(' \\- Copy \\d+$', '', $name);
-        if($ext) {
+        if ($ext) {
             $ext = '.'.$ext;
         }
-        if(!$name) {
+
+        if (!$name) {
             $name = 'file';
         }
 
         $i = 0;
-        do{
-            $temp = ($i > 0? $name." - Copy $i": $name).$ext;
+        do {
+            $temp = ($i > 0 ? $name." - Copy $i" : $name).$ext;
             $i++;
-        }while(file_exists($dir.$temp));
+        } while (file_exists($dir.$temp));
 
         return $temp;
-    }
+
+    }//end MakeUniqueFilename()
+
+
     /**
      * creates unique directory name using $name( " - Copy " and number is added if directory already exists) in directory $dir
      *
@@ -404,26 +492,31 @@ class RoxyFile
         $temp = '';
         $dir = self::FixPath($dir.'/');
         $name = mb_ereg_replace(' - Copy \\d+$', '', $name);
-        if(!$name) {
+        if (!$name) {
             $name = 'directory';
         }
 
         $i = 0;
-        do{
-            $temp = ($i? $name." - Copy $i": $name);
+        do {
+            $temp = ($i ? $name." - Copy $i" : $name);
             $i++;
-        }while(is_dir($dir.$temp));
+        } while (is_dir($dir.$temp));
 
         return $temp;
-    }
-}
+
+    }//end MakeUniqueDirname()
+
+
+}//end class
 class RoxyImage
 {
+
+
     public static function GetImage($path)
     {
         $img = null;
         $ext = RoxyFile::GetExtension(basename($path));
-        switch($ext){
+        switch ($ext) {
         case 'png':
             $img = imagecreatefrompng($path);
             break;
@@ -433,17 +526,19 @@ class RoxyImage
         default:
             $img = imagecreatefromjpeg($path);
         }
-    
-    
-    
+
         return $img;
-    }
-    public static function OutputImage($img, $type, $destination = '', $quality = 90)
+
+    }//end GetImage()
+
+
+    public static function OutputImage($img, $type, $destination='', $quality=90)
     {
-        if(is_string($img)) {
+        if (is_string($img)) {
             $img = self::GetImage($img);
         }
-        switch(strtolower($type)){
+
+        switch (strtolower($type)) {
         case 'png':
             imagepng($img, $destination);
             break;
@@ -453,104 +548,120 @@ class RoxyImage
         default:
             imagejpeg($img, $destination, $quality);
         }
-    }
-  
+
+    }//end OutputImage()
+
+
     public static function SetAlpha($img, $path)
     {
         $ext = RoxyFile::GetExtension(basename($path));
-        if($ext == "gif" || $ext == "png") {
+        if ($ext == "gif" || $ext == "png") {
             imagecolortransparent($img, imagecolorallocatealpha($img, 0, 0, 0, 127));
             imagealphablending($img, false);
             imagesavealpha($img, true);
         }
-      
+
         return $img;
-    }
-  
-    public static function Resize($source, $destination, $width = '150',$height = 0, $quality = 90)
+
+    }//end SetAlpha()
+
+
+    public static function Resize($source, $destination, $width='150', $height=0, $quality=90)
     {
         $tmp = getimagesize($source);
         $w = $tmp[0];
         $h = $tmp[1];
-        $r = $w / $h;
+        $r = ($w / $h);
 
-        if($w <= ($width + 1) && (($h <= ($height + 1)) || (!$height && !$width))) {
-            if($source != $destination) {
+        if ($w <= ($width + 1) && (($h <= ($height + 1)) || (!$height && !$width))) {
+            if ($source != $destination) {
                 self::OutputImage($source, RoxyFile::GetExtension(basename($source)), $destination, $quality);
             }
+
             return;
         }
-    
+
         $newWidth = $width;
         $newHeight = floor($newWidth / $r);
-        if(($height > 0 && $newHeight > $height) || !$width) {
+        if (($height > 0 && $newHeight > $height) || !$width) {
             $newHeight = $height;
             $newWidth = intval($newHeight * $r);
         }
 
         $thumbImg = imagecreatetruecolor($newWidth, $newHeight);
         $img = self::GetImage($source);
-    
+
         $thumbImg = self::SetAlpha($thumbImg, $source);
-    
+
         imagecopyresampled($thumbImg, $img, 0, 0, 0, 0, $newWidth, $newHeight, $w, $h);
 
         self::OutputImage($thumbImg, RoxyFile::GetExtension(basename($source)), $destination, $quality);
-    }
-    public static function CropCenter($source, $destination, $width, $height, $quality = 90)
+
+    }//end Resize()
+
+
+    public static function CropCenter($source, $destination, $width, $height, $quality=90)
     {
         $tmp = getimagesize($source);
         $w = $tmp[0];
         $h = $tmp[1];
-        if(($w <= $width) && (!$height || ($h <= $height))) {
+        if (($w <= $width) && (!$height || ($h <= $height))) {
             self::OutputImage(self::GetImage($source), RoxyFile::GetExtension(basename($source)), $destination, $quality);
         }
-        $ratio = $width / $height;
+
+        $ratio = ($width / $height);
         $top = $left = 0;
 
         $cropWidth = floor($h * $ratio);
         $cropHeight = floor($cropWidth / $ratio);
-        if($cropWidth > $w) {
+        if ($cropWidth > $w) {
             $cropWidth = $w;
-            $cropHeight = $w / $ratio;
-        }
-        if($cropHeight > $h) {
-            $cropHeight = $h;
-            $cropWidth = $h * $ratio;
+            $cropHeight = ($w / $ratio);
         }
 
-        if($cropWidth < $w) {
+        if ($cropHeight > $h) {
+            $cropHeight = $h;
+            $cropWidth = ($h * $ratio);
+        }
+
+        if ($cropWidth < $w) {
             $left = floor(($w - $cropWidth) / 2);
         }
-        if($cropHeight < $h) {
-            $top = floor(($h- $cropHeight) / 2);
+
+        if ($cropHeight < $h) {
+            $top = floor(($h - $cropHeight) / 2);
         }
 
         self::Crop($source, $destination, $left, $top, $cropWidth, $cropHeight, $width, $height, $quality);
-    }
-    public static function Crop($source, $destination, $x, $y, $cropWidth, $cropHeight, $width, $height, $quality = 90)
+
+    }//end CropCenter()
+
+
+    public static function Crop($source, $destination, $x, $y, $cropWidth, $cropHeight, $width, $height, $quality=90)
     {
         $thumbImg = imagecreatetruecolor($width, $height);
         $img = self::GetImage($source);
-    
+
         $thumbImg = self::SetAlpha($thumbImg, $source);
-    
+
         imagecopyresampled($thumbImg, $img, 0, 0, $x, $y, $width, $height, $cropWidth, $cropHeight);
 
         self::OutputImage($thumbImg, RoxyFile::GetExtension(basename($source)), $destination, $quality);
-    }
-}
+
+    }//end Crop()
+
+
+}//end class
 $tmp = json_decode(file_get_contents(BASE_PATH.'/conf.json'), true);
-if($tmp) {
-    foreach ($tmp as $k=>$v) {
+if ($tmp) {
+    foreach ($tmp as $k => $v) {
         define($k, $v);
     }
-}
-else {
+} else {
     die('Error parsing configuration');
 }
+
 $FilesRoot = fixPath(getFilesPath());
-if(!is_dir($FilesRoot)) {
+if (!is_dir($FilesRoot)) {
     @mkdir($FilesRoot, octdec(DIRPERMISSIONS));
 }
-?>

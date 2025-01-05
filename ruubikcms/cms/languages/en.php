@@ -2,11 +2,12 @@
 if (basename($_SERVER['REQUEST_URI']) == 'en.php') {
     die('Access denied');
 }
+
 /*
-RuubikCMS language file
-Language: 'en'
-Author: Iisakki Pirilä
-Email: info[at]ruubikcms[dot]com
+    RuubikCMS language file
+    Language: 'en'
+    Author: Iisakki Pirilä
+    Email: info[at]ruubikcms[dot]com
 */
 define('SAVE', 'Save');
 define('RNEW', 'New');

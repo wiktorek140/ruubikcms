@@ -64,10 +64,10 @@ echo $page['lang']; ?>">
                 ?>
             </div>
             <?php
-            //if(!isMobile()){
-            //   echo '<style> #ColCenter{width: 74%; border-left: none;} </style>';
-            //}
-            //End block for menu
+            // if(!isMobile()){
+            // echo '<style> #ColCenter{width: 74%; border-left: none;} </style>';
+            // }
+            // End block for menu
             ?>
             <div id="ColCenter">
                 <div id="content">
@@ -87,7 +87,7 @@ echo $page['lang']; ?>">
                 <!-- Please leave "Powered by RuubikCMS" notice here! -->
                 <a href="/link/index.html">.</a><a href="/link/historia-szkoly.html">.</a>
                 Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
-                | Copyright &copy; <?php echo date("Y") . " " . $page['sitename']; ?>
+                | Copyright &copy; <?php echo date("Y")." ".$page['sitename']; ?>
             </div>
         </div>
     </div>

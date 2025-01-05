@@ -1,9 +1,9 @@
 <?php
 /*
-RuubikCMS helptext language file
-Language: 'fi'
-Author: Iisakki Pirilä
-Email: info[at]ruubikcms[dot]com
+    RuubikCMS helptext language file
+    Language: 'fi'
+    Author: Iisakki Pirilä
+    Email: info[at]ruubikcms[dot]com
 */
         define("H_TITLE", "<h5>Sivun nimi</h5><p>Valikossa näkyvä sivun nimi.</p><p>Näkyy sekä <b>web-sivuston valikossa</b> että <b>CMS:n valikossa</b>.</p><p>Jos luot uutta sivua, etkä syötä mitään kenttään <b>URL</b>, niin sivun nimen pohjalta luodaan yksilöllinen URL-osoiteeseen kelpaava nimi.</p>");
         define("H_HEADER1", "<h5>H1-otsikko</h5><p>Web-sivulla näkyvä pääotsikko eli <b>H1-elementti</b>.</p><p>Jos H1-otsikko jätetään uudella sivulla tyhjäksi, niin kentässä käytetään samaa tekstiä kuin yläpuolella olevassa <b>Sivun nimi</b> -kentässä.</p><p><b>SEO</b>: H1-teksti on merkityksellinen myös hakukoneille.</p>");
@@ -57,4 +57,3 @@ Email: info[at]ruubikcms[dot]com
         define("H_BACKUP", "<h5>Tallenna varmuuskopio</h5><p>Napsauta <b>Varmuuskopioi</b> tallentaaksesi koko SQLite-tietokannan omalle kiintolevyllesi.</p><p>Varmuuskopioi sisältää sivuston sisällön HTML-koodin ja asetukset.</p>");
         define("H_UNDOLASTLOGIN", "<h5>Kumoa tämä kirjautuminen</h5><p>Napsauta <b>Kumoa</b> kumotaksesi kaikki tällä kirjautumiskerralla tehdyt muutokset.<p><b>Käytä harkiten!</b></p>");
         define("H_RESTORE", "<h5>Palauta varmuuskopio</h5><p>Selaa tietokoneellesi tallennettu <b>kelvollinen varmuuskopio SQLite-tietokannasta</b> ja napsauta <b>Palauta</b> korvataksesi nykyisen tietokannan tällä varmuuskopiolla.<p><b>Käytä varovaisesti!</b></p>");
-?>

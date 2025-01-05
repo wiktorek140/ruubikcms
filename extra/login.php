@@ -1,5 +1,6 @@
 <?php
-/*   RuubikCMS - The easy & fast way to build Google optimized websites
+/*
+    RuubikCMS - The easy & fast way to build Google optimized websites
  *   Copyright (C) 2008-2009 Iisakki Pirilä, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
@@ -17,13 +18,15 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 require '../ruubikcms/includes/dbconfig.php';
-$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME); // database connection object
+$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+// database connection object
 define('LOGOUT_TIME', 1800);
 require 'login/session.php';
 if (@$_SESSION['uid']) {
     header('Location: index.php');
     exit;
 }
+
 require '../ruubikcms/includes/commonfunc.php';
 require '../ruubikcms/cms/includes/functions.php';
 define("RLANG", query_single("SELECT cmslang FROM options WHERE id = 1"));
@@ -80,7 +83,8 @@ $company = query_single("SELECT name FROM site WHERE id = 1");
 
                         <?php
                         require 'login/form.php';
-                        if (@$_SESSION['notfound']) { echo '<p>'.INCORRECTUSER.'</p>';
+                        if (@$_SESSION['notfound']) {
+                            echo '<p>'.INCORRECTUSER.'</p>';
                         }
                         ?>
 

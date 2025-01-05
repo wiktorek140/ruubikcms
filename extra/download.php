@@ -1,14 +1,15 @@
 <?php
 // --- File download with authentication and logging
 // --- Sample call with optional new name: download.php?f=phptutorial.zip&fc=newname.zip
-
 require '../ruubikcms/includes/dbconfig.php';
-$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME); // database connection object
+$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+// database connection object
 require '../ruubikcms/includes/commonfunc.php';
 define('LOGOUT_TIME', query_single("SELECT logout_time FROM options WHERE id = 1"));
 require 'login/session.php';
 // check if logged in
-if (!@$_SESSION['uid']) { die("Access denied.");
+if (!@$_SESSION['uid']) {
+    die("Access denied.");
 }
 
 // files directory
@@ -17,7 +18,7 @@ define('BASE_DIR', 'useruploads/files/');
 // make sure program execution doesn't time out
 @set_time_limit(0);
 
-if (!isset($_GET['f']) OR empty($_GET['f'])) {
+if (!isset($_GET['f']) or empty($_GET['f'])) {
     die("Please specify file name for download.");
 }
 
@@ -30,17 +31,18 @@ if (!is_file($fpath)) {
 }
 
 // file size in bytes
-$fsize = filesize($fpath); 
+$fsize = filesize($fpath);
 
 // get mime type
 $mtype = '';
 
 if (function_exists('mime_content_type')) {
     $mtype = mime_content_type($fpath);
-} elseif (function_exists('finfo_file')) {
-    $finfo = finfo_open(FILEINFO_MIME); // return mime type
+} else if (function_exists('finfo_file')) {
+    $finfo = finfo_open(FILEINFO_MIME);
+    // return mime type
     $mtype = finfo_file($finfo, $fpath);
-    finfo_close($finfo);  
+    finfo_close($finfo);
 }
 
 if ($mtype == '') {
@@ -48,12 +50,13 @@ if ($mtype == '') {
 }
 
 // override original filename with given (optional fc)
-if (!isset($_GET['fc']) OR empty($_GET['fc'])) {
+if (!isset($_GET['fc']) or empty($_GET['fc'])) {
     $asfname = $fname;
 } else {
     // remove some bad chars
-    $asfname = str_replace(array('"',"'",'\\','/'), '', $_GET['fc']);
-    if ($asfname === '') { $asfname = 'NoName';
+    $asfname = str_replace(['"', "'", '\\', '/'], '', $_GET['fc']);
+    if ($asfname === '') {
+        $asfname = 'NoName';
     }
 }
 
@@ -66,19 +69,20 @@ header("Content-Description: File Transfer");
 header("Content-Type: $mtype");
 header("Content-Disposition: attachment; filename=\"$asfname\"");
 header("Content-Transfer-Encoding: binary");
-header("Content-Length: " . $fsize);
+header("Content-Length: ".$fsize);
 
 // download
 $file = @fopen($fpath, "rb");
 if ($file) {
-    while(!feof($file)) {
-        print(fread($file, 1024*8));
+    while (!feof($file)) {
+        print(fread($file, (1024 * 8)));
         flush();
-        if (connection_status()!=0) {
+        if (connection_status() != 0) {
             @fclose($file);
             die();
         }
     }
+
     @fclose($file);
 }
 
@@ -108,4 +112,3 @@ if (!$dlcount) {
     $stmt->bindParam(3, $fname);
     $stmt->execute();
 }
-?>

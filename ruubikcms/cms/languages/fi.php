@@ -1,9 +1,9 @@
 <?php
 /*
-RuubikCMS language file
-Language: 'fi'
-Author: Iisakki Piril�
-Email: info[at]ruubikcms[dot]com
+    RuubikCMS language file
+    Language: 'fi'
+    Author: Iisakki Piril�
+    Email: info[at]ruubikcms[dot]com
 */
 define('SAVE', 'Tallenna');
 define('RNEW', 'Uusi');

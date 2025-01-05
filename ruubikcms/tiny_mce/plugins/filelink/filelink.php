@@ -38,7 +38,8 @@
         </tr>
     </table>
     
-    <?php if ($filelink_cfg['autolaunch_filebrowser'] == true) { echo '<script type="text/javascript">tinyBrowserPopUp(\'file\',\'filenameid\');</script>';
+    <?php if ($filelink_cfg['autolaunch_filebrowser'] == true) {
+        echo '<script type="text/javascript">tinyBrowserPopUp(\'file\',\'filenameid\');</script>';
     }?>
 
     <!--<p>Custom arg: <input id="somearg" name="somearg" type="text" class="text" /></p>-->

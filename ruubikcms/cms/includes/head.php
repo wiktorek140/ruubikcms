@@ -1,4 +1,5 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php' || strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) { die("Access Denied");
+<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php' || strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) {
+    die("Access Denied");
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -23,21 +24,29 @@
         <link rel="stylesheet" href="css/styleLogin.css" />
         <link rel="stylesheet" href="css/datePicker.css" />
         <!--<link rel="stylesheet" href="css/styleTabs.css" />-->
-        <?php if ($cmspage == SITESETUP) { echo '<link rel="stylesheet" href="css/styleSettingsWebsite.css" />';
+        <?php if ($cmspage == SITESETUP) {
+            echo '<link rel="stylesheet" href="css/styleSettingsWebsite.css" />';
         }?>
-        <?php if ($cmspage == NEWS) { echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
+        <?php if ($cmspage == NEWS) {
+            echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
         }?>
-        <?php if ($cmspage == SNIPPETS) { echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
+        <?php if ($cmspage == SNIPPETS) {
+            echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
         }?>
-        <?php if ($cmspage == LOG) { echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
+        <?php if ($cmspage == LOG) {
+            echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
         }?>
-        <?php if ($cmspage == USERS) { echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
+        <?php if ($cmspage == USERS) {
+            echo '<link rel="stylesheet" href="css/styleAdminNews.css" />';
         }?>
-        <?php if ($cmspage == EXTRAUSERS) { echo '<link rel="stylesheet" href="css/styleExtranetUsers.css" />';
+        <?php if ($cmspage == EXTRAUSERS) {
+            echo '<link rel="stylesheet" href="css/styleExtranetUsers.css" />';
         }?>
-        <?php if ($cmspage == WEBPAGES OR $cmspage == EXTRANET) { echo '<link rel="stylesheet" href="css/styleAdminWebsite.css" />';
+        <?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) {
+            echo '<link rel="stylesheet" href="css/styleAdminWebsite.css" />';
         }?>
-        <?php if ($cmspage == CMSOPTIONS) { echo '<link rel="stylesheet" href="css/styleSettingsCMS.css" />';
+        <?php if ($cmspage == CMSOPTIONS) {
+            echo '<link rel="stylesheet" href="css/styleSettingsCMS.css" />';
         }?>
         <!--<link rel="stylesheet" href="css/styleSkins.css" />-->
     <!--[if IE 6]><link rel="stylesheet" media="screen" href="css/styleIE6hacks.css" /><![endif]--> 
@@ -49,7 +58,8 @@
         <script type="text/javascript" src="scripts/tinyinit.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="scripts/date.js"></script>
-        <?php if ($cmspage != SNIPPETS AND $cmspage != USERS) { echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';
+        <?php if ($cmspage != SNIPPETS and $cmspage != USERS) {
+            echo '<script type="text/javascript" src="scripts/pagemenu.js"></script>';
         }?>
         <!-- beautytips stuff -->
         <!--[if lt IE 9]>
@@ -61,9 +71,12 @@
         <script src="scripts/tooltip.js"></script>
         <script src="scripts/jquery.datePicker.js"></script>
 
-        <?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) { echo '<script src="scripts/pageadmin.js"></script>';
+        <?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) {
+            echo '<script src="scripts/pageadmin.js"></script>';
         }
-        if ($cmspage == NEWS OR $cmspage == EXTRAUSERS) { echo '<script src="scripts/newsadmin.js"></script>';
+
+        if ($cmspage == NEWS or $cmspage == EXTRAUSERS) {
+            echo '<script src="scripts/newsadmin.js"></script>';
         }?>
 
     </head>
@@ -75,15 +88,19 @@
                 <div id="top">
                     <div id="topLinks">
                         <span id="linksBox">
-                            <?php if(SHOW_MULTILANG) { include 'multilang.php'; echo '| '; 
+                            <?php if (SHOW_MULTILANG) {
+                                include 'multilang.php';
+                                echo '| ';
                             } ?><a href="../../" target="_blank"><?php echo VIEWSITE;?></a> | <a href="login/logout.php"><?php echo LOGOUT;?></a>
                         </span>
                     </div>
                     <div id="topUser">
-                        <span id="userBox"><?php 
+                        <span id="userBox"><?php
                             $name = $_SESSION['firstname'].' '.$_SESSION['lastname'];
-                        if ($name == ' ') { $name = $_SESSION['uid'];
+                        if ($name == ' ') {
+                            $name = $_SESSION['uid'];
                         }
+
                             echo USER.': <span id="userName">'.$name.'</span>';
                         ?>
                         </span>

@@ -1,6 +1,9 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'newsmenu.php') { die('Access denied');
-} 
-if (strpos($_SERVER['REQUEST_URI'], 'newsmenu.php') !== false) { die("Access Denied");
+<?php if (basename($_SERVER['REQUEST_URI']) == 'newsmenu.php') {
+    die('Access denied');
+}
+
+if (strpos($_SERVER['REQUEST_URI'], 'newsmenu.php') !== false) {
+    die("Access Denied");
 }
 ?>
 <!-- **************** leftDiv (rootMenu) ******************** -->           
@@ -10,23 +13,25 @@ if (strpos($_SERVER['REQUEST_URI'], 'newsmenu.php') !== false) { die("Access Den
                     <div id="pageManagement">
                         <div id="rootMenuNews"><!-- rootMenu begins -->
                             <?php
-                            if (!isset($_GET['y'])) { $_GET['y'] = '';
+                            if (!isset($_GET['y'])) {
+                                $_GET['y'] = '';
                             }
-                            /*
-                            echo '
-                            <div class="arrowdiv1"><a href="#"><img src="images/arrow1.gif" class="imgover" alt="arrow" /></a></div>
-                            <div class="rootPage"><a href="news.php?y=latest">Latest news</a></div>
-                            <div class="subMenu1"'.($_GET['y'] == 'latest' ? ' id="open"' : '').'>';
 
-                            $sql = "SELECT id, title, STRFTIME('%d.%m.%Y',time) as date FROM news ORDER BY time DESC LIMIT 10";
-                            foreach ($dbh->query($sql) as $row) {
+                            /*
+                                echo '
+                                <div class="arrowdiv1"><a href="#"><img src="images/arrow1.gif" class="imgover" alt="arrow" /></a></div>
+                                <div class="rootPage"><a href="news.php?y=latest">Latest news</a></div>
+                                <div class="subMenu1"'.($_GET['y'] == 'latest' ? ' id="open"' : '').'>';
+
+                                $sql = "SELECT id, title, STRFTIME('%d.%m.%Y',time) as date FROM news ORDER BY time DESC LIMIT 10";
+                                foreach ($dbh->query($sql) as $row) {
                                     echo '
                                     <div class="subPage1"><div class="arrowdiv2"><a href="#"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>
                                     <div class="subButton1"><a href="news.php'.'?id='.$row['id'].'">'.$row['date'].': '.$row['title'].'</a></div></div>';
-                            }
+                                }
 
-                            echo '
-                            </div>';
+                                echo '
+                                </div>';
                             */
 
                             // get years for news
@@ -42,6 +47,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'newsmenu.php') !== false) { die("Access Den
                                     echo '  <div class="subPage1"><!--<div class="arrowdiv2"><a href="#"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>-->
                                             <div class="subButton1"><a href="news.php'.'?y='.$row['year'].'&amp;id='.$row2['id'].'"'.($row2['id'] == $_GET['id'] ? ' class="selected"' : '').'>'.$row2['date'].': '.ec($row2['title']).'</a></div></div>';
                                 }
+
                                 echo '</div>';
                             }
                             ?>

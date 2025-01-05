@@ -1,9 +1,9 @@
 <?php
 /*
-RuubikCMS help language file
-Language: 'en'
-Author: Iisakki Pirilä
-Email: info[at]ruubikcms[dot]com
+    RuubikCMS help language file
+    Language: 'en'
+    Author: Iisakki Pirilä
+    Email: info[at]ruubikcms[dot]com
 */
         define("H_TITLE", "<h5>Page name</h5><p>Page name is shown in the <b>web site's navigation menu</b> and also in the Pages menu on the CMS-side.</p><p>If creating a new page and URL-field is left empty, unique URL-name will be based on this field.</p>");
         define("H_HEADER1", "<h5>H1-header</h5><p>H1-element (main header) of this web page. <b>Page name</b> will be used if left empty on a new page.<p><b>SEO</b>: H1-text is also important for search engines.</p>");
@@ -57,4 +57,3 @@ Email: info[at]ruubikcms[dot]com
         define("H_BACKUP", "<h5>Save backup</h5><p>Click <b>Backup</b> to save the database to your local hard-drive.</p><p>This SQLite database file will contain the entire web site HTML content, Site Setup and also the CMS Options.</p>");
         define("H_UNDOLASTLOGIN", "<h5>Undo this login</h5><p>Click <b>Undo</b> to reset all changes that are made during this login session.<p><b>Use carefully!</b></p>");
         define("H_RESTORE", "<h5>Restore backup</h5><p>Browse a locally saved <b>valid SQLite database backup file</b> from your computer and click <b>Restore</b> to replace your current database with this backup.<p><b>Use carefully!</b></p>");
-?>
