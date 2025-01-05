@@ -17,15 +17,15 @@ div#pageManagement ul.firstSubMenu li {
    margin: 0 0 -3px 0;   }
    
 div#pageManagement ul.secondSubMenu {       
-	padding: 1px 0 3px 20px;       
+    padding: 1px 0 3px 20px;       
 }
   
    
 /* buttonBar hacks
 ---------------------------------------------------------- */
 #buttonBar {
-	padding: 0 0 0 15px;
-	height: 35px;		
+    padding: 0 0 0 15px;
+    height: 35px;        
 }
 
 
@@ -34,50 +34,50 @@ div#pageManagement ul.secondSubMenu {
 ---------------------------------------------------------- */
 
 #pageAdmin {
-	margin: -3px 0 0 0;
-	min-height: 170px;
+    margin: -3px 0 0 0;
+    min-height: 170px;
 }
 
 /*#pageAdmin  dl{
-	margin: 1px 0 0 0;
-	padding: 0 0 1px 0;	
+    margin: 1px 0 0 0;
+    padding: 0 0 1px 0;    
 }
 
 #pageAdmin dl dt{
-	padding: 2px 0 0 0;
-	height: 17px;
+    padding: 2px 0 0 0;
+    height: 17px;
 }
 
 #pageAdmin dl.selects{
-	padding: 2px 0 0 0;
-	height: 20px;
+    padding: 2px 0 0 0;
+    height: 20px;
 }
 
 #pageAdmin dl dd select{
-	margin: 0;
-	padding: 0;
-	line-height: 0.9em;
-	height: 20px;
+    margin: 0;
+    padding: 0;
+    line-height: 0.9em;
+    height: 20px;
 }
 
 #checkboxDiv {
-	position: relative;
-	margin: -2px 0 0 0;
-	padding: 0 0 0 40px;
+    position: relative;
+    margin: -2px 0 0 0;
+    padding: 0 0 0 40px;
 }
 
 #checkboxDiv input{
-	position: relative;
-	top: 2px;
-	margin: 0 5px 0 2px;	
+    position: relative;
+    top: 2px;
+    margin: 0 5px 0 2px;    
 }
 
 
 #checkboxDiv img{
-	position: absolute;
-	top: 3px;
-	right: 2px;    
-	border: none;
+    position: absolute;
+    top: 3px;
+    right: 2px;    
+    border: none;
 }
 */
 
@@ -85,17 +85,17 @@ div#pageManagement ul.secondSubMenu {
 ---------------------------------------------------------- */
 
 #SEO {
-	margin: -3px 0 0 0;
-	min-height: 170px;
+    margin: -3px 0 0 0;
+    min-height: 170px;
 }
 
 /*#SEO  dl{
-	margin: 1px 0 0 0;
-	padding: 0 0 1px 0;	
+    margin: 1px 0 0 0;
+    padding: 0 0 1px 0;    
 }
 
 #SEO dl dt{
-	padding: 2px 0 0 0;
-	height: 17px;
+    padding: 2px 0 0 0;
+    height: 17px;
 }
 */

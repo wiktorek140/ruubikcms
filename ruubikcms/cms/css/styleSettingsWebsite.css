@@ -1,32 +1,32 @@
 #webSiteLeft {
-	float: left;
-	display: inline;	
-	width: 450px;	 	
+    float: left;
+    display: inline;    
+    width: 450px;         
 }
 
 /* PageAdmin Settings
 ---------------------------------------------------------- */
 
 #webSiteSettings {
-	padding: 0 0 5px 0;	  
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651; 
+    padding: 0 0 5px 0;      
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651; 
 }
 
 #webSiteSettings h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 
@@ -69,12 +69,12 @@
 }
 
 #webSiteSettings table td.tdWebSetupCenter textarea{
-	padding: 1px;
-	font-family: arial;
-	width: 240px;
-	height: 50px;
-	font-size: 11px;
-	border: 1px solid #384637;	
+    padding: 1px;
+    font-family: arial;
+    width: 240px;
+    height: 50px;
+    font-size: 11px;
+    border: 1px solid #384637;    
 }
 
 #webSiteSettings table td.tdWebSetupRight{
@@ -96,26 +96,26 @@
 ---------------------------------------------------------- */
 
 #webSiteRest {
-	margin: 10px 0 0 0;    
-	padding: 0 0 5px 0;	  
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651; 
+    margin: 10px 0 0 0;    
+    padding: 0 0 5px 0;      
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651; 
 }
 
 #webSiteRest h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 #webSiteRest  table{
@@ -173,38 +173,38 @@
 ---------------------------------------------------------- */
 
 #webSiteRight {
-	float: right;
-	width: 255px;		
-	min-height: 400px;
+    float: right;
+    width: 255px;        
+    min-height: 400px;
 }
 
 
 #searchEngine {
     position: relative;
-	padding: 0 0 10px 0;	    
+    padding: 0 0 10px 0;        
     width: 255px;
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651;  	
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651;      
 }
 
 #searchEngine h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 #innerEngine {
-	padding: 0 5px 0 5px;		
+    padding: 0 5px 0 5px;        
 }
 
 #innerEngine table {
@@ -244,12 +244,12 @@
 }
 
 #innerEngine table tbody td textarea{
-	padding: 1px;
-	font-family: arial;
-	width: 240px;
-	height: 100px;
-	font-size: 11px;
-	border: 1px solid #384637;	  
+    padding: 1px;
+    font-family: arial;
+    width: 240px;
+    height: 100px;
+    font-size: 11px;
+    border: 1px solid #384637;      
 }
 
 #innerEngine table tfoot {
@@ -268,63 +268,63 @@
 
 #innerEngine table tfoot td ul li {
     padding: 0 0 0 0; 
-	font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 1.7em;	
-	color: #0A59A8;
+    font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.7em;    
+    color: #0A59A8;
 }
 
 #innerEngine table tfoot td ul li a.google:link, #innerEngine table tfoot td ul li a.google:visited {
-	padding: 2px 0 2px 25px;
-	color: #0041a3;
-	font-size: 11px;	
-	font-weight: bold;
-	text-decoration: underline;
-	background: url(images/google_icon.gif) no-repeat top left;
+    padding: 2px 0 2px 25px;
+    color: #0041a3;
+    font-size: 11px;    
+    font-weight: bold;
+    text-decoration: underline;
+    background: url(images/google_icon.gif) no-repeat top left;
 }
 
 #innerEngine table tfoot td ul li a.google:hover {
-	color: #206216;
+    color: #206216;
 }
 
 #innerEngine table tfoot td ul li a.yahoo:link, #innerEngine table tfoot td ul li a.yahoo:visited {
-	padding: 2px 0 2px 25px;
-	color: #0041a3;
-	font-size: 11px;	
-	font-weight: bold;
-	text-decoration: underline;
+    padding: 2px 0 2px 25px;
+    color: #0041a3;
+    font-size: 11px;    
+    font-weight: bold;
+    text-decoration: underline;
     background: url(images/yahoo.gif) no-repeat top left;                 
 }
 
 #innerEngine table tfoot td ul li a.yahoo:hover {
-	color: #206216;
+    color: #206216;
 }
 
 #innerEngine table tfoot td ul li a.msn:link, #innerEngine table tfoot td ul li a.msn:visited {
-	padding: 2px 0 2px 25px;
-	color: #0041a3;
-	font-size: 11px;	
-	font-weight: bold;
-	text-decoration: underline;
+    padding: 2px 0 2px 25px;
+    color: #0041a3;
+    font-size: 11px;    
+    font-weight: bold;
+    text-decoration: underline;
     background: url(images/msn.gif) no-repeat top left;                 
 }
 
 #innerEngine table tfoot td ul li a.msn:hover {
-	color: #206216;
+    color: #206216;
 }
 
 #innerEngine table tfoot td ul li a.dmoz:link, #innerEngine table tfoot td ul li a.dmoz:visited {
-	padding: 2px 0 2px 25px;
-	color: #0041a3;
-	font-size: 11px;	
-	font-weight: bold;
-	text-decoration: underline;
+    padding: 2px 0 2px 25px;
+    color: #0041a3;
+    font-size: 11px;    
+    font-weight: bold;
+    text-decoration: underline;
     background: url(images/dmoz.gif) no-repeat top left;                 
 }
 
 #innerEngine table tfoot td ul li a.dmoz:hover {
-	color: #206216;
+    color: #206216;
 }
 
 
@@ -334,24 +334,24 @@
     margin: 10px 0 0 0;
     padding: 0 0 5px 0;
     width: 255px;    
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651;  	
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651;      
 }
 
 #newsWebSettings h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		   
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;           
+    border-bottom:1px solid #384651;      
 }
 
 #newsWebSettings  table{

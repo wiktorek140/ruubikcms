@@ -5,34 +5,34 @@
 
 
 #settingsCMS {
-	font-family: arial, Trebuchet MS, arial;
-	color: #413f48;
-    background: #a9d0e2 url(skinsimages/skins_bg_blue.gif) repeat-x bottom left;		
-	border:1px solid #384651;  	
+    font-family: arial, Trebuchet MS, arial;
+    color: #413f48;
+    background: #a9d0e2 url(skinsimages/skins_bg_blue.gif) repeat-x bottom left;        
+    border:1px solid #384651;      
 }
 
-#settingsCMS h2{		
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c url(skinsimages/skins_h2_blue.gif) repeat-x bottom left;				
-	border-bottom:1px solid #384651;  	
+#settingsCMS h2{        
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c url(skinsimages/skins_h2_blue.gif) repeat-x bottom left;                
+    border-bottom:1px solid #384651;      
 }
 
 /* settingsPassword Skin
 ---------------------------------------------------------- */
 
 #settingsPassword {
-	font-family: arial, Trebuchet MS, arial;
-	color: #413f48;		
-    background: #a9d0e2 url(skinsimages/skins_bg_blue2.gif) repeat-x bottom left;		
-	border:1px solid #384651;  	
+    font-family: arial, Trebuchet MS, arial;
+    color: #413f48;        
+    background: #a9d0e2 url(skinsimages/skins_bg_blue2.gif) repeat-x bottom left;        
+    border:1px solid #384651;      
 }
 
 #settingsPassword h2{
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
     background: #3c454c url(skinsimages/skins_h2_blue.gif) repeat-x bottom left;
-	border-bottom:1px solid #384651;  	
+    border-bottom:1px solid #384651;      
 }
 
 
@@ -42,7 +42,7 @@
     float:left; 
     background:url("skinsimages/navi_left.gif") no-repeat left top;
     padding:0 0 0 15px;
-    text-decoration:none;  	 
+    text-decoration:none;       
 } 
 
 #mainNavigation li a span {
@@ -52,7 +52,7 @@
     padding:12px 15px 15px 0px;
     font-weight: bold;
     font-size: 13px;
-	font-family: Trebuchet MS, arial, verdana;       
+    font-family: Trebuchet MS, arial, verdana;       
     color:#ffffff;  
 } 
 

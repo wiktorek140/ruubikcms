@@ -1,33 +1,33 @@
 #cmsOptionsLeft {
     position: relative;
-	float: left;
-	display: inline;	
-	width: 370px;	   	
+    float: left;
+    display: inline;    
+    width: 370px;           
 }
 
 #settingsCMS {
     /*position: relative;*/
-	padding: 0 0 10px 0;
-	width: 370px;	 
-	min-height: 300px;
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651;  	
+    padding: 0 0 10px 0;
+    width: 370px;     
+    min-height: 300px;
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651;      
 }
 
 #settingsCMS h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 #settingsCMS  table{
@@ -83,36 +83,36 @@
 
 #cmsOptionsRight {
     position: relative;
-	float: right;
-	display: inline;	
-	width: 330px;	     	
+    float: right;
+    display: inline;    
+    width: 330px;             
 }
 
 #settingsPassword {
     /*position: relative;*/
-	float: right;    
-	margin: 0 0 10px 0;	
-	padding: 0 0 10px 0;
-	width: 330px;
-	min-height: 150px;
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight: normal;
-    background: #aab4be;		
-	border:1px solid #384651;  	
+    float: right;    
+    margin: 0 0 10px 0;    
+    padding: 0 0 10px 0;
+    width: 330px;
+    min-height: 150px;
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight: normal;
+    background: #aab4be;        
+    border:1px solid #384651;      
 }
 
 #settingsPassword h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 #settingsPassword  table{
@@ -168,29 +168,29 @@
 
 #settingsBackup {
     /*position: relative;*/
-	float: right;    
-	margin: 0 0 10px 0;	
-	padding: 0 0 10px 0;
-	width: 330px;
-	min-height: 200px;
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651;  	
+    float: right;    
+    margin: 0 0 10px 0;    
+    padding: 0 0 10px 0;
+    width: 330px;
+    min-height: 200px;
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651;      
 }
 
 #settingsBackup h2{
-	margin: 0 0 10px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 10px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 #settingsBackup  table{
@@ -226,9 +226,9 @@
 #settingsBackup table td.tdBackupCenter input{
    padding: 1px 5px;
    font-size: 11px;
-    background: url(images/browse.gif) repeat-x bottom left;  		
-	border: 1px solid #303842;  
-	color: #ffffff;
+    background: url(images/browse.gif) repeat-x bottom left;          
+    border: 1px solid #303842;  
+    color: #ffffff;
 }
 
 #settingsBackup table td.tdBackupRight{

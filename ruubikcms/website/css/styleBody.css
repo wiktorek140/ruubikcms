@@ -1,25 +1,25 @@
 body {
-	font-family: verdana, arial, Helvetica, sans-serif;
-	font-size: small;
-	font-weight: normal;
-	line-height: 1.2em;
-	color: #333333;
-	background: #afafaf;
+    font-family: verdana, arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: normal;
+    line-height: 1.2em;
+    color: #333333;
+    background: #afafaf;
         
 } 
 
 #wrapper {
-	position: relative;
-	margin-top: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 20px;
-	width: 1100px;
-	border: 0px solid #cccccc;
+    position: relative;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 1100px;
+    border: 0px solid #cccccc;
 }
 
 #innerWrapper {
-	position: relative;
+    position: relative;
 }
 
 /*---------- HEADER
@@ -27,20 +27,20 @@ body {
 
 
 #header {
-	position: relative;
+    position: relative;
         background: #afafaf url(images/bg.jpg) repeat-x top left;
 }
 
 #design {
-	position: relative;
-	height: 131px;
-	background: url(images/design.jpg) no-repeat top left; /*blue*/  
-	/*background: url(images/bg.jpg) repeat-x top left;*/
+    position: relative;
+    height: 131px;
+    background: url(images/design.jpg) no-repeat top left; /*blue*/  
+    /*background: url(images/bg.jpg) repeat-x top left;*/
 }
 
 #mainMenu {
-	position: relative;
-	height: 39px;
+    position: relative;
+    height: 39px;
         background: url(images/split.gif) no-repeat top right;
         width: 1100px;
 }
@@ -49,66 +49,66 @@ body {
 --------------------------------------------------------------------------*/
 
 #mainBody {
-	
-	padding: 20px 0px 10px 0px;
-	width: 1100px;
+    
+    padding: 20px 0px 10px 0px;
+    width: 1100px;
         z-index: -100;
 }
 
 #ColLeft {
-	position: relative;
-	float: left;
-	width: 200px;
-	min-height: 400px;
-	height: auto !important;
-	height: 400px;
-	height: 100%;
-	
+    position: relative;
+    float: left;
+    width: 200px;
+    min-height: 400px;
+    height: auto !important;
+    height: 400px;
+    height: 100%;
+    
 }
 
 #ColCenter {
-	position: relative;
-	float: left;
-	width: 620px;
-	min-height: 500px;
-	height: auto !important;
-	height: 500px;
-	border-left: 3px solid rgb(168, 16, 24);
+    position: relative;
+    float: left;
+    width: 620px;
+    min-height: 500px;
+    height: auto !important;
+    height: 500px;
+    border-left: 3px solid rgb(168, 16, 24);
         border-right: 3px solid rgb(168, 16, 24);
 }
 
 #ColRight{
-	position: relative;
-	float: right;
-	width: 260px;
-	min-height: 400px;
-	height: auto !important;
-	height: 400px;
+    position: relative;
+    float: right;
+    width: 260px;
+    min-height: 400px;
+    height: auto !important;
+    height: 400px;
 }
 
 div.clear {
-	clear: both;
-	position: relative;
-	line-height: 0px;
-	height: 0px;
-	font-size: 0px;
+    clear: both;
+    position: relative;
+    line-height: 0px;
+    height: 0px;
+    font-size: 0px;
 }
 
 /*---------- FOOTER
 --------------------------------------------------------------------------*/
 
 #footer {
-	position: relative;
+    position: relative;
 }
 
 #footer div{
-	padding: 0 10px 0 0;
-	text-align: right;
-	font-family: trebuchet ms, verdana, arial, Helvetica, sans-serif;
-	font-size: 11px;
-	font-weight: bold;
-	color: #3e464e;
-	height: 25px;
-	line-height: 25px;
-	border-top: 2px solid #4b633b;
+    padding: 0 10px 0 0;
+    text-align: right;
+    font-family: trebuchet ms, verdana, arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #3e464e;
+    height: 25px;
+    line-height: 25px;
+    border-top: 2px solid #4b633b;
 }

@@ -3,33 +3,33 @@
 
 #newsAdmin {
     /*position: relative;*/
-	padding: 0 0 10px 0;
-	min-height: 560px;
-	line-height: 1 em;
-	color: #413f48;
-	font-family: arial, Trebuchet MS, arial;
-	text-align: left;
-	font-size: 11px;
-	font-weight:bold;
-    background: #aab4be;		
-	border:1px solid #384651;  	
+    padding: 0 0 10px 0;
+    min-height: 560px;
+    line-height: 1 em;
+    color: #413f48;
+    font-family: arial, Trebuchet MS, arial;
+    text-align: left;
+    font-size: 11px;
+    font-weight:bold;
+    background: #aab4be;        
+    border:1px solid #384651;      
 }
 
 #newsAdmin h2{
-	margin: 0 0 5px 0;
-	padding: 0 5px 0 5px;	
-	font-size: 13px;	
-	font-family: Trebuchet MS, arial;	
-	color: #ffffff;
-    background: #3c454c;		
-	border-bottom:1px solid #384651;  	
+    margin: 0 0 5px 0;
+    padding: 0 5px 0 5px;    
+    font-size: 13px;    
+    font-family: Trebuchet MS, arial;    
+    color: #ffffff;
+    background: #3c454c;        
+    border-bottom:1px solid #384651;      
 }
 
 
 
 #newsAdmin table.newsTable{
     width: 715px;
-    margin: 5px 0 5px 0;	    
+    margin: 5px 0 5px 0;        
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminLeft{
@@ -75,12 +75,12 @@
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminCenter textarea{
-	padding: 1px;
-	font-family: arial;
-	width: 256px;
-	height: 50px;
-	font-size: 11px;
-	border: 1px solid #384637;	
+    padding: 1px;
+    font-family: arial;
+    width: 256px;
+    height: 50px;
+    font-size: 11px;
+    border: 1px solid #384637;    
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminRight{
@@ -89,7 +89,7 @@
    min-height: 17px;
    line-height: 20px;
    text-align: left;
-   vertical-align: top;	   
+   vertical-align: top;       
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminRight img{
@@ -99,10 +99,10 @@
 #newsAdmin #tinyMCE {
     /*position: relative; /*CSS IE6 Hack*/
     padding: 5px 0 0 160px;
-	width: 550px;
+    width: 550px;
 }
 
 #newsAdmin #tinyMCE textarea {
-	width: 544px;
-	height: 364px;
+    width: 544px;
+    height: 364px;
 }
