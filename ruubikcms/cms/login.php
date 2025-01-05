@@ -21,8 +21,8 @@ require 'includes/dbconnection.php';
 define('LOGOUT_TIME', 1800);
 require 'login/session.php';
 if (@$_SESSION['uid']) {
-  header('Location: index.php');
-  exit();
+    header('Location: index.php');
+    exit();
 }
 require '../includes/commonfunc.php';
 require 'includes/functions.php';
@@ -34,52 +34,52 @@ $company = query_single('SELECT name FROM site WHERE id = 1');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo RLANG; ?>" lang="<?php echo RLANG; ?>">
-	<head>
-		<title>RuubikCMS - <?php echo $cmspage; ?></title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="RuubikCMS - Easy and fast way to build Google optimized websites." />
-		<meta name="keywords" content="RuubikCMS" />
-		<meta name="robots" content="NONE" />
-		<meta name="rating" content="General" />
-		<meta name="DC.Title" content="RuubikCMS <?php echo VERNUM; ?>" />
-		<meta name="DC.Publisher" content="RuubikCMS.com" />
-		<meta name="DC.Language" content="EN" />
-		<meta name="doc-rights" content="Copywritten Work" />
-		<meta name="author" content="Iisakki Piril�, Henrik Valros" />
-		<meta name="copyright" content="Iisakki Piril�, Henrik Valros" />
+    <head>
+        <title>RuubikCMS - <?php echo $cmspage; ?></title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="RuubikCMS - Easy and fast way to build Google optimized websites." />
+        <meta name="keywords" content="RuubikCMS" />
+        <meta name="robots" content="NONE" />
+        <meta name="rating" content="General" />
+        <meta name="DC.Title" content="RuubikCMS <?php echo VERNUM; ?>" />
+        <meta name="DC.Publisher" content="RuubikCMS.com" />
+        <meta name="DC.Language" content="EN" />
+        <meta name="doc-rights" content="Copywritten Work" />
+        <meta name="author" content="Iisakki Piril�, Henrik Valros" />
+        <meta name="copyright" content="Iisakki Piril�, Henrik Valros" />
 
-		<link rel="shortcut icon" href="images/logo.ico" />                           
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
-		<!--<link rel="stylesheet" type="text/css" href="css/ruubikBody.css" />-->
+        <link rel="shortcut icon" href="images/logo.ico" />                           
+        <link rel="stylesheet" type="text/css" href="css/default.css" />
+        <!--<link rel="stylesheet" type="text/css" href="css/ruubikBody.css" />-->
 
-		<link rel="stylesheet" type="text/css" href="css/styleLogin.css" />	 	        		           
-		<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="css/styleIE6hacks.css" /><![endif]--> 
-		<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="css/styleIE7hacks.css" /><![endif]-->
-		<script type="text/javascript">
-		function focusit() {
-			document.getElementById('username').focus();
-		}
-		window.onload = focusit;
-		</script>
+        <link rel="stylesheet" type="text/css" href="css/styleLogin.css" />                                    
+        <!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="css/styleIE6hacks.css" /><![endif]--> 
+        <!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="css/styleIE7hacks.css" /><![endif]-->
+        <script type="text/javascript">
+        function focusit() {
+            document.getElementById('username').focus();
+        }
+        window.onload = focusit;
+        </script>
 
     </head>
     <body>
      <div id="wrapper">
-			<div id="mainBody">   
-				<div id="login">
-					<div id="innerLogin">
-						<?php
-      require 'login/form.php';
-      if (@$_SESSION['notfound']) {
-        echo '<p>' . INCORRECTUSER . '</p>';
-      }
-      ?>
-					</div>
-				</div>
-				<div id="loginFooter">
-					<?php echo $company; ?> - <a href="http://www.ruubikcms.com/" target="_blank">RuubikCMS</a> v<?php echo VERNUM; ?> - <a href="../../" target="_blank"><?php echo VIEWSITE; ?></a>
-				</div>
-			</div>
-		</div>
+            <div id="mainBody">   
+                <div id="login">
+                    <div id="innerLogin">
+                        <?php
+                        require 'login/form.php';
+                        if (@$_SESSION['notfound']) {
+                            echo '<p>' . INCORRECTUSER . '</p>';
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div id="loginFooter">
+                    <?php echo $company; ?> - <a href="http://www.ruubikcms.com/" target="_blank">RuubikCMS</a> v<?php echo VERNUM; ?> - <a href="../../" target="_blank"><?php echo VIEWSITE; ?></a>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

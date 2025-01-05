@@ -1,8 +1,11 @@
 <?php
 
-class Router {
+class Router
+{
   
-  public function route(Request $request) {}
+    public function route(Request $request)
+    {
+    }
   
   
 }

@@ -20,27 +20,30 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-include '../system.inc.php';
-include 'functions.inc.php';
+require '../system.inc.php';
+require 'functions.inc.php';
 
 verifyAction('COPYFILE');
 checkAccess('COPYFILE');
 
 $path = trim(empty($_POST['f'])?'':$_POST['f']);
 $newPath = trim(empty($_POST['n'])?'':$_POST['n']);
-if(!$newPath)
-  $newPath = getFilesPath();
+if(!$newPath) {
+    $newPath = getFilesPath();
+}
 
 verifyPath($path);
 verifyPath($newPath);
 
-if(is_file(fixPath($path))){
-  $newPath = $newPath.'/'.RoxyFile::MakeUniqueFilename(fixPath($newPath), basename($path));
-  if(copy(fixPath($path), fixPath($newPath)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_CopyFile'));
+if(is_file(fixPath($path))) {
+    $newPath = $newPath.'/'.RoxyFile::MakeUniqueFilename(fixPath($newPath), basename($path));
+    if(copy(fixPath($path), fixPath($newPath))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_CopyFile'));
+    }
 }
-else
-  echo getErrorRes(t('E_CopyFileInvalisPath'));
+else {
+    echo getErrorRes(t('E_CopyFileInvalisPath'));
+}
 ?>

@@ -20,31 +20,33 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-include '../system.inc.php';
-include 'functions.inc.php';
+require '../system.inc.php';
+require 'functions.inc.php';
 
 verifyAction('MOVEFILE');
 checkAccess('MOVEFILE');
 
 $path = trim(empty($_POST['f'])?'':$_POST['f']);
 $newPath = trim(empty($_POST['n'])?'':$_POST['n']);
-if(!$newPath)
-  $newPath = getFilesPath();
+if(!$newPath) {
+    $newPath = getFilesPath();
+}
 verifyPath($path);
 verifyPath($newPath);
 
 if(!RoxyFile::CanUploadFile(basename($newPath))) {
-	echo getErrorRes(t('E_FileExtensionForbidden'));
+    echo getErrorRes(t('E_FileExtensionForbidden'));
 }
-elseif(is_file(fixPath($path))){
-  if(file_exists(fixPath($newPath)))
-    echo getErrorRes(t('E_MoveFileAlreadyExists').' '.basename($newPath));
-  elseif(rename(fixPath($path), fixPath($newPath)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_MoveFile').' '.basename($path));
+elseif(is_file(fixPath($path))) {
+    if(file_exists(fixPath($newPath))) {
+        echo getErrorRes(t('E_MoveFileAlreadyExists').' '.basename($newPath));
+    } elseif(rename(fixPath($path), fixPath($newPath))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_MoveFile').' '.basename($path));
+    }
 }
 else {
-  echo getErrorRes(t('E_MoveFileInvalisPath'));
+    echo getErrorRes(t('E_MoveFileInvalisPath'));
 }
 ?>

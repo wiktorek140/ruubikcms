@@ -1,6 +1,6 @@
 <?php
 if (basename($_SERVER['REQUEST_URI']) == 'pl.php') {
-  die('Access denied');
+    die('Access denied');
 }
  /**
 RuubikCMS language file
@@ -135,8 +135,8 @@ define('BACKUP', 'kopia');
 define('RESTORE', 'Przywróć');
 define('RESTORETOOL', 'Przywróć');
 define(
-  'RESTORECONFIRM',
-  'Are you sure that you want to restore selected backup file? If something goes wrong, current database will be backed up to server as ruubikcms-backup.sqlite.',
+    'RESTORECONFIRM',
+    'Are you sure that you want to restore selected backup file? If something goes wrong, current database will be backed up to server as ruubikcms-backup.sqlite.',
 );
 define('UNDO', 'Wstecz');
 define('UNDOLASTLOGIN', 'Undo this login');
@@ -161,14 +161,14 @@ define('FILENAME', 'Nazwa pliku');
 define('COUNTSTARTED', 'Count started');
 define('LASTDOWNLOAD', 'Ostatnie pobranie');
 define(
-  'SQLITENOTWRITABLE',
-  'Sqlite folder and ruubikcms.sqlite file must be writable! Check permissions from installation instructions.',
+    'SQLITENOTWRITABLE',
+    'Sqlite folder and ruubikcms.sqlite file must be writable! Check permissions from installation instructions.',
 );
 define('IMPORT', 'Importuj');
 define('EXPORT', 'Eksportuj');
 define(
-  'IMPORTCONFIRM',
-  'Are you sure that you want to import this CSV-file? Users with same username will be replaced.',
+    'IMPORTCONFIRM',
+    'Are you sure that you want to import this CSV-file? Users with same username will be replaced.',
 );
 define('ORGANIZATION', 'Organizacja');
 define('VALIDUNTIL', 'Aktywny do');

@@ -20,8 +20,8 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-include '../system.inc.php';
-include 'functions.inc.php';
+require '../system.inc.php';
+require 'functions.inc.php';
 
 verifyAction('DELETEFILE');
 checkAccess('DELETEFILE');
@@ -29,12 +29,14 @@ checkAccess('DELETEFILE');
 $path = trim($_POST['f']);
 verifyPath($path);
 
-if(is_file(fixPath($path))){
-  if(unlink(fixPath($path)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_DeletеFile').' '.basename($path));
+if(is_file(fixPath($path))) {
+    if(unlink(fixPath($path))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_DeletеFile').' '.basename($path));
+    }
 }
-else
-  echo getErrorRes(t('E_DeleteFileInvalidPath'));
+else {
+    echo getErrorRes(t('E_DeleteFileInvalidPath'));
+}
 ?>

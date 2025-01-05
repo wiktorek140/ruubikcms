@@ -1,8 +1,7 @@
-<?php if (
-  basename($_SERVER['REQUEST_URI']) == 'footer.php' ||
-  strpos($_SERVER['REQUEST_URI'], 'footer.php') !== false
+<?php if (basename($_SERVER['REQUEST_URI']) == 'footer.php' 
+    || strpos($_SERVER['REQUEST_URI'], 'footer.php') !== false
 ) {
-  die('Access Denied');
+    die('Access Denied');
 } ?>
         <div id="footer">
             <div>

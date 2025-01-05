@@ -1,6 +1,6 @@
 <?php
 
-require('ruubikcms/page.php');
+require 'ruubikcms/page.php';
 echo $page['doctype'];
 ?>
 

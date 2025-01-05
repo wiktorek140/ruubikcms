@@ -20,8 +20,8 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-include '../system.inc.php';
-include 'functions.inc.php';
+require '../system.inc.php';
+require 'functions.inc.php';
 
 verifyAction('DELETEDIR');
 checkAccess('DELETEDIR');
@@ -29,16 +29,18 @@ checkAccess('DELETEDIR');
 $path = trim(empty($_GET['d'])?'':$_GET['d']);
 verifyPath($path);
 
-if(is_dir(fixPath($path))){
-  if(fixPath($path.'/') == fixPath(getFilesPath().'/'))
-    echo getErrorRes(t('E_CannotDeleteRoot'));
-  elseif(count(glob(fixPath($path)."/*")))
-    echo getErrorRes(t('E_DeleteNonEmpty'));
-  elseif(rmdir(fixPath($path)))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_CannotDeleteDir').' '.basename($path));
+if(is_dir(fixPath($path))) {
+    if(fixPath($path.'/') == fixPath(getFilesPath().'/')) {
+        echo getErrorRes(t('E_CannotDeleteRoot'));
+    } elseif(count(glob(fixPath($path)."/*"))) {
+        echo getErrorRes(t('E_DeleteNonEmpty'));
+    } elseif(rmdir(fixPath($path))) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_CannotDeleteDir').' '.basename($path));
+    }
 }
-else
-  echo getErrorRes(t('E_DeleteDirInvalidPath').' '.$path);
+else {
+    echo getErrorRes(t('E_DeleteDirInvalidPath').' '.$path);
+}
 ?>

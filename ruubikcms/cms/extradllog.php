@@ -16,110 +16,119 @@
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-require('includes/required.php');
+require 'includes/required.php';
 $cmspage = LOG;
-if ($_SESSION['level'] != 5) die(NOTALLOWED);
+if ($_SESSION['level'] != 5) { die(NOTALLOWED);
+}
 
-require('includes/head.php');
+require 'includes/head.php';
 ?>
 
         <!-- **************** MAINBODY ******************** -->
                 
-			<div id="mainBody">
-			
-			<?php require('includes/pagemenu.php');?>
+            <div id="mainBody">
+            
+            <?php require 'includes/pagemenu.php';?>
 
 
-			<!-- **************** RightDiv ******************** -->    
-				<form method="post" action="<?php echo ec($_SERVER['PHP_SELF']).'?'.ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
-				<input type="hidden" name="save" value="1" />
-				<input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
+            <!-- **************** RightDiv ******************** -->    
+                <form method="post" action="<?php echo ec($_SERVER['PHP_SELF']).'?'.ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
+                <input type="hidden" name="save" value="1" />
+                <input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
                 <div id="rightDiv">
-					<div id="buttonBar">
-					</div>
+                    <div id="buttonBar">
+                    </div>
 
-					<div id="rightContent">					
+                    <div id="rightContent">                    
 
-						<div id="newsAdmin">
+                        <div id="newsAdmin">
 
-							<h2><?php echo EXTRADOWNLOADLOG;?></h2></h2>
+                            <h2><?php echo EXTRADOWNLOADLOG;?></h2></h2>
 
-								<?php 
+                                <?php 
 
-								// pagination
-								$rowsperpage = ROWSPERPAGE;
-								if (isset($_GET['page'])) $page = intval($_GET['page']);
-								else $page = 1;
-								$start = $rowsperpage * ($page-1);
-								$total = query_single("SELECT COUNT(*) FROM extra_dl_log");
-								$lastpage = ceil($total/$rowsperpage);
+                                // pagination
+                                $rowsperpage = ROWSPERPAGE;
+                                if (isset($_GET['page'])) { $page = intval($_GET['page']);
+                                } else { $page = 1;
+                                }
+                                $start = $rowsperpage * ($page-1);
+                                $total = query_single("SELECT COUNT(*) FROM extra_dl_log");
+                                $lastpage = ceil($total/$rowsperpage);
 
-								// correct self also considering the ordering
-								$self = ec($_SERVER['PHP_SELF']).'?';
-								if (isset($_GET['order'])) $self .= 'order='.$_GET['order'];
-								else $self .= 'order=1';
-								if (isset($_GET['desc']) OR !isset($_GET['order'])) $self .= '&amp;desc=1';
-								
-								// page links for navigations
-								$nav  = '';
-								for($i = 1; $i <= $lastpage; $i++) {
-									if ($i == $page) $nav .= " $i "; // no need to create a link to current page
-									else $nav .= " <a href=\"$self&amp;page=$i\">$i</a> ";
-								}
-								// first, next, previous & last links
-								if ($page > 1) {
-									$i  = $page - 1;
-									$prev  = ' <a href="'.$self.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
-									$first  = ' <a href="'.$self.'&amp;page=1">'.FIRSTPAGE.'</a> ';
-								} else {
-								   $prev  = '&nbsp;'; // we're on page one, don't print previous link
-								   $first = '&nbsp;'; // nor the first page link
-								}
+                                // correct self also considering the ordering
+                                $self = ec($_SERVER['PHP_SELF']).'?';
+                                if (isset($_GET['order'])) { $self .= 'order='.$_GET['order'];
+                                } else { $self .= 'order=1';
+                                }
+                                if (isset($_GET['desc']) OR !isset($_GET['order'])) { $self .= '&amp;desc=1';
+                                }
+                                
+                                // page links for navigations
+                                $nav  = '';
+                                for($i = 1; $i <= $lastpage; $i++) {
+                                    if ($i == $page) { $nav .= " $i "; // no need to create a link to current page
+                                    } else { $nav .= " <a href=\"$self&amp;page=$i\">$i</a> ";
+                                    }
+                                }
+                                // first, next, previous & last links
+                                if ($page > 1) {
+                                    $i  = $page - 1;
+                                    $prev  = ' <a href="'.$self.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
+                                    $first  = ' <a href="'.$self.'&amp;page=1">'.FIRSTPAGE.'</a> ';
+                                } else {
+                                    $prev  = '&nbsp;'; // we're on page one, don't print previous link
+                                    $first = '&nbsp;'; // nor the first page link
+                                }
 
-								if ($page < $lastpage) {
-								   $i = $page + 1;
-									$next  = ' <a href="'.$self.'&amp;page='.$i.'">'.NEXT.'</a> ';
-									$last  = ' <a href="'.$self.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
-								} else {
-								   $next = '&nbsp;'; // we're on the last page, don't print next link
-								   $last = '&nbsp;'; // nor the last page link
-								}						
+                                if ($page < $lastpage) {
+                                    $i = $page + 1;
+                                    $next  = ' <a href="'.$self.'&amp;page='.$i.'">'.NEXT.'</a> ';
+                                    $last  = ' <a href="'.$self.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
+                                } else {
+                                    $next = '&nbsp;'; // we're on the last page, don't print next link
+                                    $last = '&nbsp;'; // nor the last page link
+                                }                        
 
-								// ordering the data
-								if ($_GET['order'] == 1) $order = 'time';
-								elseif ($_GET['order'] == 2) $order = 'filename';
-								elseif ($_GET['order'] == 3) $order = 'username';
-								elseif ($_GET['order'] == 4) $order = 'ip';
-								else $order = 'time'; // default ordering
-								if ($_GET['desc'] == 1 OR !isset($_GET['order'])) $desc = ' DESC'; // defaul to ORDER BY time DESC
-								else $desc = '';
+                                // ordering the data
+                                if ($_GET['order'] == 1) { $order = 'time';
+                                } elseif ($_GET['order'] == 2) { $order = 'filename';
+                                } elseif ($_GET['order'] == 3) { $order = 'username';
+                                } elseif ($_GET['order'] == 4) { $order = 'ip';
+                                } else { $order = 'time'; // default ordering
+                                }
+                                if ($_GET['desc'] == 1 OR !isset($_GET['order'])) { $desc = ' DESC'; // defaul to ORDER BY time DESC
+                                } else { $desc = '';
+                                }
 
-								if ($lastpage > 1) echo '<p>'.SHOWING.' '.($start+1).' - '.($start+$rowsperpage > $total ? $total : $start+$rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+                                if ($lastpage > 1) { echo '<p>'.SHOWING.' '.($start+1).' - '.($start+$rowsperpage > $total ? $total : $start+$rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+                                }
 
-								echo '<table class="logtable">';
-								echo '<tr><th><a href="'.($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1').'">'.TIME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1').'">'.FILENAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=3' : '?order=3&amp;desc=1').'">'.USERNAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1').'">IP</a></th></tr>';
+                                echo '<table class="logtable">';
+                                echo '<tr><th><a href="'.($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1').'">'.TIME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1').'">'.FILENAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=3' : '?order=3&amp;desc=1').'">'.USERNAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1').'">IP</a></th></tr>';
 
-								$sql = "SELECT * FROM extra_dl_log ORDER BY ".$order.$desc." LIMIT ".$start.", ".$rowsperpage;
-								foreach ($dbh->query($sql) as $row) {
-									echo '<tr><td>'.$row['time'].'</td><td>'.$row['filename'].'</td><td>'.$row['username'].'</td><td>'.$row['ip'].'</td></tr>';
-								}
+                                $sql = "SELECT * FROM extra_dl_log ORDER BY ".$order.$desc." LIMIT ".$start.", ".$rowsperpage;
+                                foreach ($dbh->query($sql) as $row) {
+                                    echo '<tr><td>'.$row['time'].'</td><td>'.$row['filename'].'</td><td>'.$row['username'].'</td><td>'.$row['ip'].'</td></tr>';
+                                }
 
-								echo '</table>';
-								// print the navigation links for pagination
-								if ($lastpage > 1) echo '<p>'.$prev.$nav.$next.'</p>';
-								echo '<p><a href="extradlcount.php">'.EXTRADOWNLOADSTATS.'</a></p>';
-								?>
+                                echo '</table>';
+                                // print the navigation links for pagination
+                                if ($lastpage > 1) { echo '<p>'.$prev.$nav.$next.'</p>';
+                                }
+                                echo '<p><a href="extradlcount.php">'.EXTRADOWNLOADSTATS.'</a></p>';
+                                ?>
 
-						</div>
+                        </div>
 
-					</div>
+                    </div>
 
-				</div>
-			        
-				<div class="clear"></div> <!-- This div clears the float divs --> 
+                </div>
+                    
+                <div class="clear"></div> <!-- This div clears the float divs --> 
 
-				</form>
+                </form>
 
-			</div>
+            </div>
 
-<?php require('includes/footer.php');?>
+<?php require 'includes/footer.php';?>

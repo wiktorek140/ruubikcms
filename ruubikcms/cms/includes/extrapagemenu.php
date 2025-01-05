@@ -1,5 +1,7 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'extrapagemenu.php') die ('Access denied');
-if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) die("Access Denied");?>
+<?php if (basename($_SERVER['REQUEST_URI']) == 'extrapagemenu.php') { die('Access denied');
+}
+if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) { die("Access Denied");
+}?>
 
 <!-- **************** leftDiv (rootMenu) ******************** -->
                 <div id="leftDiv">
@@ -9,10 +11,11 @@ if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) die("Access 
                         <div id="showMain">&nbsp;</div>
                     </div>
                     <div id="pageManagement">
-			<div id="rootMenu">
+            <div id="rootMenu">
                             <?php
-                            if (isset($_GET['p'])) $p = ec($_GET['p']);
-                            else $p = '';
+                            if (isset($_GET['p'])) { $p = ec($_GET['p']);
+                            } else { $p = '';
+                            }
 
                             // loop pages for pagemenu
                             $sql = "SELECT pageurl, name FROM extrapage WHERE levelnum = 1 ORDER BY ordernum";
@@ -24,17 +27,17 @@ if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) die("Access 
 
                                     $sql2 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 2 AND mother = '".$row['pageurl']."' ORDER BY ordernum";
 
-                                    foreach ($dbh->query($sql2) as $row2) {
-                                            echo '  <div class="subPage1"><div class="arrowdiv2"><a href="extranet.php'.'?p='.$row2['pageurl'].'&amp;moveup=1&amp;token='.$token.'"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>
+                                foreach ($dbh->query($sql2) as $row2) {
+                                        echo '  <div class="subPage1"><div class="arrowdiv2"><a href="extranet.php'.'?p='.$row2['pageurl'].'&amp;moveup=1&amp;token='.$token.'"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>
                                                     <div class="subButton1"><a href="extranet.php'.'?p='.$row2['pageurl'].'"'.($row2['pageurl'] == $p ? ' class="selected"' : '').'>'.ec($row2['name']).'</a></div></div>';
 
-                                            $sql3 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 3 AND mother = '".$row2['pageurl']."' ORDER BY ordernum";
+                                        $sql3 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 3 AND mother = '".$row2['pageurl']."' ORDER BY ordernum";
 
-                                            foreach ($dbh->query($sql3) as $row3) {
-                                                    echo ' <div class="subPage2"><div class="arrowdiv2"><a href="extranet.php'.'?p='.$row3['pageurl'].'&amp;moveup=1&amp;token='.$token.'"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>
+                                    foreach ($dbh->query($sql3) as $row3) {
+                                            echo ' <div class="subPage2"><div class="arrowdiv2"><a href="extranet.php'.'?p='.$row3['pageurl'].'&amp;moveup=1&amp;token='.$token.'"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>
                                                             <div class="subButton2"><a href="extranet.php'.'?p='.$row3['pageurl'].'"'.($row3['pageurl'] == $p ? ' class="selected"' : '').'>'.ec($row3['name']).'</a></div></div>';
-                                            }
                                     }
+                                }
                                     echo ' </div> <!-- end subMenu1 div-->';
                             }
                             // loop free pages
@@ -45,7 +48,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) die("Access 
                             foreach ($dbh->query($sql) as $row) {
                                     echo '          <div class="subPage1"><div class="arrowdiv2"><a href="extranet.php'.'?p='.$row['pageurl'].'&amp;moveup=1&amp;token='.$token.'"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>
                                                     <div class="subButton1"><a href="extranet.php'.'?p='.$row['pageurl'].'"'.($row['pageurl'] == $p ? ' class="selected"' : '').'>'.ec($row['name']).'</a></div></div>';
-                                    }
+                            }
                             echo '          </div>';
                             ?>
                         </div>

@@ -20,8 +20,8 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-include '../system.inc.php';
-include 'functions.inc.php';
+require '../system.inc.php';
+require 'functions.inc.php';
 
 header("Pragma: cache");
 header("Cache-Control: max-age=3600");
@@ -39,8 +39,9 @@ $w = intval(empty($_GET['width'])?'100':$_GET['width']);
 $h = intval(empty($_GET['height'])?'0':$_GET['height']);
 
 header('Content-type: '.RoxyFile::GetMIMEType(basename($path)));
-if($w && $h)
-  RoxyImage::CropCenter(fixPath($path), null, $w, $h);
-else 
-  RoxyImage::Resize(fixPath($path), null, $w, $h);
+if($w && $h) {
+    RoxyImage::CropCenter(fixPath($path), null, $w, $h);
+} else { 
+    RoxyImage::Resize(fixPath($path), null, $w, $h);
+}
 ?>

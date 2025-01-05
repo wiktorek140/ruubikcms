@@ -1,12 +1,12 @@
 <?php
 if (basename($_SERVER['REQUEST_URI']) == 'usermenu.php' || strpos($_SERVER['REQUEST_URI'], 'usermenu.php') !== false) {
-  die('Access Denied');
+    die('Access Denied');
 }
 
 echo '<div id="leftDiv"><div class="blueHeader">' . USERS . '</div><div id="pageManagement"><div id="rootMenuNews">';
 
 if (!isset($_GET['role'])) {
-  $_GET['role'] = 5;
+    $_GET['role'] = 5;
 }
 
 echo '<div class="newsButton"><a href="users.php?role=5">' .
@@ -18,7 +18,7 @@ echo '<div class="newsButton"><a href="users.php?role=5">' .
 // loop administrators
 $sql = "SELECT username FROM cmsuser WHERE role = '5' ORDER BY username";
 foreach ($dbh->query($sql) as $row) {
-  echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=5' .
+    echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=5' .
     '&p=' .
     $row['username'] .
     '"' .
@@ -36,7 +36,7 @@ echo '</div><div class="newsButton"><a href="users.php?role=4">' .
 // loop supereditors
 $sql = "SELECT username FROM cmsuser WHERE role = '4' ORDER BY username";
 foreach ($dbh->query($sql) as $row) {
-  echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=4' .
+    echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=4' .
     '&p=' .
     $row['username'] .
     '"' .
@@ -56,7 +56,7 @@ echo '<div class="newsButton"><a href="users.php?role=3">' .
 // loop publishers
 $sql = "SELECT username FROM cmsuser WHERE role = '3' ORDER BY username";
 foreach ($dbh->query($sql) as $row) {
-  echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=3' .
+    echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=3' .
     '&p=' .
     $row['username'] .
     '"' .
@@ -75,7 +75,7 @@ echo '<div class="newsButton"><a href="users.php?role=2">' .
 // loop publishers
 $sql = "SELECT username FROM cmsuser WHERE role = '2' ORDER BY username";
 foreach ($dbh->query($sql) as $row) {
-  echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=2' .
+    echo '  <div class="subPage1"><div class="subButton1"><a href="users.php?role=2' .
     '&p=' .
     $row['username'] .
     '"' .

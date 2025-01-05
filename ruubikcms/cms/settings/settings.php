@@ -1,9 +1,8 @@
 <?php
-if (
-  basename($_SERVER['REQUEST_URI']) == 'settings.php' ||
-  strpos($_SERVER['REQUEST_URI'], 'settings.php') !== false
+if (basename($_SERVER['REQUEST_URI']) == 'settings.php' 
+    || strpos($_SERVER['REQUEST_URI'], 'settings.php') !== false
 ) {
-  die('Access Denied');
+    die('Access Denied');
 }
 
 // Available website content languages and language codes.
@@ -50,9 +49,9 @@ $robots = [
 ];
 
 $charset = [
-  //	'iso-8859-1' => 'iso-8859-1',
+  //    'iso-8859-1' => 'iso-8859-1',
   'utf-8' => 'utf-8',
-  //	'utf-16' => 'utf-16',
+  //    'utf-16' => 'utf-16',
   'iso-8859-2' => 'iso-8859-2',
   'iso-8859-3' => 'iso-8859-3',
   'iso-8859-4' => 'iso-8859-4',

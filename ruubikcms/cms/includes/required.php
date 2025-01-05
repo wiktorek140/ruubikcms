@@ -1,6 +1,6 @@
 <?php
 if (basename($_SERVER['REQUEST_URI']) == 'required.php' || strpos($_SERVER['REQUEST_URI'], 'required.php') !== false) {
-  die('Access Denied');
+    die('Access Denied');
 }
 
 $start = microtime(true);
@@ -11,7 +11,7 @@ require '../includes/commonfunc.php';
 require 'includes/functions.php';
 $stmt = $dbh->prepare('SELECT logout_time, cmslang, pagination_rows, use_help FROM options WHERE id = 1');
 if ($stmt->execute()) {
-  $result = $stmt->fetchAll(PDO::FETCH_NUM);
+    $result = $stmt->fetchAll(PDO::FETCH_NUM);
 }
 define('LOGOUT_TIME', $result[0][0]);
 define('RLANG', $result[0][1]);
@@ -21,12 +21,12 @@ require 'login/session.php';
 require 'login/accesscontrol.php'; 
 require 'languages/' . RLANG . '.php';
 if (USEHELP == 1) {
-  if (file_exists('languages/helptexts/' . RLANG . '-help.php')) {
-    require 'languages/helptexts/' . RLANG . '-help.php';
-  } else {
-    require 'languages/helptexts/en-help.php';
-  }
+    if (file_exists('languages/helptexts/' . RLANG . '-help.php')) {
+        include 'languages/helptexts/' . RLANG . '-help.php';
+    } else {
+        include 'languages/helptexts/en-help.php';
+    }
 }
 if ($filename == 'sitesetup.php') {
-  require 'settings/settings.php';
+    include 'settings/settings.php';
 }

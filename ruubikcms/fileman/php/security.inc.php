@@ -20,10 +20,12 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-function checkAccess($action){
+function checkAccess($action)
+{
 
- // if($_SESSION['level'] !== 5) exit;
-  if(!session_id())
-    session_start();
+    // if($_SESSION['level'] !== 5) exit;
+    if(!session_id()) {
+        session_start();
+    }
 }
 ?>

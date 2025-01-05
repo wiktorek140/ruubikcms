@@ -132,8 +132,8 @@ define('BACKUP', 'varmuuskopio');
 define('RESTORE', 'Palauta');
 define('RESTORETOOL', 'Palautus');
 define(
-  'RESTORECONFIRM',
-  'Oletko varma, ett� haluat palauttaa valitsemasi varmuuskopiotiedoston? Jos jokin menee vikaan, nykyisest� tietokannasta luodaan palvelimelle varmuuskopio nimell� ruubikcms-backup.sqlite.',
+    'RESTORECONFIRM',
+    'Oletko varma, ett� haluat palauttaa valitsemasi varmuuskopiotiedoston? Jos jokin menee vikaan, nykyisest� tietokannasta luodaan palvelimelle varmuuskopio nimell� ruubikcms-backup.sqlite.',
 );
 define('UNDOLASTLOGIN', 'Kumoa t�m� kirjautuminen');
 define('UNDO', 'Kumoa');
@@ -158,14 +158,14 @@ define('FILENAME', 'Tiedostonimi');
 define('COUNTSTARTED', 'Laskuri aloitettu');
 define('LASTDOWNLOAD', 'Viimeksi ladattu');
 define(
-  'SQLITENOTWRITABLE',
-  'Sqlite-kansio ja ruubikcms.sqlite -tiedosto vaativat kirjoitusoikeudet! Tarkista oikeuksien m��ritt�minen asennusohjeesta.',
+    'SQLITENOTWRITABLE',
+    'Sqlite-kansio ja ruubikcms.sqlite -tiedosto vaativat kirjoitusoikeudet! Tarkista oikeuksien m��ritt�minen asennusohjeesta.',
 );
 define('IMPORT', 'Tuo');
 define('EXPORT', 'Vie');
 define(
-  'IMPORTCONFIRM',
-  'Oletko varma, ett� haluat tuoda t�m�n CSV-tiedoston? Samannimiset k�ytt�j�t korvataan uusilla tiedoilla.',
+    'IMPORTCONFIRM',
+    'Oletko varma, ett� haluat tuoda t�m�n CSV-tiedoston? Samannimiset k�ytt�j�t korvataan uusilla tiedoilla.',
 );
 define('ORGANIZATION', 'Organisaatio');
 define('VALIDUNTIL', 'Voimassa asti');

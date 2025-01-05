@@ -1,21 +1,25 @@
 <?php
 
-if (strpos($_SERVER['REQUEST_URI'], 'download.php') !== false) die("Access Denied");
+if (strpos($_SERVER['REQUEST_URI'], 'download.php') !== false) { die("Access Denied");
+}
 
-require('includes/dbconfig.php');
-require('includes/commonfunc.php');
+require 'includes/dbconfig.php';
+require 'includes/commonfunc.php';
 
-class FileDownloader {
+class FileDownloader
+{
     private $dbh;
     private $baseDir;
 
-    public function __construct($dbh) {
+    public function __construct($dbh)
+    {
         $this->dbh = $dbh;
         $this->baseDir = 'useruploads/files/';
         @set_time_limit(0);
     }
 
-    public function download($fileName, $newFileName = null) {
+    public function download($fileName, $newFileName = null)
+    {
         if (empty($fileName)) {
             die("Please specify file name for download.");
         }
@@ -35,7 +39,8 @@ class FileDownloader {
             $asfname = $fname;
         } else {
             $asfname = str_replace(array('"', "'", '\\', '/'), '', $newFileName);
-            if ($asfname === '') $asfname = 'NoName';
+            if ($asfname === '') { $asfname = 'NoName';
+            }
         }
 
         $this->setHeaders($mtype, $asfname, $fsize);
@@ -45,7 +50,8 @@ class FileDownloader {
         $this->updateDownloadCounter($fname);
     }
 
-    private function getMimeType($fpath) {
+    private function getMimeType($fpath)
+    {
         $mtype = '';
 
         if (function_exists('mime_content_type')) {
@@ -63,7 +69,8 @@ class FileDownloader {
         return $mtype;
     }
 
-    private function setHeaders($mtype, $asfname, $fsize) {
+    private function setHeaders($mtype, $asfname, $fsize)
+    {
         header("Pragma: public");
         header("Expires: 0");
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -75,7 +82,8 @@ class FileDownloader {
         header("Content-Length: " . $fsize);
     }
 
-    private function outputFile($fpath) {
+    private function outputFile($fpath)
+    {
         $file = @fopen($fpath, "r");
         if ($file) {
             while (!feof($file)) {
@@ -90,7 +98,8 @@ class FileDownloader {
         }
     }
 
-    private function logDownload($fname) {
+    private function logDownload($fname)
+    {
         $stmt = $this->dbh->prepare("INSERT INTO dl_log (filename, ip, time) VALUES (?, ?, ?)");
         $stmt->bindParam(1, $fname);
         $stmt->bindParam(2, $_SERVER['REMOTE_ADDR']);
@@ -98,7 +107,8 @@ class FileDownloader {
         $stmt->execute();
     }
 
-    private function updateDownloadCounter($fname) {
+    private function updateDownloadCounter($fname)
+    {
         $dlcount = query_single("SELECT downloads FROM dl_count WHERE filename = '".$fname."'");
         $date = date("Y-m-d H:i:s");
         if (!$dlcount) {

@@ -20,8 +20,8 @@
 
   Contact: Lyubomir Arsov, liubo (at) web-lobby.com
 */
-include '../system.inc.php';
-include 'functions.inc.php';
+require '../system.inc.php';
+require 'functions.inc.php';
 
 verifyAction('RENAMEDIR');
 checkAccess('RENAMEDIR');
@@ -30,14 +30,16 @@ $path = trim(empty($_POST['d'])? '': $_POST['d']);
 $name = trim(empty($_POST['n'])? '': $_POST['n']);
 verifyPath($path);
 
-if(is_dir(fixPath($path))){
-  if(fixPath($path.'/') == fixPath(getFilesPath().'/'))
-    echo getErrorRes(t('E_CannotRenameRoot'));
-  elseif(rename(fixPath($path), dirname(fixPath($path)).'/'.$name))
-    echo getSuccessRes();
-  else
-    echo getErrorRes(t('E_RenameDir').' '.basename($path));
+if(is_dir(fixPath($path))) {
+    if(fixPath($path.'/') == fixPath(getFilesPath().'/')) {
+        echo getErrorRes(t('E_CannotRenameRoot'));
+    } elseif(rename(fixPath($path), dirname(fixPath($path)).'/'.$name)) {
+        echo getSuccessRes();
+    } else {
+        echo getErrorRes(t('E_RenameDir').' '.basename($path));
+    }
 }
-else
-  echo getErrorRes(t('E_RenameDirInvalidPath'));
+else {
+    echo getErrorRes(t('E_RenameDirInvalidPath'));
+}
 ?>
