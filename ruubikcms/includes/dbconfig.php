@@ -1,21 +1,21 @@
 <?php
 
 if (basename($_SERVER['REQUEST_URI']) == 'dbconfig.php') {
-    die ('Access denied');
+  die('Access denied');
 }
 // error reporting, exclude notices
 error_reporting(E_ALL ^ E_NOTICE);
 
 // ruubikcms base folder
-const RUUBIKCMS_FOLDER = "ruubikcms";
+const RUUBIKCMS_FOLDER = 'ruubikcms';
 
 // database settings
-const PDO_DB_FOLDER = "sqlite";
-const PDO_DB_DRIVER = "sqlite";
-const PDO_DB_NAME = "ruubikcms.sqlite";
+const PDO_DB_FOLDER = 'sqlite';
+const PDO_DB_DRIVER = 'sqlite';
+const PDO_DB_NAME = 'ruubikcms.sqlite';
 
 // general settings
-const VERNUM = "1.1.3 Stable";
+const VERNUM = '1.1.3 Stable';
 
 // which cms main menu tabs are visible for administrator (TRUE/FALSE)
 const SHOW_SITESETUP = true;
