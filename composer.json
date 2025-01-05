@@ -11,7 +11,7 @@
     "scripts": {
         "test": "php vendor/bin/phpunit",
         "phpstan": "php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=1024M",
-        "pcf": "php vendor/bin/phpcs -d memory_limit=1024M --ignore=vendor/ ."
+        "pcf": "php vendor/bin/phpcs -d memory_limit=1024M --ignore=vendor/ .",
         "pcf-fix": "php vendor/bin/phpcbf -d memory_limit=1024M --ignore=vendor/ --extensions=php,css ."
     },
     "autoload": {
