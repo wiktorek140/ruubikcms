@@ -32,7 +32,7 @@ HTML:    <ul><li><div><a href="#">Link</a></div></li></ul>
 }
 
 #mainMenu ul li div a:hover {
-    background: url(images/menu_over.jpg) repeat-x top right;  
+    background: url(images/menu_over.jpg) repeat-x top right;
 }
 
 #mainMenu ul li div a:hover {
@@ -52,24 +52,24 @@ HTML:    <ul><li><a href="#">Link</a></li></ul>
 }
 
 #subMenu ul {
-    margin: 0 0 0 0;    
+    margin: 0 0 0 0;
 }
 
 #subMenu ul li {
-    
+
     padding-left:25px;
     min-height: 26px;
     background: url(images/bullet.gif) no-repeat top left;
 }
 
 #subMenu ul li a:link, #subMenu ul li a:visited {
-    
+
     padding: 0px 0px 0px 0px;
     color: #333333;
     font-size: 14px;
     font-family: arial, verdana;
     text-decoration: underline;
-    
+
 }
 
 #subMenu ul li a:hover {
@@ -109,7 +109,7 @@ ul#nav li {
 
 ul#nav li:hover {
     list-style-type: none;
-    float: left; 
+    float: left;
     width: 200px;
     height:38px;
 }
@@ -141,12 +141,12 @@ ul#lvl2 {
 }
 
 ul#nav li:hover ul#lvl2 {
-    position: absolute; 
+    position: absolute;
     display: block;
     width: 200px;
 }
 
-ul#lvl2 li {  
+ul#lvl2 li {
     list-style-type: none;
     float: left;
     background:#acacac; /*#9cc757;*/
@@ -155,7 +155,7 @@ ul#lvl2 li {
 ul#lvl2 li:hover {
     list-style-type: none;
     float: left;
-    background: #f0f0f0;    
+    background: #f0f0f0;
 }
 
 ul#lvl2 li a {
@@ -163,7 +163,7 @@ ul#lvl2 li a {
     text-decoration : none;
     font-size: 16px;
     margin:8px;
-    width: 180px; 
+    width: 180px;
     font-family: arial, verdana;
     color: #3b454c;
 }

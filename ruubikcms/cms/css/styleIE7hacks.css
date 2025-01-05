@@ -9,23 +9,23 @@
 div#pageManagement ul.rootMenu li {
    margin: 0 0 -3px 0;   }
 
-div#pageManagement ul.firstSubMenu {    
-    margin: 1px 0 3px 0; 
-} 
+div#pageManagement ul.firstSubMenu {
+    margin: 1px 0 3px 0;
+}
 
 div#pageManagement ul.firstSubMenu li {
    margin: 0 0 -3px 0;   }
-   
-div#pageManagement ul.secondSubMenu {       
-    padding: 1px 0 3px 20px;       
+
+div#pageManagement ul.secondSubMenu {
+    padding: 1px 0 3px 20px;
 }
-  
-   
+
+
 /* buttonBar hacks
 ---------------------------------------------------------- */
 #buttonBar {
     padding: 0 0 0 15px;
-    height: 35px;        
+    height: 35px;
 }
 
 
@@ -40,7 +40,7 @@ div#pageManagement ul.secondSubMenu {
 
 /*#pageAdmin  dl{
     margin: 1px 0 0 0;
-    padding: 0 0 1px 0;    
+    padding: 0 0 1px 0;
 }
 
 #pageAdmin dl dt{
@@ -69,14 +69,14 @@ div#pageManagement ul.secondSubMenu {
 #checkboxDiv input{
     position: relative;
     top: 2px;
-    margin: 0 5px 0 2px;    
+    margin: 0 5px 0 2px;
 }
 
 
 #checkboxDiv img{
     position: absolute;
     top: 3px;
-    right: 2px;    
+    right: 2px;
     border: none;
 }
 */
@@ -91,7 +91,7 @@ div#pageManagement ul.secondSubMenu {
 
 /*#SEO  dl{
     margin: 1px 0 0 0;
-    padding: 0 0 1px 0;    
+    padding: 0 0 1px 0;
 }
 
 #SEO dl dt{

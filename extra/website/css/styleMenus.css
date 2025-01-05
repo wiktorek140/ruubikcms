@@ -32,7 +32,7 @@ HTML:    <ul><li><div><a href="#">Link</a></div></li></ul>
 }
 
 #mainMenu ul li div a:hover {
-    background: url(images/menu_over.jpg) repeat-x top right;  
+    background: url(images/menu_over.jpg) repeat-x top right;
 }
 
 #mainMenu ul li div a:hover {
@@ -65,7 +65,7 @@ HTML:    <ul><li><a href="#">Link</a></li></ul>
     font-size: 12px;
     font-family: arial, verdana;
     text-decoration: underline;
-    background: url(images/bullet.gif) no-repeat top left;     
+    background: url(images/bullet.gif) no-repeat top left;
 }
 
 #subMenu ul li a:hover {

@@ -1,5 +1,3 @@
-
-
 /* Login Settings
 ---------------------------------------------------------- */
 
@@ -26,13 +24,13 @@
     font-family: arial, Trebuchet MS, verdana;
     text-align: left;
     font-size: 13px;
-    font-weight:bold;            
+    font-weight:bold;
 }
 
 
 #innerLogin {
     position: relative;
-    padding: 100px 80px 0 80px;        
+    padding: 100px 80px 0 80px;
 }
 
 #loginFooter, #loginFooter a {
@@ -48,7 +46,7 @@
 div.loginText{
     margin: 2px 0;
     padding: 5px 0 0 0;
-    height: 15px;                
+    height: 15px;
 }
 
 div.loginInput{
@@ -86,10 +84,10 @@ div.loginbtn input.inputbtn{
     height: 25px;
     line-height: 25px;
     width: 100px;
-    font-family: Trebuchet MS, verdana;    
+    font-family: Trebuchet MS, verdana;
     font-size: 13px;
-    font-weight:bold;    
-    color: #555555;    
-    background: url(images/btn.gif) no-repeat top left;    
+    font-weight:bold;
+    color: #555555;
+    background: url(images/btn.gif) no-repeat top left;
     border: none;
 }

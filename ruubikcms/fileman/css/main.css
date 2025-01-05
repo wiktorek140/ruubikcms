@@ -1,5 +1,5 @@
 /*
-  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE. 
+  RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
   Can be easily integrated with any other WYSIWYG editor or CMS.
 
   Copyright (C) 2013, RoxyFileman.com - Lyubomir Arsov. All rights reserved.
@@ -267,7 +267,7 @@ div.ui-tooltip {
   left:0;
   z-index:-1;
   background: #d3edff;
-  background: -moz-linear-gradient(top,  #d3edff 0%, #cbebff 47%, #a1dbff 100%); 
+  background: -moz-linear-gradient(top,  #d3edff 0%, #cbebff 47%, #a1dbff 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d3edff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff));
   background: -webkit-linear-gradient(top,  #d3edff 0%,#cbebff 47%,#a1dbff 100%);
   background: -o-linear-gradient(top,  #d3edff 0%,#cbebff 47%,#a1dbff 100%);
@@ -277,10 +277,10 @@ div.ui-tooltip {
 }
 .uploadError{
   background: #ff8787;
-  background: -moz-linear-gradient(top,  #ff8787 0%, #ffa3a3 45%, #ff5e5e 100%); 
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8787), color-stop(45%,#ffa3a3), color-stop(100%,#ff5e5e)); 
+  background: -moz-linear-gradient(top,  #ff8787 0%, #ffa3a3 45%, #ff5e5e 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8787), color-stop(45%,#ffa3a3), color-stop(100%,#ff5e5e));
   background: -webkit-linear-gradient(top,  #ff8787 0%,#ffa3a3 45%,#ff5e5e 100%);
-  background: -o-linear-gradient(top,  #ff8787 0%,#ffa3a3 45%,#ff5e5e 100%); 
+  background: -o-linear-gradient(top,  #ff8787 0%,#ffa3a3 45%,#ff5e5e 100%);
   background: -ms-linear-gradient(top,  #ff8787 0%,#ffa3a3 45%,#ff5e5e 100%);
   background: linear-gradient(to bottom,  #ff8787 0%,#ffa3a3 45%,#ff5e5e 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8787', endColorstr='#ff5e5e',GradientType=0 );

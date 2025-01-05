@@ -8,8 +8,8 @@
 
 /* News DIV
     <div id="decorationPic">
-    </div>    
-                    
+    </div>
+
     <div id="news">
         <div id="newsHeading">Ajankohtaista
         </div>
@@ -19,7 +19,7 @@
             <p>Testi&auml; vaan......</p>
             <p class="newsMore"><a href="index.php?news=38">Lue lis&auml;&auml;</a></p>
         </div>
-    </div>    
+    </div>
 ----------------------------------------------------*/
 
 #news{
@@ -31,14 +31,14 @@
     color: #ffffff;
     font-family: Georgia, Trebuchet MS, verdana;
     font-weight: normal;
-    font-size: 24px;    
-    line-height: 1.2em;    
+    font-size: 24px;
+    line-height: 1.2em;
     text-decoration: none;
     text-align: center;
     /*background: url(images/news_h1.jpg) no-repeat top left;*/
     background: #996633;
     border-radius:20px 20px 0px 0px;
-    border-bottom: 5px solid #ffffff;    
+    border-bottom: 5px solid #ffffff;
 }
 
 div.newsItem {
@@ -51,8 +51,8 @@ div.newsItem h2, div.newsItem h2 a:link, div.newsItem h2 a:visited{
     color: #7d4f18;
     font-family: Trebuchet MS, verdana;
     font-weight: bold;
-    font-size: 16px;    
-    line-height: 1.2em;    
+    font-size: 16px;
+    line-height: 1.2em;
     text-decoration: none;
 }
 
@@ -94,7 +94,7 @@ div.newsItem p.newsMore a:link, div.newsItem p.newsMore a:visited{
     text-align: right;
     font-family: arial;
     font-weight: bold;
-    font-size: 11px;    
+    font-size: 11px;
     line-height: 1.1em;
     text-decoration: underline;
 }

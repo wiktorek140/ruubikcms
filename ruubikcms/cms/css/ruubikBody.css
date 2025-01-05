@@ -2,15 +2,15 @@ body {
     font-family: verdana, arial, Helvetica, sans-serif;
     font-size: small;
     font-weight: normal;
-    color: #333333;  
-    background: #ffffff url(images/bg.jpg) repeat-x top left;   
-} 
+    color: #333333;
+    background: #ffffff url(images/bg.jpg) repeat-x top left;
+}
 
 #wrapper {
-    position: relative; 
+    position: relative;
     margin-left: auto;
-    margin-right: auto;   
-    width: 980px;      
+    margin-right: auto;
+    width: 980px;
 }
 
 
@@ -26,7 +26,7 @@ body {
 }
 
 #top {
-    height: 60px;   
+    height: 60px;
     background: url(images/logo.jpg) no-repeat top left;
 }
 
@@ -51,7 +51,7 @@ body {
     text-align: right;
     padding: 0;
     height: 35px;
-    line-height: 35px;    
+    line-height: 35px;
     color: #71788a;
 }
 

@@ -3,9 +3,9 @@
     font-family: verdana, arial, Helvetica, sans-serif;
     font-size: small;
     font-weight: normal;
-    line-height: 1.4em;    
-    color: #555555;    
-} 
+    line-height: 1.4em;
+    color: #555555;
+}
 
 #content h1 {
     padding: 5px 0 8px 0;
@@ -14,7 +14,7 @@
     font-weight: normal;
     line-height: 1.2em;
     color: #A81018;
-} 
+}
 
 #content h2 {
     padding: 10px 0 8px 0;
@@ -23,19 +23,19 @@
     font-weight: bold;
     line-height: 1.2em;
     color: #0B0BA8;
-} 
+}
 
 #content h3 {
     padding: 10px 0 8px 0;
     font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
     font-size: 13px;
     font-weight: bold;
-    line-height: 1.2em;    
+    line-height: 1.2em;
     color: #0B0BA8;
-} 
+}
 
 #content p {
-    padding: 5px 0 5px 0;   
+    padding: 5px 0 5px 0;
 }
 
 /* LISTS
@@ -67,7 +67,7 @@
 #content table {
     color: #333333;
     background: #cccccc;
-    border-collapse: collapse; 
+    border-collapse: collapse;
     border: 1px solid #333333;
 }
 

@@ -1,32 +1,32 @@
 #webSiteLeft {
     float: left;
-    display: inline;    
-    width: 450px;         
+    display: inline;
+    width: 450px;
 }
 
 /* PageAdmin Settings
 ---------------------------------------------------------- */
 
 #webSiteSettings {
-    padding: 0 0 5px 0;      
+    padding: 0 0 5px 0;
     line-height: 1 em;
     color: #413f48;
     font-family: arial, Trebuchet MS, arial;
     text-align: left;
     font-size: 11px;
     font-weight:bold;
-    background: #aab4be;        
-    border:1px solid #384651; 
+    background: #aab4be;
+    border:1px solid #384651;
 }
 
 #webSiteSettings h2{
     margin: 0 0 10px 0;
-    padding: 0 5px 0 5px;    
-    font-size: 13px;    
-    font-family: Trebuchet MS, arial;    
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    font-family: Trebuchet MS, arial;
     color: #ffffff;
-    background: #3c454c;        
-    border-bottom:1px solid #384651;      
+    background: #3c454c;
+    border-bottom:1px solid #384651;
 }
 
 
@@ -74,7 +74,7 @@
     width: 240px;
     height: 50px;
     font-size: 11px;
-    border: 1px solid #384637;    
+    border: 1px solid #384637;
 }
 
 #webSiteSettings table td.tdWebSetupRight{
@@ -88,7 +88,7 @@
 
 #webSiteSettings table td.tdWebSetupRight img{
    border: none;
-} 
+}
 
 
 
@@ -96,26 +96,26 @@
 ---------------------------------------------------------- */
 
 #webSiteRest {
-    margin: 10px 0 0 0;    
-    padding: 0 0 5px 0;      
+    margin: 10px 0 0 0;
+    padding: 0 0 5px 0;
     line-height: 1 em;
     color: #413f48;
     font-family: arial, Trebuchet MS, arial;
     text-align: left;
     font-size: 11px;
     font-weight:bold;
-    background: #aab4be;        
-    border:1px solid #384651; 
+    background: #aab4be;
+    border:1px solid #384651;
 }
 
 #webSiteRest h2{
     margin: 0 0 10px 0;
-    padding: 0 5px 0 5px;    
-    font-size: 13px;    
-    font-family: Trebuchet MS, arial;    
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    font-family: Trebuchet MS, arial;
     color: #ffffff;
-    background: #3c454c;        
-    border-bottom:1px solid #384651;      
+    background: #3c454c;
+    border-bottom:1px solid #384651;
 }
 
 #webSiteRest  table{
@@ -167,21 +167,21 @@
 
 #webSiteRest table td.tdRestSetupRight img{
    border: none;
-} 
+}
 
 /* indexRight Settings
 ---------------------------------------------------------- */
 
 #webSiteRight {
     float: right;
-    width: 255px;        
+    width: 255px;
     min-height: 400px;
 }
 
 
 #searchEngine {
     position: relative;
-    padding: 0 0 10px 0;        
+    padding: 0 0 10px 0;
     width: 255px;
     line-height: 1 em;
     color: #413f48;
@@ -189,22 +189,22 @@
     text-align: left;
     font-size: 11px;
     font-weight:bold;
-    background: #aab4be;        
-    border:1px solid #384651;      
+    background: #aab4be;
+    border:1px solid #384651;
 }
 
 #searchEngine h2{
     margin: 0 0 10px 0;
-    padding: 0 5px 0 5px;    
-    font-size: 13px;    
-    font-family: Trebuchet MS, arial;    
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    font-family: Trebuchet MS, arial;
     color: #ffffff;
-    background: #3c454c;        
-    border-bottom:1px solid #384651;      
+    background: #3c454c;
+    border-bottom:1px solid #384651;
 }
 
 #innerEngine {
-    padding: 0 5px 0 5px;        
+    padding: 0 5px 0 5px;
 }
 
 #innerEngine table {
@@ -213,34 +213,34 @@
     width: 246px;
     height: 80px;
     color: #333333;
-    border-collapse: collapse; 
-    border: none;  
+    border-collapse: collapse;
+    border: none;
 }
 
 
 #decorationPix table thead {
-    color: #413f48;   
+    color: #413f48;
 }
 
 #innerEngine table thead th.thLeft {
     padding: 1px 5px 1px 5px;
     width: 200px;
-    text-align: left;       
+    text-align: left;
 }
 
 #innerEngine table thead th.thRight {
     padding: 1px 5px 1px 5px;
     width: 40px;
-    text-align: right;     
+    text-align: right;
     vertical-align: bottom;
 }
 
 #innerEngine table tbody {
-    padding: 0;  
+    padding: 0;
 }
 
 #innerEngine table tbody td {
-    padding: 0;    
+    padding: 0;
 }
 
 #innerEngine table tbody td textarea{
@@ -249,36 +249,36 @@
     width: 240px;
     height: 100px;
     font-size: 11px;
-    border: 1px solid #384637;      
+    border: 1px solid #384637;
 }
 
 #innerEngine table tfoot {
-    color: red;   
+    color: red;
 }
 
 #innerEngine table tfoot td {
     padding: 5px 0 0 0;
-    height: 20px;    
-    text-align: left; 
+    height: 20px;
+    text-align: left;
 }
 
 #innerEngine table tfoot td ul {
-    padding: 10px 0 10px 0;    
+    padding: 10px 0 10px 0;
 }
 
 #innerEngine table tfoot td ul li {
-    padding: 0 0 0 0; 
+    padding: 0 0 0 0;
     font-family: Trebuchet MS, verdana, arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: bold;
-    line-height: 1.7em;    
+    line-height: 1.7em;
     color: #0A59A8;
 }
 
 #innerEngine table tfoot td ul li a.google:link, #innerEngine table tfoot td ul li a.google:visited {
     padding: 2px 0 2px 25px;
     color: #0041a3;
-    font-size: 11px;    
+    font-size: 11px;
     font-weight: bold;
     text-decoration: underline;
     background: url(images/google_icon.gif) no-repeat top left;
@@ -291,10 +291,10 @@
 #innerEngine table tfoot td ul li a.yahoo:link, #innerEngine table tfoot td ul li a.yahoo:visited {
     padding: 2px 0 2px 25px;
     color: #0041a3;
-    font-size: 11px;    
+    font-size: 11px;
     font-weight: bold;
     text-decoration: underline;
-    background: url(images/yahoo.gif) no-repeat top left;                 
+    background: url(images/yahoo.gif) no-repeat top left;
 }
 
 #innerEngine table tfoot td ul li a.yahoo:hover {
@@ -304,10 +304,10 @@
 #innerEngine table tfoot td ul li a.msn:link, #innerEngine table tfoot td ul li a.msn:visited {
     padding: 2px 0 2px 25px;
     color: #0041a3;
-    font-size: 11px;    
+    font-size: 11px;
     font-weight: bold;
     text-decoration: underline;
-    background: url(images/msn.gif) no-repeat top left;                 
+    background: url(images/msn.gif) no-repeat top left;
 }
 
 #innerEngine table tfoot td ul li a.msn:hover {
@@ -317,10 +317,10 @@
 #innerEngine table tfoot td ul li a.dmoz:link, #innerEngine table tfoot td ul li a.dmoz:visited {
     padding: 2px 0 2px 25px;
     color: #0041a3;
-    font-size: 11px;    
+    font-size: 11px;
     font-weight: bold;
     text-decoration: underline;
-    background: url(images/dmoz.gif) no-repeat top left;                 
+    background: url(images/dmoz.gif) no-repeat top left;
 }
 
 #innerEngine table tfoot td ul li a.dmoz:hover {
@@ -333,25 +333,25 @@
 #newsWebSettings {
     margin: 10px 0 0 0;
     padding: 0 0 5px 0;
-    width: 255px;    
+    width: 255px;
     line-height: 1 em;
     color: #413f48;
     font-family: arial, Trebuchet MS, arial;
     text-align: left;
     font-size: 11px;
     font-weight:bold;
-    background: #aab4be;        
-    border:1px solid #384651;      
+    background: #aab4be;
+    border:1px solid #384651;
 }
 
 #newsWebSettings h2{
     margin: 0 0 10px 0;
-    padding: 0 5px 0 5px;    
-    font-size: 13px;    
-    font-family: Trebuchet MS, arial;    
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    font-family: Trebuchet MS, arial;
     color: #ffffff;
-    background: #3c454c;           
-    border-bottom:1px solid #384651;      
+    background: #3c454c;
+    border-bottom:1px solid #384651;
 }
 
 #newsWebSettings  table{
@@ -381,7 +381,7 @@
    height: 14px;
    width: 14px;
    font-size: 12px;
-   border: none;   
+   border: none;
 }
 
 #newsWebSettings table td.tdNewsSetupLeft select{

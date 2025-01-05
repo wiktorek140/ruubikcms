@@ -8,12 +8,12 @@
 /* website menu hacks
 ---------------------------------------------------------- */
 /****** RootMenu
- **************************************************/ 
+ **************************************************/
 div#rootMenu {
     width: 255px;
-    background: #ffffff;        
-} 
- 
+    background: #ffffff;
+}
+
 div#rootMenu div.arrowdiv1 {
     position: relative;
     width: 20px;
@@ -21,33 +21,33 @@ div#rootMenu div.arrowdiv1 {
     float: left;
 }
 
-div#rootMenu div.arrowdiv1 img{    
+div#rootMenu div.arrowdiv1 img{
     position: relative;
     width: 20px;
     border: none;
 }
- 
+
 div#rootMenu div.rootPage {
-    position: relative;    
+    position: relative;
     left: -2px;
     margin: 0 0 1px 0;
     width: 229px;
 }
 
-div#rootMenu div.rootPage a:link, div#rootMenu div.rootPage a:visited{    
+div#rootMenu div.rootPage a:link, div#rootMenu div.rootPage a:visited{
     position: relative;
     padding: 0 0 0 4px;
-    width: 225px;  
+    width: 225px;
 }
 
-div#rootMenu div.rootPage a:hover{    
-    background: url("images/rootpage_over.gif") no-repeat bottom left;   
+div#rootMenu div.rootPage a:hover{
+    background: url("images/rootpage_over.gif") no-repeat bottom left;
 }
 
 
 /****** SubMenu1
- **************************************************/ 
-    
+ **************************************************/
+
 div.subMenu1 {
     display: none;
     margin: 0 0 1px 21px;
@@ -55,90 +55,90 @@ div.subMenu1 {
     width: 229px;
     height: 0px;
     line-height: 0px;
-    font-size: 0px;    
-    background: #c7d1df;    
+    font-size: 0px;
+    background: #c7d1df;
 }
 
-div.subMenu1 div.subPage1 {    
+div.subMenu1 div.subPage1 {
     width: 229px;
     padding: 1px 0 2px 0;
-    border-top: 1px dashed #9ca4ae;    
+    border-top: 1px dashed #9ca4ae;
 }
-    
-div.subMenu1 div.arrowdiv2 {    
+
+div.subMenu1 div.arrowdiv2 {
     float: left;
-}    
+}
 
-    
-div.subMenu1 div.arrowdiv2 img{    
+
+div.subMenu1 div.arrowdiv2 img{
     border: none;
-}    
+}
 
-div.subMenu1 div.subButton1 a:link, div.subMenu1 div.subButton1 a:visited{    
+div.subMenu1 div.subButton1 a:link, div.subMenu1 div.subButton1 a:visited{
     display: block;
-    margin: 0 0 0 17px;    
+    margin: 0 0 0 17px;
     padding: 0 0 0 4px;
     width: 205px;
     height: 16px;
     line-height: 16px;
-    color: #47525b;    
+    color: #47525b;
     font-size: 12px;
     font-family:  arial;
-    font-weight: bold;    
-    text-decoration: none;    
+    font-weight: bold;
+    text-decoration: none;
 
 }
 
-div.subMenu1 div.subButton1 a:hover{    
+div.subMenu1 div.subButton1 a:hover{
     background: #a4aebc;
 }
-    
+
 
 /****** SubMenu2
- **************************************************/ 
- 
+ **************************************************/
 
-div.subMenu1 div.subPage2 {    
+
+div.subMenu1 div.subPage2 {
     margin: 0 0 0 17px;
     width: 209px;
 }
-    
-div.subPage2  div.arrowdiv2 {    
-    float: left;
-}    
-    
-div.subPage2  div.arrowdiv2 img{    
-    border: none;
-}    
 
-div.subPage2  div.subButton2 a:link, div.subPage2  div.subButton2 a:visited{    
+div.subPage2  div.arrowdiv2 {
+    float: left;
+}
+
+div.subPage2  div.arrowdiv2 img{
+    border: none;
+}
+
+div.subPage2  div.subButton2 a:link, div.subPage2  div.subButton2 a:visited{
     display: block;
-    margin: 0 0 0 20px;    
+    margin: 0 0 0 20px;
     padding: 0 0 0 4px;
     width: 182px;
     height: 16px;
     line-height: 16px;
-    color: #525e6a;    
+    color: #525e6a;
     font-size: 11px;
     font-family:  arial;
-    font-weight: normal;    
-    text-decoration: none;    
+    font-weight: normal;
+    text-decoration: none;
 }
 
-div.subPage2  div.subButton2 a:hover{    
+div.subPage2  div.subButton2 a:hover{
     background: #a4aebc;
 }
-    
- 
- 
 
 
-   
+
+
+
+
 /* buttonBar hacks
 ---------------------------------------------------------- */
 #buttonBar {
     padding: 0 0 0 15px;
-    height: 30px;        
+    height: 30px;
 }
 
 
@@ -162,8 +162,8 @@ div.subPage2  div.subButton2 a:hover{
 
 #pageAdmin  table td.tdPageAdminRight{
    padding: 1px 0 0 0;
-   height: 19px;      
-} 
+   height: 19px;
+}
 
 
 /* SEO hacks
@@ -177,25 +177,24 @@ div.subPage2  div.subButton2 a:hover{
 
 
 #settingsCMS {
-    height: 300px;     
+    height: 300px;
 }
 
 
 #settingsPassword {
-    height: 150px;     
+    height: 150px;
 }
 
 #settingsBackup {
-    height: 200px;      
+    height: 200px;
 }
 
 
 #newsAdmin {
-    height: 460px;     
+    height: 460px;
 }
 
 
 #decorationPix {
-    height: 328px;      
+    height: 328px;
 }
-

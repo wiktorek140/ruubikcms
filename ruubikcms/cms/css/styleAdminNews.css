@@ -11,25 +11,25 @@
     text-align: left;
     font-size: 11px;
     font-weight:bold;
-    background: #aab4be;        
-    border:1px solid #384651;      
+    background: #aab4be;
+    border:1px solid #384651;
 }
 
 #newsAdmin h2{
     margin: 0 0 5px 0;
-    padding: 0 5px 0 5px;    
-    font-size: 13px;    
-    font-family: Trebuchet MS, arial;    
+    padding: 0 5px 0 5px;
+    font-size: 13px;
+    font-family: Trebuchet MS, arial;
     color: #ffffff;
-    background: #3c454c;        
-    border-bottom:1px solid #384651;      
+    background: #3c454c;
+    border-bottom:1px solid #384651;
 }
 
 
 
 #newsAdmin table.newsTable{
     width: 715px;
-    margin: 5px 0 5px 0;        
+    margin: 5px 0 5px 0;
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminLeft{
@@ -38,7 +38,7 @@
    min-height: 20px;
    line-height: 20px;
    text-align: right;
-   vertical-align: top; 
+   vertical-align: top;
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminCenter{
@@ -80,7 +80,7 @@
     width: 256px;
     height: 50px;
     font-size: 11px;
-    border: 1px solid #384637;    
+    border: 1px solid #384637;
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminRight{
@@ -89,12 +89,12 @@
    min-height: 17px;
    line-height: 20px;
    text-align: left;
-   vertical-align: top;       
+   vertical-align: top;
 }
 
 #newsAdmin table.newsTable td.tdNewsAdminRight img{
    border: none;
-} 
+}
 
 #newsAdmin #tinyMCE {
     /*position: relative; /*CSS IE6 Hack*/

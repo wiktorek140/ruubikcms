@@ -25,44 +25,44 @@ q:before, q:after {
 :focus {
     outline: 0;
 }
-    
+
 ins {
     text-decoration: none;
-}    
+}
 
 del {
     text-decoration: line-through;
-}    
+}
 
-/* tables still need cellspacxing="0" in the markup */    
+/* tables still need cellspacxing="0" in the markup */
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-    
+
 h1 {
     font-size: 2.2em;
 }
-    
+
 h2 {
-    font-size: 2.0em;    
+    font-size: 2.0em;
 }
-    
+
 h3 {
     font-size: 1.8em;
 }
-    
+
 h4 {
-    font-size: 1.4em;    
+    font-size: 1.4em;
 }
-    
+
 h5 {
-    font-size: 1.1em;    
+    font-size: 1.1em;
 }
-    
+
 p {
-    padding: 5px 0;   
-} 
+    padding: 5px 0;
+}
 
 b {
     font-weight: bold;
