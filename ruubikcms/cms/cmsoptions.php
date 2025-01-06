@@ -91,7 +91,7 @@ if (isset($_POST['backup'])) {
     }
 } //end if
 
-if (isset($_POST['save']) and !(isset($_POST['restore']) or isset($_POST['backup']) or isset($_POST['undo']))) {
+if (isset($_POST['save']) and !(isset($_POST['restore']) || isset($_POST['backup']) || isset($_POST['undo']))) {
     if (!valid_csrf_token($_POST['token'])) {
         die(NOTALLOWED);
     }

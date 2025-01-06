@@ -42,7 +42,7 @@ if (basename($_SERVER['REQUEST_URI']) == 'pagemenu.php' || strpos($_SERVER['REQU
 
             // loop free pages
             echo '  <div class="rootPageFree"><a href="index.php'.'?p=---notinmenu---">'.FREEPAGES.'</a></div>
-                        <div class="subMenu1"'.(($p == '---notinmenu---' or root_page($p) == '---notinmenu---') ? ' id="open"' : '').'>';
+                        <div class="subMenu1"'.(($p == '---notinmenu---' || root_page($p) == '---notinmenu---') ? ' id="open"' : '').'>';
 
             $sql = 'SELECT pageurl, name FROM page WHERE levelnum = 0 ORDER BY ordernum';
             foreach ($dbh->query($sql) as $row) {

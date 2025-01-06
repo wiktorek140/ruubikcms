@@ -18,7 +18,7 @@ define('BASE_DIR', 'useruploads/files/');
 // make sure program execution doesn't time out
 @set_time_limit(0);
 
-if (!isset($_GET['f']) or empty($_GET['f'])) {
+if (!isset($_GET['f']) || empty($_GET['f'])) {
     die("Please specify file name for download.");
 }
 
@@ -50,7 +50,7 @@ if ($mtype == '') {
 }
 
 // override original filename with given (optional fc)
-if (!isset($_GET['fc']) or empty($_GET['fc'])) {
+if (!isset($_GET['fc']) || empty($_GET['fc'])) {
     $asfname = $fname;
 } else {
     // remove some bad chars

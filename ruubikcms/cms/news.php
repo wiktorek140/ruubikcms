@@ -94,7 +94,7 @@ if (query_single('SELECT COUNT(*) FROM news') != 0) {
                 die(NOTALLOWED);
             }
 
-            if ($_SESSION['level'] >= 4 or $news['creator'] == $_SESSION['uid']) {
+            if ($_SESSION['level'] >= 4 || $news['creator'] == $_SESSION['uid']) {
                 // delete requested news
                 $stmt = $dbh->prepare('DELETE FROM news WHERE id = ?');
                 $stmt->bindParam(1, $_GET['id']);

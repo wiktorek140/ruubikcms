@@ -1,7 +1,7 @@
 <?php
 /*
     RuubikCMS - The easy & fast way to manage Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Pirilä, Henrik Valros
+ *   Copyright (C) 2008-2010 Iisakki Pirilï¿½, Henrik Valros
  * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
  *
  *   This program is free software: you can redistribute it and/or modify
@@ -88,7 +88,7 @@ $token = csrf_token();
                                     $self .= 'order=1';
                                 }
 
-                                if (isset($_GET['desc']) or !isset($_GET['order'])) {
+                                if (isset($_GET['desc']) || !isset($_GET['order'])) {
                                     $self .= '&amp;desc=1';
                                 }
 
@@ -140,7 +140,7 @@ $token = csrf_token();
                                     // default ordering
                                 }
 
-                                if ($_GET['desc'] == 1 or !isset($_GET['order'])) {
+                                if ($_GET['desc'] == 1 || !isset($_GET['order'])) {
                                     $desc = ' DESC';
                                     // default to ORDER BY downloads DESC!
                                 } else {

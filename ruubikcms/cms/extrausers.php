@@ -294,7 +294,7 @@ $token = csrf_token();
                                 } else {
                                     echo '<p>'.NOSEARCHRESULTS.' "<strong>'.ec($_POST['keyword']).'</strong>"</p><p><a href="extrausers.php"><< '.EXTRAUSERS.'</a></p>';
                                 }
-                            } else if (isset($_GET['n']) or isset($_GET['p'])) { ?>
+                            } else if (isset($_GET['n']) || isset($_GET['p'])) { ?>
                             <table cellspacing="0" cellpadding="0" border="0" class="newsTable">
 
                                 <tr>

@@ -15,7 +15,7 @@ if (isset($_POST['save'])) {
     }
 
     // check write permissions
-    if (!is_writable('../'.PDO_DB_FOLDER.'/'.PDO_DB_NAME) or !is_writable('../'.PDO_DB_FOLDER)) {
+    if (!is_writable('../'.PDO_DB_FOLDER.'/'.PDO_DB_NAME) || !is_writable('../'.PDO_DB_FOLDER)) {
         $error = SQLITENOTWRITABLE;
     }
 
@@ -182,7 +182,7 @@ if (isset($_POST['save'])) {
             refresh_pageorder($oldmother);
         }
 
-        if (isset($_GET['n']) or $pageurlchanged) {
+        if (isset($_GET['n']) || $pageurlchanged) {
             save_infomsg(PAGE.' '.CREATED);
             header('Location: '.$self.'?p='.$newpageurl); // redirect to new page
             exit;
@@ -222,7 +222,7 @@ if (isset($_GET['p'])) {
             header('Location: '.$self);
             exit;
         } else {
-            if ($_SESSION['level'] >= 4 or $page['creator'] == $_SESSION['uid']) {
+            if ($_SESSION['level'] >= 4 || $page['creator'] == $_SESSION['uid']) {
                 // no children -> delete
                 $stmt = $dbh->prepare("DELETE FROM page WHERE pageurl = ?");
                 $stmt->bindParam(1, $_GET['p']);
@@ -301,12 +301,12 @@ $token = csrf_token();
                     <div id="buttonBar">
                         <ul>
                             <?php
-                            if ($_SESSION['level'] > 3 or $page['creator'] == "" or $page['creator'] == $_SESSION['uid']) {
+                            if ($_SESSION['level'] > 3 || $page['creator'] == "" || $page['creator'] == $_SESSION['uid']) {
                                 ?><li><a href="javascript:document.pageEditForm.submit();" class="save" onclick="return validate(document.forms[0]);"><span><?php echo SAVE;?></span></a></li><?php
                             }?>
                             <li><a href="<?php echo $self.'?n=1';?>" class="new"><span><?php echo RNEW;?></span></a></li>
                             <?php
-                            if (isset($_GET['p']) and ($_SESSION['level'] > 3 or $page['creator'] == "" or $page['creator'] == $_SESSION['uid'])) {
+                            if (isset($_GET['p']) and ($_SESSION['level'] > 3 || $page['creator'] == "" || $page['creator'] == $_SESSION['uid'])) {
                                 ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token;?>" class="delete" onclick="<?php
 if ($children) {
     echo "alert('".NODELETECHILDREN."');return false";
@@ -391,7 +391,7 @@ if ($children) {
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_LEVEL;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <?php
-                                if ($_SESSION['level'] > 3 or ($_SESSION['level'] == 3 and ($page['creator'] == $_SESSION['uid'] or $page['creator'] == ""))) { // check publishing rights
+                                if ($_SESSION['level'] > 3 || ($_SESSION['level'] == 3 and ($page['creator'] == $_SESSION['uid'] || $page['creator'] == ""))) { // check publishing rights
                                     ?>
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo STATUS;?></td>
@@ -402,7 +402,7 @@ if ($children) {
                                         }
                                         ?>>
                                             <option value="1" <?php
-                                            if ($page['status'] == 1 or !isset($_GET['p'])) {
+                                            if ($page['status'] == 1 || !isset($_GET['p'])) {
                                                 echo 'selected="selected"';
                                             }
                                             ?>><?php echo PUBLISHED;?></option>

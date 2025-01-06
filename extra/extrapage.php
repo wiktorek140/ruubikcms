@@ -49,7 +49,7 @@ if ($site['url_suffix'] != '') {
 }
 
 // if no page defined -> get the first page
-if (!$_GET['p'] and !$_GET['news']) {
+if (!$_GET['p'] && !$_GET['news']) {
     $_GET['p'] = frontpage_value('pageurl', 'extrapage');
 }
 
@@ -99,7 +99,7 @@ $page['gacode'] = $site['gacode'];
 $page['sitename'] = ec($site['name']);
 
 // check no image1
-if (!$page['image1'] or $page['image1'] == "") {
+if (!$page['image1'] || $page['image1'] == "") {
     // use front page image1 if this option is selected
     if ($site['no_image1'] == 1) {
         $page['image1'] = frontpage_value('image1', 'extrapage');
@@ -111,7 +111,7 @@ if (!$page['image1'] or $page['image1'] == "") {
 }
 
 // check no image2
-if (!$page['image2'] or $page['image2'] == "") {
+if (!$page['image2'] || $page['image2'] == "") {
     // use front page image2 if this option is selected
     if ($site['no_image2'] == 1) {
         $page['image2'] = frontpage_value('image2', 'extrapage');
@@ -123,15 +123,15 @@ if (!$page['image2'] or $page['image2'] == "") {
 }
 
 // use site values when page values empty
-if (!$page['title'] or $page['title'] == "") {
+if (!$page['title'] || $page['title'] == "") {
     $page['title'] = $site['title'];
 }
 
-if (!$page['description'] or $page['description'] == "") {
+if (!$page['description'] || $page['description'] == "") {
     $page['description'] = $site['description'];
 }
 
-if (!$page['keywords'] or $page['keywords'] == "") {
+if (!$page['keywords'] || $page['keywords'] == "") {
     $page['keywords'] = $site['keywords'];
 }
 

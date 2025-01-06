@@ -145,7 +145,7 @@ $token = csrf_token();
                 <div id="rightDiv">
                     <div id="buttonBar">
                         <ul>
-                            <?php if (isset($_GET['p']) or isset($_GET['n'])) {
+                            <?php if (isset($_GET['p']) || isset($_GET['n'])) {
                                 ?><li><a href="javascript:document.newsEditForm.submit();" class="save"><span><?php echo SAVE;?></span></a></li><?php
                             }
                             ?>

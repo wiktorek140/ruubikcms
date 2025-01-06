@@ -20,7 +20,7 @@ define('BASE_DIR', 'useruploads/images/');
 // make sure program execution doesn't time out
 @set_time_limit(0);
 
-if (!isset($_GET['f']) or empty($_GET['f'])) {
+if (!isset($_GET['f']) || empty($_GET['f'])) {
     die("Please specify image.");
 }
 

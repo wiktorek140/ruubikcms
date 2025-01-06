@@ -49,7 +49,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) {
 
                             // loop free pages
                             echo '          <div class="rootPageFree"><a href="extranet.php'.'?p=---notinmenu---">'.FREEPAGES.'</a></div>
-                                            <div class="subMenu1"'.(($p == '---notinmenu---' or root_page($p, 'extrapage') == '---notinmenu---') ? ' id="open"' : '').'>';
+                                            <div class="subMenu1"'.(($p == '---notinmenu---' || root_page($p, 'extrapage') == '---notinmenu---') ? ' id="open"' : '').'>';
 
                             $sql = "SELECT pageurl, name FROM extrapage WHERE levelnum = 0 ORDER BY ordernum";
                             foreach ($dbh->query($sql) as $row) {

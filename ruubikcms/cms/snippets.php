@@ -152,7 +152,7 @@ $token = csrf_token();
         }
         ?>>
         <option value="1"<?php
-        if ($snippet['tinymce'] == 1 or !isset($_GET['p'])) {
+        if ($snippet['tinymce'] == 1 || !isset($_GET['p'])) {
             echo ' selected="selected"';
         }
         ?>>TinyMCE</option>

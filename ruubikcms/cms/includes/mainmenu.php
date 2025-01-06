@@ -21,7 +21,7 @@ if (SHOW_USERS and $_SESSION['level'] == 5) {
 }
 
 if (SHOW_EXTRANET) {
-    echo '<li><a href="extranet.php"'.(($filename == 'extranet.php' or $filename == 'extrausers.php') ? ' class="selectedMenu"' : '').'><span'.(($filename == 'extranet.php' or $filename == 'extrausers.php') ? ' class="selectedMenu"' : '').'>'.EXTRANET.'</span></a></li>';
+    echo '<li><a href="extranet.php"'.(($filename == 'extranet.php' || $filename == 'extrausers.php') ? ' class="selectedMenu"' : '').'><span'.(($filename == 'extranet.php' || $filename == 'extrausers.php') ? ' class="selectedMenu"' : '').'>'.EXTRANET.'</span></a></li>';
 }
 
 if (SHOW_EXTRAUSERS and $_SESSION['level'] == 5) {

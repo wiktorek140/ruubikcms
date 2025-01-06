@@ -42,7 +42,7 @@
         <?php if ($cmspage == EXTRAUSERS) {
             echo '<link rel="stylesheet" href="css/styleExtranetUsers.css" />';
         }?>
-        <?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) {
+        <?php if ($cmspage == WEBPAGES || $cmspage == EXTRANET) {
             echo '<link rel="stylesheet" href="css/styleAdminWebsite.css" />';
         }?>
         <?php if ($cmspage == CMSOPTIONS) {
@@ -71,11 +71,11 @@
         <script src="scripts/tooltip.js"></script>
         <script src="scripts/jquery.datePicker.js"></script>
 
-        <?php if ($cmspage == WEBPAGES or $cmspage == EXTRANET) {
+        <?php if ($cmspage == WEBPAGES || $cmspage == EXTRANET) {
             echo '<script src="scripts/pageadmin.js"></script>';
         }
 
-        if ($cmspage == NEWS or $cmspage == EXTRAUSERS) {
+        if ($cmspage == NEWS || $cmspage == EXTRAUSERS) {
             echo '<script src="scripts/newsadmin.js"></script>';
         }?>
 
