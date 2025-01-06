@@ -43,11 +43,6 @@ if (isset($_POST['save'])) {
     // remove slashes from html
     $content = stripslashes($_POST['tinyMCE']);
 
-    // strip some more slashes if needed
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     // convert index.php?p=pageurl links to clean url links
     if ($site['clean_url'] >= 1) {
         $content = preg_replace('/index.php\?p\=(.+)"/Us', "clean_url('$1').'\"'", $content);

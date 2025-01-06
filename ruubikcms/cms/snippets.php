@@ -17,11 +17,6 @@ if (isset($_POST['save'])) {
         $_POST['tinyMCE'] = '';
     }
 
-    // strip slashes if needed
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     // at least some name must be defined
     if (!$_POST['name']) {
         $_POST['name'] = NONAME;

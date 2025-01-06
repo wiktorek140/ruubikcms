@@ -23,11 +23,6 @@ if (isset($_POST['save'])) {
         $error = true;
     }
 
-    // strip slashes if needed
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     if (!$_POST['role']) {
         $_POST['role'] = '5';
     }

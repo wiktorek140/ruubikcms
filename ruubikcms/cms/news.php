@@ -17,11 +17,6 @@ if (isset($_POST['save'])) {
         die(NOTALLOWED);
     }
 
-    // strip slashes if needed
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     $site = get_site_data();
 
     if (!valid_mysql_date($_POST['time'])) {

@@ -115,11 +115,6 @@ if (isset($_POST['import'])) {
         $error = true;
     }
 
-    // strip slashes if needed
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     // new user -> get unique username
     if (!$_GET['p'] and $_GET['n']) {
         $newname = get_unique_url($_POST['username'], 3);

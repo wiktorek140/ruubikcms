@@ -14,11 +14,6 @@ if (isset($_POST['save'])) {
         die(NOTALLOWED);
     }
 
-    // strip slashes if needed
-    if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     // just default invalid charnum to 110
     if (empty($_POST['news_maxshort']) || !is_numeric($_POST['news_maxshort'])) {
         $_POST['news_maxshort'] = '110';

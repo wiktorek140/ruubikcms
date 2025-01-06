@@ -329,10 +329,6 @@ function valid_time($value)
 // --- Strips slashes if magic_quotes_gpc is on
 function stripslashes_gpc($data)
 {
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $data = stripslashes($data);
-    }
-
     return $data;
 
 }//end stripslashes_gpc()

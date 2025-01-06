@@ -96,11 +96,6 @@ if (isset($_POST['save']) and !(isset($_POST['restore']) || isset($_POST['backup
         die(NOTALLOWED);
     }
 
-    // strip slashes if needed
-    if (function_exists('get_magic_quotes_gpc') and get_magic_quotes_gpc()) {
-        $_POST = stripslashes_deep($_POST);
-    }
-
     // make sure we save followig as integers
     $resize_width = intval($_POST['resize_width']);
     $resize_height = intval($_POST['resize_height']);
