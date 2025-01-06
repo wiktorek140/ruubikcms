@@ -50,14 +50,14 @@ if (isset($_POST['save'])) {
 
     // convert index.php?p=pageurl links to clean url links
     if ($site['clean_url'] >= 1) {
-        $content = preg_replace('/index.php\?p\=(.+)"/eUs', "clean_url('$1').'\"'", $content);
+        $content = preg_replace('/index.php\?p\=(.+)"/Us', "clean_url('$1').'\"'", $content);
     }
 
     // convert extra/userupload filelink tags to protected downloads via download.php script
-    $content = preg_replace('#a href\="([^"]*/extra/useruploads/files/[^\?]+)"#eUs', "a.' href=\"/".($siteroot != "" ? $siteroot.'/' : '')."extra/download.php?f='.basename('$1').'\"'", $content);
+    $content = preg_replace('#a href\="([^"]*/extra/useruploads/files/[^\?]+)"#Us', "a.' href=\"/".($siteroot != "" ? $siteroot.'/' : '')."extra/download.php?f='.basename('$1').'\"'", $content);
 
     // convert extra/userupload img tags to protected images via image.php script
-    $content = preg_replace('#img src\="([^"]*/extra/useruploads/images/[^\?]+)"#eUs', "img.' src=\"/".($siteroot != "" ? $siteroot.'/' : '')."extra/image.php?f='.basename('$1').'\"'", $content);
+    $content = preg_replace('#img src\="([^"]*/extra/useruploads/images/[^\?]+)"#Us', "img.' src=\"/".($siteroot != "" ? $siteroot.'/' : '')."extra/image.php?f='.basename('$1').'\"'", $content);
 
     // at least some name must be defined
     if (!isset($_POST['name'])) {

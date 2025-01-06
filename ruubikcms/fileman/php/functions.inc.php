@@ -172,6 +172,13 @@ class RoxyFile
 {
 
 
+    private static function CreatePath($dir)
+    {
+        return true;
+
+    }//end CreatePath()
+
+
     public static function CheckWritable($dir)
     {
         $ret = false;

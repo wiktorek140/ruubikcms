@@ -1,9 +1,8 @@
 <?php
-if (basename($_SERVER['REQUEST_URI']) == 'function.php') {
-    || strpos($_SERVER['REQUEST_URI'], 'function.php') !== false) die("Access Denied");
+if (basename($_SERVER['REQUEST_URI']) == 'function.php' || strpos($_SERVER['REQUEST_URI'], 'function.php') !== false) {
+    die("Access Denied");
 }
-?>
-<?php
+
 // FUNCTIONS
 // --- Checks if pageurl exists. Returns True/False.
 function pageurl_exists($pageurl)
@@ -16,6 +15,7 @@ function pageurl_exists($pageurl)
     }
 
 }//end pageurl_exists()
+
 
 function extrapageurl_exists($pageurl)
 {
