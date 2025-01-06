@@ -105,27 +105,27 @@ if (!isset($snippet['tinymce'])) {
 $token = csrf_token();
 ?>
 
-<!-- **************** MAINBODY ******************** -->
-
 <div id="mainBody">
-
   <?php require 'includes/snippetmenu.php'; ?>
 
-
-  <!-- **************** RightDiv ******************** -->
   <form method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
     <input type="hidden" name="save" value="1" />
   <input type="hidden" name="ordernum" value="<?php echo $page['ordernum']; ?>" />
 <div id="rightDiv">
   <div id="buttonBar">
     <ul>
-      <?php if (isset($_GET['p']) or isset($_GET['n'])) {
-            ?><li><a href="javascript:document.newsEditForm.submit();" class="save"><span><?php echo SAVE; ?></span></a></li><?php
-      } ?>
+      <?php if (isset($_GET['p']) || isset($_GET['n'])) {
+            ?><li><a href="javascript:document.newsEditForm.submit();" class="save"><span><?php echo SAVE; ?></span></a></li>
+            <?php
+      }
+        ?>
       <li><a href="<?php echo $self.'?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
-      <?php if (isset($_GET['p'])) {
-            ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li><?php
-      } ?>
+      <?php
+        if (isset($_GET['p'])) {
+            ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li>
+            <?php
+        }
+        ?>
       <input name="token" type="hidden" value="<?php echo $token; ?>" />
   </ul>
 </div>
@@ -139,23 +139,28 @@ $token = csrf_token();
     <table cellspacing="0" cellpadding="0" border="0" class="newsTable">
       <tr>
         <td class="tdNewsAdminLeft"><?php echo NAME; ?></td>
-        <td class="tdNewsAdminCenter"><input type="text" name="name" value="<?php if (isset($snippet['name'])) {
-            echo ec($snippet['name']);
-} ?>" /></td>
+        <td class="tdNewsAdminCenter"><input type="text" name="name" value="<?php echo isset($snippet['name']) ? ec($snippet['name']) : '';
+        ?>" /></td>
       <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_SNIPPETNAME; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
   </tr>
   <tr>
     <td class="tdNewsAdminLeft"><?php echo TYPE; ?></td>
     <td class="tdNewsAdminCenter">
-      <select name="type"<?php if ($snippet['tinymce'] == 0 and isset($_GET['p'])) {
+      <select name="type"<?php
+        if ($snippet['tinymce'] == 0 and isset($_GET['p'])) {
             echo ' disabled="disabled"';
-} ?>>
-        <option value="1"<?php if ($snippet['tinymce'] == 1 or !isset($_GET['p'])) {
+        }
+        ?>>
+        <option value="1"<?php
+        if ($snippet['tinymce'] == 1 or !isset($_GET['p'])) {
             echo ' selected="selected"';
-} ?>>TinyMCE</option>
-        <option value="0"<?php if ($snippet['tinymce'] == 0 and isset($_GET['p'])) {
+        }
+        ?>>TinyMCE</option>
+        <option value="0"<?php
+        if ($snippet['tinymce'] == 0 and isset($_GET['p'])) {
             echo ' selected="selected"';
-} ?>><?php echo CODE; ?></option>
+        }
+        ?>><?php echo CODE; ?></option>
       </select>
     </td>
     <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_SNIPPETTYPE; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
@@ -184,7 +189,8 @@ if (!isset($_GET['n'])) {
 <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_SNIPPETCODEPHP; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
 </tr>
         <?php
-    } ?>
+    }
+    ?>
 </table>
 
     <?php

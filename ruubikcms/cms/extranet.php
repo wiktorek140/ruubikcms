@@ -1,22 +1,5 @@
 <?php
-/*
-    RuubikCMS - The easy & fast way to manage Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Piril�, Henrik Valros
- * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
- *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 require 'includes/required.php';
 if ($_SESSION['level'] != 5) {
     die(NOTALLOWED);
@@ -315,21 +298,29 @@ $token = csrf_token();
                     <div id="buttonBar">
                         <ul>
                             <?php if ($_SESSION['level'] > 3 or $page['creator'] == "" or $page['creator'] == $_SESSION['uid']) {
-                                ?><li><a href="javascript:document.pageEditForm.submit();" class="save" onclick="return validate(document.forms[0]);"><span><?php echo SAVE;?></span></a></li><?php
-                            }?>
+                                ?><li><a href="javascript:document.pageEditForm.submit();" class="save" onclick="return validate(document.forms[0]);"><span>
+                                  <?php echo SAVE;?>
+                                </span></a></li>
+                                <?php
+                            }
+                            ?>
                             <li><a href="<?php echo $self.'?n=1';?>" class="new"><span><?php echo RNEW;?></span></a></li>
                             <?php if (isset($_GET['p']) and ($_SESSION['level'] > 3 or $page['creator'] == "" or $page['creator'] == $_SESSION['uid'])) {
                                 ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token;?>" class="delete" onclick="<?php if ($children) {
     echo "alert('".NODELETECHILDREN."');return false";
                                 } else {
                                     echo "return confirm('".DELETEPAGECONFIRM."');";
-                                }?>"><span><?php echo DELETE;?></span></a></li><?php
-                            }?>
+                                }
+                                ?>"><span><?php echo DELETE;?></span></a></li><?php
+                            }
+                            ?>
                         </ul>
 
-                        <div id="currentPage"><?php if (isset($page['name'])) {
+                        <div id="currentPage"><?php
+                        if (isset($page['name'])) {
                             echo SELECTEDPAGE.': <b id="selectedPage">'.ec($page['name']).'</b>';
-}?></div>
+                        }
+                        ?></div>
                            
                     </div>
                             
@@ -340,82 +331,110 @@ $token = csrf_token();
                             <table cellspacing="0" cellpadding="0" border="0">
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo PAGENAME;?></td>
-                                    <td class="tdPageAdminCenter"><input type="text" name="name" id="name" value="<?php if (isset($page['name'])) {
+                                    <td class="tdPageAdminCenter"><input type="text" name="name" id="name" value="<?php
+                                    if (isset($page['name'])) {
                                         echo ec($page['name']);
-}?>" /></td>
+                                    }
+                                    ?>" /></td>
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_TITLE;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     <input name="token" type="hidden" value="<?php echo $token;?>" />
                                 </tr>
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo HEADER1;?></td>
-                                    <td class="tdPageAdminCenter"><input type="text" name="header1" value="<?php if (isset($page['header1'])) {
+                                    <td class="tdPageAdminCenter"><input type="text" name="header1" value="<?php
+                                    if (isset($page['header1'])) {
                                         echo ec($page['header1']);
-}?>" /></td>
+                                    }
+                                    ?>" /></td>
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_HEADER1;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo PAGEURL;?></td>
-                                    <td class="tdPageAdminCenter"><input type="text" name="pageurl" value="<?php if (isset($_GET['p'])) {
+                                    <td class="tdPageAdminCenter"><input type="text" name="pageurl" value="<?php
+                                    if (isset($_GET['p'])) {
                                         echo ec($_GET['p']);
-}?>" /></td>
+                                    }
+                                    ?>" /></td>
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_PAGEURL;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo PAGELINK;?></td>
-                                    <td class="tdPageAdminCenter"><input type="text" readonly="readonly" name="pagelink" value="<?php if (isset($pagelink)) {
+                                    <td class="tdPageAdminCenter"><input type="text" readonly="readonly" name="pagelink" value="<?php
+                                    if (isset($pagelink)) {
                                         echo $pagelink;
-}?>" /></td>
+                                    }
+                                    ?>" /></td>
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_PAGELINK;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo LEVEL;?></td>
                                     <td class="tdPageAdminCenter">
-                                        <select name="mother"<?php if ($children) {
+                                        <select name="mother"<?php
+                                        if ($children) {
                                             echo ' disabled="disabled"';
-}?>>
+                                        }
+                                        ?>>
                                             <option value="">---<?php echo MAINLEVEL;?>---</option>
-                                            <option value="---notinmenu---"<?php if (isset($page['mother']) and $page['mother'] == '---notinmenu---') {
+                                            <option value="---notinmenu---"<?php
+                                            if (isset($page['mother']) && $page['mother'] == '---notinmenu---') {
                                                 echo ' selected="selected"';
-}?>>---<?php echo FREEPAGE;?>---</option>
-                                            <?php foreach ($pagelist as $key => $value) {
+                                            }
+                                            ?>>---<?php echo FREEPAGE;?>---</option>
+                                            <?php
+                                            foreach ($pagelist as $key => $value) {
                                                 if ($key != $_GET['p']) {
                                                     echo '<option value="'.$key.'"'.($key == $page['mother'] ? ' selected="selected"' : '').'>'.$value.'</option>';
                                                 }
-                                            }?>
+                                            }
+                                            ?>
                                         </select>
                                     </td>
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_LEVEL;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
-                                <?php if ($_SESSION['level'] > 3 or ($_SESSION['level'] == 3 and ($page['creator'] == $_SESSION['uid'] or $page['creator'] == ""))) { // check publishing rights ?>
+                                <?php
+                                if ($_SESSION['level'] > 3 or ($_SESSION['level'] == 3 and ($page['creator'] == $_SESSION['uid'] or $page['creator'] == ""))) {  ?>
                                 <tr>
                                     <td class="tdPageAdminLeft"><?php echo STATUS;?></td>
                                     <td class="tdPageAdminCenter">
-                                        <select name="status"<?php if ($children) {
+                                        <select name="status"<?php
+                                        if ($children) {
                                             echo ' disabled="disabled"';
-}?>>
-                                            <option value="1"<?php if ($page['status'] == 1 or !isset($_GET['p'])) {
+                                        }
+                                        ?>>
+                                            <option value="1"<?php
+                                            if ($page['status'] == 1 || !isset($_GET['p'])) {
                                                 echo 'selected="selected"';
-}?>><?php echo PUBLISHED;?></option>
-                                            <option value="0"<?php if ($page['status'] == 0 and isset($_GET['p'])) {
+                                            }
+                                            ?>><?php echo PUBLISHED;?></option>
+                                            <option value="0"<?php
+                                            if ($page['status'] == 0 and isset($_GET['p'])) {
                                                 echo 'selected="selected"';
-}?>><?php echo DRAFT;?></option>
+                                            }
+                                            ?>><?php echo DRAFT;?></option>
                                         </select>
                                     </td>
                                     <td class="tdPageAdminRight"><a href="#" class="tooltip" title="<?php echo H_PAGESTATUS;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
-                                <?php } else { // not allowed to publish ?>
+                                    <?php
+                                } else { // not allowed to publish
+                                    ?>
                                 <input type="hidden" name="status" value="0"/>
-                                <?php }?>
-                                <?php // pagetype removed here from v1.1.2 ?>
+                                    <?php
+                                }//end if
+                                ?>
+                        
                             </table>
                             
-                            <?php if ($children) {
+                            <?php
+                            if ($children) {
                                 echo '<input name="mother_hidden" type="hidden" value="'.$page['mother'].'" />';
                             } //end if
                             ?>
-                            <input name="creator" type="hidden" value="<?php if (isset($page['creator'])) {
+                            <input name="creator" type="hidden" value="<?php
+                            if (isset($page['creator'])) {
                                 echo $page['creator'];
-}?>" />
+                            }
+                            ?>" />
                                                                                 
                         </div>
                         
@@ -424,23 +443,29 @@ $token = csrf_token();
                             <table cellspacing="0" cellpadding="0" border="0">
                                 <tr>
                                     <td class="tdSEOAdminLeft"><?php echo PAGETITLE;?></td>
-                                    <td class="tdSEOAdminCenter"><input type="text" name="title" value="<?php if (isset($page['title'])) {
+                                    <td class="tdSEOAdminCenter"><input type="text" name="title" value="<?php
+                                    if (isset($page['title'])) {
                                         echo ec($page['title']);
-}?>" /></td>
+                                    }
+                                    ?>" /></td>
                                     <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_PAGETITLE.H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdSEOAdminLeft"><?php echo DESCRIPTION;?></td>
-                                    <td class="tdSEOAdminCenter"><textarea cols="30" rows="2" name="description"><?php if (isset($page['description'])) {
+                                    <td class="tdSEOAdminCenter"><textarea cols="30" rows="2" name="description"><?php
+                                    if (isset($page['description'])) {
                                         echo ec($page['description']);
-}?></textarea></td>
+                                    }
+                                    ?></textarea></td>
                                     <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_DESCRIPTION.H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdSEOAdminLeft"><?php echo KEYWORDS;?></td>
-                                    <td class="tdSEOAdminCenter"><textarea cols="30" rows="2" name="keywords"><?php if (isset($page['keywords'])) {
+                                    <td class="tdSEOAdminCenter"><textarea cols="30" rows="2" name="keywords"><?php
+                                    if (isset($page['keywords'])) {
                                         echo ec($page['keywords']);
-}?></textarea></td>
+                                    }
+                                    ?></textarea></td>
                                     <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_KEYWORDS.H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                             </table>
@@ -457,14 +482,12 @@ $token = csrf_token();
                         <div id="xtrArea">
                             <h2><?php echo EXTRACODE;?></h2>
                             <div id="xtrAreaBlue"><a href="#" class="tooltip" style="float: right; margin-bottom:5px;" title="<?php echo H_EXTRACODE;?>"><img src="images/help.gif" class="imgover" alt="" /></a>
-                            <textarea name="extracode" cols="2" rows="2"><?php if (isset($page['extracode'])) {
+                            <textarea name="extracode" cols="2" rows="2"><?php
+                            if (isset($page['extracode'])) {
                                 echo stripslashes_gpc(htmlentities($page['extracode'], $ent = ENT_COMPAT, $site['charset']));
-}?></textarea></div>
+                            }
+                            ?></textarea></div>
                         </div>
-                                                
-                        
-
-                        
                         <div id="decorationPix">
 
                         <h2><?php echo IMAGES;?></h2>
@@ -482,14 +505,18 @@ $token = csrf_token();
 
                                     <tr>
                                         <td>
-                                            <?php if (!empty($page['image1'])) {
+                                          <?php
+                                            if (!empty($page['image1'])) {
                                                 echo '<img id="pic1img" src="'.ec($page['image1']).'" alt="'.NOPREVIEW.'" height="84" width="134" />';
-                                            }?>
+                                            }
+                                            ?>
                                         </td>
                                         <td>
-                                            <?php if (!empty($page['image2'])) {
+                                            <?php
+                                            if (!empty($page['image2'])) {
                                                 echo '<img id="pic2img" src="'.ec($page['image2']).'" alt="'.NOPREVIEW.'" height="84" width="134" />';
-                                            }?>
+                                            }
+                                            ?>
                                         </td>
                                         <td class="DecoPicToolTip">&nbsp;</td>
                                     </tr>
@@ -502,9 +529,11 @@ $token = csrf_token();
                                             <div><a href="#" class="flash" onclick="javascript:tinyBrowserPopUp('media','pic1');">
                                             <b>Flash</b> (flv, swf)</a></div>
                                             <div><a href="#" class="delete" id="delpic1"><b><?php echo REMOVE;?></b></a></div>
-                                            <div><input name="picfile1" type="text" id="pic1" value="<?php if (isset($page['image1'])) {
+                                            <div><input name="picfile1" type="text" id="pic1" value="<?php
+                                            if (isset($page['image1'])) {
                                                 echo ec($page['image1']);
-}?>" /></div>
+                                            }
+                                            ?>" /></div>
                                         </td>
                                         
                                         <td>
@@ -513,42 +542,28 @@ $token = csrf_token();
                                             <div><a href="#" class="flash" onclick="javascript:tinyBrowserPopUp('media','pic2');">
                                             <b>Flash</b> (flv, swf)</a></div>
                                             <div><a href="#" class="delete" id="delpic2"><b><?php echo REMOVE;?></b></a></div>
-                                            <div><input name="picfile2" type="text" id="pic2" value="<?php if (isset($page['image2'])) {
+                                            <div><input name="picfile2" type="text" id="pic2" value="<?php
+                                            if (isset($page['image2'])) {
                                                 echo ec($page['image2']);
-}?>" /></div>
+                                            }
+                                            ?>" /></div>
                                         </td>
-
-                                        <!--<td>
-                                            <div><a href="#" class="addPic" onclick="javascript:tinyBrowserPopUp('image','pic2');">
-                                            <b>Picture</b> (jpg, gif)</a></div>
-                                            <div><a href="#" class="flash" onclick="javascript:tinyBrowserPopUp('media','pic2');">
-                                            <b>Flash</b> (swf, flv)</a></div>
-                                            <div><a href="#" class="delete" id="delpic2"><b>Delete</b> media</a></div>
-                                        </td>-->
-
-                                        <!-- Buttons for img3 here -->
-
                                         <td class="DecoPicToolTip">&nbsp;</td>
                                     </tr>
                                 </tbody>
                             </table>
-
-
                             </div>
-
                         </div>
-
                     </div>
-
-
                     <div id="contentManagement">
                         <div id="tinyMCE">
-                            <textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE" id="tinyMCEarea"><?php if (isset($page['content'])) {
+                            <textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE" id="tinyMCEarea"><?php
+                            if (isset($page['content'])) {
                                 echo htmlentities($page['content'], $ent = ENT_COMPAT, $site['charset']);
-}?></textarea>
+                            }
+                            ?></textarea>
                         </div>
-
-                        <div class="clear"></div> <!-- This div clears the float divs -->                     
+                        <div class="clear"></div> <!-- This div clears the float divs --> 
 
                     <p class="updated">
                     <?php
@@ -561,14 +576,10 @@ $token = csrf_token();
                     }
                     ?>
                     </p>
-
                     </div>
-
                 </div>
-
                 </form>
-
-                <div class="clear"></div> <!-- This div clears the float divs --> 
+                <div class="clear"></div>
 
             </div>
 
@@ -578,4 +589,3 @@ $token = csrf_token();
 if (isset($error) and $error == SQLITENOTWRITABLE) {
     echo '<script language="javascript" type="text/javascript">alert(\''.$error.'\');</script>';
 }
-
