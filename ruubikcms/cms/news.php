@@ -1,21 +1,5 @@
 <?php
-/*   RuubikCMS - The easy & fast way to manage Google optimized websites
- *   Copyright (C) 2008-2010 Iisakki Piril�, Henrik Valros
- * 	 Website: <http://www.ruubikcms.com>, Email: <info@ruubikcms.com>
- *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 require('includes/required.php');
 if ($_SESSION['level'] != 5) die(NOTALLOWED);
 $cmspage = NEWS;
@@ -119,22 +103,29 @@ $token = csrf_token();
 <div id="rightDiv">
   <div id="buttonBar">
     <ul>
-      <?php if (isset($_GET['id']) || isset($_GET['n']) && ($_SESSION['level'] > 3 || $news['creator'] == "" || $news['creator'] == $_SESSION['uid'])) {
-        ?><li><a href="javascript:document.newsEditForm.submit();" class="save"><span><?php echo SAVE; ?></span></a></li><?php
-      } ?>
-      <li><a href="<?php echo $self.'?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
-      <?php if (isset($_GET['id']) AND ($_SESSION['level'] > 3 OR $news['creator'] == "" OR $news['creator'] == $_SESSION['uid'])) {
-        ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li><?php
-      } ?>
+      <?php
+      if (
+        (isset($_GET['id']) || isset($_GET['n'])) &&
+        ($_SESSION['level'] > 3 || $news['creator'] == "" || $news['creator'] == $_SESSION['uid'])
+      ) {
+        echo '<li><a href="javascript:document.newsEditForm.submit();" class="save"><span>' . SAVE . '</span></a></li>';
+      }
+      ?>
+      <li><a href="<?php echo $self . '?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
+      <?php
+      if (
+        isset($_GET['id']) &&
+        ($_SESSION['level'] > 3 || $news['creator'] == "" || $news['creator'] == $_SESSION['uid'])
+      ) {
+        echo '<li><a href="' . $self . '?' . ec($_SERVER['QUERY_STRING']) . '&amp;d=1&amp;token=' . $token . '" class="delete"><span>' . DELETE . '</span></a></li>';
+      }
+      ?>
     </ul>
   </div>
 
   <div id="rightContent">
-
     <div id="newsAdmin">
-
       <h2><?php echo NEWS; ?></h2>
-
       <table cellspacing="0" cellpadding="0" border="0" class="newsTable">
         <tr>
           <td class="tdNewsAdminLeft"><?php echo TITLE; ?></td>
@@ -143,26 +134,23 @@ $token = csrf_token();
       <input name="token" type="hidden" value="<?php echo $token; ?>" />
   </tr>
   <?php if ($_SESSION['level'] >= 3) {
-    // allowed to publish ?>
-    <tr>
-      <td class="tdNewsAdminLeft"><?php echo STATUS; ?></td>
-      <td class="tdNewsAdminCenter">
-        <select name="status">
-          <option value="1" <?php if ($news['status'] == 1 OR !isset($_GET['id'])) echo 'selected="selected"'; ?>><?php echo NEWSSTATUSACTIVE; ?></option>
-          <option value="0" <?php if ($news['status'] == 0 AND isset($_GET['id'])) echo 'selected="selected"'; ?>><?php echo NEWSSTATUSARCHIVE; ?></option>
-        </select>
-      </td>
-      <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_NEWSSTATUS; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
-  </tr>
-  <?php
-} else {
-  echo '<input type="hidden" name="status" value="0" />';
-} ?>
+    // allowed to publish
+    echo '<tr>'.
+    '<td class="tdNewsAdminLeft">' . STATUS . '</td>'.
+    '<td class="tdNewsAdminCenter">'.
+    '<select name="status">'.
+    '<option value="1" ' . (($news['status'] == 1 || !isset($_GET['id'])) ? 'selected="selected"' : '') . '>' . NEWSSTATUSACTIVE . '</option>'.
+    '<option value="0" ' . (($news['status'] == 0 && isset($_GET['id'])) ? 'selected="selected"' : '') . '>' . NEWSSTATUSARCHIVE . '</option></select>'.
+    '</td> <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="' . H_NEWSSTATUS . '"><img src="images/help.gif" class="imgover" alt="" /></a></td></tr>';
+  } else {
+    echo '<input type="hidden" name="status" value="0" />';
+  }
+  ?>
 
-<tr>
-<td class="tdNewsAdminLeft"><?php echo NEWSDATE; ?></td>
-<td class="tdNewsDate"><input type="text" name="time" class="date-pick" value="<?php if (!isset($_GET['id'])) echo date("Y-m-d"); else echo substr($news['time'], 0, 10); ?>" /></td>
-<td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_NEWSDATE; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+  <tr>
+    <td class="tdNewsAdminLeft"><?php echo NEWSDATE; ?></td>
+    <td class="tdNewsDate"><input type="text" name="time" class="date-pick" value="<?php if (!isset($_GET['id'])) { echo date("Y-m-d"); } else { echo substr($news['time'], 0, 10); } ?>" /></td>
+  <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_NEWSDATE; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
 </tr>
 <tr>
 <td class="tdNewsAdminLeft"><?php echo NEWSEXTRACT; ?></td>
@@ -189,15 +177,19 @@ echo '<option value="'.$key.'"'.($key == $news['linktopage'] ? ' selected="selec
 <input name="creator" type="hidden" value="<?php if (isset($news['creator'])) echo $news['creator']; ?>" />
 
 <div id="tinyMCE">
-<textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE"><?php if (isset($news['text'])) echo htmlentities($news['text'], $ent = ENT_COMPAT, $site['charset']); ?></textarea>
+<textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE"><?php if (isset($news['text'])) {
+echo htmlentities($news['text'], $ent = ENT_COMPAT, $site['charset']);
+} ?></textarea>
 </div>
 </div>
 <p class="updated">
 <?php
-if (isset($news['shorttext'])) 
-  echo CREATOR.': '.$news['creator'];
-if (isset($news['updated'])) 
-  echo ' | '.UPDATED.' '.$news['updated'].' ('.$news['updater'].')';
+if (isset($news['shorttext'])) {
+echo CREATOR.': '.$news['creator'];
+}
+if (isset($news['updated'])) {
+echo ' | '.UPDATED.' '.$news['updated'].' ('.$news['updater'].')';
+}
 ?>
 </p>
 </div>
