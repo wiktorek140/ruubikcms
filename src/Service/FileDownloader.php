@@ -115,18 +115,24 @@ class FileDownloader
         $dlcount = query_single("SELECT downloads FROM dl_count WHERE filename = '" . $fname . "'");
         $date = date("Y-m-d H:i:s");
         if (!$dlcount) {
-            $i = 1;
-            $stmt = $this->dbh->prepare("INSERT INTO dl_count (filename, downloads, count_started, last_dl) VALUES (?, ?, ?, ?)");
-            $stmt->bindParam(1, $fname);
-            $stmt->bindParam(2, $i);
-            $stmt->bindParam(3, $date);
-            $stmt->bindParam(4, $date);
+              $this->db->execute(
+                  "INSERT INTO dl_count (filename, downloads, count_started, last_dl) VALUES (?, ?, ?, ?)",
+                  [
+                      $fname,
+                      1,
+                      $date,
+                      $date,
+                  ]
+              );
         } else {
-            $stmt = $this->dbh->prepare("UPDATE dl_count SET downloads = ? + 1, last_dl = ? WHERE filename = ?");
-            $stmt->bindParam(1, $dlcount);
-            $stmt->bindParam(2, $date);
-            $stmt->bindParam(3, $fname);
+            $this->db->execute(
+                "UPDATE dl_count SET downloads = ? + 1, last_dl = ? WHERE filename = ?",
+                [
+                    $dlcount,
+                    $date,
+                    $fname,
+                ]
+            );
         }
-        $stmt->execute();
     }
 }
