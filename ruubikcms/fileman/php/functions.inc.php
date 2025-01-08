@@ -74,7 +74,7 @@ function verifyAction($action)
 
         $confUrl = BASE_PATH . '/' . $confUrl;
         $confUrl = RoxyFile::FixPath($confUrl);
-        $thisUrl = dirname(__FILE__) . '/' . basename($_SERVER['PHP_SELF']);
+        $thisUrl = __DIR__ . '/' . basename($_SERVER['PHP_SELF']);
         $thisUrl = RoxyFile::FixPath($thisUrl);
         if ($thisUrl != $confUrl) {
             echo "$confUrl $thisUrl";
@@ -266,17 +266,17 @@ class RoxyFile
         $unit = 'B';
         if ($filesize > 1024) {
             $unit = 'KB';
-            $filesize = ($filesize / 1024);
+            $filesize /= 1024;
         }
 
         if ($filesize > 1024) {
             $unit = 'MB';
-            $filesize = ($filesize / 1024);
+            $filesize /= 1024;
         }
 
         if ($filesize > 1024) {
             $unit = 'GB';
-            $filesize = ($filesize / 1024);
+            $filesize /= 1024;
         }
 
         $ret = round($filesize, 2) . ' ' . $unit;

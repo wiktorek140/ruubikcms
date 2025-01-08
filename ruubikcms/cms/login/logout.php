@@ -2,7 +2,7 @@
 
 $_SESSION = [];
 // empty session variables
-@setcookie('cmslogin', '', (time() - 86400), '/');
+@setcookie('cmslogin', '', ['expires' => time() - 86400, 'path' => '/']);
 // delete cookie (set time to past)
 @session_destroy();
 // destroy session

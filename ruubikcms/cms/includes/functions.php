@@ -316,7 +316,7 @@ function stripslashes_deep($value)
 // --- Creates a unique token and saves this in user's session (CSRF protection)
 function csrf_token()
 {
-    $token = md5(uniqid(rand(), true));
+    $token = md5(uniqid(random_int(0, mt_getrandmax()), true));
     $_SESSION['token'] = $token;
     return $token;
 }//end csrf_token()

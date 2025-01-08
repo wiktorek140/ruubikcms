@@ -2,7 +2,7 @@
 
 $_SESSION = [];
 // empty session variables
-@setcookie('extralogin', '', (time() - 86400), '/');
+@setcookie('extralogin', '', ['expires' => time() - 86400, 'path' => '/']);
 // delete cookie (set time to past)
 @session_destroy();
 // destroy session

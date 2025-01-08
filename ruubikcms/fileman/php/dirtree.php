@@ -51,7 +51,7 @@ function getFilesNumber($path, $type)
 function GetDirs($path, $type)
 {
     $ret = $sort = [];
-    $files = listDirectory(fixPath($path), 0);
+    $files = listDirectory(fixPath($path));
     foreach ($files as $f) {
         $fullPath = $path . '/' . $f;
         if (!is_dir(fixPath($fullPath)) || $f == '.' || $f == '..') {

@@ -19,7 +19,7 @@ if (@$_SESSION['time'] < (time() - LOGOUT_TIME)) {
     $_SESSION = [];
     // delete session cookie by setting time to past
     if (isset($_COOKIE[session_name()])) {
-        @setcookie(session_name(), '', (time() - 360000), '/');
+        @setcookie(session_name(), '', ['expires' => time() - 360000, 'path' => '/']);
     }
 
     @session_destroy();

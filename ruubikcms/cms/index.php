@@ -43,9 +43,7 @@ if (isset($_POST['save'])) {
     if ($site['clean_url'] >= 1) {
         $content = preg_replace_callback(
             '/index.php\?p\=(.+)"/Us',
-            static function () {
-                return "clean_url('$1').'\"'";
-            },
+            static fn() => "clean_url('$1').'\"'",
             $content
         );
     }

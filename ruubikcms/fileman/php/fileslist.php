@@ -35,7 +35,7 @@ if ($type != 'image' && $type != 'flash') {
 
 verifyPath($path);
 
-$files = listDirectory(fixPath($path), 0);
+$files = listDirectory(fixPath($path));
 natcasesort($files);
 $str = '';
 echo '[';
