@@ -148,6 +148,22 @@ function getFilesPath()
 }//end getFilesPath()
 
 
+function mb_ereg_replace2(
+    string $pattern,
+    string $replacement,
+    string $string,
+    ?string $options=null
+): string|false|null {
+    if (function_exists('mb_ereg_replace')) {
+        return mb_ereg_replace($pattern, $replacement, $string, $options);
+    }
+
+    // @phpstan-ignore function.notFound
+    return mb_ereg_replace_e_modifier($pattern, $replacement, $string, $options);
+
+}//end mb_ereg_replace2()
+
+
 function listDirectory($path)
 {
     $ret = scandir($path);
@@ -376,9 +392,9 @@ class RoxyFile
         }
 
         $str = str_replace('.php', '', $str);
-        $str = mb_ereg_replace("[^\\w]", $sep, $name);
+        $str = mb_ereg_replace2("[^\\w]", $sep, $name);
 
-        $str = mb_ereg_replace("$sep+", $sep, $str).($ext ? '.'.$ext : '');
+        $str = mb_ereg_replace2("$sep+", $sep, $str).($ext ? '.'.$ext : '');
 
         return $str;
 
@@ -446,7 +462,7 @@ class RoxyFile
 
     public static function FixPath($path)
     {
-        $path = mb_ereg_replace('[\\\/]+', '/', $path);
+        $path = mb_ereg_replace2('[\\\/]+', '/', $path);
         return $path;
 
     }//end FixPath()
@@ -467,7 +483,7 @@ class RoxyFile
         $ext = self::GetExtension($filename);
         $name = self::GetName($filename);
         $name = self::CleanupFilename($name);
-        $name = mb_ereg_replace(' \\- Copy \\d+$', '', $name);
+        $name = mb_ereg_replace2(' \\- Copy \\d+$', '', $name);
         if ($ext) {
             $ext = '.'.$ext;
         }
@@ -498,7 +514,7 @@ class RoxyFile
     {
         $temp = '';
         $dir = self::FixPath($dir.'/');
-        $name = mb_ereg_replace(' - Copy \\d+$', '', $name);
+        $name = mb_ereg_replace2(' - Copy \\d+$', '', $name);
         if (!$name) {
             $name = 'directory';
         }

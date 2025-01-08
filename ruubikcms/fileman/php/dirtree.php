@@ -72,7 +72,7 @@ function GetDirs($path, $type)
     natcasesort($sort);
     foreach ($sort as $k => $v) {
         $tmp = $ret[$k];
-        echo ',{"p":"'.mb_ereg_replace('"', '\\"', $tmp['path']).'","f":"'.$tmp['files'].'","d":"'.$tmp['dirs'].'"}';
+        echo ',{"p":"'.mb_ereg_replace2('"', '\\"', $tmp['path']).'","f":"'.$tmp['files'].'","d":"'.$tmp['dirs'].'"}';
         GetDirs($tmp['path'], $type);
     }
 
@@ -86,6 +86,6 @@ if ($type != 'image' && $type != 'flash') {
 
 echo "[\n";
 $tmp = getFilesNumber(fixPath(getFilesPath()), $type);
-echo '{"p":"'.mb_ereg_replace('"', '\\"', getFilesPath()).'","f":"'.$tmp['files'].'","d":"'.$tmp['dirs'].'"}';
+echo '{"p":"'.mb_ereg_replace2('"', '\\"', getFilesPath()).'","f":"'.$tmp['files'].'","d":"'.$tmp['dirs'].'"}';
 GetDirs(getFilesPath(), $type);
 echo "\n]";
