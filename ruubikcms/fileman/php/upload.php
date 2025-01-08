@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -37,7 +38,7 @@ if (is_dir(fixPath($path))) {
         foreach ($_FILES['files']['tmp_name'] as $k => $v) {
             $filename = $_FILES['files']['name'][$k];
             $filename = RoxyFile::MakeUniqueFilename(fixPath($path), $filename);
-            $filePath = fixPath($path).'/'.$filename;
+            $filePath = fixPath($path) . '/' . $filename;
             $isUploaded = true;
             if (!RoxyFile::CanUploadFile($filename)) {
                 $errorsExt[] = $filename;
@@ -57,7 +58,7 @@ if (is_dir(fixPath($path))) {
         }//end foreach
 
         if ($errors && $errorsExt) {
-            $res = getSuccessRes(t('E_UploadNotAll').' '.t('E_FileExtensionForbidden'));
+            $res = getSuccessRes(t('E_UploadNotAll') . ' ' . t('E_FileExtensionForbidden'));
         } else if ($errorsExt) {
             $res = getSuccessRes(t('E_FileExtensionForbidden'));
         } else if ($errors) {
@@ -81,6 +82,6 @@ if ($isAjax) {
 } else {
     echo '
 <script>
-parent.fileUploaded('.$res.');
+parent.fileUploaded(' . $res . ');
 </script>';
 }

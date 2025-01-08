@@ -35,7 +35,7 @@ $self = ec($_SERVER['PHP_SELF']);
 
 
             <!-- **************** RightDiv ******************** -->    
-                <form method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
+                <form method="post" action="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
                 <input type="hidden" name="save" value="1" />
                 <input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
                 <div id="rightDiv">
@@ -63,9 +63,9 @@ $self = ec($_SERVER['PHP_SELF']);
                                 $lastpage = ceil($total / $rowsperpage);
 
                                 // correct self also for ordering
-                                $slf = ec($_SERVER['PHP_SELF']).'?';
+                                $slf = ec($_SERVER['PHP_SELF']) . '?';
                                 if (isset($_GET['order'])) {
-                                    $slf .= 'order='.ec($_GET['order']);
+                                    $slf .= 'order=' . ec($_GET['order']);
                                 } else {
                                     $slf .= 'order=1';
                                 }
@@ -102,8 +102,8 @@ $self = ec($_SERVER['PHP_SELF']);
                                 // first, next, previous & last links
                                 if ($page > 1) {
                                     $i  = ($page - 1);
-                                    $prev  = ' <a href="'.$slf.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
-                                    $first  = ' <a href="'.$slf.'&amp;page=1">'.FIRSTPAGE.'</a> ';
+                                    $prev  = ' <a href="' . $slf . '&amp;page=' . $i . '">' . PREVIOUS . '</a> ';
+                                    $first  = ' <a href="' . $slf . '&amp;page=1">' . FIRSTPAGE . '</a> ';
                                 } else {
                                     $prev  = '&nbsp;';
                                     // we're on page one, don't print previous link
@@ -113,8 +113,8 @@ $self = ec($_SERVER['PHP_SELF']);
 
                                 if ($page < $lastpage) {
                                     $i = ($page + 1);
-                                    $next  = ' <a href="'.$slf.'&amp;page='.$i.'">'.NEXT.'</a> ';
-                                    $last  = ' <a href="'.$slf.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
+                                    $next  = ' <a href="' . $slf . '&amp;page=' . $i . '">' . NEXT . '</a> ';
+                                    $last  = ' <a href="' . $slf . '&amp;page=' . $lastpage . '">' . LASTPAGE . '</a> ';
                                 } else {
                                     $next = '&nbsp;';
                                     // we're on the last page, don't print next link
@@ -148,28 +148,28 @@ $self = ec($_SERVER['PHP_SELF']);
                                 }
 
                                 if ($lastpage > 1) {
-                                    echo '<p>'.SHOWING.' '.($start + 1).' - '.($start + $rowsperpage > $total ? $total : $start + $rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+                                    echo '<p>' . SHOWING . ' ' . ($start + 1) . ' - ' . ($start + $rowsperpage > $total ? $total : $start + $rowsperpage) . ' ' . sprintf(OFTOTALRESULTS, $total) . '</p>';
                                 }
 
                                 echo '<table class="logtable">';
 
-                                echo '<tr><th><a href="'.($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1').'">'.TIME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1').'">'.MESSAGE.'</a></th><th><a href="'.($_GET['desc'] ? '?order=3' : '?order=3&amp;desc=1').'">'.USERNAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1').'">IP</a></th></tr>';
+                                echo '<tr><th><a href="' . ($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1') . '">' . TIME . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1') . '">' . MESSAGE . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=3' : '?order=3&amp;desc=1') . '">' . USERNAME . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1') . '">IP</a></th></tr>';
 
-                                $sql = "SELECT time, msg, user, ip FROM log ORDER BY ".$order.$desc." LIMIT ".$start.", ".$rowsperpage;
+                                $sql = "SELECT time, msg, user, ip FROM log ORDER BY " . $order . $desc . " LIMIT " . $start . ", " . $rowsperpage;
 
                                 foreach ($dbh->query($sql) as $row) {
-                                    echo '<tr><td>'.$row['time'].'</td><td>'.$row['msg'].'</td><td>'.$row['user'].'</td><td>'.$row['ip'].'</td></tr>';
+                                    echo '<tr><td>' . $row['time'] . '</td><td>' . $row['msg'] . '</td><td>' . $row['user'] . '</td><td>' . $row['ip'] . '</td></tr>';
                                 }
 
                                 echo '</table>';
 
                                 // print the navigation links for pagination
                                 if ($lastpage > 1) {
-                                    echo '<p>'.$prev.$nav.$next.'</p>';
+                                    echo '<p>' . $prev . $nav . $next . '</p>';
                                 }
 
                                 // echo '<p style="padding: 5px;"><a href="cmsoptions.php" style="color:#fff;"><< '.CMSOPTIONS.'</a></p>';
-                                echo '<p><a href="cmsoptions.php"><< '.CMSOPTIONS.'</a></p>';
+                                echo '<p><a href="cmsoptions.php"><< ' . CMSOPTIONS . '</a></p>';
 
                                 ?>
 

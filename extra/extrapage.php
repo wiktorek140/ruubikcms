@@ -9,12 +9,12 @@ if (basename($_SERVER['REQUEST_URI']) == 'extrapage.php') {
 require '../ruubikcms/includes/dbconfig.php';
 require '../ruubikcms/includes/doctypes.php';
 require '../ruubikcms/includes/commonfunc.php';
-$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+$dbh = new PDO(PDO_DB_DRIVER . ':../' . RUUBIKCMS_FOLDER . '/' . PDO_DB_FOLDER . '/' . PDO_DB_NAME);
 // database connection object
 $page = [];
 $site = [];
 $site = get_site_data();
-$siteroot = '/'.($site['siteroot'] != "" ? trim($site['siteroot'], '/').'/' : '');
+$siteroot = '/' . ($site['siteroot'] != "" ? trim($site['siteroot'], '/') . '/' : '');
 
 define('LOGOUT_TIME', query_single("SELECT logout_time FROM options WHERE id = 1"));
 require 'login/session.php';
@@ -43,7 +43,7 @@ if ($site['clean_url'] >= 1) {
 }//end if
 
 if ($site['url_suffix'] != '') {
-    $url_suffix = '.'.trim($site['url_suffix'], '.');
+    $url_suffix = '.' . trim($site['url_suffix'], '.');
 } else {
     $url_suffix = '';
 }
@@ -64,7 +64,7 @@ if ($_GET['news']) {
 
     $page['header1'] = ec($page['title']);
     if ($site['news_showdate'] == 1) {
-        $page['header1'] .= '<span id="newsdate"> ('.$page['date'].')</span>';
+        $page['header1'] .= '<span id="newsdate"> (' . $page['date'] . ')</span>';
     }
 
     $page['subheader'] = frontpage_value('name');
@@ -77,9 +77,9 @@ if ($_GET['news']) {
     if ($page['levelnum'] == 1) {
         $page['subheader'] = $page['name'];
     } else if ($page['levelnum'] == 2) {
-        $page['subheader'] = query_single("SELECT name FROM extrapage WHERE pageurl = '".$page['mother']."'");
+        $page['subheader'] = query_single("SELECT name FROM extrapage WHERE pageurl = '" . $page['mother'] . "'");
     } else if ($page['levelnum'] == 3) {
-        $page['subheader'] = query_single("SELECT name FROM extrapage WHERE pageurl = '".query_single("SELECT mother FROM extrapage WHERE pageurl ='".$page['mother']."'")."'");
+        $page['subheader'] = query_single("SELECT name FROM extrapage WHERE pageurl = '" . query_single("SELECT mother FROM extrapage WHERE pageurl ='" . $page['mother'] . "'") . "'");
     }
 
     // extracode without slashes:
@@ -106,7 +106,7 @@ if (!$page['image1'] || $page['image1'] == "") {
     }
     // otherwise use transparent 1px dummy gif
     else {
-        $page['image1'] = $siteroot.RUUBIKCMS_FOLDER.'/includes/empty.gif';
+        $page['image1'] = $siteroot . RUUBIKCMS_FOLDER . '/includes/empty.gif';
     }
 }
 
@@ -118,7 +118,7 @@ if (!$page['image2'] || $page['image2'] == "") {
     }
     // otherwise use transparent 1px dummy gif
     else {
-        $page['image2'] = $siteroot.RUUBIKCMS_FOLDER.'/includes/empty.gif';
+        $page['image2'] = $siteroot . RUUBIKCMS_FOLDER . '/includes/empty.gif';
     }
 }
 
@@ -139,7 +139,7 @@ if (!$page['keywords'] || $page['keywords'] == "") {
 if ($page['levelnum'] == 2) {
     $p = $page['mother'];
 } else if ($page['levelnum'] == 3) {
-    $p = query_single("SELECT mother FROM extrapage WHERE pageurl = '".$page['mother']."'");
+    $p = query_single("SELECT mother FROM extrapage WHERE pageurl = '" . $page['mother'] . "'");
     // a.k.a grandmother
     $submenu_selected = $page['mother'];
 } else {
@@ -151,15 +151,15 @@ $page['submenuslide'] = '<ul id="treemenu" class="treeview">';
 $stmt = $dbh->prepare("SELECT pageurl, name FROM extrapage WHERE levelnum = 2 AND mother = ? AND status = 1 ORDER BY ordernum");
 if ($stmt->execute([$p])) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $page['submenuslide'] .= '<li><a href="'.($clean_url ? clean_url($row['pageurl']) : 'index.php?p='.$row['pageurl']).'">'.$row['name'].'</a>';
-        $sql2 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 3 AND mother = '".$row['pageurl']."' AND status = 1 ORDER BY ordernum";
+        $page['submenuslide'] .= '<li><a href="' . ($clean_url ? clean_url($row['pageurl']) : 'index.php?p=' . $row['pageurl']) . '">' . $row['name'] . '</a>';
+        $sql2 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 3 AND mother = '" . $row['pageurl'] . "' AND status = 1 ORDER BY ordernum";
         $level2count = 0;
         foreach ($dbh->query($sql2) as $row2) {
             if ($level2count == 0) {
                 $page['submenuslide'] .= '<ul>';
             }
 
-            $page['submenuslide'] .= '<li><a href="'.($clean_url ? clean_url($row2['pageurl']) : 'index.php?p='.$row2['pageurl']).'">'.$row2['name'].'</a></li>';
+            $page['submenuslide'] .= '<li><a href="' . ($clean_url ? clean_url($row2['pageurl']) : 'index.php?p=' . $row2['pageurl']) . '">' . $row2['name'] . '</a></li>';
             $level2count++;
         }
 
@@ -182,9 +182,9 @@ foreach ($dbh->query($sql) as $row) {
     }
 
     if ($clean_url) {
-        $url = $siteroot.'extra/index.php/'.$row['pageurl'].$url_suffix;
+        $url = $siteroot . 'extra/index.php/' . $row['pageurl'] . $url_suffix;
     } else {
-        $url = 'index.php?p='.$row['pageurl'];
+        $url = 'index.php?p=' . $row['pageurl'];
     }
 
     // ---- EDIT MAIN MENU HTML HERE -------------------------------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ foreach ($dbh->query($sql) as $row) {
     // $page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><a href="'.$url.'">'.$row['name'].'</a></li>';
     // -------------------------------------------------------------------------------------------------------------------------------------
     // ---- BASIC mainMenu 2, HTML:    <ul><li><div><a href="#">Link</a></div></li></ul> ------------------------------------------------------
-    $page['mainmenu'] .= '<li'.($p == $row['pageurl'] ? ' class="selected"' : '').'><div><a href="'.$url.'">'.$row['name'].'</a></div></li>';
+    $page['mainmenu'] .= '<li' . ($p == $row['pageurl'] ? ' class="selected"' : '') . '><div><a href="' . $url . '">' . $row['name'] . '</a></div></li>';
     // -------------------------------------------------------------------------------------------------------------------------------------
     // ---- BASIC mainMenu 3, HTML:    <ul><li><a href="#"><span>Link</span></a></li></ul> ----------------------------------------------------
     // $page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><a href="'.$url.'"><span>'.$row['name'].'</span></a></li>';
@@ -202,7 +202,7 @@ foreach ($dbh->query($sql) as $row) {
 }//end foreach
 
 // Uncomment to add "Log out" to main menu:
-$page['mainmenu'] .= '<li><div><a href="'.$siteroot.'extra/login/logout.php">Log Out</a></div></li>';
+$page['mainmenu'] .= '<li><div><a href="' . $siteroot . 'extra/login/logout.php">Log Out</a></div></li>';
 
 if ($counter != 0) {
     $page['mainmenu'] .= '</ul>';
@@ -225,13 +225,13 @@ if ($stmt->execute([$p])) {
         }
 
         if ($clean_url) {
-            $url = $siteroot.'extra/index.php/'.$p.'/'.$row['pageurl'].$url_suffix;
+            $url = $siteroot . 'extra/index.php/' . $p . '/' . $row['pageurl'] . $url_suffix;
         } else {
-            $url = 'index.php?p='.$row['pageurl'];
+            $url = 'index.php?p=' . $row['pageurl'];
         }
 
         // EDIT SUBMENU1 HTML HERE:
-        $page['submenu1'] .= '<li'.($submenu_selected == $row['pageurl'] ? ' class="selected"' : '').'><a href="'.$url.'">'.$row['name'].'</a></li>';
+        $page['submenu1'] .= '<li' . ($submenu_selected == $row['pageurl'] ? ' class="selected"' : '') . '><a href="' . $url . '">' . $row['name'] . '</a></li>';
         // $page['submenu1'] .= '</div>'; // close <div id="submenu">
         $counter++;
     }
@@ -260,13 +260,13 @@ if ($stmt->execute([$p])) {
         }
 
         if ($clean_url) {
-            $url = $siteroot.'extra/index.php/'.$page['mother'].'/'.$_GET['p'].'/'.$row['pageurl'].$url_suffix;
+            $url = $siteroot . 'extra/index.php/' . $page['mother'] . '/' . $_GET['p'] . '/' . $row['pageurl'] . $url_suffix;
         } else {
-            $url = 'index.php?p='.$row['pageurl'];
+            $url = 'index.php?p=' . $row['pageurl'];
         }
 
         // EDIT SUBMENU2 HTML HERE:
-        $page['submenu2'] .= '<li'.($_GET['p'] == $row['pageurl'] ? ' class="selected"' : '').'><a href="'.$url.'">'.$row['name'].'</a></li>';
+        $page['submenu2'] .= '<li' . ($_GET['p'] == $row['pageurl'] ? ' class="selected"' : '') . '><a href="' . $url . '">' . $row['name'] . '</a></li>';
 
         $counter++;
     }
@@ -300,23 +300,23 @@ $page['dropdownmenu'] = '<ul id="nav">';
 // Edit id for navigation div here (id="dropdownMenu" etc.)
 $sql = "SELECT pageurl, name FROM extrapage WHERE levelnum = 1 AND status = 1 ORDER BY ordernum";
 foreach ($dbh->query($sql) as $row) {
-    $page['dropdownmenu'] .= '<li'.($_GET['p'] == $row['pageurl'] ? ' class="selected"' : '').'><a href="'.($clean_url ? clean_url($row['pageurl']) : 'index.php?p='.$row['pageurl']).'">'.$row['name'].'</a>';
-    $sql2 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 2 AND mother = '".$row['pageurl']."' AND status = 1 ORDER BY ordernum";
+    $page['dropdownmenu'] .= '<li' . ($_GET['p'] == $row['pageurl'] ? ' class="selected"' : '') . '><a href="' . ($clean_url ? clean_url($row['pageurl']) : 'index.php?p=' . $row['pageurl']) . '">' . $row['name'] . '</a>';
+    $sql2 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 2 AND mother = '" . $row['pageurl'] . "' AND status = 1 ORDER BY ordernum";
     $level2count = 0;
     foreach ($dbh->query($sql2) as $row2) {
         if ($level2count == 0) {
             $page['dropdownmenu'] .= '<ul>';
         }
 
-        $page['dropdownmenu'] .= '<li><a href="'.($clean_url ? clean_url($row2['pageurl']) : 'index.php?p='.$row2['pageurl']).'">'.$row2['name'].'</a>';
-        $sql3 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 3 AND mother = '".$row2['pageurl']."' AND status = 1 ORDER BY ordernum";
+        $page['dropdownmenu'] .= '<li><a href="' . ($clean_url ? clean_url($row2['pageurl']) : 'index.php?p=' . $row2['pageurl']) . '">' . $row2['name'] . '</a>';
+        $sql3 = "SELECT pageurl, name FROM extrapage WHERE levelnum = 3 AND mother = '" . $row2['pageurl'] . "' AND status = 1 ORDER BY ordernum";
         $level3count = 0;
         foreach ($dbh->query($sql3) as $row3) {
             if ($level3count == 0) {
                 $page['dropdownmenu'] .= '<ul>';
             }
 
-            $page['dropdownmenu'] .= '<li><a href="'.($clean_url ? clean_url($row3['pageurl']) : 'index.php?p='.$row3['pageurl']).'">'.$row3['name'].'</a></li>';
+            $page['dropdownmenu'] .= '<li><a href="' . ($clean_url ? clean_url($row3['pageurl']) : 'index.php?p=' . $row3['pageurl']) . '">' . $row3['name'] . '</a></li>';
             $level3count++;
         }
 
@@ -347,14 +347,14 @@ $page['dropdownmenu'] .= '</ul>';
         </div>
 */
 
-$sql = "SELECT id, title, text, shorttext, linktopage, STRFTIME('%d.%m.%Y',time) as date FROM news WHERE status = 1 ORDER BY time DESC LIMIT ".$site['news_num'];
+$sql = "SELECT id, title, text, shorttext, linktopage, STRFTIME('%d.%m.%Y',time) as date FROM news WHERE status = 1 ORDER BY time DESC LIMIT " . $site['news_num'];
 foreach ($dbh->query($sql) as $row) {
     // link to regular page if defined, otherwise link to news by id
     if ($row['linktopage'] != "") {
         if ($site['clean_url'] >= 1) {
             $link = clean_url($row['linktopage']);
         } else {
-            $link = 'index.php?p='.$row['linktopage'];
+            $link = 'index.php?p=' . $row['linktopage'];
         }
 
         if ($row['shorttext'] != '') {
@@ -363,7 +363,7 @@ foreach ($dbh->query($sql) as $row) {
             $text = snippetstr(strip_tags($row['text']), $site['news_maxshort']);
         }
     } else {
-        $link = 'index.php?news='.$row['id'];
+        $link = 'index.php?news=' . $row['id'];
         if ($row['shorttext'] != '') {
             $text = $row['shorttext'];
         } else {
@@ -372,28 +372,28 @@ foreach ($dbh->query($sql) as $row) {
     }
 
     // news text with link or without link
-    $newstext = ($site['news_textlink'] == 1 ? '<a href="'.$link.'">' : '').$text.($site['news_textlink'] == 1 ? '</a>' : '');
+    $newstext = ($site['news_textlink'] == 1 ? '<a href="' . $link . '">' : '') . $text . ($site['news_textlink'] == 1 ? '</a>' : '');
 
     // --- EDIT NEWS HTML BELOW ---
     // BEGINNING TAG FOR ONE NEWS ITEM:
     $page['news'] .= '<div class="newsItem">';
 
     // NEWS TITLE HTML:
-    $page['news'] .= '<h2><a href="'.$link.'">'.$row['title'].'</a></h2>';
+    $page['news'] .= '<h2><a href="' . $link . '">' . $row['title'] . '</a></h2>';
 
     // NEWS DATE HTML:
     if ($site['news_showdate'] == 1) {
-        $page['news'] .= '<p class="newsDate">'.$row['date'].'</p>';
+        $page['news'] .= '<p class="newsDate">' . $row['date'] . '</p>';
     }
 
     // NEWS TEXT HTML:
-    $page['news'] .= '<p>'.$newstext.'</p>';
+    $page['news'] .= '<p>' . $newstext . '</p>';
 
     if ($site['news_readmore'] == 1) {
         $page['news'] .=
 
         // NEWS READ MORE -LINK HTML:
-        '<p class="newsMore"><a href="'.$link.'">'.$site['news_readmoretext'].'</a></p>';
+        '<p class="newsMore"><a href="' . $link . '">' . $site['news_readmoretext'] . '</a></p>';
     }
 
     // CLOSING TAG FOR ONE NEWS ITEM:

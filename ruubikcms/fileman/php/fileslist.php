@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -39,7 +40,7 @@ natcasesort($files);
 $str = '';
 echo '[';
 foreach ($files as $f) {
-    $fullPath = $path.'/'.$f;
+    $fullPath = $path . '/' . $f;
     if (!is_file(fixPath($fullPath)) || ($type == 'image' && !RoxyFile::IsImage($f)) || ($type == 'flash' && !RoxyFile::IsFlash($f))) {
         continue;
     }
@@ -56,7 +57,7 @@ foreach ($files as $f) {
         }
     }
 
-    $str .= '{"p":"'.mb_ereg_replace2('"', '\\"', $fullPath).'","s":"'.$size.'","t":"'.$time.'","w":"'.$w.'","h":"'.$h.'"},';
+    $str .= '{"p":"' . mb_ereg_replace2('"', '\\"', $fullPath) . '","s":"' . $size . '","t":"' . $time . '","w":"' . $w . '","h":"' . $h . '"},';
 }
 
 $str = mb_substr($str, 0, -1);

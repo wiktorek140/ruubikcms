@@ -61,9 +61,9 @@ if (isset($_POST['import'])) {
             $lines++;
         } //end foreach
 
-        $importresults = SUCCEEDED.' '.$inserts.', '.FAILED.': '.$counterrors;
+        $importresults = SUCCEEDED . ' ' . $inserts . ', ' . FAILED . ': ' . $counterrors;
         $error = true;
-        header('Location: '.$self);
+        header('Location: ' . $self);
         @unlink($filename);
     } //end if
 } else if (isset($_POST['export'])) {
@@ -80,22 +80,22 @@ if (isset($_POST['import'])) {
     while ($row = $result->fetch(PDO::FETCH_NUM)) {
         foreach ($row as $key => $value) {
             if ($key == 0) {
-                $csvdata[$line] .= $value.';;'; // empty password, maintain import format
+                $csvdata[$line] .= $value . ';;'; // empty password, maintain import format
             } else if ($key == 5) {
-                $csvdata[$line] .= '#'.$value.';'; // add # to force excel to read phone/date as text (trimming this when importing)
+                $csvdata[$line] .= '#' . $value . ';'; // add # to force excel to read phone/date as text (trimming this when importing)
             } else if ($key == 7) {
-                $csvdata[$line] .= '#'.$value.';'; // add # to force excel to read phone/date as text (trimming this when importing)
+                $csvdata[$line] .= '#' . $value . ';'; // add # to force excel to read phone/date as text (trimming this when importing)
             } else {
-                $csvdata[$line] .= $value.';';
+                $csvdata[$line] .= $value . ';';
             }
         }
 
-        $csvdata[$line] = substr($csvdata[$line], 0, -1)."\n";
+        $csvdata[$line] = substr($csvdata[$line], 0, -1) . "\n";
         $line++;
     }
 
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="csv-export-'.date('Ymd').'.csv"');
+    header('Content-Disposition: attachment; filename="csv-export-' . date('Ymd') . '.csv"');
     foreach ($csvdata as $line) {
         echo $line;
     }
@@ -161,8 +161,8 @@ if (isset($_POST['import'])) {
         } //end if
 
         // header('Location: '.$self.'?role='.$_POST['role'].'&p='.$newname); // redirect to new user
-        header('Location: '.$self);
-        save_infomsg(USER.' '.$newname.' '.SAVED);
+        header('Location: ' . $self);
+        save_infomsg(USER . ' ' . $newname . ' ' . SAVED);
     } else {
         // passwords do not match
         save_infomsg(CHECKPASSWORDS);
@@ -190,8 +190,8 @@ if (query_single('SELECT COUNT(*) FROM extrauser') != 0) {
             $stmt = $dbh->prepare('DELETE FROM extrauser WHERE username = ?');
             $stmt->bindParam(1, $_GET['p']);
             $stmt->execute();
-            save_infomsg(USER.' '.ec($_GET['p']).' '.DELETED);
-            header('Location: '.$self);
+            save_infomsg(USER . ' ' . ec($_GET['p']) . ' ' . DELETED);
+            header('Location: ' . $self);
         }
 
         if ($_GET['a']) {
@@ -203,7 +203,7 @@ if (query_single('SELECT COUNT(*) FROM extrauser') != 0) {
             $stmt = $dbh->prepare("UPDATE extrauser SET active = '1' WHERE username = ?");
             $stmt->bindParam(1, $_GET['p']);
             $stmt->execute();
-            header('Location: '.$self);
+            header('Location: ' . $self);
             // save_infomsg(USER.' '.ec($_GET['p']).' '.SAVED);
         }
 
@@ -216,7 +216,7 @@ if (query_single('SELECT COUNT(*) FROM extrauser') != 0) {
             $stmt = $dbh->prepare("UPDATE extrauser SET active = '0' WHERE username = ?");
             $stmt->bindParam(1, $_GET['p']);
             $stmt->execute();
-            header('Location: '.$self);
+            header('Location: ' . $self);
             // save_infomsg(USER.' '.ec($_GET['p']).' '.SAVED);
         }
 
@@ -240,21 +240,22 @@ $token = csrf_token();
 ?>
             <div id="mainBody">
             <?php require 'includes/extrapagemenu.php'; ?>
-                <form enctype="multipart/form-data" method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
+                <form enctype="multipart/form-data" method="post" action="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
                 <input type="hidden" name="save" value="1" />
                 <div id="rightDiv">
                     <div id="buttonBar">
                         <ul>
                             <?php
-                            if (isset($_GET['p']) || isset($_GET['n'])
+                            if (
+                                isset($_GET['p']) || isset($_GET['n'])
                             ) {
                                 ?><li><a href="javascript:document.newsEditForm.submit();" class="save"><span><?php echo SAVE; ?></span></a></li>
                             <?php }
                             ?>
-                            <li><a href="<?php echo $self.'?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
+                            <li><a href="<?php echo $self . '?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
                             <?php
                             if (isset($_GET['p'])) {
-                                ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1'; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li>
+                                ?><li><a href="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']) . '&amp;d=1'; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li>
                             <?php }
                             ?>
                         </ul>
@@ -275,19 +276,19 @@ $token = csrf_token();
                                 $counter = 0;
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                     if ($counter == 0) {
-                                        echo '<p>'.SEARCHRESULTSFOR.' "<strong>'.ec($_POST['keyword']).'</strong>"</p></p><p><a href="extrausers.php"><< '.EXTRAUSERS.'</a></p>';
+                                        echo '<p>' . SEARCHRESULTSFOR . ' "<strong>' . ec($_POST['keyword']) . '</strong>"</p></p><p><a href="extrausers.php"><< ' . EXTRAUSERS . '</a></p>';
                                         echo '<table class="logtable">';
-                                        echo '<tr><th>'.USERNAME.'</th><th>'.FIRSTNAME.'</th><th>'.LASTNAME.'</th><th>'.ORGANIZATION.'</th><th>'.ACTIVE.'</th><th>'.VALIDUNTIL.'</th><th></th><th></th><th></th><th></th></tr>';
+                                        echo '<tr><th>' . USERNAME . '</th><th>' . FIRSTNAME . '</th><th>' . LASTNAME . '</th><th>' . ORGANIZATION . '</th><th>' . ACTIVE . '</th><th>' . VALIDUNTIL . '</th><th></th><th></th><th></th><th></th></tr>';
                                     }//end if
 
-                                    echo '<tr><td><a href="'.$self.'?p='.$row['username'].'">'.$row['username'].'</a></td><td>'.$row['firstname'].'</td><td>'.$row['lastname'].'</td><td>'.$row['organization'].'</td><td style="text-align: center;">'.($row['active'] == 1 ? '<img src="images/accept.png" alt="" title="'.ACTIVE.'" />' : '<img src="images/cancel.png" alt="" title="'.INACTIVE.'" />').'</td><td>'.$row['expirytime'].'</td><td><a href="'.$self.'?p='.$row['username'].'&amp;a=1&amp;token='.$token.'"><img src="images/accept.png" alt="" title="'.ACTIVATE.'" /></a></td><td><a href="'.$self.'?p='.$row['username'].'&amp;u=1&amp;token='.$token.'"><img src="images/cancel.png" alt="" title="'.DEACTIVATE.'" /></a></td><td><a href="'.$self.'?p='.$row['username'].'&amp;d=1&amp;token='.$token.'"><img src="images/user_delete.png" alt="" title="'.DELETE.'" onclick="return confirm(\''.AREYOUSURE.' ('.DELETE.' '.USER.')'.'\')" /></a></td><td><a href="?p='.$row['username'].'"><img src="images/user_edit.png" alt="" title="'.EDIT.'" /></a></td></tr>';
+                                    echo '<tr><td><a href="' . $self . '?p=' . $row['username'] . '">' . $row['username'] . '</a></td><td>' . $row['firstname'] . '</td><td>' . $row['lastname'] . '</td><td>' . $row['organization'] . '</td><td style="text-align: center;">' . ($row['active'] == 1 ? '<img src="images/accept.png" alt="" title="' . ACTIVE . '" />' : '<img src="images/cancel.png" alt="" title="' . INACTIVE . '" />') . '</td><td>' . $row['expirytime'] . '</td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;a=1&amp;token=' . $token . '"><img src="images/accept.png" alt="" title="' . ACTIVATE . '" /></a></td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;u=1&amp;token=' . $token . '"><img src="images/cancel.png" alt="" title="' . DEACTIVATE . '" /></a></td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;d=1&amp;token=' . $token . '"><img src="images/user_delete.png" alt="" title="' . DELETE . '" onclick="return confirm(\'' . AREYOUSURE . ' (' . DELETE . ' ' . USER . ')' . '\')" /></a></td><td><a href="?p=' . $row['username'] . '"><img src="images/user_edit.png" alt="" title="' . EDIT . '" /></a></td></tr>';
                                     $counter++;
                                 }//end while
 
                                 if ($counter > 0) {
                                     echo '</table>';
                                 } else {
-                                    echo '<p>'.NOSEARCHRESULTS.' "<strong>'.ec($_POST['keyword']).'</strong>"</p><p><a href="extrausers.php"><< '.EXTRAUSERS.'</a></p>';
+                                    echo '<p>' . NOSEARCHRESULTS . ' "<strong>' . ec($_POST['keyword']) . '</strong>"</p><p><a href="extrausers.php"><< ' . EXTRAUSERS . '</a></p>';
                                 }
                             } else if (isset($_GET['n']) || isset($_GET['p'])) { ?>
                             <table cellspacing="0" cellpadding="0" border="0" class="newsTable">
@@ -295,7 +296,8 @@ $token = csrf_token();
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo USERNAME; ?></td>
                                     <td class="tdNewsAdminCenter"><input type="text" name="username" value="<?php
-                                    if (isset($user['username'])
+                                    if (
+                                        isset($user['username'])
                                     ) {
                                         echo $user['username'];
                                     }
@@ -343,7 +345,8 @@ if (isset($_GET['p'])) {
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo VALIDUNTIL; ?></td>
                                     <td class="tdNewsDate"><input type="text" name="expirytime" class="date-pick" value="<?php
-                                    if (isset($user['expirytime'])
+                                    if (
+                                        isset($user['expirytime'])
                                     ) {
                                         echo substr($user['expirytime'], 0, 10);
                                     }
@@ -353,7 +356,8 @@ if (isset($_GET['p'])) {
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo FIRSTNAME; ?></td>
                                     <td class="tdNewsAdminCenter"><input type="text" name="firstname" value="<?php
-                                    if (isset($user['firstname'])
+                                    if (
+                                        isset($user['firstname'])
                                     ) {
                                         echo $user['firstname'];
                                     }
@@ -363,7 +367,8 @@ if (isset($_GET['p'])) {
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo LASTNAME; ?></td>
                                     <td class="tdNewsAdminCenter"><input type="text" name="lastname" value="<?php
-                                    if (isset($user['lastname'])
+                                    if (
+                                        isset($user['lastname'])
                                     ) {
                                         echo $user['lastname'];
                                     }
@@ -373,7 +378,8 @@ if (isset($_GET['p'])) {
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo ORGANIZATION; ?></td>
                                     <td class="tdNewsAdminCenter"><input type="text" name="organization" value="<?php
-                                    if (isset($user['organization'])
+                                    if (
+                                        isset($user['organization'])
                                     ) {
                                         echo $user['organization'];
                                     }
@@ -383,7 +389,8 @@ if (isset($_GET['p'])) {
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo EMAIL; ?></td>
                                     <td class="tdNewsAdminCenter"><input type="text" name="email" value="<?php
-                                    if (isset($user['email'])
+                                    if (
+                                        isset($user['email'])
                                     ) {
                                         echo $user['email'];
                                     }
@@ -393,7 +400,8 @@ if (isset($_GET['p'])) {
                                 <tr>
                                     <td class="tdNewsAdminLeft"><?php echo PHONE; ?></td>
                                     <td class="tdNewsAdminCenter"><input type="text" name="phone" value="<?php
-                                    if (isset($user['phone'])
+                                    if (
+                                        isset($user['phone'])
                                     ) {
                                         echo $user['phone'];
                                     }
@@ -414,9 +422,9 @@ if (isset($_GET['p'])) {
                                 $lastpage = ceil($total / $rowsperpage);
 
                                 // correct self also for ordering
-                                $slf = ec($_SERVER['PHP_SELF']).'?';
+                                $slf = ec($_SERVER['PHP_SELF']) . '?';
                                 if (isset($_GET['order'])) {
-                                    $slf .= 'order='.$_GET['order'];
+                                    $slf .= 'order=' . $_GET['order'];
                                 } else {
                                     $slf .= 'order=1';
                                 }
@@ -452,8 +460,8 @@ if (isset($_GET['p'])) {
                                 // first, next, previous & last links
                                 if ($page > 1) {
                                     $i = ($page - 1);
-                                    $prev = ' <a href="'.$slf.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
-                                    $first = ' <a href="'.$slf.'&amp;page=1">'.FIRSTPAGE.'</a> ';
+                                    $prev = ' <a href="' . $slf . '&amp;page=' . $i . '">' . PREVIOUS . '</a> ';
+                                    $first = ' <a href="' . $slf . '&amp;page=1">' . FIRSTPAGE . '</a> ';
                                 } else {
                                     $prev = '&nbsp;'; // we're on page one, don't print previous link
                                     $first = '&nbsp;'; // nor the first page link
@@ -461,8 +469,8 @@ if (isset($_GET['p'])) {
 
                                 if ($page < $lastpage) {
                                     $i = ($page + 1);
-                                    $next = ' <a href="'.$slf.'&amp;page='.$i.'">'.NEXT.'</a> ';
-                                    $last = ' <a href="'.$slf.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
+                                    $next = ' <a href="' . $slf . '&amp;page=' . $i . '">' . NEXT . '</a> ';
+                                    $last = ' <a href="' . $slf . '&amp;page=' . $lastpage . '">' . LASTPAGE . '</a> ';
                                 } else {
                                     $next = '&nbsp;'; // we're on the last page, don't print next link
                                     $last = '&nbsp;'; // nor the last page link
@@ -493,17 +501,17 @@ if (isset($_GET['p'])) {
                                 }
 
                                 if ($lastpage > 1) {
-                                    echo '<p>'.SHOWING.' '.($start + 1).' - '.($start + $rowsperpage > $total ? $total : $start + $rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+                                    echo '<p>' . SHOWING . ' ' . ($start + 1) . ' - ' . ($start + $rowsperpage > $total ? $total : $start + $rowsperpage) . ' ' . sprintf(OFTOTALRESULTS, $total) . '</p>';
                                 }
 
                                 echo '<table class="logtable">';
 
-                                echo '<tr><th><a href="'.(isset($_GET['desc']) ? '?order=1' : '?order=1&amp;desc=1').'">'.USERNAME.'</a></th><th><a href="'.(isset($_GET['desc']) ? '?order=2' : '?order=2&amp;desc=1').'">'.FIRSTNAME.'</a></th><th><a href="'.(isset($_GET['desc']) ? '?order=3' : '?order=3&amp;desc=1').'">'.LASTNAME.'</a></th><th><a href="'.(isset($_GET['desc']) ? '?order=4' : '?order=4&amp;desc=1').'">'.ORGANIZATION.'</a></th><th><a href="'.(isset($_GET['desc']) ? '?order=5' : '?order=5&amp;desc=1').'">'.ACTIVE.'</a></th><th><a href="'.(isset($_GET['desc']) ? '?order=6' : '?order=6&amp;desc=1').'">'.VALIDUNTIL.'</a></th><th></th><th></th><th></th><th></th></tr>';
+                                echo '<tr><th><a href="' . (isset($_GET['desc']) ? '?order=1' : '?order=1&amp;desc=1') . '">' . USERNAME . '</a></th><th><a href="' . (isset($_GET['desc']) ? '?order=2' : '?order=2&amp;desc=1') . '">' . FIRSTNAME . '</a></th><th><a href="' . (isset($_GET['desc']) ? '?order=3' : '?order=3&amp;desc=1') . '">' . LASTNAME . '</a></th><th><a href="' . (isset($_GET['desc']) ? '?order=4' : '?order=4&amp;desc=1') . '">' . ORGANIZATION . '</a></th><th><a href="' . (isset($_GET['desc']) ? '?order=5' : '?order=5&amp;desc=1') . '">' . ACTIVE . '</a></th><th><a href="' . (isset($_GET['desc']) ? '?order=6' : '?order=6&amp;desc=1') . '">' . VALIDUNTIL . '</a></th><th></th><th></th><th></th><th></th></tr>';
 
-                                $sql = 'SELECT username, firstname, lastname, active, expirytime, organization FROM extrauser ORDER BY '.$order.$desc.' LIMIT '.$start.', '.$rowsperpage;
+                                $sql = 'SELECT username, firstname, lastname, active, expirytime, organization FROM extrauser ORDER BY ' . $order . $desc . ' LIMIT ' . $start . ', ' . $rowsperpage;
 
                                 foreach ($dbh->query($sql) as $row) {
-                                    echo '<tr><td><a href="'.$self.'?p='.$row['username'].'">'.$row['username'].'</a></td><td>'.$row['firstname'].'</td><td>'.$row['lastname'].'</td><td>'.$row['organization'].'</td><td style="text-align: center;">'.($row['active'] == 1 ? '<img src="images/accept.png" alt="" title="'.ACTIVE.'" />' : '<img src="images/cancel.png" alt="" title="'.INACTIVE.'" />').'</td><td>'.$row['expirytime'].'</td><td><a href="'.$self.'?p='.$row['username'].'&amp;a=1&amp;token='.$token.'"><img src="images/accept.png" alt="" title="'.ACTIVATE.'" /></a></td><td><a href="'.$self.'?p='.$row['username'].'&amp;u=1&amp;token='.$token.'"><img src="images/cancel.png" alt="" title="'.DEACTIVATE.'" /></a></td><td><a href="'.$self.'?p='.$row['username'].'&amp;d=1&amp;token='.$token.'"><img src="images/user_delete.png" alt="" title="'.DELETE.'" onclick="return confirm(\''.AREYOUSURE.' ('.DELETE.' '.USER.')'.'\')" /></a></td><td><a href="?p='.$row['username'].'"><img src="images/user_edit.png" alt="" title="'.EDIT.'" /></a></td></tr>';
+                                    echo '<tr><td><a href="' . $self . '?p=' . $row['username'] . '">' . $row['username'] . '</a></td><td>' . $row['firstname'] . '</td><td>' . $row['lastname'] . '</td><td>' . $row['organization'] . '</td><td style="text-align: center;">' . ($row['active'] == 1 ? '<img src="images/accept.png" alt="" title="' . ACTIVE . '" />' : '<img src="images/cancel.png" alt="" title="' . INACTIVE . '" />') . '</td><td>' . $row['expirytime'] . '</td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;a=1&amp;token=' . $token . '"><img src="images/accept.png" alt="" title="' . ACTIVATE . '" /></a></td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;u=1&amp;token=' . $token . '"><img src="images/cancel.png" alt="" title="' . DEACTIVATE . '" /></a></td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;d=1&amp;token=' . $token . '"><img src="images/user_delete.png" alt="" title="' . DELETE . '" onclick="return confirm(\'' . AREYOUSURE . ' (' . DELETE . ' ' . USER . ')' . '\')" /></a></td><td><a href="?p=' . $row['username'] . '"><img src="images/user_edit.png" alt="" title="' . EDIT . '" /></a></td></tr>';
                                 }//end foreach
 
                                 echo '</table>';
@@ -512,11 +520,11 @@ if (isset($_GET['p'])) {
                             if (!isset($_GET['p']) && !isset($_GET['n'])) {
                                 // print the navigation links for pagination
                                 if ($lastpage > 1) {
-                                    echo '<p>'.$prev.$nav.$next.'</p>';
+                                    echo '<p>' . $prev . $nav . $next . '</p>';
                                 }
                                 ?>
                             <p><input type="file" name="csv_file" class="fileInput" value="" />
-                            <input type="submit" name="import" value="<?php echo IMPORT; ?> CSV" onclick="<?php echo "return confirm('".IMPORTCONFIRM."');"; ?>" />
+                            <input type="submit" name="import" value="<?php echo IMPORT; ?> CSV" onclick="<?php echo "return confirm('" . IMPORTCONFIRM . "');"; ?>" />
                             <input type="submit" name="export" value="<?php echo EXPORT; ?> CSV" />
                             <input type="text" name="keyword" value="<?php
                             if (isset($_POST['keyword'])) {
@@ -543,5 +551,5 @@ if (isset($_GET['p'])) {
 require 'includes/footer.php';
 
 if (isset($error)) {
-    echo '<script language="javascript" type="text/javascript">alert(\''.CHECKPASSWORDS.'\');</script>';
+    echo '<script language="javascript" type="text/javascript">alert(\'' . CHECKPASSWORDS . '\');</script>';
 }

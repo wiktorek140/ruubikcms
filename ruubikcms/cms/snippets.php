@@ -55,9 +55,9 @@ if (isset($_POST['save'])) {
     $stmt->bindParam(2, $content);
     $stmt->bindParam(3, $_POST['type']);
     $stmt->execute();
-    header('Location: '.$self.'?p='.$newname);
+    header('Location: ' . $self . '?p=' . $newname);
     // redirect to new snippet
-    save_infomsg(SNIPPET.' '.SAVED);
+    save_infomsg(SNIPPET . ' ' . SAVED);
 }//end if
 
 if (query_single("SELECT COUNT(*) FROM snippet") != 0) {
@@ -71,8 +71,8 @@ if (query_single("SELECT COUNT(*) FROM snippet") != 0) {
             $stmt = $dbh->prepare("DELETE FROM snippet WHERE name = ?");
             $stmt->bindParam(1, $_GET['p']);
             $stmt->execute();
-            save_infomsg(SNIPPET.' '.DELETED);
-            header('Location: '.$self);
+            save_infomsg(SNIPPET . ' ' . DELETED);
+            header('Location: ' . $self);
         }
 
         // get snippet data from database
@@ -88,7 +88,7 @@ if (query_single("SELECT COUNT(*) FROM snippet") != 0) {
             $loc = query_single("SELECT name FROM snippet WHERE tinymce = '0' ORDER BY name LIMIT 1");
         }
 
-        header('Location: '.$self.'?p='.$loc);
+        header('Location: ' . $self . '?p=' . $loc);
     }//end if
 }//end if
 
@@ -103,7 +103,7 @@ $token = csrf_token();
 <div id="mainBody">
   <?php require 'includes/snippetmenu.php'; ?>
 
-  <form method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
+  <form method="post" action="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
     <input type="hidden" name="save" value="1" />
   <input type="hidden" name="ordernum" value="<?php echo $page['ordernum']; ?>" />
 <div id="rightDiv">
@@ -114,10 +114,10 @@ $token = csrf_token();
             <?php
       }
         ?>
-      <li><a href="<?php echo $self.'?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
+      <li><a href="<?php echo $self . '?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
       <?php
         if (isset($_GET['p'])) {
-            ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li>
+            ?><li><a href="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']) . '&amp;d=1&amp;token=' . $token; ?>" class="delete"><span><?php echo DELETE; ?></span></a></li>
             <?php
         }
         ?>
@@ -164,9 +164,9 @@ $token = csrf_token();
 <?php
 if (!isset($_GET['n'])) {
     if ($snippet['tinymce'] == 1) {
-        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE">'.htmlentities($snippet['content']).'</textarea></div>';
+        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE">' . htmlentities($snippet['content']) . '</textarea></div>';
     } else {
-        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE">'.htmlentities($snippet['content']).'</textarea></div>';
+        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE">' . htmlentities($snippet['content']) . '</textarea></div>';
     }
     ?>
 

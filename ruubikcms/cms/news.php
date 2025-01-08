@@ -69,10 +69,10 @@ if (isset($_POST['save'])) {
         $stmt->bindParam(6, $_POST['status']);
         $stmt->bindParam(7, $_SESSION['uid']);
         $stmt->execute();
-        header('Location: '.$self.'?id='.$dbh->lastInsertId().'&y='.substr($_POST['time'], 0, 4)); // redirect to new news
+        header('Location: ' . $self . '?id=' . $dbh->lastInsertId() . '&y=' . substr($_POST['time'], 0, 4)); // redirect to new news
     }//end if
 
-    save_infomsg(SINGLENEWS.' '.SAVED);
+    save_infomsg(SINGLENEWS . ' ' . SAVED);
 }//end if
 
 if (query_single('SELECT COUNT(*) FROM news') != 0) {
@@ -94,15 +94,15 @@ if (query_single('SELECT COUNT(*) FROM news') != 0) {
                 $stmt = $dbh->prepare('DELETE FROM news WHERE id = ?');
                 $stmt->bindParam(1, $_GET['id']);
                 $stmt->execute();
-                save_infomsg(SINGLENEWS.' '.DELETED);
+                save_infomsg(SINGLENEWS . ' ' . DELETED);
             }
 
-            header('Location: '.$self);
+            header('Location: ' . $self);
         }
     } else if (!isset($_GET['n']) and !isset($_GET['y'])) {
         // no id given and not creating new page etc ->  redirect to last news by date
         header(
-            'Location: '.$self.'?y='.query_single("SELECT STRFTIME('%Y', time) FROM news ORDER BY time DESC LIMIT 1").'&id='.query_single('SELECT id FROM news ORDER BY time DESC LIMIT 1'),
+            'Location: ' . $self . '?y=' . query_single("SELECT STRFTIME('%Y', time) FROM news ORDER BY time DESC LIMIT 1") . '&id=' . query_single('SELECT id FROM news ORDER BY time DESC LIMIT 1'),
         );
     }//end if
 }//end if
@@ -117,7 +117,7 @@ $token = csrf_token();
 
 <div id="mainBody">
   <?php require 'includes/newsmenu.php'; ?>
-  <form method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
+  <form method="post" action="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']); ?>" name="newsEditForm">
     <input type="hidden" name="save" value="1" />
   <input type="hidden" name="ordernum" value="<?php echo $page['ordernum']; ?>" />
 <div id="rightDiv">
@@ -125,13 +125,13 @@ $token = csrf_token();
     <ul>
       <?php
         if ((isset($_GET['id']) || isset($_GET['n'])) && ($_SESSION['level'] > 3 || $news['creator'] == '' || $news['creator'] == $_SESSION['uid'])) {
-            echo '<li><a href="javascript:document.newsEditForm.submit();" class="save"><span>'.SAVE.'</span></a></li>';
+            echo '<li><a href="javascript:document.newsEditForm.submit();" class="save"><span>' . SAVE . '</span></a></li>';
         }
         ?>
-      <li><a href="<?php echo $self.'?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
+      <li><a href="<?php echo $self . '?n=1'; ?>" class="new"><span><?php echo RNEW; ?></span></a></li>
       <?php
         if (isset($_GET['id']) && ($_SESSION['level'] > 3 || $news['creator'] == '' || $news['creator'] == $_SESSION['uid'])) {
-            echo '<li><a href="'.$self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token.'" class="delete"><span>'.DELETE.'</span></a></li>';
+            echo '<li><a href="' . $self . '?' . ec($_SERVER['QUERY_STRING']) . '&amp;d=1&amp;token=' . $token . '" class="delete"><span>' . DELETE . '</span></a></li>';
         } ?>
     </ul>
   </div>
@@ -159,7 +159,7 @@ $token = csrf_token();
   </tr>
   <?php if ($_SESSION['level'] >= 3) {
         // allowed to publish
-        echo '<tr>'.'<td class="tdNewsAdminLeft">'.STATUS.'</td>'.'<td class="tdNewsAdminCenter">'.'<select name="status">'.'<option value="1" '.($news['status'] == 1 || !isset($_GET['id']) ? 'selected="selected"' : '').'>'.NEWSSTATUSACTIVE.'</option>'.'<option value="0" '.($news['status'] == 0 && isset($_GET['id']) ? 'selected="selected"' : '').'>'.NEWSSTATUSARCHIVE.'</option></select>'.'</td> <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="'.H_NEWSSTATUS.'"><img src="images/help.gif" class="imgover" alt="" /></a></td></tr>';
+        echo '<tr>' . '<td class="tdNewsAdminLeft">' . STATUS . '</td>' . '<td class="tdNewsAdminCenter">' . '<select name="status">' . '<option value="1" ' . ($news['status'] == 1 || !isset($_GET['id']) ? 'selected="selected"' : '') . '>' . NEWSSTATUSACTIVE . '</option>' . '<option value="0" ' . ($news['status'] == 0 && isset($_GET['id']) ? 'selected="selected"' : '') . '>' . NEWSSTATUSARCHIVE . '</option></select>' . '</td> <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="' . H_NEWSSTATUS . '"><img src="images/help.gif" class="imgover" alt="" /></a></td></tr>';
   } else {
       echo '<input type="hidden" name="status" value="0" />';
   }
@@ -197,9 +197,9 @@ if (isset($news['shorttext'])) {
 <td class="tdNewsAdminCenter">
 <select name="linktopage">
 <?php
-echo '<option value=""'.(!$news['linktopage'] ? ' selected="selected"' : '').'>--- '.NOTLINKED.' ---</option>';
+echo '<option value=""' . (!$news['linktopage'] ? ' selected="selected"' : '') . '>--- ' . NOTLINKED . ' ---</option>';
 foreach ($pagelist as $key => $value) {
-    echo '<option value="'.$key.'"'.($key == $news['linktopage'] ? ' selected="selected"' : '').'>'.$value.'</option>';
+    echo '<option value="' . $key . '"' . ($key == $news['linktopage'] ? ' selected="selected"' : '') . '>' . $value . '</option>';
 }
 ?>
 </select>
@@ -225,11 +225,11 @@ if (isset($news['text'])) {
 <p class="updated">
 <?php
 if (isset($news['shorttext'])) {
-    echo CREATOR.': '.$news['creator'];
+    echo CREATOR . ': ' . $news['creator'];
 }
 
 if (isset($news['updated'])) {
-    echo ' | '.UPDATED.' '.$news['updated'].' ('.$news['updater'].')';
+    echo ' | ' . UPDATED . ' ' . $news['updated'] . ' (' . $news['updater'] . ')';
 }
 ?>
 </p>

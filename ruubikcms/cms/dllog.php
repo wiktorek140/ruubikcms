@@ -34,7 +34,7 @@ require 'includes/head.php';
 
 
             <!-- **************** RightDiv ******************** -->    
-                <form method="post" action="<?php echo ec($_SERVER['PHP_SELF']).'?'.ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
+                <form method="post" action="<?php echo ec($_SERVER['PHP_SELF']) . '?' . ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
                 <input type="hidden" name="save" value="1" />
                 <input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
                 <div id="rightDiv">
@@ -62,9 +62,9 @@ require 'includes/head.php';
                                 $lastpage = ceil($total / $rowsperpage);
 
                                 // correct self also considering the ordering
-                                $self = ec($_SERVER['PHP_SELF']).'?';
+                                $self = ec($_SERVER['PHP_SELF']) . '?';
                                 if (isset($_GET['order'])) {
-                                    $self .= 'order='.$_GET['order'];
+                                    $self .= 'order=' . $_GET['order'];
                                 } else {
                                     $self .= 'order=1';
                                 }
@@ -87,8 +87,8 @@ require 'includes/head.php';
                                 // first, next, previous & last links
                                 if ($page > 1) {
                                     $i  = ($page - 1);
-                                    $prev  = ' <a href="'.$self.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
-                                    $first  = ' <a href="'.$self.'&amp;page=1">'.FIRSTPAGE.'</a> ';
+                                    $prev  = ' <a href="' . $self . '&amp;page=' . $i . '">' . PREVIOUS . '</a> ';
+                                    $first  = ' <a href="' . $self . '&amp;page=1">' . FIRSTPAGE . '</a> ';
                                 } else {
                                     $prev  = '&nbsp;';
                                     // we're on page one, don't print previous link
@@ -98,8 +98,8 @@ require 'includes/head.php';
 
                                 if ($page < $lastpage) {
                                     $i = ($page + 1);
-                                    $next  = ' <a href="'.$self.'&amp;page='.$i.'">'.NEXT.'</a> ';
-                                    $last  = ' <a href="'.$self.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
+                                    $next  = ' <a href="' . $self . '&amp;page=' . $i . '">' . NEXT . '</a> ';
+                                    $last  = ' <a href="' . $self . '&amp;page=' . $lastpage . '">' . LASTPAGE . '</a> ';
                                 } else {
                                     $next = '&nbsp;';
                                     // we're on the last page, don't print next link
@@ -127,24 +127,24 @@ require 'includes/head.php';
                                 }
 
                                 if ($lastpage > 1) {
-                                    echo '<p>'.SHOWING.' '.($start + 1).' - '.($start + $rowsperpage > $total ? $total : $start + $rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+                                    echo '<p>' . SHOWING . ' ' . ($start + 1) . ' - ' . ($start + $rowsperpage > $total ? $total : $start + $rowsperpage) . ' ' . sprintf(OFTOTALRESULTS, $total) . '</p>';
                                 }
 
                                 echo '<table class="logtable">';
-                                echo '<tr><th><a href="'.($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1').'">'.TIME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1').'">'.FILENAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1').'">IP</a></th></tr>';
+                                echo '<tr><th><a href="' . ($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1') . '">' . TIME . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1') . '">' . FILENAME . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1') . '">IP</a></th></tr>';
 
-                                $sql = "SELECT * FROM dl_log ORDER BY ".$order.$desc." LIMIT ".$start.", ".$rowsperpage;
+                                $sql = "SELECT * FROM dl_log ORDER BY " . $order . $desc . " LIMIT " . $start . ", " . $rowsperpage;
                                 foreach ($dbh->query($sql) as $row) {
-                                    echo '<tr><td>'.$row['time'].'</td><td>'.$row['filename'].'</td><td>'.$row['ip'].'</td></tr>';
+                                    echo '<tr><td>' . $row['time'] . '</td><td>' . $row['filename'] . '</td><td>' . $row['ip'] . '</td></tr>';
                                 }
 
                                 echo '</table>';
                                 // print the navigation links for pagination
                                 if ($lastpage > 1) {
-                                    echo '<p>'.$prev.$nav.$next.'</p>';
+                                    echo '<p>' . $prev . $nav . $next . '</p>';
                                 }
 
-                                echo '<p><a href="dlcount.php">'.DOWNLOADSTATS.'</a></p>';
+                                echo '<p><a href="dlcount.php">' . DOWNLOADSTATS . '</a></p>';
                                 ?>
 
                         </div>

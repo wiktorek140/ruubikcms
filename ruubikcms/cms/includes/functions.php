@@ -1,4 +1,5 @@
 <?php
+
 if (basename($_SERVER['REQUEST_URI']) == 'function.php' || strpos($_SERVER['REQUEST_URI'], 'function.php') !== false) {
     die("Access Denied");
 }
@@ -13,9 +14,7 @@ function pageurl_exists($pageurl)
     } else {
         return false;
     }
-
 }//end pageurl_exists()
-
 
 function extrapageurl_exists($pageurl)
 {
@@ -25,9 +24,7 @@ function extrapageurl_exists($pageurl)
     } else {
         return false;
     }
-
 }//end extrapageurl_exists()
-
 
 // --- Checks if snippet name exists. Returns True/False.
 function snippetname_exists($name)
@@ -38,9 +35,7 @@ function snippetname_exists($name)
     } else {
         return false;
     }
-
 }//end snippetname_exists()
-
 
 // --- Checks if username exists. Returns True/False.
 function username_exists($name)
@@ -51,9 +46,7 @@ function username_exists($name)
     } else {
         return false;
     }
-
 }//end username_exists()
-
 
 // --- Checks if extranet username exists. Returns True/False.
 function extrausername_exists($name)
@@ -64,22 +57,18 @@ function extrausername_exists($name)
     } else {
         return false;
     }
-
 }//end extrausername_exists()
 
-
 // --- Checks if page has children. Returns True/False.
-function has_children($pageurl, $table='page')
+function has_children($pageurl, $table = 'page')
 {
-    $numrows = query_prep("SELECT COUNT(*) FROM ".$table." WHERE mother = ?", [$pageurl]);
+    $numrows = query_prep("SELECT COUNT(*) FROM " . $table . " WHERE mother = ?", [$pageurl]);
     if ($numrows != 0) {
         return true;
     } else {
         return false;
     }
-
 }//end has_children()
-
 
 // --- Gets unique url with characters replaced or removed. Adds counter if needed. Takes 1) string 2) integer: 0 = normal pageurl, 1 = snippet url, 2 = username, 3 = extranet username, 4 = extranet pageurl
 function get_unique_url($str, $type)
@@ -111,7 +100,7 @@ function get_unique_url($str, $type)
         "�",
     ];
 
-    for ($j = 0 ; $j < count($replace); $j++) {
+    for ($j = 0; $j < count($replace); $j++) {
         $str = str_replace($replace[$j][0], $replace[$j][1], $str);
     }
 
@@ -119,7 +108,7 @@ function get_unique_url($str, $type)
     // trim & make all lowercase
     $newStr = '';
 
-    for ($j = 0 ; $j < strlen($str); $j++) {
+    for ($j = 0; $j < strlen($str); $j++) {
         if (ord($str[$j]) === 32 || ord($str[$j]) === 45) {
             $newStr .= '-';
             // add space and '-' as '-' to filename
@@ -169,62 +158,56 @@ function get_unique_url($str, $type)
     $counter = 1;
     if ($type == 1) {
         while (snippetname_exists($str)) {
-            $str = $basestr.'-'.strval($counter);
+            $str = $basestr . '-' . strval($counter);
             $counter++;
         }
     } else if ($type == 0) {
         while (pageurl_exists($str)) {
-            $str = $basestr.'-'.strval($counter);
+            $str = $basestr . '-' . strval($counter);
             $counter++;
         }
     } else if ($type == 2) {
         while (username_exists($str)) {
-            $str = $basestr.'-'.strval($counter);
+            $str = $basestr . '-' . strval($counter);
             $counter++;
         }
     } else if ($type == 3) {
         while (extrausername_exists($str)) {
-            $str = $basestr.'-'.strval($counter);
+            $str = $basestr . '-' . strval($counter);
             $counter++;
         }
     } else if ($type == 4) {
         while (extrapageurl_exists($str)) {
-            $str = $basestr.'-'.strval($counter);
+            $str = $basestr . '-' . strval($counter);
             $counter++;
         }
     }//end if
 
     return($str);
-
 }//end get_unique_url()
 
-
 // --- Get next ordernum for page in given level
-function get_next_ordernum($mother, $table='page')
+function get_next_ordernum($mother, $table = 'page')
 {
-    $maxnum = query_prep("SELECT MAX(ordernum) FROM ".$table." WHERE mother = ?", [$mother]);
+    $maxnum = query_prep("SELECT MAX(ordernum) FROM " . $table . " WHERE mother = ?", [$mother]);
     return ($maxnum + 1);
-
 }//end get_next_ordernum()
 
-
 // --- Refreshes pageorder for pages with same mother. Used *after* page delete & mother change.
-function refresh_pageorder($mother, $table='page')
+function refresh_pageorder($mother, $table = 'page')
 {
     global $dbh;
     $counter = 1;
 
-    $stmt = $dbh->prepare("SELECT pageurl FROM ".$table." WHERE mother = ? ORDER BY ordernum");
+    $stmt = $dbh->prepare("SELECT pageurl FROM " . $table . " WHERE mother = ? ORDER BY ordernum");
     $stmt->bindParam(1, $mother);
     $stmt->execute();
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $dbh->exec("UPDATE ".$table." SET ordernum = ".$counter." WHERE pageurl = '".$row['pageurl']."'");
+        $dbh->exec("UPDATE " . $table . " SET ordernum = " . $counter . " WHERE pageurl = '" . $row['pageurl'] . "'");
         $counter++;
     }
-
 }//end refresh_pageorder()
-
 
 // --- Saves message to log and to be used in infobox
 function save_infomsg($message)
@@ -237,50 +220,46 @@ function save_infomsg($message)
     $stmt->bindParam(3, $_SESSION['ip']);
     $stmt->bindParam(4, $_SESSION['uid']);
     $stmt->execute();
-
 }//end save_infomsg()
 
-
 // --- Return pages as an array for html select element. Takes number of levels to return (1-3). Slow because of many queries.
-function pages_for_select($levels, $table='page', $free=false)
+function pages_for_select($levels, $table = 'page', $free = false)
 {
     global $dbh;
     $pagelist = [];
-    $sql = "SELECT pageurl, name FROM ".$table." WHERE levelnum = 1 AND status = 1 ORDER BY ordernum";
+    $sql = "SELECT pageurl, name FROM " . $table . " WHERE levelnum = 1 AND status = 1 ORDER BY ordernum";
     foreach ($dbh->query($sql) as $row) {
         $pagelist[$row['pageurl']] = $row['name'];
-        $sql2 = "SELECT pageurl, name FROM ".$table." WHERE levelnum = 2 AND mother = '".$row['pageurl']."' ORDER BY ordernum";
+        $sql2 = "SELECT pageurl, name FROM " . $table . " WHERE levelnum = 2 AND mother = '" . $row['pageurl'] . "' ORDER BY ordernum";
         foreach ($dbh->query($sql2) as $row2) {
             if ($levels > 1) {
-                $pagelist[$row2['pageurl']] = '&nbsp;&nbsp;'.$row2['name'];
+                $pagelist[$row2['pageurl']] = '&nbsp;&nbsp;' . $row2['name'];
             }
 
-            $sql3 = "SELECT pageurl, name FROM ".$table." WHERE levelnum = 3 AND mother = '".$row2['pageurl']."' ORDER BY ordernum";
+            $sql3 = "SELECT pageurl, name FROM " . $table . " WHERE levelnum = 3 AND mother = '" . $row2['pageurl'] . "' ORDER BY ordernum";
             foreach ($dbh->query($sql3) as $row3) {
                 if ($levels > 2) {
-                    $pagelist[$row3['pageurl']] = '&nbsp;&nbsp;&nbsp;&nbsp;'.$row3['name'];
+                    $pagelist[$row3['pageurl']] = '&nbsp;&nbsp;&nbsp;&nbsp;' . $row3['name'];
                 }
             }
         }
     }
 
     if ($free) {
-        $sql = "SELECT pageurl, name FROM ".$table." WHERE levelnum = 0 AND status = 1 ORDER BY ordernum";
+        $sql = "SELECT pageurl, name FROM " . $table . " WHERE levelnum = 0 AND status = 1 ORDER BY ordernum";
         foreach ($dbh->query($sql) as $row) {
             $pagelist[$row['pageurl']] = $row['name'];
         }
     }
 
     return $pagelist;
-
 }//end pages_for_select()
 
-
 // --- Returns the root page (main level page) for a given pageurl.
-function root_page($pageurl, $table='page')
+function root_page($pageurl, $table = 'page')
 {
     global $dbh;
-    $level = query_prep("SELECT levelnum FROM ".$table." WHERE pageurl = ?", [$pageurl]);
+    $level = query_prep("SELECT levelnum FROM " . $table . " WHERE pageurl = ?", [$pageurl]);
     if ($level == '0') {
         // this is free page
         return '---notinmenu---';
@@ -289,29 +268,26 @@ function root_page($pageurl, $table='page')
         return $pageurl;
     } else if ($level == '2') {
         // return mother
-        return query_single("SELECT mother FROM ".$table." WHERE pageurl = '$pageurl'");
+        return query_single("SELECT mother FROM " . $table . " WHERE pageurl = '$pageurl'");
     } else if ($level == '3') {
         // return grandmother
-        $mother = query_single("SELECT mother FROM ".$table." WHERE pageurl = '$pageurl'");
-        return query_single("SELECT mother FROM ".$table." WHERE pageurl = '$mother'");
+        $mother = query_single("SELECT mother FROM " . $table . " WHERE pageurl = '$pageurl'");
+        return query_single("SELECT mother FROM " . $table . " WHERE pageurl = '$mother'");
     }
-
 }//end root_page()
-
 
 // --- Validate mysql date (yyyy-mm-dd)
 function valid_mysql_date($date)
 {
-    if (preg_match("/^([123456789][[:digit:]]{3})-(0[1-9]|1[012])-(0[1-9]|[12][[:digit:]]|3[01])$/", $date, $date_part)
+    if (
+        preg_match("/^([123456789][[:digit:]]{3})-(0[1-9]|1[012])-(0[1-9]|[12][[:digit:]]|3[01])$/", $date, $date_part)
         && checkdate($date_part[2], $date_part[3], $date_part[1])
     ) {
         return true;
     } else {
         return false;
     }
-
 }//end valid_mysql_date()
-
 
 // --- Validate time (hh:mm:ss)
 function valid_time($value)
@@ -322,26 +298,20 @@ function valid_time($value)
     } else {
         return true;
     }
-
 }//end valid_time()
-
 
 // --- Strips slashes if magic_quotes_gpc is on
 function stripslashes_gpc($data)
 {
     return $data;
-
 }//end stripslashes_gpc()
-
 
 // --- Strips slashes from array
 function stripslashes_deep($value)
 {
     $value = is_array($value) ? array_map('stripslashes_deep', $value) : stripslashes($value);
     return $value;
-
 }//end stripslashes_deep()
-
 
 // --- Creates a unique token and saves this in user's session (CSRF protection)
 function csrf_token()
@@ -349,9 +319,7 @@ function csrf_token()
     $token = md5(uniqid(rand(), true));
     $_SESSION['token'] = $token;
     return $token;
-
 }//end csrf_token()
-
 
 // Checks if CRSF token is valid
 function valid_csrf_token($token)
@@ -361,5 +329,4 @@ function valid_csrf_token($token)
     } else {
         return true;
     }
-
 }//end valid_csrf_token()

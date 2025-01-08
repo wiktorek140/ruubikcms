@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -35,24 +36,21 @@ if (!class_exists('ZipArchive')) {
 } else {
     try {
         $filename = basename($path);
-        $zipFile = $filename.'.zip';
-        $zipPath = BASE_PATH.'/tmp/'.$zipFile;
+        $zipFile = $filename . '.zip';
+        $zipPath = BASE_PATH . '/tmp/' . $zipFile;
         RoxyFile::ZipDir($path, $zipPath);
 
-        header('Content-Disposition: attachment; filename="'.$zipFile.'"');
+        header('Content-Disposition: attachment; filename="' . $zipFile . '"');
         header('Content-Type: application/force-download');
         readfile($zipPath);
-
 
         function deleteTmp($zipPath)
         {
             @unlink($zipPath);
-
         }//end deleteTmp()
-
 
         register_shutdown_function('deleteTmp', $zipPath);
     } catch (Exception $ex) {
-        echo '<script>alert("'.addslashes(t('E_CreateArchive')).'");</script>';
+        echo '<script>alert("' . addslashes(t('E_CreateArchive')) . '");</script>';
     }//end try
 }//end if

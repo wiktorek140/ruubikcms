@@ -29,7 +29,7 @@ if (@$_SESSION['uid']) {
 require '../includes/commonfunc.php';
 require 'includes/functions.php';
 define('RLANG', query_single('SELECT cmslang FROM options WHERE id = 1'));
-require 'languages/'.RLANG.'.php';
+require 'languages/' . RLANG . '.php';
 $cmspage = LOGIN;
 $company = query_single('SELECT name FROM site WHERE id = 1');
 ?>
@@ -73,7 +73,7 @@ $company = query_single('SELECT name FROM site WHERE id = 1');
                         <?php
                         require 'login/form.php';
                         if (@$_SESSION['notfound']) {
-                            echo '<p>'.INCORRECTUSER.'</p>';
+                            echo '<p>' . INCORRECTUSER . '</p>';
                         }
                         ?>
                     </div>

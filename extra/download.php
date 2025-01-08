@@ -1,8 +1,9 @@
 <?php
+
 // --- File download with authentication and logging
 // --- Sample call with optional new name: download.php?f=phptutorial.zip&fc=newname.zip
 require '../ruubikcms/includes/dbconfig.php';
-$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+$dbh = new PDO(PDO_DB_DRIVER . ':../' . RUUBIKCMS_FOLDER . '/' . PDO_DB_FOLDER . '/' . PDO_DB_NAME);
 // database connection object
 require '../ruubikcms/includes/commonfunc.php';
 define('LOGOUT_TIME', query_single("SELECT logout_time FROM options WHERE id = 1"));
@@ -24,7 +25,7 @@ if (!isset($_GET['f']) || empty($_GET['f'])) {
 
 // get real file name, remove any path info to avoid hacking by adding relative path etc
 $fname = basename($_GET['f']);
-$fpath = BASE_DIR.$fname;
+$fpath = BASE_DIR . $fname;
 
 if (!is_file($fpath)) {
     die("File does not exist. Make sure you specified correct file name.");
@@ -69,7 +70,7 @@ header("Content-Description: File Transfer");
 header("Content-Type: $mtype");
 header("Content-Disposition: attachment; filename=\"$asfname\"");
 header("Content-Transfer-Encoding: binary");
-header("Content-Length: ".$fsize);
+header("Content-Length: " . $fsize);
 
 // download
 $file = @fopen($fpath, "rb");
@@ -96,7 +97,7 @@ $stmt->bindParam(4, $date);
 $stmt->execute();
 
 // add or increase download counter
-$dlcount = query_single("SELECT downloads FROM extra_dl_count WHERE filename = '".$fname."'");
+$dlcount = query_single("SELECT downloads FROM extra_dl_count WHERE filename = '" . $fname . "'");
 if (!$dlcount) {
     $i = 1;
     $stmt = $dbh->prepare("INSERT INTO extra_dl_count (filename, downloads, count_started, last_dl) VALUES (?, ?, ?, ?)");

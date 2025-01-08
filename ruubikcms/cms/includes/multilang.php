@@ -1,11 +1,13 @@
 <?php
-if (basename($_SERVER['REQUEST_URI']) == 'multilang.php'
+
+if (
+    basename($_SERVER['REQUEST_URI']) == 'multilang.php'
     || strpos($_SERVER['REQUEST_URI'], 'multilang.php') !== false
 ) {
     die('Access Denied');
 }
 
 foreach ($multilang_links as $key => $value) {
-    $url = '/'.substr_replace($_SERVER['SCRIPT_NAME'], $key, 0, strpos($_SERVER['SCRIPT_NAME'], '/', 1));
-    echo '<a href="'.$url.'">'.$value.'</a>&nbsp;&nbsp;';
+    $url = '/' . substr_replace($_SERVER['SCRIPT_NAME'], $key, 0, strpos($_SERVER['SCRIPT_NAME'], '/', 1));
+    echo '<a href="' . $url . '">' . $value . '</a>&nbsp;&nbsp;';
 }

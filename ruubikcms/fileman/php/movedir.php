@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -34,12 +35,12 @@ verifyPath($newPath);
 if (is_dir(fixPath($path))) {
     if (mb_strpos($newPath, $path) === 0) {
         echo getErrorRes(t('E_CannotMoveDirToChild'));
-    } else if (file_exists(fixPath($newPath).'/'.basename($path))) {
+    } else if (file_exists(fixPath($newPath) . '/' . basename($path))) {
         echo getErrorRes(t('E_DirAlreadyExists'));
-    } else if (rename(fixPath($path), fixPath($newPath).'/'.basename($path))) {
+    } else if (rename(fixPath($path), fixPath($newPath) . '/' . basename($path))) {
         echo getSuccessRes();
     } else {
-        echo getErrorRes(t('E_MoveDir').' '.basename($path));
+        echo getErrorRes(t('E_MoveDir') . ' ' . basename($path));
     }
 } else {
     echo getErrorRes(t('E_MoveDirInvalisPath'));

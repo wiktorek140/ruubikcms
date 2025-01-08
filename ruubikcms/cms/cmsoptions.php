@@ -14,11 +14,11 @@ if (isset($_POST['undo'])) {
         die(NOTALLOWED);
     }
 
-    if (copy('../'.PDO_DB_FOLDER.'/ruubikcms-last-login.sqlite', '../'.PDO_DB_FOLDER.'/'.PDO_DB_NAME)) {
-        $error = UNDO.' '.SUCCEEDED.'!';
+    if (copy('../' . PDO_DB_FOLDER . '/ruubikcms-last-login.sqlite', '../' . PDO_DB_FOLDER . '/' . PDO_DB_NAME)) {
+        $error = UNDO . ' ' . SUCCEEDED . '!';
         $undook = true;
     } else {
-        $error = UNDO.' '.FAILED.'!';
+        $error = UNDO . ' ' . FAILED . '!';
         $restoreok = false;
     }
 
@@ -30,17 +30,17 @@ if (isset($_POST['restore'])) {
         die(NOTALLOWED);
     }
 
-    $target = '../'.PDO_DB_FOLDER.'/'.PDO_DB_NAME;
-    $temp = '../'.PDO_DB_FOLDER.'/ruubikcms-temp.sqlite';
+    $target = '../' . PDO_DB_FOLDER . '/' . PDO_DB_NAME;
+    $temp = '../' . PDO_DB_FOLDER . '/ruubikcms-temp.sqlite';
 
-    if (copy($target, '../'.PDO_DB_FOLDER.'/ruubikcms-backup.sqlite')) {
+    if (copy($target, '../' . PDO_DB_FOLDER . '/ruubikcms-backup.sqlite')) {
         if (move_uploaded_file($_FILES['restore_file']['tmp_name'], $temp)) {
             $fp = fopen($temp, 'r');
-            if (fread($fp, 16) == 'SQLite format 3'.chr(0)) {
+            if (fread($fp, 16) == 'SQLite format 3' . chr(0)) {
                 // sqlite3 file header ok
                 if (copy($temp, $target)) {
                     @unlink($temp);
-                    $error = RESTORETOOL.' '.SUCCEEDED.'!';
+                    $error = RESTORETOOL . ' ' . SUCCEEDED . '!';
                     $restoreok = true;
                 }
             }
@@ -50,7 +50,7 @@ if (isset($_POST['restore'])) {
     }
 
     if (!$restoreok) {
-        $error = RESTORETOOL.' '.FAILED.'!';
+        $error = RESTORETOOL . ' ' . FAILED . '!';
         $restoreok = false;
     }
 
@@ -62,7 +62,7 @@ if (isset($_POST['backup'])) {
         die(NOTALLOWED);
     }
 
-    $file_path = '../'.PDO_DB_FOLDER.'/'.PDO_DB_NAME;
+    $file_path = '../' . PDO_DB_FOLDER . '/' . PDO_DB_NAME;
     $fsize = filesize($file_path);
     // set headers
     header('Pragma: public');
@@ -71,9 +71,9 @@ if (isset($_POST['backup'])) {
     header('Cache-Control: public');
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="cms-backup-'.date('Ymd').'.sqlite"');
+    header('Content-Disposition: attachment; filename="cms-backup-' . date('Ymd') . '.sqlite"');
     header('Content-Transfer-Encoding: binary');
-    header('Content-Length: '.$fsize);
+    header('Content-Length: ' . $fsize);
     // set download
     $file = @fopen($file_path, 'rb');
     if ($file) {
@@ -114,8 +114,8 @@ if (isset($_POST['save']) and !(isset($_POST['restore']) || isset($_POST['backup
     $stmt->bindParam(6, $_POST['use_help']);
     $stmt->execute();
 
-    save_infomsg(CMSOPTIONS.' '.SAVED);
-    header('Location: '.$self);
+    save_infomsg(CMSOPTIONS . ' ' . SAVED);
+    header('Location: ' . $self);
     // refresh to apply new options
 } //end if
 
@@ -144,7 +144,7 @@ $token = csrf_token();
                                         <td class="tdCMSSetupCenter">
                                             <select name="cmslang">
             <?php foreach (glob('languages/*.php') as $filename) {
-                echo '<option value="'.basename($filename, '.php').'"'.($cmsoptions['cmslang'] == basename($filename, '.php') ? ' selected="selected"' : '').'>'.basename($filename, '.php').'</option>';
+                echo '<option value="' . basename($filename, '.php') . '"' . ($cmsoptions['cmslang'] == basename($filename, '.php') ? ' selected="selected"' : '') . '>' . basename($filename, '.php') . '</option>';
             }
             ?>
                                             </select>                                    
@@ -204,7 +204,8 @@ $token = csrf_token();
                                     <tr>
                                         <td class="tdCMSSetupLeft"><?php echo AUTORESIZEWIDTH; ?></td>
                                         <td class="tdCMSSetupCenter"><input type="text" name="resize_width" value="<?php
-                                        if (isset($cmsoptions['resize_width'])
+                                        if (
+                                            isset($cmsoptions['resize_width'])
                                         ) {
                                             echo $cmsoptions['resize_width'];
                                         }
@@ -214,7 +215,8 @@ $token = csrf_token();
                                     <tr>
                                         <td class="tdCMSSetupLeft"><?php echo AUTORESIZEHEIGHT; ?></td>
                                         <td class="tdCMSSetupCenter"><input type="text" name="resize_height" value="<?php
-                                        if (isset($cmsoptions['resize_height'])
+                                        if (
+                                            isset($cmsoptions['resize_height'])
                                         ) {
                                             echo $cmsoptions['resize_height'];
                                         }
@@ -253,11 +255,11 @@ $token = csrf_token();
                         <div id="cmsOptionsRight">
                             <div id="settingsBackup">
                             
-                                <h2><?php echo DOBACKUP.' & '.RESTORE; ?></h2>
+                                <h2><?php echo DOBACKUP . ' & ' . RESTORE; ?></h2>
     
                                 <table cellspacing="0" cellpadding="0" border="0">
                                     <tr>
-                                        <td class="tdBackupLeft"><?php echo SAVE.' '.BACKUP; ?></td>
+                                        <td class="tdBackupLeft"><?php echo SAVE . ' ' . BACKUP; ?></td>
                                         <td class="tdBackupCenter"><input type="submit" name="backup" value="<?php echo DOBACKUP; ?>" /></td>
                                         <td class="tdBackupRight"><a href="#" class="tooltip" title="<?php echo H_BACKUP; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                         <input name="token" type="hidden" value="<?php echo $token; ?>" />
@@ -265,17 +267,17 @@ $token = csrf_token();
                                     
                                     <tr>
                                         <td class="tdBackupLeft"><?php echo UNDOLASTLOGIN; ?></td>
-                                        <td class="tdBackupCenter"><input type="submit" name="undo" value="<?php echo UNDO; ?>" onclick="<?php echo "return confirm('".UNDOCONFIRM."');"; ?>" /></td>
+                                        <td class="tdBackupCenter"><input type="submit" name="undo" value="<?php echo UNDO; ?>" onclick="<?php echo "return confirm('" . UNDOCONFIRM . "');"; ?>" /></td>
                                         <td class="tdBackupRight"><a href="#" class="tooltip" title="<?php echo H_UNDOLASTLOGIN; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     </tr>
                                     <tr>
-                                        <td class="tdBackupLeft"><?php echo RESTORE.' '.BACKUP; ?></td>
+                                        <td class="tdBackupLeft"><?php echo RESTORE . ' ' . BACKUP; ?></td>
                                         <td class="tdBackupCenter">&nbsp;</td>
                                         <td class="tdBackupRight"><a href="#" class="tooltip" title="<?php echo H_RESTORE; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     </tr>
                                     <tr>
                                         <td class="tdBackupLeft"><input type="file" name="restore_file" class="fileInput" value="" /></td>
-                                        <td class="tdBackupCenter"><input type="submit" name="restore" value="<?php echo RESTORE; ?>" onclick="<?php echo "return confirm('".RESTORECONFIRM."');"; ?>" /></td>
+                                        <td class="tdBackupCenter"><input type="submit" name="restore" value="<?php echo RESTORE; ?>" onclick="<?php echo "return confirm('" . RESTORECONFIRM . "');"; ?>" /></td>
                                         <td class="tdBackupRight">&nbsp;</td>
                                     </tr>
                             
@@ -285,8 +287,8 @@ $token = csrf_token();
 
                             <div id="settingsPassword">
 
-                                <h2><?php echo LOG.' & '.DOWNLOADSTATS; ?></h2>
-                                <p><a href="showlog.php"><?php echo 'RuubikCMS Admin '.LOG; ?></a></p>
+                                <h2><?php echo LOG . ' & ' . DOWNLOADSTATS; ?></h2>
+                                <p><a href="showlog.php"><?php echo 'RuubikCMS Admin ' . LOG; ?></a></p>
                                 <p><a href="dlcount.php"><?php echo DOWNLOADSTATS; ?></a></p>
                                 <p><a href="dllog.php"><?php echo DOWNLOADLOG; ?></a></p>
                                 <p><a href="extradlcount.php"><?php echo EXTRADOWNLOADSTATS; ?></a></p>
@@ -312,21 +314,21 @@ $token = csrf_token();
 <?php
 if (isset($_POST['restore'])) {
     if ($restoreok) {
-        $msg = RESTORETOOL.' '.SUCCEEDED.'!';
+        $msg = RESTORETOOL . ' ' . SUCCEEDED . '!';
     } else {
-        $msg = RESTORETOOL.' '.FAILED.'!';
+        $msg = RESTORETOOL . ' ' . FAILED . '!';
     }
 
-    echo '<script language="javascript" type="text/javascript">alert(\''.$msg.'\');</script>';
+    echo '<script language="javascript" type="text/javascript">alert(\'' . $msg . '\');</script>';
 }
 
 if (isset($_POST['undo'])) {
     if ($undook) {
-        $msg = UNDO.' '.SUCCEEDED.'!';
+        $msg = UNDO . ' ' . SUCCEEDED . '!';
     } else {
-        $msg = UNDO.' '.FAILED.'!';
+        $msg = UNDO . ' ' . FAILED . '!';
     }
 
-    echo '<script language="javascript" type="text/javascript">alert(\''.$msg.'\');</script>';
+    echo '<script language="javascript" type="text/javascript">alert(\'' . $msg . '\');</script>';
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 if (basename($_SERVER['REQUEST_URI']) == 'en.php') {
     die('Access denied');
 }

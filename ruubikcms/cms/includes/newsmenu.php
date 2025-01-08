@@ -38,14 +38,14 @@ if (strpos($_SERVER['REQUEST_URI'], 'newsmenu.php') !== false) {
                             $sql = "SELECT STRFTIME('%Y', time) AS year FROM news GROUP BY year ORDER BY year DESC";
                             foreach ($dbh->query($sql) as $row) {
                                 echo '  <!--<div class="arrowdiv1"><a href="#"><img src="images/arrow1.gif" class="imgover" alt="arrow" /></a></div>-->
-                                        <div class="newsButton"><a href="news.php?y='.$row['year'].'">'.$row['year'].'</a></div>
-                                        <div class="subMenu1"'.($row['year'] == $_GET['y'] ? ' id="open"' : '').'>';
+                                        <div class="newsButton"><a href="news.php?y=' . $row['year'] . '">' . $row['year'] . '</a></div>
+                                        <div class="subMenu1"' . ($row['year'] == $_GET['y'] ? ' id="open"' : '') . '>';
 
-                                $sql2 = "SELECT id, title, STRFTIME('%d.%m.%Y',time) as date FROM news WHERE STRFTIME('%Y',time) = '".$row['year']."' ORDER BY time DESC";
+                                $sql2 = "SELECT id, title, STRFTIME('%d.%m.%Y',time) as date FROM news WHERE STRFTIME('%Y',time) = '" . $row['year'] . "' ORDER BY time DESC";
 
                                 foreach ($dbh->query($sql2) as $row2) {
                                     echo '  <div class="subPage1"><!--<div class="arrowdiv2"><a href="#"><img src="images/arrow2.gif" class="imgover" alt="arrow" /></a></div>-->
-                                            <div class="subButton1"><a href="news.php'.'?y='.$row['year'].'&amp;id='.$row2['id'].'"'.($row2['id'] == $_GET['id'] ? ' class="selected"' : '').'>'.$row2['date'].': '.ec($row2['title']).'</a></div></div>';
+                                            <div class="subButton1"><a href="news.php' . '?y=' . $row['year'] . '&amp;id=' . $row2['id'] . '"' . ($row2['id'] == $_GET['id'] ? ' class="selected"' : '') . '>' . $row2['date'] . ': ' . ec($row2['title']) . '</a></div></div>';
                                 }
 
                                 echo '</div>';

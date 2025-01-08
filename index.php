@@ -87,7 +87,7 @@ echo $page['lang']; ?>">
                 <!-- Please leave "Powered by RuubikCMS" notice here! -->
                 <a href="/link/index.html">.</a><a href="/link/historia-szkoly.html">.</a>
                 Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
-                | Copyright &copy; <?php echo date("Y")." ".$page['sitename']; ?>
+                | Copyright &copy; <?php echo date("Y") . " " . $page['sitename']; ?>
             </div>
         </div>
     </div>

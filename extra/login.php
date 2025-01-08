@@ -18,7 +18,7 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 require '../ruubikcms/includes/dbconfig.php';
-$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+$dbh = new PDO(PDO_DB_DRIVER . ':../' . RUUBIKCMS_FOLDER . '/' . PDO_DB_FOLDER . '/' . PDO_DB_NAME);
 // database connection object
 define('LOGOUT_TIME', 1800);
 require 'login/session.php';
@@ -30,7 +30,7 @@ if (@$_SESSION['uid']) {
 require '../ruubikcms/includes/commonfunc.php';
 require '../ruubikcms/cms/includes/functions.php';
 define("RLANG", query_single("SELECT cmslang FROM options WHERE id = 1"));
-require '../ruubikcms/cms/languages/'.RLANG.'.php';
+require '../ruubikcms/cms/languages/' . RLANG . '.php';
 $cmspage = LOGIN;
 $company = query_single("SELECT name FROM site WHERE id = 1");
 ?>
@@ -84,7 +84,7 @@ $company = query_single("SELECT name FROM site WHERE id = 1");
                         <?php
                         require 'login/form.php';
                         if (@$_SESSION['notfound']) {
-                            echo '<p>'.INCORRECTUSER.'</p>';
+                            echo '<p>' . INCORRECTUSER . '</p>';
                         }
                         ?>
 
@@ -93,7 +93,7 @@ $company = query_single("SELECT name FROM site WHERE id = 1");
                 </div>
 
                 <div id="loginFooter">
-                    <?php echo EXTRANET.' '.LOGIN ;?> &copy; <?php echo date("Y").' <a href="../">'.$company.'</a>';?>
+                    <?php echo EXTRANET . ' ' . LOGIN ;?> &copy; <?php echo date("Y") . ' <a href="../">' . $company . '</a>';?>
                 </div>
 
             </div>

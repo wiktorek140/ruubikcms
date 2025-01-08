@@ -1,4 +1,5 @@
 <?php
+
 session_name('extralogin');
 session_start();
 session_regenerate_id();
@@ -7,13 +8,13 @@ require '../../ruubikcms/includes/commonfunc.php';
 
 
 try {
-    $dbh = new PDO(PDO_DB_DRIVER.':../../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+    $dbh = new PDO(PDO_DB_DRIVER . ':../../' . RUUBIKCMS_FOLDER . '/' . PDO_DB_FOLDER . '/' . PDO_DB_NAME);
 } catch (Exception $exception) {
     die($exception->getMessage());
 }
 
 define("RLANG", query_single("SELECT cmslang FROM options WHERE id = 1"));
-require '../../ruubikcms/cms/languages/'.RLANG.'.php';
+require '../../ruubikcms/cms/languages/' . RLANG . '.php';
 
 $stmt = $dbh->prepare("SELECT username, organization, firstname, lastname, expirytime, active FROM extrauser WHERE username = ? AND password = ?");
 
@@ -25,7 +26,7 @@ if (empty($result[0]) or (!empty($result[4]) and $result[4] < date("Y-m-d")) or 
     $_SESSION['notfound'] = true;
     $_SESSION['time'] = time();
     session_write_close();
-    header("Location: ".htmlspecialchars($_SERVER['HTTP_REFERER']));
+    header("Location: " . htmlspecialchars($_SERVER['HTTP_REFERER']));
     exit();
 } else {
     $_SESSION['uid'] = $result[0];
@@ -51,4 +52,4 @@ session_write_close();
     $stmt->bindParam(4, $_SESSION['uid']);
 @$stmt->execute();*/
 
-header("Location: ".htmlspecialchars($_SERVER['HTTP_REFERER']));
+header("Location: " . htmlspecialchars($_SERVER['HTTP_REFERER']));

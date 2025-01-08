@@ -72,8 +72,8 @@ if (isset($_POST['save'])) {
             $stmt->execute();
         }//end if
 
-        header('Location: '.$self.'?role='.$_POST['role'].'&p='.$newname); // redirect to new user
-        save_infomsg(USER.' '.$newname.' '.SAVED);
+        header('Location: ' . $self . '?role=' . $_POST['role'] . '&p=' . $newname); // redirect to new user
+        save_infomsg(USER . ' ' . $newname . ' ' . SAVED);
     } else {
         // passwords do not match
         save_infomsg(CHECKPASSWORDS);
@@ -101,8 +101,8 @@ if (query_single("SELECT COUNT(*) FROM cmsuser") != 0) {
                 $stmt = $dbh->prepare("DELETE FROM cmsuser WHERE username = ?");
                 $stmt->bindParam(1, $_GET['p']);
                 $stmt->execute();
-                save_infomsg(USER.' '.$_GET['p'].' '.DELETED);
-                header('Location: '.$self);
+                save_infomsg(USER . ' ' . $_GET['p'] . ' ' . DELETED);
+                header('Location: ' . $self);
             }
         }
 
@@ -114,7 +114,7 @@ if (query_single("SELECT COUNT(*) FROM cmsuser") != 0) {
         }
     } else if (!isset($_GET['n']) and !isset($_GET['role'])) {
         // no username given and not creating new page etc ->  redirect first user
-        header('Location: '.$self.'?role=5&p='.query_single("SELECT username FROM cmsuser WHERE role = '5' ORDER BY username LIMIT 1"));
+        header('Location: ' . $self . '?role=5&p=' . query_single("SELECT username FROM cmsuser WHERE role = '5' ORDER BY username LIMIT 1"));
     }//end if
 }//end if
 
@@ -134,7 +134,7 @@ $token = csrf_token();
 
 
             <!-- **************** RightDiv ******************** -->    
-                <form method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
+                <form method="post" action="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
                 <input type="hidden" name="save" value="1" />
                 <input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
                 <div id="rightDiv">
@@ -144,11 +144,11 @@ $token = csrf_token();
                                 ?><li><a href="javascript:document.newsEditForm.submit();" class="save"><span><?php echo SAVE;?></span></a></li><?php
                             }
                             ?>
-                            <li><a href="<?php echo $self.'?n=1';?>" class="new"><span><?php echo RNEW;?></span></a></li>
+                            <li><a href="<?php echo $self . '?n=1';?>" class="new"><span><?php echo RNEW;?></span></a></li>
                             <?php
                             if (isset($_GET['p'])) {
                                 ?>
-                              <li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token;?>" class="delete"><span><?php echo DELETE;?></span></a></li>
+                              <li><a href="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']) . '&amp;d=1&amp;token=' . $token;?>" class="delete"><span><?php echo DELETE;?></span></a></li>
                                 <?php
                             }
                             ?>
@@ -272,5 +272,5 @@ if (isset($_GET['p'])) {
 <?php require 'includes/footer.php';?>
 <?php
 if ($error) {
-    echo '<script language="javascript" type="text/javascript">alert(\''.CHECKPASSWORDS.'\');</script>';
+    echo '<script language="javascript" type="text/javascript">alert(\'' . CHECKPASSWORDS . '\');</script>';
 }

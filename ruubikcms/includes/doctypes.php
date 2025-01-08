@@ -1,4 +1,5 @@
 <?php
+
 if (basename($_SERVER['REQUEST_URI']) == 'doctypes.php') {
     die('Access denied');
 }

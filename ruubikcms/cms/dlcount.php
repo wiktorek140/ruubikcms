@@ -35,8 +35,8 @@ if (query_single("SELECT COUNT(*) FROM dl_count") != 0) {
             $stmt = $dbh->prepare("DELETE FROM dl_count WHERE filename = ?");
             $stmt->bindParam(1, $_GET['p']);
             $stmt->execute();
-            save_infomsg(COUNT.' '.$_GET['p'].' '.DELETED);
-            header('Location: '.ec($_SERVER['PHP_SELF']));
+            save_infomsg(COUNT . ' ' . $_GET['p'] . ' ' . DELETED);
+            header('Location: ' . ec($_SERVER['PHP_SELF']));
         }
     }
 }
@@ -53,7 +53,7 @@ $token = csrf_token();
 
 
             <!-- **************** RightDiv ******************** -->    
-                <form method="post" action="<?php echo ec($_SERVER['PHP_SELF']).'?'.ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
+                <form method="post" action="<?php echo ec($_SERVER['PHP_SELF']) . '?' . ec($_SERVER['QUERY_STRING']);?>" name="newsEditForm">
                 <input type="hidden" name="save" value="1" />
                 <input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
                 <div id="rightDiv">
@@ -81,9 +81,9 @@ $token = csrf_token();
                                 $lastpage = ceil($total / $rowsperpage);
 
                                 // correct self also considering the ordering
-                                $self = ec($_SERVER['PHP_SELF']).'?';
+                                $self = ec($_SERVER['PHP_SELF']) . '?';
                                 if (isset($_GET['order'])) {
-                                    $self .= 'order='.$_GET['order'];
+                                    $self .= 'order=' . $_GET['order'];
                                 } else {
                                     $self .= 'order=1';
                                 }
@@ -106,8 +106,8 @@ $token = csrf_token();
                                 // first, next, previous & last links
                                 if ($page > 1) {
                                     $i  = ($page - 1);
-                                    $prev  = ' <a href="'.$self.'&amp;page='.$i.'">'.PREVIOUS.'</a> ';
-                                    $first  = ' <a href="'.$self.'&amp;page=1">'.FIRSTPAGE.'</a> ';
+                                    $prev  = ' <a href="' . $self . '&amp;page=' . $i . '">' . PREVIOUS . '</a> ';
+                                    $first  = ' <a href="' . $self . '&amp;page=1">' . FIRSTPAGE . '</a> ';
                                 } else {
                                     $prev  = '&nbsp;';
                                     // we're on page one, don't print previous link
@@ -117,8 +117,8 @@ $token = csrf_token();
 
                                 if ($page < $lastpage) {
                                     $i = ($page + 1);
-                                    $next  = ' <a href="'.$self.'&amp;page='.$i.'">'.NEXT.'</a> ';
-                                    $last  = ' <a href="'.$self.'&amp;page='.$lastpage.'">'.LASTPAGE.'</a> ';
+                                    $next  = ' <a href="' . $self . '&amp;page=' . $i . '">' . NEXT . '</a> ';
+                                    $last  = ' <a href="' . $self . '&amp;page=' . $lastpage . '">' . LASTPAGE . '</a> ';
                                 } else {
                                     $next = '&nbsp;';
                                     // we're on the last page, don't print next link
@@ -148,24 +148,24 @@ $token = csrf_token();
                                 }
 
                                 if ($lastpage > 1) {
-                                    echo '<p>'.SHOWING.' '.($start + 1).' - '.($start + $rowsperpage > $total ? $total : $start + $rowsperpage).' '.sprintf(OFTOTALRESULTS, $total).'</p>';
+                                    echo '<p>' . SHOWING . ' ' . ($start + 1) . ' - ' . ($start + $rowsperpage > $total ? $total : $start + $rowsperpage) . ' ' . sprintf(OFTOTALRESULTS, $total) . '</p>';
                                 }
 
                                 echo '<table class="logtable">';
-                                echo '<tr><th><a href="'.($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1').'">'.FILENAME.'</a></th><th><a href="'.($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1').'">'.DOWNLOADS.'</a></th><th><a href="'.($_GET['desc'] ? '?order=3' : '?order=3&amp;desc=1').'">'.COUNTSTARTED.'</a></th><th><a href="'.($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1').'">'.LASTDOWNLOAD.'</a></th><th></th></tr>';
+                                echo '<tr><th><a href="' . ($_GET['desc'] ? '?order=1' : '?order=1&amp;desc=1') . '">' . FILENAME . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=2' : '?order=2&amp;desc=1') . '">' . DOWNLOADS . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=3' : '?order=3&amp;desc=1') . '">' . COUNTSTARTED . '</a></th><th><a href="' . ($_GET['desc'] ? '?order=4' : '?order=4&amp;desc=1') . '">' . LASTDOWNLOAD . '</a></th><th></th></tr>';
 
-                                $sql = "SELECT * FROM dl_count ORDER BY ".$order.$desc." LIMIT ".$start.", ".$rowsperpage;
+                                $sql = "SELECT * FROM dl_count ORDER BY " . $order . $desc . " LIMIT " . $start . ", " . $rowsperpage;
                                 foreach ($dbh->query($sql) as $row) {
-                                    echo '<tr><td>'.$row['filename'].'</td><td>'.$row['downloads'].'</td><td>'.$row['count_started'].'</td><td>'.$row['last_dl'].'</td><td><a href="dlcount.php?p='.$row['filename'].'&amp;d=1&amp;token='.$token.'">'.RESET.'</a></td></tr>';
+                                    echo '<tr><td>' . $row['filename'] . '</td><td>' . $row['downloads'] . '</td><td>' . $row['count_started'] . '</td><td>' . $row['last_dl'] . '</td><td><a href="dlcount.php?p=' . $row['filename'] . '&amp;d=1&amp;token=' . $token . '">' . RESET . '</a></td></tr>';
                                 }
 
                                 echo '</table>';
                                 // print the navigation links for pagination
                                 if ($lastpage > 1) {
-                                    echo '<p>'.$prev.$nav.$next.'</p>';
+                                    echo '<p>' . $prev . $nav . $next . '</p>';
                                 }
 
-                                echo '<p><a href="dllog.php">'.DOWNLOADLOG.'</a></p>';
+                                echo '<p><a href="dllog.php">' . DOWNLOADLOG . '</a></p>';
                                 ?>
 
                         </div>

@@ -81,7 +81,7 @@ echo $page['doctype'];
                     
                         <p>You are logged in as <?php echo $_SESSION['uid'];
                         if (!empty($_SESSION['organization'])) {
-                            echo ' ('.$_SESSION['organization'].')';
+                            echo ' (' . $_SESSION['organization'] . ')';
                         }?></p>
                         <p><a href="<?php echo $siteroot;?>extra/login/logout.php">Log Out</a></p>
 

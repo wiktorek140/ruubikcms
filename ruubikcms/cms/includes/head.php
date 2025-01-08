@@ -96,12 +96,12 @@
                     </div>
                     <div id="topUser">
                         <span id="userBox"><?php
-                            $name = $_SESSION['firstname'].' '.$_SESSION['lastname'];
+                            $name = $_SESSION['firstname'] . ' ' . $_SESSION['lastname'];
                         if ($name == ' ') {
                             $name = $_SESSION['uid'];
                         }
 
-                            echo USER.': <span id="userName">'.$name.'</span>';
+                            echo USER . ': <span id="userName">' . $name . '</span>';
                         ?>
                         </span>
                     </div>

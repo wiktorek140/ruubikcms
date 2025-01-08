@@ -1,5 +1,7 @@
 <?php
-if (basename($_SERVER['REQUEST_URI']) == 'settings.php'
+
+if (
+    basename($_SERVER['REQUEST_URI']) == 'settings.php'
     || strpos($_SERVER['REQUEST_URI'], 'settings.php') !== false
 ) {
     die('Access Denied');

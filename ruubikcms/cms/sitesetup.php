@@ -59,7 +59,7 @@ if (isset($_POST['save'])) {
     $stmt->bindParam(22, $_POST['news_readmoretext']);
     $stmt->execute();
 
-    save_infomsg(SITESETUP.' '.SAVED);
+    save_infomsg(SITESETUP . ' ' . SAVED);
 }//end if
 
 if (query_single("SELECT COUNT(*) FROM site WHERE id = 1") != 0) {
@@ -101,7 +101,7 @@ $token = csrf_token();
                                         <td class="tdWebSetupCenter">
                                             <select name="doctype">
                                             <?php foreach ($doctype as $key => $value) {
-                                                echo '<option value="'.$key.'"'.($key == $site['doctype'] ? ' selected="selected"' : '').'>'.$value.'</option>';
+                                                echo '<option value="' . $key . '"' . ($key == $site['doctype'] ? ' selected="selected"' : '') . '>' . $value . '</option>';
                                             }
                                             ?>
                                             </select>
@@ -113,7 +113,7 @@ $token = csrf_token();
                                         <td class="tdWebSetupCenter">
                                             <select name="charset">
                                             <?php foreach ($charset as $key => $value) {
-                                                echo '<option value="'.$key.'"'.($key == $site['charset'] ? ' selected="selected"' : '').'>'.$value.'</option>';
+                                                echo '<option value="' . $key . '"' . ($key == $site['charset'] ? ' selected="selected"' : '') . '>' . $value . '</option>';
                                             }
                                             ?>
                                             </select>
@@ -125,7 +125,7 @@ $token = csrf_token();
                                         <td class="tdWebSetupCenter">
                                             <select name="robots">
                                             <?php foreach ($robots as $key => $value) {
-                                                echo '<option value="'.$key.'"'.($key == $site['robots'] ? ' selected="selected"' : '').'>'.$value.'</option>';
+                                                echo '<option value="' . $key . '"' . ($key == $site['robots'] ? ' selected="selected"' : '') . '>' . $value . '</option>';
                                             }
                                             ?>                                            
                                             </select>
@@ -135,17 +135,17 @@ $token = csrf_token();
                                     <tr>
                                         <td class="tdWebSetupLeft"><?php echo PAGETITLE;?></td>
                                         <td class="tdWebSetupCenter"><input type="text" name="title" value="<?php echo ec($site['title']);?>" /></td>
-                                        <td class="tdWebSetupRight"><a href="#" class="tooltip" title="<?php echo H_PAGETITLE.H_SETUPDEFAULT;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+                                        <td class="tdWebSetupRight"><a href="#" class="tooltip" title="<?php echo H_PAGETITLE . H_SETUPDEFAULT;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     </tr>
                                     <tr>
                                         <td class="tdWebSetupLeft"><?php echo DESCRIPTION;?></td>
                                         <td class="tdWebSetupCenter"><textarea cols="30" rows="5" name="description"><?php echo ec($site['description']);?></textarea></td>
-                                        <td class="tdWebSetupRight"><a href="#" class="tooltip" title="<?php echo H_DESCRIPTION.H_SETUPDEFAULT;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+                                        <td class="tdWebSetupRight"><a href="#" class="tooltip" title="<?php echo H_DESCRIPTION . H_SETUPDEFAULT;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     </tr>
                                     <tr>
                                         <td class="tdWebSetupLeft"><?php echo KEYWORDS;?></td>
                                         <td class="tdWebSetupCenter"><textarea cols="30" rows="5" name="keywords"><?php echo ec($site['keywords']);?></textarea></td>
-                                        <td class="tdWebSetupRight"><a href="#" class="tooltip" title="<?php echo H_KEYWORDS.H_SETUPDEFAULT;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+                                        <td class="tdWebSetupRight"><a href="#" class="tooltip" title="<?php echo H_KEYWORDS . H_SETUPDEFAULT;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     </tr>
                                     <tr>
                                         <td class="tdWebSetupLeft"><?php echo COPYRIGHT;?></td>
@@ -162,7 +162,7 @@ $token = csrf_token();
                                         <td class="tdWebSetupCenter">
                                             <select name="lang">
                                             <?php foreach ($lang as $key => $value) {
-                                                echo '<option value="'.$key.'"'.($key == $site['lang'] ? ' selected="selected"' : '').'>'.$value.'</option>';
+                                                echo '<option value="' . $key . '"' . ($key == $site['lang'] ? ' selected="selected"' : '') . '>' . $value . '</option>';
                                             }
                                             ?>
                                             </select>                                        
@@ -176,11 +176,11 @@ $token = csrf_token();
 
                             <div id="webSiteRest">
 
-                                <h2><?php echo IMAGESETTINGS.', '.URLSETTINGS;?></h2>
+                                <h2><?php echo IMAGESETTINGS . ', ' . URLSETTINGS;?></h2>
 
                                 <table cellspacing="0" cellpadding="0" border="0">
                                     <tr>
-                                        <td class="tdRestSetupLeft"><?php echo IFMISSING.' '.IMAGE.'1';?></td>
+                                        <td class="tdRestSetupLeft"><?php echo IFMISSING . ' ' . IMAGE . '1';?></td>
                                         <td class="tdRestSetupCenter">
                                             <select name="no_image1">
                                                 <option value="0" <?php
@@ -192,13 +192,13 @@ $token = csrf_token();
                                                 if ($site['no_image1'] == 1) {
                                                     echo 'selected="selected"';
                                                 }
-                                                ?>><?php echo USEFRONTPAGE.' '.IMAGE.'1';?></option>
+                                                ?>><?php echo USEFRONTPAGE . ' ' . IMAGE . '1';?></option>
                                             </select>                                        
                                         </td>
                                         <td class="tdRestSetupRight"><a href="#" class="tooltip" title="<?php echo H_IMGMISSING;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                     </tr>
                                     <tr>
-                                        <td class="tdRestSetupLeft"><?php echo IFMISSING.' '.IMAGE.'2';?></td>
+                                        <td class="tdRestSetupLeft"><?php echo IFMISSING . ' ' . IMAGE . '2';?></td>
                                         <td class="tdRestSetupCenter">
                                             <select name="no_image2">
                                                 <option value="0" <?php
@@ -210,7 +210,7 @@ $token = csrf_token();
                                                 if ($site['no_image2'] == 1) {
                                                     echo 'selected="selected"';
                                                 }
-                                                ?>><?php echo USEFRONTPAGE.' '.IMAGE.'2';?></option>
+                                                ?>><?php echo USEFRONTPAGE . ' ' . IMAGE . '2';?></option>
                                             </select>                                        
                                         </td>
                                         <td class="tdRestSetupRight"><a href="#" class="tooltip" title="<?php echo H_IMGMISSING;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
@@ -259,7 +259,7 @@ $token = csrf_token();
                                     <table  cellpadding="0" cellspacing="0" border="0">                       
                                         <thead>
                                             <tr>
-                                                <th class="thLeft"><?php echo GACODE.':';?></th>
+                                                <th class="thLeft"><?php echo GACODE . ':';?></th>
                                                 <th class="thRight">
                                                 <a href="#" class="tooltip" title="<?php echo H_GACODE;?>"><img src="images/help.gif" class="imgover" title="" alt="" /></a></th>
                                             </tr>
@@ -333,8 +333,8 @@ $token = csrf_token();
                                         <td class="tdNewsSetupLeft">
                                             <select name="news_num">
                                                 <?php
-                                                for ($i = 1;$i <= 12;$i++) {
-                                                    echo '<option value="'.$i.'"'.($i == $site['news_num'] ? ' selected="selected"' : '').'>'.$i.'</option>';
+                                                for ($i = 1; $i <= 12; $i++) {
+                                                    echo '<option value="' . $i . '"' . ($i == $site['news_num'] ? ' selected="selected"' : '') . '>' . $i . '</option>';
                                                 }
                                                 ?>
                                             </select>                                        

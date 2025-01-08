@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -31,12 +32,12 @@ $name = trim(empty($_POST['n']) ? '' : $_POST['n']);
 verifyPath($path);
 
 if (is_dir(fixPath($path))) {
-    if (fixPath($path.'/') == fixPath(getFilesPath().'/')) {
+    if (fixPath($path . '/') == fixPath(getFilesPath() . '/')) {
         echo getErrorRes(t('E_CannotRenameRoot'));
-    } else if (rename(fixPath($path), dirname(fixPath($path)).'/'.$name)) {
+    } else if (rename(fixPath($path), dirname(fixPath($path)) . '/' . $name)) {
         echo getSuccessRes();
     } else {
-        echo getErrorRes(t('E_RenameDir').' '.basename($path));
+        echo getErrorRes(t('E_RenameDir') . ' ' . basename($path));
     }
 } else {
     echo getErrorRes(t('E_RenameDirInvalidPath'));

@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -36,7 +37,7 @@ verifyPath($path);
 verifyPath($newPath);
 
 if (is_file(fixPath($path))) {
-    $newPath = $newPath.'/'.RoxyFile::MakeUniqueFilename(fixPath($newPath), basename($path));
+    $newPath = $newPath . '/' . RoxyFile::MakeUniqueFilename(fixPath($newPath), basename($path));
     if (copy(fixPath($path), fixPath($newPath))) {
         echo getSuccessRes();
     } else {

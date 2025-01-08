@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -38,7 +39,7 @@ verifyPath($path);
 $w = intval(empty($_GET['width']) ? '100' : $_GET['width']);
 $h = intval(empty($_GET['height']) ? '0' : $_GET['height']);
 
-header('Content-type: '.RoxyFile::GetMIMEType(basename($path)));
+header('Content-type: ' . RoxyFile::GetMIMEType(basename($path)));
 if ($w && $h) {
     RoxyImage::CropCenter(fixPath($path), null, $w, $h);
 } else {

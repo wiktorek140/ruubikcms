@@ -46,12 +46,12 @@ require '../includes/encodingconf.php';
             <?php
             $error = [];
 
-            echo '<tr><td class="first">PHP version 5.1.0+ <i>('.PHP_VERSION.')</i></td>';
+            echo '<tr><td class="first">PHP version 5.1.0+ <i>(' . PHP_VERSION . ')</i></td>';
             if (version_compare(PHP_VERSION, '5.1.0') === 1) {
                 echo '<td class="ok">OK';
             } else {
                 echo '<td class="failed">FAILED';
-                $error[] = 'PHP version must be at least 5.1.0. Your version: '.PHP_VERSION;
+                $error[] = 'PHP version must be at least 5.1.0. Your version: ' . PHP_VERSION;
             }
 
             echo '</td></tr>';
@@ -97,9 +97,9 @@ require '../includes/encodingconf.php';
                 'extra/useruploads/media' => '../../extra/useruploads/media',*/
             ];
             foreach ($writable as $key => $value) {
-                echo '<tr><td class="first">'.$key.'</td><td>';
+                echo '<tr><td class="first">' . $key . '</td><td>';
                 if (!is_writable($value)) {
-                    $error[] = $key.' must be writable';
+                    $error[] = $key . ' must be writable';
                     echo '<span class="failed">FAILED</span>';
                 } else {
                     echo '<span class="ok">OK</span>';
@@ -115,9 +115,9 @@ require '../includes/encodingconf.php';
             ];
             foreach ($writable_opt as $key => $value) {
                 if (file_exists($value)) {
-                    echo '<tr><td class="first">'.$key.'</td><td>';
+                    echo '<tr><td class="first">' . $key . '</td><td>';
                     if (!is_writable($value)) {
-                         $error[] = $key.' must be writable';
+                         $error[] = $key . ' must be writable';
                          echo '<span class="failed">FAILED</span>';
                     } else {
                         echo '<span class="ok">OK</span>';
@@ -145,7 +145,7 @@ require '../includes/encodingconf.php';
         } else {
             echo '<h3 class="failed">Installation failed!</h3><p>You must correct following issues in order to finish the installation:</p><ul>';
             foreach ($error as $value) {
-                echo '<li>'.$value.'</li>';
+                echo '<li>' . $value . '</li>';
             }
 
             echo '</ul><p><input type="button" name="refresh" onclick="location.reload(true)" value="Test again" /></p>';

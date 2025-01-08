@@ -1,7 +1,8 @@
 <?php
+
 if (!@$_SESSION['uid']) {
     // header('Location: http://greybox'.($siteroot != "" ? $siteroot.'' : '').'extra/login.php');
-    header('Location: '.($siteroot != "" ? $siteroot.'' : '').'extra/login.php');
+    header('Location: ' . ($siteroot != "" ? $siteroot . '' : '') . 'extra/login.php');
     die();
 }
 

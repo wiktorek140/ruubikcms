@@ -1,4 +1,5 @@
 <?php
+
 /*
     RuubikCMS helptext language file
     Language: 'fi'

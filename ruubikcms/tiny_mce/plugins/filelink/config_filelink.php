@@ -1,4 +1,5 @@
 <?php
+
 $filelink_cfg = [];
 
 // How filebrowser (Tinybrowser) is launched

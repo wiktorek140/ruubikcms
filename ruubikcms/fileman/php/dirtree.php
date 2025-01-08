@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -26,7 +27,6 @@ require 'functions.inc.php';
 verifyAction('DIRLIST');
 checkAccess('DIRLIST');
 
-
 function getFilesNumber($path, $type)
 {
     $files = 0;
@@ -35,9 +35,9 @@ function getFilesNumber($path, $type)
     foreach ($tmp as $ff) {
         if ($ff == '.' || $ff == '..') {
             continue;
-        } else if (is_file($path.'/'.$ff) && ($type == '' || ($type == 'image' && RoxyFile::IsImage($ff)) || ($type == 'flash' && RoxyFile::IsFlash($ff)))) {
+        } else if (is_file($path . '/' . $ff) && ($type == '' || ($type == 'image' && RoxyFile::IsImage($ff)) || ($type == 'flash' && RoxyFile::IsFlash($ff)))) {
             $files++;
-        } else if (is_dir($path.'/'.$ff)) {
+        } else if (is_dir($path . '/' . $ff)) {
             $dirs++;
         }
     }
@@ -46,16 +46,14 @@ function getFilesNumber($path, $type)
         'files' => $files,
         'dirs'  => $dirs,
     ];
-
 }//end getFilesNumber()
-
 
 function GetDirs($path, $type)
 {
     $ret = $sort = [];
     $files = listDirectory(fixPath($path), 0);
     foreach ($files as $f) {
-        $fullPath = $path.'/'.$f;
+        $fullPath = $path . '/' . $f;
         if (!is_dir(fixPath($fullPath)) || $f == '.' || $f == '..') {
             continue;
         }
@@ -72,12 +70,10 @@ function GetDirs($path, $type)
     natcasesort($sort);
     foreach ($sort as $k => $v) {
         $tmp = $ret[$k];
-        echo ',{"p":"'.mb_ereg_replace2('"', '\\"', $tmp['path']).'","f":"'.$tmp['files'].'","d":"'.$tmp['dirs'].'"}';
+        echo ',{"p":"' . mb_ereg_replace2('"', '\\"', $tmp['path']) . '","f":"' . $tmp['files'] . '","d":"' . $tmp['dirs'] . '"}';
         GetDirs($tmp['path'], $type);
     }
-
 }//end GetDirs()
-
 
 $type = (empty($_GET['type']) ? '' : strtolower($_GET['type']));
 if ($type != 'image' && $type != 'flash') {
@@ -86,6 +82,6 @@ if ($type != 'image' && $type != 'flash') {
 
 echo "[\n";
 $tmp = getFilesNumber(fixPath(getFilesPath()), $type);
-echo '{"p":"'.mb_ereg_replace2('"', '\\"', getFilesPath()).'","f":"'.$tmp['files'].'","d":"'.$tmp['dirs'].'"}';
+echo '{"p":"' . mb_ereg_replace2('"', '\\"', getFilesPath()) . '","f":"' . $tmp['files'] . '","d":"' . $tmp['dirs'] . '"}';
 GetDirs(getFilesPath(), $type);
 echo "\n]";

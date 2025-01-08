@@ -1,4 +1,5 @@
 <?php
+
 /*
     RuubikCMS help language file
     Language: 'en'

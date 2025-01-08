@@ -1,4 +1,5 @@
 <?php
+
 /*
     RoxyFileman - web based file manager. Ready to use with CKEditor, TinyMCE.
     Can be easily integrated with any other WYSIWYG editor or CMS.
@@ -27,5 +28,4 @@ function checkAccess($action)
     if (!session_id()) {
         session_start();
     }
-
 }//end checkAccess()

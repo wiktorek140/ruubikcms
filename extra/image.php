@@ -1,9 +1,10 @@
 <?php
+
 // --- Image displayer with authentication
 // --- Sample call: image.php?f=imgfile.jpg
 // --- Sample call with subfolder: image.php?f=subfolder/imgfile.jpg
 require '../ruubikcms/includes/dbconfig.php';
-$dbh = new PDO(PDO_DB_DRIVER.':../'.RUUBIKCMS_FOLDER.'/'.PDO_DB_FOLDER.'/'.PDO_DB_NAME);
+$dbh = new PDO(PDO_DB_DRIVER . ':../' . RUUBIKCMS_FOLDER . '/' . PDO_DB_FOLDER . '/' . PDO_DB_NAME);
 // database connection object
 require '../ruubikcms/includes/commonfunc.php';
 define('LOGOUT_TIME', query_single("SELECT logout_time FROM options WHERE id = 1"));
@@ -28,7 +29,7 @@ if (strstr($_GET['f'], '../')) {
     die('Error');
 }
 
-$fpath = BASE_DIR.$_GET['f'];
+$fpath = BASE_DIR . $_GET['f'];
 if (!is_file($fpath)) {
     die("File does not exist.");
 }

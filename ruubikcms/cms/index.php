@@ -15,7 +15,7 @@ if (isset($_POST['save'])) {
     }
 
     // check write permissions
-    if (!is_writable('../'.PDO_DB_FOLDER.'/'.PDO_DB_NAME) || !is_writable('../'.PDO_DB_FOLDER)) {
+    if (!is_writable('../' . PDO_DB_FOLDER . '/' . PDO_DB_NAME) || !is_writable('../' . PDO_DB_FOLDER)) {
         $error = SQLITENOTWRITABLE;
     }
 
@@ -45,7 +45,8 @@ if (isset($_POST['save'])) {
             '/index.php\?p\=(.+)"/Us',
             static function () {
                 return "clean_url('$1').'\"'";
-            }, $content
+            },
+            $content
         );
     }
 
@@ -178,11 +179,11 @@ if (isset($_POST['save'])) {
         }
 
         if (isset($_GET['n']) || $pageurlchanged) {
-            save_infomsg(PAGE.' '.CREATED);
-            header('Location: '.$self.'?p='.$newpageurl); // redirect to new page
+            save_infomsg(PAGE . ' ' . CREATED);
+            header('Location: ' . $self . '?p=' . $newpageurl); // redirect to new page
             exit;
         } else {
-            save_infomsg(PAGE.' '.SAVED);
+            save_infomsg(PAGE . ' ' . SAVED);
         }
     }//end if
 }//end if
@@ -196,7 +197,7 @@ if (isset($_GET['p'])) {
     if ($site['clean_url'] >= 1) {
         $pagelink = clean_url(ec($_GET['p']));
     } else {
-        $pagelink = '/'.($siteroot != "" ? $siteroot.'/' : '').'index.php?p='.ec($_GET['p']);
+        $pagelink = '/' . ($siteroot != "" ? $siteroot . '/' : '') . 'index.php?p=' . ec($_GET['p']);
     }
 
     if (has_children($_GET['p'])) {
@@ -214,7 +215,7 @@ if (isset($_GET['p'])) {
         // delete page if no children
         if ($children) {
             save_infomsg('HAS CHILDREN, NOT DELETED');
-            header('Location: '.$self);
+            header('Location: ' . $self);
             exit;
         } else {
             if ($_SESSION['level'] >= 4 || $page['creator'] == $_SESSION['uid']) {
@@ -223,16 +224,16 @@ if (isset($_GET['p'])) {
                 $stmt->bindParam(1, $_GET['p']);
                 $stmt->execute();
                 refresh_pageorder($page['mother']);
-                save_infomsg(PAGE.' '.DELETED);
+                save_infomsg(PAGE . ' ' . DELETED);
                 if ($page['levelnum'] == 1) {
                     $redirect = '';
                 }
                 // redirect to first subpage with same mother after delete
                 else {
-                    $redirect = '?p='.query_single("SELECT pageurl FROM page WHERE levelnum = ".$page['levelnum']." AND mother = '".$page['mother']."' ORDER BY levelnum LIMIT 1");
+                    $redirect = '?p=' . query_single("SELECT pageurl FROM page WHERE levelnum = " . $page['levelnum'] . " AND mother = '" . $page['mother'] . "' ORDER BY levelnum LIMIT 1");
                 }
 
-                header('Location: '.$self.$redirect);
+                header('Location: ' . $self . $redirect);
                 exit;
             }
         }//end if
@@ -244,7 +245,7 @@ if (isset($_GET['p'])) {
 
         if ($_SESSION['level'] >= 4) {
             if ($page['ordernum'] == 1) {
-                header('Location: '.$self.'?p='.ec($_GET['p'])); // already first page, just redirect to this page
+                header('Location: ' . $self . '?p=' . ec($_GET['p'])); // already first page, just redirect to this page
                 exit;
             } else {
                 // update sister pages with current ordernum - 1 to this ordernum
@@ -259,7 +260,7 @@ if (isset($_GET['p'])) {
                 $stmt->bindParam(2, $_GET['p']);
                 $stmt->execute();
                 // redirect to this page without '&moveup=1'
-                header('Location: '.$self.'?p='.ec($_GET['p']));
+                header('Location: ' . $self . '?p=' . ec($_GET['p']));
                 exit;
             }
         }//end if
@@ -268,7 +269,7 @@ if (isset($_GET['p'])) {
     // no page defined -> redirect to first page
     $pageurl = query_single("SELECT pageurl FROM page WHERE ordernum = 1 AND mother = ''");
     if ($pageurl) {
-        header('Location: '.$self.'?p='.$pageurl);
+        header('Location: ' . $self . '?p=' . $pageurl);
         exit;
     }
 }//end if
@@ -289,7 +290,7 @@ $token = csrf_token();
 
                         
             <!-- **************** RightDiv ******************** -->    
-                <form method="post" action="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']);?>" name="pageEditForm">
+                <form method="post" action="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']);?>" name="pageEditForm">
                 <input type="hidden" name="save" value="1" />
                 <input type="hidden" name="ordernum" value="<?php echo $page['ordernum'];?>" />
                 <div id="rightDiv">
@@ -299,14 +300,14 @@ $token = csrf_token();
                             if ($_SESSION['level'] > 3 || $page['creator'] == "" || $page['creator'] == $_SESSION['uid']) {
                                 ?><li><a href="javascript:document.pageEditForm.submit();" class="save" onclick="return validate(document.forms[0]);"><span><?php echo SAVE;?></span></a></li><?php
                             }?>
-                            <li><a href="<?php echo $self.'?n=1';?>" class="new"><span><?php echo RNEW;?></span></a></li>
+                            <li><a href="<?php echo $self . '?n=1';?>" class="new"><span><?php echo RNEW;?></span></a></li>
                             <?php
                             if (isset($_GET['p']) and ($_SESSION['level'] > 3 || $page['creator'] == "" || $page['creator'] == $_SESSION['uid'])) {
-                                ?><li><a href="<?php echo $self.'?'.ec($_SERVER['QUERY_STRING']).'&amp;d=1&amp;token='.$token;?>" class="delete" onclick="<?php
+                                ?><li><a href="<?php echo $self . '?' . ec($_SERVER['QUERY_STRING']) . '&amp;d=1&amp;token=' . $token;?>" class="delete" onclick="<?php
 if ($children) {
-    echo "alert('".NODELETECHILDREN."');return false";
+    echo "alert('" . NODELETECHILDREN . "');return false";
 } else {
-    echo "return confirm('".DELETEPAGECONFIRM."');";
+    echo "return confirm('" . DELETEPAGECONFIRM . "');";
 }
 ?>"><span><?php echo DELETE;?></span></a></li><?php
                             }
@@ -315,7 +316,7 @@ if ($children) {
 
                         <div id="currentPage"><?php
                         if (isset($page['name'])) {
-                            echo SELECTEDPAGE.': <b id="selectedPage">'.ec($page['name']).'</b>';
+                            echo SELECTEDPAGE . ': <b id="selectedPage">' . ec($page['name']) . '</b>';
                         }
                         ?></div>
                            
@@ -378,7 +379,7 @@ if ($children) {
                                             ?>>---<?php echo FREEPAGE;?>---</option>
                                             <?php foreach ($pagelist as $key => $value) {
                                                 if ($key != $_GET['p']) {
-                                                    echo '<option value="'.$key.'"'.($key == $page['mother'] ? ' selected="selected"' : '').'>'.$value.'</option>';
+                                                    echo '<option value="' . $key . '"' . ($key == $page['mother'] ? ' selected="selected"' : '') . '>' . $value . '</option>';
                                                 }
                                             }?>
                                         </select>
@@ -418,7 +419,7 @@ if ($children) {
                             
                             <?php
                             if ($children) {
-                                echo '<input name="mother_hidden" type="hidden" value="'.$page['mother'].'" />';
+                                echo '<input name="mother_hidden" type="hidden" value="' . $page['mother'] . '" />';
                             } //end if
                             ?>
                             <input name="creator" type="hidden" value="<?php
@@ -437,7 +438,7 @@ if ($children) {
                                         echo ec($page['title']);
                                     }
                                     ?>" /></td>
-                                    <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_PAGETITLE.H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+                                    <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_PAGETITLE . H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdSEOAdminLeft"><?php echo DESCRIPTION;?></td>
@@ -446,7 +447,7 @@ if ($children) {
                                         echo ec($page['description']);
                                     }
                                     ?></textarea></td>
-                                    <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_DESCRIPTION.H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+                                    <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_DESCRIPTION . H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                                 <tr>
                                     <td class="tdSEOAdminLeft"><?php echo KEYWORDS;?></td>
@@ -455,7 +456,7 @@ if ($children) {
                                         echo ec($page['keywords']);
                                     }
                                     ?></textarea></td>
-                                    <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_KEYWORDS.H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
+                                    <td class="tdSEOAdminRight"><a href="#" class="tooltip" title="<?php echo H_KEYWORDS . H_DEFAULTIFEMPTY;?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>
                                 </tr>
                             </table>
 
@@ -498,14 +499,14 @@ if ($children) {
                                         <td>
                                             <?php
                                             if (!empty($page['image1'])) {
-                                                echo '<img id="pic1img" src="'.ec($page['image1']).'" alt="'.NOPREVIEW.'" height="84" width="134" />';
+                                                echo '<img id="pic1img" src="' . ec($page['image1']) . '" alt="' . NOPREVIEW . '" height="84" width="134" />';
                                             }
                                             ?>
                                         </td>
                                         <td>
                                             <?php
                                             if (!empty($page['image2'])) {
-                                                echo '<img id="pic2img" src="'.ec($page['image2']).'" alt="'.NOPREVIEW.'" height="84" width="134" />';
+                                                echo '<img id="pic2img" src="' . ec($page['image2']) . '" alt="' . NOPREVIEW . '" height="84" width="134" />';
                                             }
                                             ?>
                                         </td>
@@ -557,11 +558,11 @@ if ($children) {
                     <p class="updated">
                     <?php
                     if (isset($page['creator'])) {
-                        echo CREATOR.': '.$page['creator'];
+                        echo CREATOR . ': ' . $page['creator'];
                     }
 
                     if (isset($page['updated'])) {
-                        echo ' | '.UPDATED.' '.$page['updated'].' ('.$page['updater'].')';
+                        echo ' | ' . UPDATED . ' ' . $page['updated'] . ' (' . $page['updater'] . ')';
                     }
                     ?>
                     </p>
@@ -574,5 +575,5 @@ if ($children) {
 require 'includes/footer.php';
 
 if (isset($error) and $error == SQLITENOTWRITABLE) {
-    echo '<script language="javascript" type="text/javascript">alert(\''.$error.'\');</script>';
+    echo '<script language="javascript" type="text/javascript">alert(\'' . $error . '\');</script>';
 }

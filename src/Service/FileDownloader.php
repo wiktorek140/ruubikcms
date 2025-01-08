@@ -10,7 +10,6 @@ class FileDownloader
 
     private $baseDir;
 
-
     public function __construct(Database $db, string $baseDir = 'useruploads/files/')
     {
         $this->db = $db;
@@ -48,9 +47,7 @@ class FileDownloader
 
         $this->logDownload($fname);
         $this->updateDownloadCounter($fname);
-
     }
-
 
     private function getMimeType($fpath)
     {
@@ -69,9 +66,7 @@ class FileDownloader
         }
 
         return $mtype;
-
     }
-
 
     private function setHeaders($mtype, $asfname, $fsize)
     {
@@ -84,9 +79,7 @@ class FileDownloader
         header("Content-Disposition: attachment; filename=\"$asfname\"");
         header("Content-Transfer-Encoding: binary");
         header("Content-Length: " . $fsize);
-
     }
-
 
     private function outputFile($fpath)
     {
@@ -103,17 +96,19 @@ class FileDownloader
 
             @fclose($file);
         }
-
     }
-
 
     private function logDownload($fname)
     {
-        $this->db->execute("INSERT INTO dl_log (filename, ip, time) VALUES (?, ?, ?)",
-            [$fname, $_SERVER['REMOTE_ADDR'], date("Y-m-d H:i:s")]
+        $this->db->execute(
+            "INSERT INTO dl_log (filename, ip, time) VALUES (?, ?, ?)",
+            [
+                $fname,
+                $_SERVER['REMOTE_ADDR'],
+                date("Y-m-d H:i:s"),
+            ]
         );
     }
-
 
     private function updateDownloadCounter($fname)
     {
