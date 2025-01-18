@@ -1,0 +1,7 @@
+- method: GET
+  path: /user
+  handler: [UserController, getUser]
+
+- method: POST
+  path: /user
+  handler: [UserController, createUser]
