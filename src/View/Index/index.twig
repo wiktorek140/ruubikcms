@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+    <title>{{ page.title }}</title>
+    {{ page.gacode|raw }}
+    <meta charset="{{ page.charset }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description }}"/>
+    <meta name="keywords" content="{{ page.keywords }}"/>
+    <meta name="robots" content="{{ page.robots }}"/>
+    <meta name="doc-rights" content="Copywritten Work"/>
+    <meta name="author" content="{{ page.author }}"/>
+    <meta name="copyright" content="{{ page.copyright }}"/>
+
+    <link rel="shortcut icon" href="{{ siteroot }}ruubikcms/website/images/logo.ico"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/default.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/styleBody.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/styleColLeft.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/styleColCenter.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/styleColRight.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/styleMenus.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/css/styleGallery.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}ruubikcms/website/lightbox/css/lightbox.min.css"/>
+    <link rel="stylesheet" href="{{ siteroot }}default.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ siteroot }}ruubikcms/website/lightbox/js/lightbox.min.js"></script>
+    <script src="{{ siteroot }}ruubikcms/website/scripts/datescripts.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="innerWrapper">
+        <!-- **************** HEADER ******************** -->
+        <div id="header">
+            <div id="design"></div>
+            <div id="mainMenu">
+                {% if isMobile() and false %}
+                    {{ page.dropdownmenu|raw }}
+                {% else %}
+                    {{ page.mainmenu|raw }}
+                {% endif %}
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <!-- **************** MAINBODY ******************** -->
+        <div id="mainBody">
+            <div id="ColLeft">
+                <div id="subMenu">
+                    {{ page.submenu1|raw }}
+                </div>
+                {{ snippet('dni-wolne') }}
+            </div>
+
+            <div id="ColCenter">
+                <div id="content">
+                    <h1>{{ page.header1 }}</h1>
+                    {{ page.content|raw }}
+                </div>
+            </div>
+
+            <div id="ColRight">
+                {{ snippet_php('right-column') }}
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <!-- **************** FOOTER ******************** -->
+        <div id="footer">
+            <div>
+                <a href="/link/index.html">.</a><a href="/link/historia-szkoly.html">.</a>
+                Powered by <a href="http://www.ruubikcms.com/">RuubikCMS</a>
+                | Copyright &copy; {{ "now"|date("Y") }} {{ page.sitename }}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(() => {
+        $('#subMenu>ul>li').click(() => {
+            $('#subMenu>ul>li>ul').slideToggle();
+        });
+    });
+</script>
+</body>
+</html>
