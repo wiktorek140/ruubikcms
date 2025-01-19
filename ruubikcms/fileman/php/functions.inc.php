@@ -136,13 +136,8 @@ function mb_ereg_replace2(
     string $string,
     ?string $options = null
 ): string|false|null {
-    if (function_exists('mb_ereg_replace')) {
-        return mb_ereg_replace($pattern, $replacement, $string, $options);
-    }
-
-    // @phpstan-ignore function.notFound
     return mb_ereg_replace_e_modifier($pattern, $replacement, $string, $options);
-}//end mb_ereg_replace2()
+}
 
 function listDirectory($path)
 {

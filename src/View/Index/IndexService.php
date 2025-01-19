@@ -1,5 +1,7 @@
 <?php
 
+namespace Ruubik\View\Index;
+
 class IndexService
 {
     /**

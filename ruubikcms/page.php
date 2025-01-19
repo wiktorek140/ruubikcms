@@ -205,7 +205,7 @@ foreach ($dbh->query($sql) as $row) {
 }//end foreach
 
 $page['mainmenu'] .= '<li' . ($p == $row['pageurl'] ? ' class="selected"' : '') . '></li>
-                      <li><div><a href="#">Dzisiaj jest ' . ucwords(strftime('%A, %d %B %G')) . ' <span class="clock"></span></a></div></li>';
+                      <li><div><a href="#">Dzisiaj jest ' . ucwords(date('l, d F Y')) . ' <span class="clock"></span></a></div></li>';
 if ($counter != 0) {
     $page['mainmenu'] .= '</ul>';
 }
