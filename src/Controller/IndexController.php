@@ -12,7 +12,7 @@ class IndexController extends Controller
     {
         parent::__construct();
         // Inicjalizacja serwisu
-        $this->indexeService = new IndexService();
+        $this->indexService = new IndexService();
     }
 
     public function renderPage(): void
