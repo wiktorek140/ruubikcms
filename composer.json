@@ -1,6 +1,7 @@
 {
     "require": {
         "php": ">=8.3",
+        "ext-mbstring": "*",
         "ext-pdo": "*",
         "symfony/yaml": "^7.2",
         "twig/twig": "^3"

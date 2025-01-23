@@ -57,7 +57,7 @@ foreach ($files as $f) {
         }
     }
 
-    $str .= '{"p":"' . mb_ereg_replace2('"', '\\"', $fullPath) . '","s":"' . $size . '","t":"' . $time . '","w":"' . $w . '","h":"' . $h . '"},';
+    $str .= '{"p":"' . mb_ereg_replace('"', '\\"', $fullPath) . '","s":"' . $size . '","t":"' . $time . '","w":"' . $w . '","h":"' . $h . '"},';
 }
 
 $str = mb_substr($str, 0, -1);
