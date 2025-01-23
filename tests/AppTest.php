@@ -2,8 +2,14 @@
 
 namespace Ruubik\Tests;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Ruubik\Application\App;
+use Ruubik\Service\Network\Request;
+use Ruubik\Service\Network\RequestInterface;
+use Ruubik\Service\Network\Response;
+use Ruubik\Service\Network\ResponseInterface;
+use Ruubik\Service\RouteLoader;
 
 class AppTest extends TestCase
 {
@@ -29,7 +35,7 @@ class AppTest extends TestCase
             [
                 'method'  => 'GET',
                 'path'    => '/test',
-                'handler' => function ($request, $response) {
+                'handler' => function (RequestInterface $request, ResponseInterface $response) {
                     $response->setStatusCode(200);
                     $response->setBody('{"message": "Success"}');
                     return $response;
@@ -38,19 +44,15 @@ class AppTest extends TestCase
         ]);
         $app = new App($routeLoaderMock);
 
-        $request = $this->createMock(RequestInterface::class);
-        $request->method('getServerParam')->willReturnMap([
-            [
-                'REQUEST_METHOD',
-                'GET',
-                'GET',
-            ],
-            [
-                'REQUEST_URI',
-                '/test',
-                '/test',
-            ],
-        ]);
+        $request = $this->createMock(Request::class);
+        $request->method('getServerParam')
+            ->willReturnCallback(function ($param, $default) {
+                $map = [
+                    'REQUEST_METHOD' => 'GET',
+                    'REQUEST_URI'    => '/test',
+                ];
+                return $map[$param] ?? $default;
+            });
 
         $response = new Response();
 
@@ -67,19 +69,15 @@ class AppTest extends TestCase
 
         $app = new App($routeLoaderMock);
 
-        $request = $this->createMock(RequestInterface::class);
-        $request->method('getServerParam')->willReturnMap([
-            [
-                'REQUEST_METHOD',
-                'GET',
-                'GET',
-            ],
-            [
-                'REQUEST_URI',
-                '/invalid',
-                '/invalid',
-            ],
-        ]);
+        $request = $this->createMock(Request::class);
+        $request->method('getServerParam')
+            ->willReturnCallback(function ($param, $default) {
+                $map = [
+                    'REQUEST_METHOD' => 'GET',
+                    'REQUEST_URI'    => '/invalid',
+                ];
+                return $map[$param] ?? $default;
+            });
 
         $response = new Response();
 
@@ -107,19 +105,15 @@ class AppTest extends TestCase
 
         $app = new App($routeLoaderMock);
 
-        $request = $this->createMock(RequestInterface::class);
-        $request->method('getServerParam')->willReturnMap([
-            [
-                'REQUEST_METHOD',
-                'GET',
-                'GET',
-            ],
-            [
-                'REQUEST_URI',
-                '/error',
-                '/error',
-            ],
-        ]);
+        $request = $this->createMock(Request::class);
+        $request->method('getServerParam')
+            ->willReturnCallback(function ($param, $default) {
+                $map = [
+                    'REQUEST_METHOD' => 'GET',
+                    'REQUEST_URI'    => '/error',
+                ];
+                return $map[$param] ?? $default;
+            });
 
         $response = new Response();
 

@@ -1,16 +1,18 @@
 <?php
 
-namespace Ruubik\Conttoller;
+namespace Ruubik\Controller;
 
+use Ruubik\Service\Network\RequestInterface;
+use Ruubik\Service\Network\ResponseInterface;
 use Ruubik\View\Index\IndexService;
 
 class IndexController extends Controller
 {
-    private $indexService;
+    private IndexService $indexService;
 
-    public function __construct()
+    public function __construct(RequestInterface $request, ResponseInterface $response)
     {
-        parent::__construct();
+        parent::__construct($request, $response);
         // Inicjalizacja serwisu
         $this->indexService = new IndexService();
     }
@@ -33,6 +35,6 @@ class IndexController extends Controller
         ];
 
         // Renderowanie widoku
-        echo $this->getTwig()->render('index.html.twig', $pageData);
+        $this->response->setBody($this->getTwig()->render('index/index.twig', $pageData));
     }
 }

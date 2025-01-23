@@ -1,7 +1,7 @@
 - method: GET
   path: /user
-  handler: [UserController, getUser]
+  handler: { class: Ruubik\Controller\IndexController, method: renderPage }
 
 - method: POST
-  path: /user
-  handler: [UserController, createUser]
+  path: /user2
+  handler: { class: Ruubik\Conttoller\IndexController:class, method: renderPage }

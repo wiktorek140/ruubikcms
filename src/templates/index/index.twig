@@ -34,7 +34,7 @@
         <div id="header">
             <div id="design"></div>
             <div id="mainMenu">
-                {% if isMobile() and false %}
+                {% if page.isMobile() and false %}
                     {{ page.dropdownmenu|raw }}
                 {% else %}
                     {{ page.mainmenu|raw }}
@@ -49,7 +49,7 @@
                 <div id="subMenu">
                     {{ page.submenu1|raw }}
                 </div>
-                {{ snippet('dni-wolne') }}
+                {{ page.snippet('dni-wolne') }}
             </div>
 
             <div id="ColCenter">
@@ -60,7 +60,7 @@
             </div>
 
             <div id="ColRight">
-                {{ snippet_php('right-column') }}
+                {{ page.snippet_php('right-column') }}
             </div>
             <div class="clear"></div>
         </div>

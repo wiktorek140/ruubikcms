@@ -11,7 +11,8 @@ class IndexService
      */
     public function getPageData(): array
     {
-        require 'ruubikcms/page.php';
+        // require 'ruubikcms/page.php';
+        $page = [];
 
         return [
             'doctype'      => $page['doctype'] ?? '<!DOCTYPE html>',
@@ -62,7 +63,8 @@ class IndexService
     public function snippetPHP(string $name): string
     {
         ob_start();
-        snippet_php($name); // Zakładamy, że funkcja `snippet` jest dostępna
+        // todo - implement snipet service
+        // snippet_php($name); // Zakładamy, że funkcja `snippet` jest dostępna
         return ob_get_clean();
     }
 
@@ -74,6 +76,8 @@ class IndexService
      */
     public function snippet(string $name): string
     {
-        return snippet($name);
+        return '';
+        // todo implement snippet service
+        // snippet($name);
     }
 }

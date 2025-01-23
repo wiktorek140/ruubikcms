@@ -1,21 +1,25 @@
 <?php
 
-namespace Ruubik\Conttoller;
+namespace Ruubik\Controller;
 
+use Ruubik\Service\Network\RequestInterface;
+use Ruubik\Service\Network\ResponseInterface;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 abstract class Controller
 {
-    private $twig;
+    private Environment $twig;
 
-    public function __construct()
-    {
-        $loader = new FilesystemLoader(__DIR__ . '/templates');
+    public function __construct(
+        public RequestInterface $request,
+        public ResponseInterface $response
+    ) {
+        $loader = new FilesystemLoader(__DIR__ . '/../templates');
         $this->twig = new Environment($loader);
     }
 
-    public function getTwig()
+    public function getTwig(): Environment
     {
         return $this->twig;
     }
