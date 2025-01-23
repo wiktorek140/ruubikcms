@@ -1,5 +1,5 @@
 <?php
-if (basename($_SERVER['REQUEST_URI']) == 'form.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'form.php') {
     die('Access denied');
 } ?>
 <form method="post" action="login/login.php">

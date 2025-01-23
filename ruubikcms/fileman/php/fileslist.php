@@ -28,7 +28,7 @@ verifyAction('FILESLIST');
 checkAccess('FILESLIST');
 
 $path = (empty($_POST['d']) ? getFilesPath() : $_POST['d']);
-$type = (empty($_POST['type']) ? '' : strtolower($_POST['type']));
+$type = (empty($_POST['type']) ? '' : strtolower((string) $_POST['type']));
 if ($type != 'image' && $type != 'flash') {
     $type = '';
 }

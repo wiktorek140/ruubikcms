@@ -6,13 +6,10 @@ use Ruubik\Service\Db\Database;
 
 class FileDownloader
 {
-    private $db;
-
     private $baseDir;
 
-    public function __construct(Database $db, string $baseDir = 'useruploads/files/')
+    public function __construct(private readonly Database $db, string $baseDir = 'useruploads/files/')
     {
-        $this->db = $db;
         @set_time_limit(0);
     }
 
@@ -22,7 +19,7 @@ class FileDownloader
             die("Please specify file name for download.");
         }
 
-        $fname = basename($fileName);
+        $fname = basename((string) $fileName);
         $fname = rtrim($fname);
         $fpath = $this->baseDir . $fname;
 

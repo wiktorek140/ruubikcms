@@ -1,6 +1,6 @@
 <?php if (
-    basename($_SERVER['REQUEST_URI']) == 'footer.php'
-    || strpos($_SERVER['REQUEST_URI'], 'footer.php') !== false
+    basename((string) $_SERVER['REQUEST_URI']) == 'footer.php'
+    || str_contains((string) $_SERVER['REQUEST_URI'], 'footer.php')
 ) {
     die('Access Denied');
 } ?>

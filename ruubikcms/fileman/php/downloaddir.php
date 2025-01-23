@@ -27,7 +27,7 @@ require 'functions.inc.php';
 verifyAction('DOWNLOADDIR');
 checkAccess('DOWNLOADDIR');
 
-$path = trim($_GET['d']);
+$path = trim((string) $_GET['d']);
 verifyPath($path);
 $path = fixPath($path);
 
@@ -35,7 +35,7 @@ if (!class_exists('ZipArchive')) {
     echo '<script>alert("Cannot create zip archive - ZipArchive class is missing. Check your PHP version and configuration");</script>';
 } else {
     try {
-        $filename = basename($path);
+        $filename = basename((string) $path);
         $zipFile = $filename . '.zip';
         $zipPath = BASE_PATH . '/tmp/' . $zipFile;
         RoxyFile::ZipDir($path, $zipPath);
@@ -50,7 +50,7 @@ if (!class_exists('ZipArchive')) {
         }//end deleteTmp()
 
         register_shutdown_function('deleteTmp', $zipPath);
-    } catch (Exception $ex) {
-        echo '<script>alert("' . addslashes(t('E_CreateArchive')) . '");</script>';
+    } catch (Exception) {
+        echo '<script>alert("' . addslashes((string) t('E_CreateArchive')) . '");</script>';
     }//end try
 }//end if

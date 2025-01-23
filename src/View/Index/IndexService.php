@@ -51,7 +51,7 @@ class IndexService
      */
     public function isMobile(): bool
     {
-        return isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/mobile|android|iphone/i', $_SERVER['HTTP_USER_AGENT']);
+        return isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/mobile|android|iphone/i', (string) $_SERVER['HTTP_USER_AGENT']);
     }
 
     /**

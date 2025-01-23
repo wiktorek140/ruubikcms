@@ -24,7 +24,7 @@ if (isset($_POST['save'])) {
     $news_num = intval($_POST['news_num']);
 
     // siteroot is not encoded for htmlentities in page.php so strip tags to prevent XSS injection
-    $_POST['siteroot'] = strip_tags($_POST['siteroot']);
+    $_POST['siteroot'] = strip_tags((string) $_POST['siteroot']);
 
     // some silly boolean conversion
     $readmore = (int) isset($_POST['news_readmore']);

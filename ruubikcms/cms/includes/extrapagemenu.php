@@ -1,8 +1,8 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'extrapagemenu.php') {
+<?php if (basename((string) $_SERVER['REQUEST_URI']) == 'extrapagemenu.php') {
     die('Access denied');
 }
 
-if (strpos($_SERVER['REQUEST_URI'], 'extrapagemenu.php') !== false) {
+if (str_contains((string) $_SERVER['REQUEST_URI'], 'extrapagemenu.php')) {
     die("Access Denied");
 }?>
 

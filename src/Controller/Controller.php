@@ -9,7 +9,7 @@ use Twig\Loader\FilesystemLoader;
 
 abstract class Controller
 {
-    private Environment $twig;
+    private readonly Environment $twig;
 
     public function __construct(
         public RequestInterface $request,

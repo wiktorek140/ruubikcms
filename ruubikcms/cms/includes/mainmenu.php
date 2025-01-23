@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'mainmenu.php' || strpos($_SERVER['REQUEST_URI'], 'mainmenu.php') !== false) {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'mainmenu.php' || str_contains((string) $_SERVER['REQUEST_URI'], 'mainmenu.php')) {
     die('Access Denied');
 }
 

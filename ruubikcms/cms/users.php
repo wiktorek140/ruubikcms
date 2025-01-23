@@ -59,7 +59,7 @@ if (isset($_POST['save'])) {
             $stmt->bindParam(6, $_GET['p']);
             $stmt->execute();
         } else {
-            $passwordhash = sha1($_POST['password']);
+            $passwordhash = sha1((string) $_POST['password']);
             // passwords also changes, insert or replace all data
             $stmt = $dbh->prepare("INSERT OR REPLACE INTO cmsuser (username, password, role, firstname, lastname, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->bindParam(1, $newname);

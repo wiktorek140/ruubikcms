@@ -34,7 +34,7 @@ verifyPath($path);
 if (is_dir(fixPath($path))) {
     if (fixPath($path . '/') == fixPath(getFilesPath() . '/')) {
         echo getErrorRes(t('E_CannotRenameRoot'));
-    } else if (rename(fixPath($path), dirname(fixPath($path)) . '/' . $name)) {
+    } else if (rename(fixPath($path), dirname((string) fixPath($path)) . '/' . $name)) {
         echo getSuccessRes();
     } else {
         echo getErrorRes(t('E_RenameDir') . ' ' . basename($path));

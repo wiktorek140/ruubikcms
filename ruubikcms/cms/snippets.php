@@ -49,7 +49,7 @@ if (isset($_POST['save'])) {
     }
 
     // insert or update snippet
-    $content = stripslashes($_POST['tinyMCE']);
+    $content = stripslashes((string) $_POST['tinyMCE']);
     $stmt = $dbh->prepare("INSERT OR REPLACE INTO snippet (name, content, tinymce) VALUES (?, ?, ?)");
     $stmt->bindParam(1, $newname);
     $stmt->bindParam(2, $content);
@@ -164,9 +164,9 @@ $token = csrf_token();
 <?php
 if (!isset($_GET['n'])) {
     if ($snippet['tinymce'] == 1) {
-        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE">' . htmlentities($snippet['content']) . '</textarea></div>';
+        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE">' . htmlentities((string) $snippet['content']) . '</textarea></div>';
     } else {
-        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE">' . htmlentities($snippet['content']) . '</textarea></div>';
+        echo '<div id="tinyMCE"><textarea cols="63" rows="20" name="tinyMCE">' . htmlentities((string) $snippet['content']) . '</textarea></div>';
     }
     ?>
 

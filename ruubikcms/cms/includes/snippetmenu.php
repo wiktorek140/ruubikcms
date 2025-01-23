@@ -1,8 +1,8 @@
 <?php
 
 if (
-    basename($_SERVER['REQUEST_URI']) == 'snippetmenu.php'
-    || strpos($_SERVER['REQUEST_URI'], 'snippetmenu') !== false
+    basename((string) $_SERVER['REQUEST_URI']) == 'snippetmenu.php'
+    || str_contains((string) $_SERVER['REQUEST_URI'], 'snippetmenu')
 ) {
     die('Access Denied');
 } ?>

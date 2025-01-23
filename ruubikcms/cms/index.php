@@ -5,7 +5,7 @@ $_SESSION['extra'] = false;
 $cmspage = WEBPAGES;
 $page = [];
 $site = get_site_data();
-$siteroot = trim($site['siteroot'], '/');
+$siteroot = trim((string) $site['siteroot'], '/');
 $self = ec($_SERVER['PHP_SELF']);
 
 if (isset($_POST['save'])) {
@@ -37,7 +37,7 @@ if (isset($_POST['save'])) {
     $extracode_raw = $_POST['extracode'];
 
     // remove slashes from html
-    $content = stripslashes($_POST['tinyMCE']);
+    $content = stripslashes((string) $_POST['tinyMCE']);
 
     // convert index.php?p=pageurl links to clean url links
     if ($site['clean_url'] >= 1) {
@@ -471,7 +471,7 @@ if ($children) {
                             <div id="xtrAreaBlue"><a href="#" class="tooltip" style="float: right; margin-bottom:5px;" title="<?php echo H_EXTRACODE;?>"><img src="images/help.gif" class="imgover" alt="" /></a>
                             <textarea name="extracode" cols="2" rows="2"><?php
                             if (isset($page['extracode'])) {
-                                echo stripslashes_gpc(htmlentities($page['extracode'], $ent = ENT_COMPAT, $site['charset']));
+                                echo stripslashes_gpc(htmlentities((string) $page['extracode'], $ent = ENT_COMPAT, $site['charset']));
                             }
                             ?></textarea></div>
                         </div>
@@ -548,7 +548,7 @@ if ($children) {
                         <div id="tinyMCE">
                             <textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE" id="tinyMCEarea"><?php
                             if (isset($page['content'])) {
-                                echo htmlentities($page['content'], $ent = ENT_COMPAT, $site['charset']);
+                                echo htmlentities((string) $page['content'], $ent = ENT_COMPAT, $site['charset']);
                             }
                             ?></textarea>
                         </div>

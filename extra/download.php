@@ -24,7 +24,7 @@ if (!isset($_GET['f']) || empty($_GET['f'])) {
 }
 
 // get real file name, remove any path info to avoid hacking by adding relative path etc
-$fname = basename($_GET['f']);
+$fname = basename((string) $_GET['f']);
 $fpath = BASE_DIR . $fname;
 
 if (!is_file($fpath)) {

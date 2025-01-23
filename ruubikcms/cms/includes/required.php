@@ -1,11 +1,11 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'required.php' || strpos($_SERVER['REQUEST_URI'], 'required.php') !== false) {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'required.php' || str_contains((string) $_SERVER['REQUEST_URI'], 'required.php')) {
     die('Access Denied');
 }
 
 $start = microtime(true);
-$filename = basename($_SERVER['PHP_SELF']);
+$filename = basename((string) $_SERVER['PHP_SELF']);
 require __DIR__ . '../../includes/dbconfig.php';
 require __DIR__ . 'dbconnection.php';
 require __DIR__ . '../../includes/commonfunc.php';

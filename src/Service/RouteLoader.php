@@ -8,18 +8,12 @@ use Exception;
 class RouteLoader
 {
     /**
-     * @var string Path to the YAML file containing the routes.
-     */
-    protected string $filePath;
-
-    /**
      * RouteLoader constructor.
      *
      * @param string $filePath Path to the YAML file containing the routes.
      */
-    public function __construct(string $filePath)
+    public function __construct(protected string $filePath)
     {
-        $this->filePath = $filePath;
     }
 
     /**

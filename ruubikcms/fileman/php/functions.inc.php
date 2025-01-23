@@ -31,7 +31,7 @@ function t($key)
         $langPath = '../lang/';
         if (defined('LANG')) {
             if (LANG == 'auto') {
-                $lang = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+                $lang = strtolower(substr((string) $_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
                 if (is_file($langPath . $lang . '.json')) {
                     $file = $lang . '.json';
                 }
@@ -54,7 +54,7 @@ function t($key)
 function checkPath($path)
 {
     $ret = false;
-    if (mb_strpos($path . '/', getFilesPath()) === 0) {
+    if (mb_strpos($path . '/', (string) getFilesPath()) === 0) {
         $ret = true;
     }
 
@@ -67,14 +67,14 @@ function verifyAction($action)
         exit;
     } else {
         $confUrl = constant($action);
-        $qStr = mb_strpos($confUrl, '?');
+        $qStr = mb_strpos((string) $confUrl, '?');
         if ($qStr !== false) {
-            $confUrl = mb_substr($confUrl, 0, $qStr);
+            $confUrl = mb_substr((string) $confUrl, 0, $qStr);
         }
 
         $confUrl = BASE_PATH . '/' . $confUrl;
         $confUrl = RoxyFile::FixPath($confUrl);
-        $thisUrl = __DIR__ . '/' . basename($_SERVER['PHP_SELF']);
+        $thisUrl = __DIR__ . '/' . basename((string) $_SERVER['PHP_SELF']);
         $thisUrl = RoxyFile::FixPath($thisUrl);
         if ($thisUrl != $confUrl) {
             echo "$confUrl $thisUrl";
@@ -101,7 +101,7 @@ function fixPath($path)
 
 function gerResultStr($type, $str = '')
 {
-    return '{"res":"' . addslashes($type) . '","msg":"' . addslashes($str) . '"}';
+    return '{"res":"' . addslashes((string) $type) . '","msg":"' . addslashes((string) $str) . '"}';
 }//end gerResultStr()
 
 function getSuccessRes($str = '')
@@ -120,8 +120,8 @@ function getFilesPath()
     if (!$ret) {
         $ret = RoxyFile::FixPath(BASE_PATH . '/Uploads');
         $tmp = $_SERVER['DOCUMENT_ROOT'];
-        if (mb_substr($tmp, -1) == '/' || mb_substr($tmp, -1) == '\\') {
-            $tmp = mb_substr($tmp, 0, -1);
+        if (mb_substr((string) $tmp, -1) == '/' || mb_substr((string) $tmp, -1) == '\\') {
+            $tmp = mb_substr((string) $tmp, 0, -1);
         }
 
         $ret = str_replace(RoxyFile::FixPath($tmp), '', $ret);
@@ -280,49 +280,22 @@ class RoxyFile
         $type = 'application/octet-stream';
         $ext = self::GetExtension($filename);
 
-        switch (strtolower($ext)) {
-            case 'jpg':
-                $type = 'image/jpeg';
-                break;
-            case 'jpeg':
-                $type = 'image/jpeg';
-                break;
-            case 'gif':
-                $type = 'image/gif';
-                break;
-            case 'png':
-                $type = 'image/png';
-                break;
-            case 'bmp':
-                $type = 'image/bmp';
-                break;
-            case 'tiff':
-                $type = 'image/tiff';
-                break;
-            case 'tif':
-                $type = 'image/tiff';
-                break;
-            case 'pdf':
-                $type = 'application/pdf';
-                break;
-            case 'rtf':
-                $type = 'application/msword';
-                break;
-            case 'doc':
-                $type = 'application/msword';
-                break;
-            case 'xls':
-                $type = 'application/vnd.ms-excel';
-                break;
-            case 'zip':
-                $type = 'application/zip';
-                break;
-            case 'swf':
-                $type = 'application/x-shockwave-flash';
-                break;
-            default:
-                $type = 'application/octet-stream';
-        }//end switch
+        $type = match (strtolower($ext)) {
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'gif' => 'image/gif',
+            'png' => 'image/png',
+            'bmp' => 'image/bmp',
+            'tiff' => 'image/tiff',
+            'tif' => 'image/tiff',
+            'pdf' => 'application/pdf',
+            'rtf' => 'application/msword',
+            'doc' => 'application/msword',
+            'xls' => 'application/vnd.ms-excel',
+            'zip' => 'application/zip',
+            'swf' => 'application/x-shockwave-flash',
+            default => 'application/octet-stream',
+        };//end switch
 
         return $type;
     }//end GetMIMEType()
@@ -400,19 +373,19 @@ class RoxyFile
 
     static function GetFullName($filename)
     {
-        $tmp = mb_strpos($filename, '?');
+        $tmp = mb_strpos((string) $filename, '?');
         if ($tmp !== false) {
-            $filename = mb_substr($filename, 0, $tmp);
+            $filename = mb_substr((string) $filename, 0, $tmp);
         }
 
-        $filename = basename($filename);
+        $filename = basename((string) $filename);
 
         return $filename;
     }//end GetFullName()
 
     public static function FixPath($path)
     {
-        $path = mb_ereg_replace('[\\\/]+', '/', $path);
+        $path = mb_ereg_replace('[\\\/]+', '/', (string) $path);
         return $path;
     }//end FixPath()
 
@@ -479,17 +452,12 @@ class RoxyImage
     public static function GetImage($path)
     {
         $img = null;
-        $ext = RoxyFile::GetExtension(basename($path));
-        switch ($ext) {
-            case 'png':
-                $img = imagecreatefrompng($path);
-                break;
-            case 'gif':
-                $img = imagecreatefromgif($path);
-                break;
-            default:
-                $img = imagecreatefromjpeg($path);
-        }
+        $ext = RoxyFile::GetExtension(basename((string) $path));
+        $img = match ($ext) {
+            'png' => imagecreatefrompng($path),
+            'gif' => imagecreatefromgif($path),
+            default => imagecreatefromjpeg($path),
+        };
 
         return $img;
     }//end GetImage()
@@ -500,21 +468,16 @@ class RoxyImage
             $img = self::GetImage($img);
         }
 
-        switch (strtolower($type)) {
-            case 'png':
-                imagepng($img, $destination);
-                break;
-            case 'gif':
-                imagegif($img, $destination);
-                break;
-            default:
-                imagejpeg($img, $destination, $quality);
-        }
+        match (strtolower((string) $type)) {
+            'png' => imagepng($img, $destination),
+            'gif' => imagegif($img, $destination),
+            default => imagejpeg($img, $destination, $quality),
+        };
     }//end OutputImage()
 
     public static function SetAlpha($img, $path)
     {
-        $ext = RoxyFile::GetExtension(basename($path));
+        $ext = RoxyFile::GetExtension(basename((string) $path));
         if ($ext == "gif" || $ext == "png") {
             imagecolortransparent($img, imagecolorallocatealpha($img, 0, 0, 0, 127));
             imagealphablending($img, false);
@@ -533,7 +496,7 @@ class RoxyImage
 
         if ($w <= ($width + 1) && (($h <= ($height + 1)) || (!$height && !$width))) {
             if ($source != $destination) {
-                self::OutputImage($source, RoxyFile::GetExtension(basename($source)), $destination, $quality);
+                self::OutputImage($source, RoxyFile::GetExtension(basename((string) $source)), $destination, $quality);
             }
 
             return;
@@ -553,7 +516,7 @@ class RoxyImage
 
         imagecopyresampled($thumbImg, $img, 0, 0, 0, 0, $newWidth, $newHeight, $w, $h);
 
-        self::OutputImage($thumbImg, RoxyFile::GetExtension(basename($source)), $destination, $quality);
+        self::OutputImage($thumbImg, RoxyFile::GetExtension(basename((string) $source)), $destination, $quality);
     }//end Resize()
 
     public static function CropCenter($source, $destination, $width, $height, $quality = 90)
@@ -562,7 +525,7 @@ class RoxyImage
         $w = $tmp[0];
         $h = $tmp[1];
         if (($w <= $width) && (!$height || ($h <= $height))) {
-            self::OutputImage(self::GetImage($source), RoxyFile::GetExtension(basename($source)), $destination, $quality);
+            self::OutputImage(self::GetImage($source), RoxyFile::GetExtension(basename((string) $source)), $destination, $quality);
         }
 
         $ratio = ($width / $height);
@@ -600,7 +563,7 @@ class RoxyImage
 
         imagecopyresampled($thumbImg, $img, 0, 0, $x, $y, $width, $height, $cropWidth, $cropHeight);
 
-        self::OutputImage($thumbImg, RoxyFile::GetExtension(basename($source)), $destination, $quality);
+        self::OutputImage($thumbImg, RoxyFile::GetExtension(basename((string) $source)), $destination, $quality);
     }//end Crop()
 }//end class
 $tmp = json_decode(file_get_contents(BASE_PATH . '/conf.json'), true);

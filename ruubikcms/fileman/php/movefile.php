@@ -36,11 +36,11 @@ if (!$newPath) {
 verifyPath($path);
 verifyPath($newPath);
 
-if (!RoxyFile::CanUploadFile(basename($newPath))) {
+if (!RoxyFile::CanUploadFile(basename((string) $newPath))) {
     echo getErrorRes(t('E_FileExtensionForbidden'));
 } else if (is_file(fixPath($path))) {
     if (file_exists(fixPath($newPath))) {
-        echo getErrorRes(t('E_MoveFileAlreadyExists') . ' ' . basename($newPath));
+        echo getErrorRes(t('E_MoveFileAlreadyExists') . ' ' . basename((string) $newPath));
     } else if (rename(fixPath($path), fixPath($newPath))) {
         echo getSuccessRes();
     } else {

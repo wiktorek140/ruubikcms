@@ -149,7 +149,7 @@ if (isset($_POST['import'])) {
                 'INSERT OR REPLACE INTO extrauser (username, password, firstname, lastname, email, phone, active, expirytime, organization) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
             );
             $stmt->bindParam(1, $newname);
-            $stmt->bindParam(2, sha1($_POST['password']));
+            $stmt->bindParam(2, sha1((string) $_POST['password']));
             $stmt->bindParam(3, $_POST['firstname']);
             $stmt->bindParam(4, $_POST['lastname']);
             $stmt->bindParam(5, $_POST['email']);
@@ -348,7 +348,7 @@ if (isset($_GET['p'])) {
                                     if (
                                         isset($user['expirytime'])
                                     ) {
-                                        echo substr($user['expirytime'], 0, 10);
+                                        echo substr((string) $user['expirytime'], 0, 10);
                                     }
                                     ?>" /></td>
                                     <td class="tdNewsAdminRight"><a href="#" class="tooltip" title="<?php echo H_VALIDUNTIL; ?>"><img src="images/help.gif" class="imgover" alt="" /></a></td>

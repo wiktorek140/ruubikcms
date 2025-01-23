@@ -18,7 +18,8 @@
         "phpstan": "php vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=-1",
         "pcf": "php vendor/bin/phpcs -d memory_limit=-1 --ignore=vendor/ --extensions=php,css .",
         "pcbf": "php vendor/bin/phpcbf -d memory_limit=-1 --ignore=vendor/ --extensions=php,css .",
-        "deprecated": "php vendor/bin/phpdd -e vendor/ -t 8.1 ."
+        "deprecated": "php vendor/bin/phpdd -e vendor/ -t 8.1 .",
+        "rector": "php vendor/bin/rector"
     },
     "autoload": {
         "psr-4": {

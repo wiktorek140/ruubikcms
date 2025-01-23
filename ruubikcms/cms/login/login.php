@@ -17,7 +17,7 @@ require '../languages/' . RLANG . '.php';
 
 $stmt = $dbh->prepare('SELECT username, role, firstname, lastname FROM cmsuser WHERE username = ? AND password = ?');
 
-if ($stmt->execute([$_POST['username'], sha1($_POST['passwd'])])) {
+if ($stmt->execute([$_POST['username'], sha1((string) $_POST['passwd'])])) {
     $result = $stmt->fetch(PDO::FETCH_NUM);
 }
 
@@ -25,7 +25,7 @@ if (empty($result[0])) {
     $_SESSION['notfound'] = true;
     $_SESSION['time'] = time();
     session_write_close();
-    header('Location: ' . htmlspecialchars($_SERVER['HTTP_REFERER']));
+    header('Location: ' . htmlspecialchars((string) $_SERVER['HTTP_REFERER']));
     exit();
 } else {
     $_SESSION['uid'] = $result[0];
@@ -61,4 +61,4 @@ $stmt->bindParam(4, $_SESSION['uid']);
 );
 @$dbh->query('DELETE FROM dl_log WHERE rowid NOT IN (SELECT rowid FROM dl_log ORDER BY time DESC LIMIT 500)');
 
-header('Location: ' . htmlspecialchars($_SERVER['HTTP_REFERER']));
+header('Location: ' . htmlspecialchars((string) $_SERVER['HTTP_REFERER']));

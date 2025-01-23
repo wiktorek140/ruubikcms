@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'pagemenu.php' || strpos($_SERVER['REQUEST_URI'], 'pagemenu') !== false) {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'pagemenu.php' || str_contains((string) $_SERVER['REQUEST_URI'], 'pagemenu')) {
     die('Access Denied');
 } ?>
 <!-- **************** leftDiv (rootMenu) ******************** -->

@@ -1,4 +1,4 @@
-<?php if (basename($_SERVER['REQUEST_URI']) == 'head.php' || strpos($_SERVER['REQUEST_URI'], 'head.php') !== false) {
+<?php if (basename((string) $_SERVER['REQUEST_URI']) == 'head.php' || str_contains((string) $_SERVER['REQUEST_URI'], 'head.php')) {
     die("Access Denied");
 }
 ?>
@@ -116,7 +116,7 @@
 
                 <div id="infoMessage">
                     <div id="messageText">
-                        <?php echo substr(query_single("SELECT time FROM log ORDER BY time DESC LIMIT 1"), -8);?> - <?php echo query_single("SELECT msg FROM log ORDER BY time DESC LIMIT 1")?>
+                        <?php echo substr((string) query_single("SELECT time FROM log ORDER BY time DESC LIMIT 1"), -8);?> - <?php echo query_single("SELECT msg FROM log ORDER BY time DESC LIMIT 1")?>
                     </div>
                 </div>  
             </div>

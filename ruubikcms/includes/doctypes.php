@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'doctypes.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'doctypes.php') {
     die('Access denied');
 }
 

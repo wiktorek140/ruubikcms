@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'dbconfig.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'dbconfig.php') {
     die('Access denied');
 }
 

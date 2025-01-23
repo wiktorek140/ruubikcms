@@ -16,18 +16,12 @@ class App
     protected array $routes = [];
 
     /**
-     * @var RouteLoader Instance of the RouteLoader.
-     */
-    protected RouteLoader $routeLoader;
-
-    /**
      * App constructor.
      *
      * @param RouteLoader $routeLoader The route loader instance.
      */
-    public function __construct(RouteLoader $routeLoader)
+    public function __construct(protected RouteLoader $routeLoader)
     {
-        $this->routeLoader = $routeLoader;
         $this->loadRoutes();
     }
 
@@ -77,7 +71,7 @@ class App
      */
     public function handle(RequestInterface $request, ResponseInterface $response): void
     {
-        $method = strtoupper($request->getServerParam('REQUEST_METHOD', 'GET'));
+        $method = strtoupper((string) $request->getServerParam('REQUEST_METHOD', 'GET'));
         $path = $request->getServerParam('REQUEST_URI', '/');
 
         $handler = $this->routes[$method][$path] ?? null;

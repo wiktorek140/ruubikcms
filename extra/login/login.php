@@ -18,7 +18,7 @@ require '../../ruubikcms/cms/languages/' . RLANG . '.php';
 
 $stmt = $dbh->prepare("SELECT username, organization, firstname, lastname, expirytime, active FROM extrauser WHERE username = ? AND password = ?");
 
-if ($stmt->execute([$_POST['username'], sha1($_POST['passwd'])])) {
+if ($stmt->execute([$_POST['username'], sha1((string) $_POST['passwd'])])) {
     $result = $stmt->fetch(PDO::FETCH_NUM);
 }
 
@@ -26,7 +26,7 @@ if (empty($result[0]) or (!empty($result[4]) and $result[4] < date("Y-m-d")) or 
     $_SESSION['notfound'] = true;
     $_SESSION['time'] = time();
     session_write_close();
-    header("Location: " . htmlspecialchars($_SERVER['HTTP_REFERER']));
+    header("Location: " . htmlspecialchars((string) $_SERVER['HTTP_REFERER']));
     exit();
 } else {
     $_SESSION['uid'] = $result[0];
@@ -52,4 +52,4 @@ session_write_close();
     $stmt->bindParam(4, $_SESSION['uid']);
 @$stmt->execute();*/
 
-header("Location: " . htmlspecialchars($_SERVER['HTTP_REFERER']));
+header("Location: " . htmlspecialchars((string) $_SERVER['HTTP_REFERER']));

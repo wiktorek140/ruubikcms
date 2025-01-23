@@ -1,5 +1,5 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'index.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'index.php') {
     die('Access denied');
 }

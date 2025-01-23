@@ -25,7 +25,7 @@ if (!isset($_GET['f']) || empty($_GET['f'])) {
     die("Please specify image.");
 }
 
-if (strstr($_GET['f'], '../')) {
+if (strstr((string) $_GET['f'], '../')) {
     die('Error');
 }
 

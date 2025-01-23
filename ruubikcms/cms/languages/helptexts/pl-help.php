@@ -1,5 +1,5 @@
 <?php
-if (basename($_SERVER['REQUEST_URI']) == 'pl-help.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'pl-help.php') {
     die('Access denied');
 } ?>
 <?php

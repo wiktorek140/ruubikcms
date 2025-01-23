@@ -2,7 +2,7 @@
 
 // -------- SCROLL DOWN TO EDIT HTML FOR DIFFERENT PAGE PARTS (MENUS, NEWS, ETC...) -----------------------------------------------------------
 // -------- THESE PARTS ARE SEPARATED BY LINES ------------------------------------------------------------------------------------------------
-if (basename($_SERVER['REQUEST_URI']) == 'extrapage.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'extrapage.php') {
     die('Access denied');
 }
 
@@ -14,14 +14,14 @@ $dbh = new PDO(PDO_DB_DRIVER . ':../' . RUUBIKCMS_FOLDER . '/' . PDO_DB_FOLDER .
 $page = [];
 $site = [];
 $site = get_site_data();
-$siteroot = '/' . ($site['siteroot'] != "" ? trim($site['siteroot'], '/') . '/' : '');
+$siteroot = '/' . ($site['siteroot'] != "" ? trim((string) $site['siteroot'], '/') . '/' : '');
 
 define('LOGOUT_TIME', query_single("SELECT logout_time FROM options WHERE id = 1"));
 require 'login/session.php';
 require 'login/accesscontrol.php';
 
 if ($site['clean_url'] >= 1) {
-    $array = explode('/', $_SERVER['REQUEST_URI']);
+    $array = explode('/', (string) $_SERVER['REQUEST_URI']);
     $pagearr = explode('.', end($array));
     $_GET['p'] = $pagearr[0];
     if ($_GET['p'] == 'index') {
@@ -43,7 +43,7 @@ if ($site['clean_url'] >= 1) {
 }//end if
 
 if ($site['url_suffix'] != '') {
-    $url_suffix = '.' . trim($site['url_suffix'], '.');
+    $url_suffix = '.' . trim((string) $site['url_suffix'], '.');
 } else {
     $url_suffix = '';
 }
@@ -83,7 +83,7 @@ if ($_GET['news']) {
     }
 
     // extracode without slashes:
-    $page['extracode'] = stripslashes($page['extracode']);
+    $page['extracode'] = stripslashes((string) $page['extracode']);
 }//end if
 
 // get the actual doctype text with key from array
@@ -360,14 +360,14 @@ foreach ($dbh->query($sql) as $row) {
         if ($row['shorttext'] != '') {
             $text = $row['shorttext'];
         } else {
-            $text = snippetstr(strip_tags($row['text']), $site['news_maxshort']);
+            $text = snippetstr(strip_tags((string) $row['text']), $site['news_maxshort']);
         }
     } else {
         $link = 'index.php?news=' . $row['id'];
         if ($row['shorttext'] != '') {
             $text = $row['shorttext'];
         } else {
-            $text = snippetstr(strip_tags($row['text']), $site['news_maxshort']);
+            $text = snippetstr(strip_tags((string) $row['text']), $site['news_maxshort']);
         }
     }
 

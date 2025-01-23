@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'commonfunc.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'commonfunc.php') {
     die('Access denied');
 }
 
@@ -8,7 +8,7 @@ if (basename($_SERVER['REQUEST_URI']) == 'commonfunc.php') {
 function ec($input)
 {
     $site = get_site_data();
-    return stripslashes(htmlentities($input, $ent = ENT_COMPAT, $site['charset']));
+    return stripslashes(htmlentities((string) $input, $ent = ENT_COMPAT, $site['charset']));
 }//end ec()
 
 // --- Query single value from database (one row, first column). Returns False if no value.
@@ -119,8 +119,8 @@ function page_name($pageurl, $table = 'page')
 function clean_url($pageurl, $table = 'page')
 {
     $level = query_prep('SELECT levelnum FROM ' . $table . ' WHERE pageurl = ?', [$pageurl]);
-    $siteroot = trim(query_single('SELECT siteroot FROM site WHERE id = 1'), '/');
-    $url_suffix = trim(query_single('SELECT url_suffix FROM site WHERE id = 1'), '.');
+    $siteroot = trim((string) query_single('SELECT siteroot FROM site WHERE id = 1'), '/');
+    $url_suffix = trim((string) query_single('SELECT url_suffix FROM site WHERE id = 1'), '.');
     if ($url_suffix != '') {
         $url_suffix = '.' . $url_suffix;
     }
@@ -150,7 +150,7 @@ function snippetstr($text, $length, $tail = '...')
         $length = 110;
     } //end if
 
-    $text = trim($text);
+    $text = trim((string) $text);
     $txtl = strlen($text);
     if ($txtl > $length) {
         for ($i = 1; $text[($length - $i)] != ' '; $i++) {

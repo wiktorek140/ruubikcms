@@ -1,8 +1,8 @@
 <?php
 
 if (
-    basename($_SERVER['REQUEST_URI']) == 'index.php'
-    || strpos($_SERVER['REQUEST_URI'], 'index.php') !== false
+    basename((string) $_SERVER['REQUEST_URI']) == 'index.php'
+    || str_contains((string) $_SERVER['REQUEST_URI'], 'index.php')
 ) {
     die('Access Denied');
 }

@@ -35,8 +35,8 @@ if (isset($_POST['save'])) {
         die(NOTALLOWED);
     }
 
-    $newsdata = stripslashes($_POST['tinyMCE']);
-    $shorttextdata = substr($_POST['shorttext'], 0, $site['news_maxshort']);
+    $newsdata = stripslashes((string) $_POST['tinyMCE']);
+    $shorttextdata = substr((string) $_POST['shorttext'], 0, $site['news_maxshort']);
 
     // save newsdata in database
     if ($_GET['id']) {
@@ -69,7 +69,7 @@ if (isset($_POST['save'])) {
         $stmt->bindParam(6, $_POST['status']);
         $stmt->bindParam(7, $_SESSION['uid']);
         $stmt->execute();
-        header('Location: ' . $self . '?id=' . $dbh->lastInsertId() . '&y=' . substr($_POST['time'], 0, 4)); // redirect to new news
+        header('Location: ' . $self . '?id=' . $dbh->lastInsertId() . '&y=' . substr((string) $_POST['time'], 0, 4)); // redirect to new news
     }//end if
 
     save_infomsg(SINGLENEWS . ' ' . SAVED);
@@ -171,7 +171,7 @@ $token = csrf_token();
     if (!isset($_GET['id'])) {
         echo date('Y-m-d');
     } else {
-        echo substr($news['time'], 0, 10);
+        echo substr((string) $news['time'], 0, 10);
     }
     ?>" />
     </td>
@@ -217,7 +217,7 @@ if (isset($news['creator'])) {
 <div id="tinyMCE">
 <textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE"><?php
 if (isset($news['text'])) {
-    echo htmlentities($news['text'], $ent = ENT_COMPAT, $site['charset']);
+    echo htmlentities((string) $news['text'], $ent = ENT_COMPAT, $site['charset']);
 }
 ?></textarea>
 </div>

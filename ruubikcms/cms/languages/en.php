@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'en.php') {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'en.php') {
     die('Access denied');
 }
 

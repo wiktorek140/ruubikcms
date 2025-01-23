@@ -12,7 +12,7 @@ class SQLite implements Database
     public const PDO_DB_DRIVER = 'sqlite';
     public const PDO_DB_NAME = 'ruubikcms.sqlite';
 
-    private PDO $dbh;
+    private readonly PDO $dbh;
 
     public function __construct()
     {

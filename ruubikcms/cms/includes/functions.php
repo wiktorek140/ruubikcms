@@ -1,6 +1,6 @@
 <?php
 
-if (basename($_SERVER['REQUEST_URI']) == 'function.php' || strpos($_SERVER['REQUEST_URI'], 'function.php') !== false) {
+if (basename((string) $_SERVER['REQUEST_URI']) == 'function.php' || str_contains((string) $_SERVER['REQUEST_URI'], 'function.php')) {
     die("Access Denied");
 }
 
@@ -280,7 +280,7 @@ function root_page($pageurl, $table = 'page')
 function valid_mysql_date($date)
 {
     if (
-        preg_match("/^([123456789][[:digit:]]{3})-(0[1-9]|1[012])-(0[1-9]|[12][[:digit:]]|3[01])$/", $date, $date_part)
+        preg_match("/^([123456789][[:digit:]]{3})-(0[1-9]|1[012])-(0[1-9]|[12][[:digit:]]|3[01])$/", (string) $date, $date_part)
         && checkdate($date_part[2], $date_part[3], $date_part[1])
     ) {
         return true;
@@ -292,7 +292,7 @@ function valid_mysql_date($date)
 // --- Validate time (hh:mm:ss)
 function valid_time($value)
 {
-    $arr = explode(":", $value);
+    $arr = explode(":", (string) $value);
     if ($arr[0] > 23 || $arr[0] < 0 || $arr[1] > 59 || $arr[1] < 0 || $arr[2] > 59 || $arr[2] < 0 || !is_numeric($arr[0]) || !is_numeric($arr[1]) || !is_numeric($arr[2])) {
         return false;
     } else {
@@ -309,7 +309,7 @@ function stripslashes_gpc($data)
 // --- Strips slashes from array
 function stripslashes_deep($value)
 {
-    $value = is_array($value) ? array_map('stripslashes_deep', $value) : stripslashes($value);
+    $value = is_array($value) ? array_map('stripslashes_deep', $value) : stripslashes((string) $value);
     return $value;
 }//end stripslashes_deep()
 

@@ -9,7 +9,7 @@ $_SESSION['extra'] = true;
 $cmspage = EXTRANET;
 $page = [];
 $site = get_site_data();
-$siteroot = trim($site['siteroot'], '/');
+$siteroot = trim((string) $site['siteroot'], '/');
 $self = ec($_SERVER['PHP_SELF']);
 
 if (isset($_POST['save'])) {
@@ -41,7 +41,7 @@ if (isset($_POST['save'])) {
     $extracode_raw = $_POST['extracode'];
 
     // remove slashes from html
-    $content = stripslashes($_POST['tinyMCE']);
+    $content = stripslashes((string) $_POST['tinyMCE']);
 
     // convert index.php?p=pageurl links to clean url links
     if ($site['clean_url'] >= 1) {
@@ -49,10 +49,10 @@ if (isset($_POST['save'])) {
     }
 
     // convert extra/userupload filelink tags to protected downloads via download.php script
-    $content = preg_replace('#a href\="([^"]*/extra/useruploads/files/[^\?]+)"#Us', "a.' href=\"/" . ($siteroot != "" ? $siteroot . '/' : '') . "extra/download.php?f='.basename('$1').'\"'", $content);
+    $content = preg_replace('#a href\="([^"]*/extra/useruploads/files/[^\?]+)"#Us', "a.' href=\"/" . ($siteroot != "" ? $siteroot . '/' : '') . "extra/download.php?f='.basename('$1').'\"'", (string) $content);
 
     // convert extra/userupload img tags to protected images via image.php script
-    $content = preg_replace('#img src\="([^"]*/extra/useruploads/images/[^\?]+)"#Us', "img.' src=\"/" . ($siteroot != "" ? $siteroot . '/' : '') . "extra/image.php?f='.basename('$1').'\"'", $content);
+    $content = preg_replace('#img src\="([^"]*/extra/useruploads/images/[^\?]+)"#Us', "img.' src=\"/" . ($siteroot != "" ? $siteroot . '/' : '') . "extra/image.php?f='.basename('$1').'\"'", (string) $content);
 
     // at least some name must be defined
     if (!isset($_POST['name'])) {
@@ -479,7 +479,7 @@ $token = csrf_token();
                             <div id="xtrAreaBlue"><a href="#" class="tooltip" style="float: right; margin-bottom:5px;" title="<?php echo H_EXTRACODE;?>"><img src="images/help.gif" class="imgover" alt="" /></a>
                             <textarea name="extracode" cols="2" rows="2"><?php
                             if (isset($page['extracode'])) {
-                                echo stripslashes_gpc(htmlentities($page['extracode'], $ent = ENT_COMPAT, $site['charset']));
+                                echo stripslashes_gpc(htmlentities((string) $page['extracode'], $ent = ENT_COMPAT, $site['charset']));
                             }
                             ?></textarea></div>
                         </div>
@@ -554,7 +554,7 @@ $token = csrf_token();
                         <div id="tinyMCE">
                             <textarea cols="63" rows="20" name="tinyMCE" class="tinyMCE" id="tinyMCEarea"><?php
                             if (isset($page['content'])) {
-                                echo htmlentities($page['content'], $ent = ENT_COMPAT, $site['charset']);
+                                echo htmlentities((string) $page['content'], $ent = ENT_COMPAT, $site['charset']);
                             }
                             ?></textarea>
                         </div>

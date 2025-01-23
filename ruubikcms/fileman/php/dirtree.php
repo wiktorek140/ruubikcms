@@ -75,13 +75,13 @@ function GetDirs($path, $type)
     }
 }//end GetDirs()
 
-$type = (empty($_GET['type']) ? '' : strtolower($_GET['type']));
+$type = (empty($_GET['type']) ? '' : strtolower((string) $_GET['type']));
 if ($type != 'image' && $type != 'flash') {
     $type = '';
 }
 
 echo "[\n";
 $tmp = getFilesNumber(fixPath(getFilesPath()), $type);
-echo '{"p":"' . mb_ereg_replace('"', '\\"', getFilesPath()) . '","f":"' . $tmp['files'] . '","d":"' . $tmp['dirs'] . '"}';
+echo '{"p":"' . mb_ereg_replace('"', '\\"', (string) getFilesPath()) . '","f":"' . $tmp['files'] . '","d":"' . $tmp['dirs'] . '"}';
 GetDirs(getFilesPath(), $type);
 echo "\n]";
