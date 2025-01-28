@@ -11,3 +11,4 @@ ruubikcms/sqlite/ruubikcms-last-login.sqlite
 doc/
 extra/
 vendor
+.phpunit.result.cache
