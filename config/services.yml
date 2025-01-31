@@ -1,0 +1,7 @@
+services:
+  Database:
+    class: SQLite
+    singleton: true
+
+  App:
+    class: App
