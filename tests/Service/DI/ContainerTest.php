@@ -28,10 +28,10 @@ class ContainerTest extends TestCase
     {
         $container = new Container();
         $container->singleton(Database::class, TestDatabase::class);
-        
+
         $logger1 = $container->make(Database::class);
         $logger2 = $container->make(Database::class);
-        
+
         $this->assertSame($logger1, $logger2);
     }
 }

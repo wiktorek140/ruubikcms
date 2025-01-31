@@ -2,8 +2,8 @@
 
 namespace Ruubik\Service\DI;
 
-use \Exception;
-use \ReflectionClass;
+use Exception;
+use ReflectionClass;
 use Symfony\Component\Yaml\Yaml;
 
 class Container
@@ -64,7 +64,7 @@ class Container
 
         $reflection = new ReflectionClass($class);
         if (!$constructor = $reflection->getConstructor()) {
-            return new $class;
+            return new $class();
         }
 
         $parameters = $constructor->getParameters();
@@ -83,7 +83,7 @@ class Container
         }
 
         $config = Yaml::parseFile($filePath);
-        
+
         foreach ($config['services'] as $abstract => $definition) {
             $singleton = $definition['singleton'] ?? false;
             $this->bind($abstract, $definition['class'], $singleton);

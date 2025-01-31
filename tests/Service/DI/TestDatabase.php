@@ -6,18 +6,17 @@ use Ruubik\Service\Db\Database;
 
 class TestDatabase implements Database
 {
-    public function query(string $query, ?array $bindParams = null, ?string $order = null) 
+    public function query(string $query, ?array $bindParams = null, ?string $order = null)
     {
-      return [];
+        return [];
     }
 
     public function execute(string $query, ?array $bindParams = null): void
-    {}
+    {
+    }
 
     public function queryAll(string $query, array $params = []): array
     {
-      return [];
+        return [];
     }
-    
-    
 }
