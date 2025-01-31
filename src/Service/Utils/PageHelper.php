@@ -6,11 +6,8 @@ use Ruubik\Service\Db\Database;
 
 class PageHelper
 {
-    private Database $dbHelper;
-
-    public function __construct(Database $dbHelper)
+    public function __construct(private readonly Database $dbHelper)
     {
-        $this->dbHelper = $dbHelper;
     }
 
     public function getSiteData(): array

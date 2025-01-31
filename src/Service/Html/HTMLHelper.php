@@ -4,11 +4,8 @@ namespace Ruubik\Service\Html;
 
 class HTMLHelper
 {
-    private string $charset;
-
-    public function __construct(string $charset = 'UTF-8')
+    public function __construct(private readonly string $charset = 'UTF-8')
     {
-        $this->charset = $charset;
     }
 
     /**
