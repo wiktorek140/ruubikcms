@@ -19,4 +19,6 @@ interface Database
      * @return void
      */
     public function execute(string $query, ?array $bindParams = null): void;
+
+    public function queryAll(string $query, array $params = []): array;
 }
