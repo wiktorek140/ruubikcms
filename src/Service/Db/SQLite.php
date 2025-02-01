@@ -19,7 +19,7 @@ class SQLite implements Database
         $this->dbh = new PDO(self::PDO_DB_DRIVER . ':' . self::PDO_DB_FOLDER . '/' . self::PDO_DB_NAME);
     }
 
-    public function query(string $query, ?array $bindParams = null, ?string $order = null)
+    public function query(string $query, ?array $bindParams = null, ?string $order = null): mixed
     {
         $stmt = $this->dbh->prepare($query);
         if ($stmt->execute($bindParams)) {
