@@ -2,6 +2,6 @@
   path: /user
   handler: { class: Ruubik\Controller\IndexController, method: renderPage }
 
-- method: POST
-  path: /user2
-  handler: { class: Ruubik\Conttoller\IndexController:class, method: renderPage }
+- method: GET
+  path: /install/check
+  handler: { class: Ruubik\Controller\InstallCheckController, method: checkSystem }

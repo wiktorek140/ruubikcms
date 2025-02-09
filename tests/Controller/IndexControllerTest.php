@@ -1,6 +1,6 @@
 <?php
 
-namespace Ruubik\Tests;
+namespace Ruubik\Tests\Controller;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
@@ -16,7 +16,7 @@ class IndexControllerTest extends TestCase
     public function testRegisterRoute(): void
     {
 
-        $routeLoader = new RouteLoader(__DIR__ . '/../config/route.yml');
+        $routeLoader = new RouteLoader(__DIR__ . '/../../config/route.yml');
         $app = new App($routeLoader);
 
         $request = $this->createMock(Request::class);

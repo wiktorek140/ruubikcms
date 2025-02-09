@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RuubikCMS Installation Check</title>
+    <link href="install.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { background: #8faedb; font-family: Verdana, sans-serif; }
+        .container { width: 780px; margin: 50px auto; padding: 15px; background: #ddd; border: 5px solid #8a96b4; }
+        .ok { color: green; }
+        .failed { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RuubikCMS Installation Check</h1>
+        <h2>PHP Version</h2>
+        <p>Required: 5.1.0+ (Current: {{ phpVersion }})</p>
+        <p class="{{ phpVersionOk ? 'ok' : 'failed' }}">{{ phpVersionOk ? 'OK' : 'FAILED' }}</p>
+
+        <h2>Required Extensions</h2>
+        <ul>
+            {% for extension in extensions %}
+                <li>
+                    {{ extension }} - 
+                    <span class="{{ extension not in missingExtensions ? 'ok' : 'failed' }}">
+                        {{ extension not in missingExtensions ? 'OK' : 'FAILED' }}
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2>Writable Directories</h2>
+        <ul>
+            {% for dir, path in writableDirs %}
+                <li>
+                    {{ dir }} - 
+                    <span class="{{ dir not in unwritableDirs ? 'ok' : 'failed' }}">
+                        {{ dir not in unwritableDirs ? 'OK' : 'FAILED' }}
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if errors is empty %}
+            <h3 class="ok">Installation successful!</h3>
+        {% else %}
+            <h3 class="failed">Installation failed!</h3>
+            <p>Fix the following issues:</p>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            <p><button onclick="location.reload()">Test Again</button></p>
+        {% endif %}
+    </div>
+</body>
+</html>

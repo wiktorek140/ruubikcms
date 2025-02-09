@@ -14,9 +14,9 @@ class SQLite implements Database
 
     private readonly PDO $dbh;
 
-    public function __construct()
+    public function __construct(?PDO $pdo)
     {
-        $this->dbh = new PDO(self::PDO_DB_DRIVER . ':' . self::PDO_DB_FOLDER . '/' . self::PDO_DB_NAME);
+        $this->dbh = $pdo ?? new PDO(self::PDO_DB_DRIVER . ':' . self::PDO_DB_FOLDER . '/' . self::PDO_DB_NAME);
     }
 
     public function query(string $query, ?array $bindParams = null, ?string $order = null): mixed
@@ -24,7 +24,7 @@ class SQLite implements Database
         $stmt = $this->dbh->prepare($query);
         if ($stmt->execute($bindParams)) {
             $result = $stmt->fetch(PDO::FETCH_NUM);
-            return $result[0] ?? null;
+            return empty($result) ? null : $result;
         }
 
         return null;
