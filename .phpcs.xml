@@ -13,7 +13,7 @@
 
   <rule ref="PSR12">
   </rule>
-  
+
   <rule ref="Generic.Files.LineLength">
     <properties>
       <property name="lineLimit" value="120" />
@@ -29,8 +29,8 @@
   <!-- Include some sniffs from other standards that don't conflict with PEAR -->
   <rule ref="Squiz.Arrays.ArrayBracketSpacing" />
   <rule ref="Squiz.Arrays.ArrayDeclaration">
-    <exclude name="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned"/>
-    </rule>
+    <exclude name="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned" />
+  </rule>
   <rule ref="Squiz.ControlStructures.ControlSignature" />
   <rule ref="Squiz.ControlStructures.ElseIfDeclaration" />
   <rule ref="Squiz.Commenting.BlockComment" />
@@ -115,9 +115,11 @@
   <rule ref="PSR2.Classes.PropertyDeclaration.Underscore">
     <type>error</type>
   </rule>
-  
-  
+
   <rule ref="Modernize"></rule>
   <rule ref="NormalizedArrays"></rule>
-  
+  <rule ref="Universal">
+    <exclude name="Universal.ControlStructures.IfElseDeclaration" />
+    <exclude name="Universal.Operators.StrictComparisons" />
+  </rule>
 </ruleset>
