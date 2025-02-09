@@ -16,7 +16,7 @@ class SystemCheckServiceTest extends TestCase
     {
         $result = $this->service->checkPhpVersion();
         $expected = version_compare(PHP_VERSION, '5.1.0', '>=');
-        
+
         $this->assertSame($expected, $result);
 
         if (!$expected) {
@@ -28,7 +28,10 @@ class SystemCheckServiceTest extends TestCase
 
     public function testCheckExtensionsWithExistingExtensions()
     {
-        $extensions = ['json', 'spl']; // Commonly enabled extensions
+        $extensions = [
+            'json',
+            'spl',
+        ]; // Commonly enabled extensions
         $errors = $this->service->checkExtensions($extensions);
 
         $this->assertEmpty($errors);
@@ -37,7 +40,10 @@ class SystemCheckServiceTest extends TestCase
 
     public function testCheckExtensionsWithMissingExtensions()
     {
-        $extensions = ['fake_extension_1', 'fake_extension_2'];
+        $extensions = [
+            'fake_extension_1',
+            'fake_extension_2',
+        ];
         $errors = $this->service->checkExtensions($extensions);
 
         $this->assertCount(2, $errors);

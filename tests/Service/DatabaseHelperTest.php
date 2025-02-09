@@ -10,13 +10,12 @@ use PDOStatement;
 
 class DatabaseHelperTest extends TestCase
 {
-    //private PDO $mockPdo;
-    //private Database $dbHelper;
-
+    // private PDO $mockPdo;
+    // private Database $dbHelper;
     protected function setUp(): void
     {
-        //$mockPdo = $this->createMock(PDO::class);
-        //$this->dbHelper = new SQLite($this->mockPdo);
+        // $mockPdo = $this->createMock(PDO::class);
+        // $this->dbHelper = new SQLite($this->mockPdo);
     }
 
     public function testQuerySingle()
@@ -25,12 +24,12 @@ class DatabaseHelperTest extends TestCase
         $mockStatement->method('fetch')->willReturn(['col' => 'TestValue']);
         $mockStatement->method('execute')->willReturn(true);
 
-$mockPdo = $this->createMock(PDO::class);
-$mockPdo
+        $mockPdo = $this->createMock(PDO::class);
+        $mockPdo
             ->method('prepare')
             ->with('SELECT 1')
             ->willReturn($mockStatement);
-$mockPdo
+        $mockPdo
             ->method('query')
             ->with('SELECT 1')
             ->willReturn($mockStatement);
@@ -46,7 +45,7 @@ $mockPdo
     {
         $mockStatement = $this->createMock(PDOStatement::class);
         $mockStatement->method('execute')->willReturn(true);
-        $mockStatement->method('fetch')->willReturn(['col'=>'TestValue']);
+        $mockStatement->method('fetch')->willReturn(['col' => 'TestValue']);
 
         $mockPdo = $this->createMock(PDO::class);
         $mockPdo
@@ -54,7 +53,7 @@ $mockPdo
             ->with('SELECT ?')
             ->willReturn($mockStatement);
         $dbHelper = new SQLite($mockPdo);
-        
+
         $result = $dbHelper->query('SELECT ?', ['param']);
         $this->assertIsArray($result);
         $this->assertEquals('TestValue', $result['col']);

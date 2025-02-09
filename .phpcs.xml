@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="phpcs.xsd">
-  <description>The coding standard for PHP_CodeSniffer itself.</description>
+  <description>The basic code standard.</description>
 
   <file>.</file>
-
   <exclude-pattern>vendor/</exclude-pattern>
 
   <arg name="basepath" value="." />
@@ -12,8 +11,9 @@
   <arg value="np" />
 
 
-  <rule ref="PSR12"
-    />
+  <rule ref="PSR12">
+  </rule>
+  
   <rule ref="Generic.Files.LineLength">
     <properties>
       <property name="lineLimit" value="120" />
@@ -28,7 +28,9 @@
 
   <!-- Include some sniffs from other standards that don't conflict with PEAR -->
   <rule ref="Squiz.Arrays.ArrayBracketSpacing" />
-  <rule ref="Squiz.Arrays.ArrayDeclaration" />
+  <rule ref="Squiz.Arrays.ArrayDeclaration">
+    <exclude name="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned"/>
+    </rule>
   <rule ref="Squiz.ControlStructures.ControlSignature" />
   <rule ref="Squiz.ControlStructures.ElseIfDeclaration" />
   <rule ref="Squiz.Commenting.BlockComment" />
@@ -113,4 +115,9 @@
   <rule ref="PSR2.Classes.PropertyDeclaration.Underscore">
     <type>error</type>
   </rule>
+  
+  
+  <rule ref="Modernize"></rule>
+  <rule ref="NormalizedArrays"></rule>
+  
 </ruleset>

@@ -18,7 +18,10 @@ class InstallCheckController extends Controller
 
     public function checkSystem(): void
     {
-        $requiredExtensions = ['PDO', 'pdo_sqlite'];
+        $requiredExtensions = [
+            'PDO',
+            'pdo_sqlite',
+        ];
         $writableDirs = [
             'ruubikcms/sqlite' => '../sqlite',
             'ruubikcms/useruploads' => '../useruploads',
@@ -30,7 +33,7 @@ class InstallCheckController extends Controller
         $errors = $this->systemCheckService->getErrors();
         $installationSuccessful = $this->systemCheckService->isInstallationSuccessful();
 
-$this->response->setBody($this->getTwig()->render('check/check.twig',  [
+        $this->response->setBody($this->getTwig()->render('check/check.twig', [
             'phpVersion' => PHP_VERSION,
             'phpVersionOk' => $phpVersionOk,
             'extensions' => $requiredExtensions,
