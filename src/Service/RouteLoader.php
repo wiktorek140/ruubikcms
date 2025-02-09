@@ -5,7 +5,7 @@ namespace Ruubik\Service;
 use Symfony\Component\Yaml\Yaml;
 use Exception;
 
-class RouteLoader
+final class RouteLoader
 {
     /**
      * RouteLoader constructor.

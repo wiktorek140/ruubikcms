@@ -6,7 +6,7 @@ use Exception;
 use ReflectionClass;
 use Symfony\Component\Yaml\Yaml;
 
-class Container
+final class Container
 {
     private array $bindings = [];
     private array $instances = [];

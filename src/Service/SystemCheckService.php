@@ -2,7 +2,7 @@
 
 namespace Ruubik\Service;
 
-class SystemCheckService
+final class SystemCheckService
 {
     private array $errors = [];
 

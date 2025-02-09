@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use Ruubik\Service\SystemCheckService;
 
-class SystemCheckServiceTest extends TestCase
+final class SystemCheckServiceTest extends TestCase
 {
     private SystemCheckService $service;
 

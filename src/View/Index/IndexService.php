@@ -2,7 +2,7 @@
 
 namespace Ruubik\View\Index;
 
-class IndexService
+final class IndexService
 {
     /**
      * Pobiera dane potrzebne do widoku.

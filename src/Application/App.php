@@ -8,7 +8,7 @@ use Ruubik\Service\RouteLoader;
 use Ruubik\Service\Network\RequestInterface;
 use Ruubik\Service\Network\ResponseInterface;
 
-class App
+final class App
 {
     /**
      * @var array Routes definition.

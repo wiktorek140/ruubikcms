@@ -6,7 +6,7 @@ use Ruubik\Service\SystemCheckService;
 use Ruubik\Service\Network\RequestInterface;
 use Ruubik\Service\Network\ResponseInterface;
 
-class InstallCheckController extends Controller
+final class InstallCheckController extends Controller
 {
     private readonly SystemCheckService $systemCheckService;
 

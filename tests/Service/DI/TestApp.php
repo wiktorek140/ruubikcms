@@ -4,7 +4,7 @@ namespace Ruubik\Tests\Service\DI;
 
 use Ruubik\Service\Db\Database;
 
-class TestApp
+final class TestApp
 {
     private Database $logger;
 

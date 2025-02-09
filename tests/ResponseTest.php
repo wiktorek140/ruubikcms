@@ -5,7 +5,7 @@ namespace Ruubik\Tests;
 use PHPUnit\Framework\TestCase;
 use Ruubik\Service\Network\Response;
 
-class ResponseTest extends TestCase
+final class ResponseTest extends TestCase
 {
     public function testSetAndGetStatusCode(): void
     {

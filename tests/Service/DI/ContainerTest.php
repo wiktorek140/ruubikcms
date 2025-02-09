@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Ruubik\Service\DI\Container;
 use Ruubik\Service\Db\Database;
 
-class ContainerTest extends TestCase
+final class ContainerTest extends TestCase
 {
     public function testCanResolveSimpleClass()
     {

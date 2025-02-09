@@ -6,7 +6,7 @@ namespace Ruubik\Service\Db;
 
 use PDO;
 
-class SQLite implements Database
+final class SQLite implements Database
 {
     public const PDO_DB_FOLDER = 'sqlite';
     public const PDO_DB_DRIVER = 'sqlite';

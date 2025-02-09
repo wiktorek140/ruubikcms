@@ -4,7 +4,7 @@ namespace Ruubik\Service\Utils;
 
 use Ruubik\Service\Db\Database;
 
-class PageHelper
+final class PageHelper
 {
     public function __construct(private readonly Database $dbHelper)
     {

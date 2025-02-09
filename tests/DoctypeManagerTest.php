@@ -5,7 +5,7 @@ namespace Ruubik\Tests;
 use PHPUnit\Framework\TestCase;
 use Ruubik\Service\Utils\DoctypeManager;
 
-class DoctypeManagerTest extends TestCase
+final class DoctypeManagerTest extends TestCase
 {
     public function testGetDoctype(): void
     {

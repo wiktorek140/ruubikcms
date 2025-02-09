@@ -5,7 +5,7 @@ namespace Ruubik\Tests\Service;
 use PHPUnit\Framework\TestCase;
 use Ruubik\Service\Html\HTMLHelper;
 
-class HTMLHelperTest extends TestCase
+final class HTMLHelperTest extends TestCase
 {
     public function testEscape()
     {

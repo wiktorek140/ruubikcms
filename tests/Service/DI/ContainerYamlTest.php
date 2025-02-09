@@ -7,7 +7,7 @@ use Symfony\Component\Yaml\Yaml;
 use Ruubik\Service\DI\Container;
 use Ruubik\Service\Db\Database;
 
-class ContainerYamlTest extends TestCase
+final class ContainerYamlTest extends TestCase
 {
     public function testLoadDependenciesFromYaml()
     {

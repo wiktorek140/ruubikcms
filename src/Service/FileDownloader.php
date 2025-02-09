@@ -4,7 +4,7 @@ namespace Ruubik\Service;
 
 use Ruubik\Service\Db\Database;
 
-class FileDownloader
+final class FileDownloader
 {
     private $baseDir;
 

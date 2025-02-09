@@ -4,6 +4,6 @@ namespace Ruubik\Exception;
 
 use Exception;
 
-class RouteException extends Exception
+final class RouteException extends Exception
 {
 }

@@ -121,5 +121,6 @@
   <rule ref="Universal">
     <exclude name="Universal.ControlStructures.IfElseDeclaration" />
     <exclude name="Universal.Operators.StrictComparisons" />
+    <exclude name="Universal.Classes.DisallowFinalClass" />
   </rule>
 </ruleset>

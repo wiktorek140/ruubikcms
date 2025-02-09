@@ -6,7 +6,7 @@ use Ruubik\Service\Network\RequestInterface;
 use Ruubik\Service\Network\ResponseInterface;
 use Ruubik\View\Index\IndexService;
 
-class IndexController extends Controller
+final class IndexController extends Controller
 {
     private readonly IndexService $indexService;
 

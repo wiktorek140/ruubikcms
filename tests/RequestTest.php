@@ -5,7 +5,7 @@ namespace Ruubik\Tests;
 use PHPUnit\Framework\TestCase;
 use Ruubik\Service\Network\Request;
 
-class RequestTest extends TestCase
+final class RequestTest extends TestCase
 {
     public function testGetQueryParam(): void
     {

@@ -2,7 +2,7 @@
 
 namespace Ruubik\Service\Network;
 
-class Request implements RequestInterface
+final class Request implements RequestInterface
 {
     /**
      * @var array Query string parameters ($_GET).

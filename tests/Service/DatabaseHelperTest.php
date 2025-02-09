@@ -8,7 +8,7 @@ use Ruubik\Service\Db\SQLite;
 use PDO;
 use PDOStatement;
 
-class DatabaseHelperTest extends TestCase
+final class DatabaseHelperTest extends TestCase
 {
     // private PDO $mockPdo;
     // private Database $dbHelper;

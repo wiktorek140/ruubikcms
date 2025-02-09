@@ -11,7 +11,7 @@ use Ruubik\Service\Network\Response;
 use Ruubik\Service\Network\ResponseInterface;
 use Ruubik\Service\RouteLoader;
 
-class InstallCheckControllerTest extends TestCase
+final class InstallCheckControllerTest extends TestCase
 {
     public function testRegisterRoute(): void
     {

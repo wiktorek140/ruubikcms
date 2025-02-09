@@ -2,7 +2,7 @@
 
 namespace Ruubik\Service\Network;
 
-class Response implements ResponseInterface
+final class Response implements ResponseInterface
 {
     /**
      * @var integer HTTP status code.
