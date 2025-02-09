@@ -8,7 +8,7 @@ use Ruubik\Service\Network\ResponseInterface;
 
 class InstallCheckController extends Controller
 {
-    private SystemCheckService $systemCheckService;
+    private readonly SystemCheckService $systemCheckService;
 
     public function __construct(RequestInterface $request, ResponseInterface $response)
     {
