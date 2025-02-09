@@ -14,7 +14,7 @@ class SQLite implements Database
 
     private readonly PDO $dbh;
 
-    public function __construct(?PDO $pdo)
+    public function __construct(?PDO $pdo = null)
     {
         $this->dbh = $pdo ?? new PDO(self::PDO_DB_DRIVER . ':' . self::PDO_DB_FOLDER . '/' . self::PDO_DB_NAME);
     }
