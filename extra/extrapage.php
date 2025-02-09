@@ -160,7 +160,7 @@ if ($stmt->execute([$p])) {
             }
 
             $page['submenuslide'] .= '<li><a href="' . ($clean_url ? clean_url($row2['pageurl']) : 'index.php?p=' . $row2['pageurl']) . '">' . $row2['name'] . '</a></li>';
-            $level2count++;
+            ++$level2count;
         }
 
         if ($level2count != 0) {
@@ -198,7 +198,7 @@ foreach ($dbh->query($sql) as $row) {
     // ---- BASIC mainMenu 3, HTML:    <ul><li><a href="#"><span>Link</span></a></li></ul> ----------------------------------------------------
     // $page['mainmenu'] .= '<li'.($p == $row['pageurl']  ? ' class="selected"' : '').'><a href="'.$url.'"><span>'.$row['name'].'</span></a></li>';
     // -------------------------------------------------------------------------------------------------------------------------------------
-    $counter++;
+    ++$counter;
 }//end foreach
 
 // Uncomment to add "Log out" to main menu:
@@ -233,7 +233,7 @@ if ($stmt->execute([$p])) {
         // EDIT SUBMENU1 HTML HERE:
         $page['submenu1'] .= '<li' . ($submenu_selected == $row['pageurl'] ? ' class="selected"' : '') . '><a href="' . $url . '">' . $row['name'] . '</a></li>';
         // $page['submenu1'] .= '</div>'; // close <div id="submenu">
-        $counter++;
+        ++$counter;
     }
 }
 
@@ -268,7 +268,7 @@ if ($stmt->execute([$p])) {
         // EDIT SUBMENU2 HTML HERE:
         $page['submenu2'] .= '<li' . ($_GET['p'] == $row['pageurl'] ? ' class="selected"' : '') . '><a href="' . $url . '">' . $row['name'] . '</a></li>';
 
-        $counter++;
+        ++$counter;
     }
 }
 
@@ -317,7 +317,7 @@ foreach ($dbh->query($sql) as $row) {
             }
 
             $page['dropdownmenu'] .= '<li><a href="' . ($clean_url ? clean_url($row3['pageurl']) : 'index.php?p=' . $row3['pageurl']) . '">' . $row3['name'] . '</a></li>';
-            $level3count++;
+            ++$level3count;
         }
 
         if ($level3count != 0) {
@@ -325,7 +325,7 @@ foreach ($dbh->query($sql) as $row) {
         }
 
         $page['dropdownmenu'] .= '</li>';
-        $level2count++;
+        ++$level2count;
     }//end foreach
 
     if ($level2count != 0) {

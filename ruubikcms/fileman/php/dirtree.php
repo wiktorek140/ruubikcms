@@ -36,9 +36,9 @@ function getFilesNumber($path, $type)
         if ($ff == '.' || $ff == '..') {
             continue;
         } else if (is_file($path . '/' . $ff) && ($type == '' || ($type == 'image' && RoxyFile::IsImage($ff)) || ($type == 'flash' && RoxyFile::IsFlash($ff)))) {
-            $files++;
+            ++$files;
         } else if (is_dir($path . '/' . $ff)) {
-            $dirs++;
+            ++$dirs;
         }
     }
 

@@ -148,7 +148,7 @@ function listDirectory($path)
     return $ret;
 }//end listDirectory()
 
-class RoxyFile
+final class RoxyFile
 {
     private static function CreatePath($dir)
     {
@@ -416,7 +416,7 @@ class RoxyFile
         $i = 0;
         do {
             $temp = ($i > 0 ? $name . " - Copy $i" : $name) . $ext;
-            $i++;
+            ++$i;
         } while (file_exists($dir . $temp));
 
         return $temp;
@@ -441,13 +441,13 @@ class RoxyFile
         $i = 0;
         do {
             $temp = ($i ? $name . " - Copy $i" : $name);
-            $i++;
+            ++$i;
         } while (is_dir($dir . $temp));
 
         return $temp;
     }//end MakeUniqueDirname()
 }//end class
-class RoxyImage
+final class RoxyImage
 {
     public static function GetImage($path)
     {

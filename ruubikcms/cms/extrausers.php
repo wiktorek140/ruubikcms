@@ -51,14 +51,14 @@ if (isset($_POST['import'])) {
                     $stmt->bindParam(8, $active);
                     $stmt->bindParam(9, $linearray[8]);
                     if ($stmt->execute()) {
-                                 $inserts++;
+                                 ++$inserts;
                     }
                 } else {
-                    $counterrors++;
+                    ++$counterrors;
                 }
             }//end if
 
-            $lines++;
+            ++$lines;
         } //end foreach
 
         $importresults = SUCCEEDED . ' ' . $inserts . ', ' . FAILED . ': ' . $counterrors;
@@ -91,7 +91,7 @@ if (isset($_POST['import'])) {
         }
 
         $csvdata[$line] = substr($csvdata[$line], 0, -1) . "\n";
-        $line++;
+        ++$line;
     }
 
     header('Content-Type: application/octet-stream');
@@ -282,7 +282,7 @@ $token = csrf_token();
                                     }//end if
 
                                     echo '<tr><td><a href="' . $self . '?p=' . $row['username'] . '">' . $row['username'] . '</a></td><td>' . $row['firstname'] . '</td><td>' . $row['lastname'] . '</td><td>' . $row['organization'] . '</td><td style="text-align: center;">' . ($row['active'] == 1 ? '<img src="images/accept.png" alt="" title="' . ACTIVE . '" />' : '<img src="images/cancel.png" alt="" title="' . INACTIVE . '" />') . '</td><td>' . $row['expirytime'] . '</td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;a=1&amp;token=' . $token . '"><img src="images/accept.png" alt="" title="' . ACTIVATE . '" /></a></td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;u=1&amp;token=' . $token . '"><img src="images/cancel.png" alt="" title="' . DEACTIVATE . '" /></a></td><td><a href="' . $self . '?p=' . $row['username'] . '&amp;d=1&amp;token=' . $token . '"><img src="images/user_delete.png" alt="" title="' . DELETE . '" onclick="return confirm(\'' . AREYOUSURE . ' (' . DELETE . ' ' . USER . ')' . '\')" /></a></td><td><a href="?p=' . $row['username'] . '"><img src="images/user_edit.png" alt="" title="' . EDIT . '" /></a></td></tr>';
-                                    $counter++;
+                                    ++$counter;
                                 }//end while
 
                                 if ($counter > 0) {

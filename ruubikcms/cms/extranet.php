@@ -214,25 +214,23 @@ if (isset($_GET['p'])) {
             save_infomsg('HAS CHILDREN, NOT DELETED');
             header('Location: ' . $self);
             exit;
-        } else {
-            if ($_SESSION['level'] >= 4 || $page['creator'] == $_SESSION['uid']) {
+        } else if ($_SESSION['level'] >= 4 || $page['creator'] == $_SESSION['uid']) {
                 // no children -> delete
                 $stmt = $dbh->prepare("DELETE FROM extrapage WHERE pageurl = ?");
                 $stmt->bindParam(1, $_GET['p']);
                 $stmt->execute();
                 refresh_pageorder($page['mother'], 'extrapage');
                 save_infomsg(PAGE . ' ' . DELETED);
-                if ($page['levelnum'] == 1) {
-                    $redirect = '';
-                }
+            if ($page['levelnum'] == 1) {
+                $redirect = '';
+            }
                 // redirect to first subpage with same mother after delete
-                else {
-                    $redirect = '?p=' . query_single("SELECT pageurl FROM extrapage WHERE levelnum = " . $page['levelnum'] . " AND mother = '" . $page['mother'] . "' ORDER BY levelnum LIMIT 1");
-                }
+            else {
+                $redirect = '?p=' . query_single("SELECT pageurl FROM extrapage WHERE levelnum = " . $page['levelnum'] . " AND mother = '" . $page['mother'] . "' ORDER BY levelnum LIMIT 1");
+            }
 
                 header('Location: ' . $self . $redirect);
                 exit;
-            }
         }//end if
     } else if (isset($_GET['moveup'])) {
         // some CSRF protection

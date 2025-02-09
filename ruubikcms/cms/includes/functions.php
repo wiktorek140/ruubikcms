@@ -159,27 +159,27 @@ function get_unique_url($str, $type)
     if ($type == 1) {
         while (snippetname_exists($str)) {
             $str = $basestr . '-' . strval($counter);
-            $counter++;
+            ++$counter;
         }
     } else if ($type == 0) {
         while (pageurl_exists($str)) {
             $str = $basestr . '-' . strval($counter);
-            $counter++;
+            ++$counter;
         }
     } else if ($type == 2) {
         while (username_exists($str)) {
             $str = $basestr . '-' . strval($counter);
-            $counter++;
+            ++$counter;
         }
     } else if ($type == 3) {
         while (extrausername_exists($str)) {
             $str = $basestr . '-' . strval($counter);
-            $counter++;
+            ++$counter;
         }
     } else if ($type == 4) {
         while (extrapageurl_exists($str)) {
             $str = $basestr . '-' . strval($counter);
-            $counter++;
+            ++$counter;
         }
     }//end if
 
@@ -205,7 +205,7 @@ function refresh_pageorder($mother, $table = 'page')
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $dbh->exec("UPDATE " . $table . " SET ordernum = " . $counter . " WHERE pageurl = '" . $row['pageurl'] . "'");
-        $counter++;
+        ++$counter;
     }
 }//end refresh_pageorder()
 
