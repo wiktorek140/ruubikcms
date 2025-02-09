@@ -6,13 +6,13 @@ namespace Ruubik\Service\Db;
 
 use PDO;
 
-final class SQLite implements Database
+final readonly class SQLite implements Database
 {
-    public const PDO_DB_FOLDER = 'sqlite';
-    public const PDO_DB_DRIVER = 'sqlite';
-    public const PDO_DB_NAME = 'ruubikcms.sqlite';
+    public const string PDO_DB_FOLDER = 'sqlite';
+    public const string PDO_DB_DRIVER = 'sqlite';
+    public const string PDO_DB_NAME = 'ruubikcms.sqlite';
 
-    private readonly PDO $dbh;
+    private PDO $dbh;
 
     public function __construct(?PDO $pdo = null)
     {
